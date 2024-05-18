@@ -22,7 +22,7 @@
         virtual public IList<Krevet> Kreveti { get; set; } = [];
         virtual public IList<Soba> Sobe {  get; set; } = [];
         virtual public IList<SajtoviNekretnine> SajtoviNekretnine { get; set; } = [];
-        //jos za najam
+        virtual public IList<Najam> Najmovi { get; set; } = [];
     }
 }
 

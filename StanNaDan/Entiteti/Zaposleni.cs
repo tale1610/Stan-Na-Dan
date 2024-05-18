@@ -45,6 +45,7 @@ public class Agent: Zaposleni
     //veze
     virtual public IList<SpoljniSaradnik> AngazovaniSaradnici { get; set; } = [];
     virtual public Poslovnica? Poslovnica { get; set; }
+    virtual public IList<Najam> RealizovaniNajmovi { get; set; } = [];
 }
 
 public class Radnik : Zaposleni

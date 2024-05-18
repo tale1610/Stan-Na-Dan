@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\tasko\\Desktop\\FAX\\V\\6 Semestar\\Baze\\STAN NA DAN\\StanNaDan\\StanNaDan\\StanNaDan.csproj": {}
+    "C:\\Users\\najda\\Source\\Repos\\Stan-Na-Dan\\StanNaDan\\StanNaDan.csproj": {}
   },
   "projects": {
-    "C:\\Users\\tasko\\Desktop\\FAX\\V\\6 Semestar\\Baze\\STAN NA DAN\\StanNaDan\\StanNaDan\\StanNaDan.csproj": {
+    "C:\\Users\\najda\\Source\\Repos\\Stan-Na-Dan\\StanNaDan\\StanNaDan.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tasko\\Desktop\\FAX\\V\\6 Semestar\\Baze\\STAN NA DAN\\StanNaDan\\StanNaDan\\StanNaDan.csproj",
+        "projectUniqueName": "C:\\Users\\najda\\Source\\Repos\\Stan-Na-Dan\\StanNaDan\\StanNaDan.csproj",
         "projectName": "StanNaDan",
-        "projectPath": "C:\\Users\\tasko\\Desktop\\FAX\\V\\6 Semestar\\Baze\\STAN NA DAN\\StanNaDan\\StanNaDan\\StanNaDan.csproj",
-        "packagesPath": "C:\\Users\\tasko\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tasko\\Desktop\\FAX\\V\\6 Semestar\\Baze\\STAN NA DAN\\StanNaDan\\StanNaDan\\obj\\",
+        "projectPath": "C:\\Users\\najda\\Source\\Repos\\Stan-Na-Dan\\StanNaDan\\StanNaDan.csproj",
+        "packagesPath": "C:\\Users\\najda\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\najda\\Source\\Repos\\Stan-Na-Dan\\StanNaDan\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\tasko\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\najda\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -77,7 +73,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

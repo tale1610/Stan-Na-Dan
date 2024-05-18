@@ -11,5 +11,6 @@
 
         //veza
         virtual public required Agent AgentAngazovanja { get; set; }
+        virtual public IList<Najam> RealizovaniNajmovi { get; set; } = [];
     }
 }
