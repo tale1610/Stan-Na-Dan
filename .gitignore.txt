@@ -1,0 +1,67 @@
+# .NET Standard/ Core/ Framework
+## Ignore build output directories
+bin/
+obj/
+
+# NuGet
+*.nupkg
+packages/
+# Include package directory for .NET Core, NuGet v3's project.json files produces this directory
+!packages/*.dll
+!packages/*.pdb
+!packages/*.xml
+
+# FluentNHibernate specific
+*.sqlite
+*.db
+*.mdb
+*.log
+
+# Visual Studio
+.vscode/
+.vs/
+*.csproj.user
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Rider
+.idea/
+*.sln.iml
+
+# Other
+*.tmp
+*.temp
+*.log
+*.sublime-project
+*.sublime-workspace
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# VS Code directories
+.vscode/
+
+# Local history for Visual Studio
+.vs/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+# JetBrains Rider
+.idea/
+*.sln.iml
