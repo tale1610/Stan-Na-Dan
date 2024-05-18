@@ -18,7 +18,7 @@
                                                                    //a upisuju se podaci i u tabelu izdata soba, tu ce opet proverimo logiku
         virtual public required Agent Agent { get; set; }
         virtual public SpoljniSaradnik? SpoljniSaradnik { get; set; }
-        virtual public IList<IznajmljenaSoba>? IznajmljeneSobe { get; set; }
+        virtual public IList<Soba>? Sobe { get; set; }
         
     }
 }

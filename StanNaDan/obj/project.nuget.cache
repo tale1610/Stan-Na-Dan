@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "CmGV7oS7J9NyKbFXLoohlCb2FbLPX4iUq984kagK2AJAzn+iev7P/fMULupKGvfe5bLnXdUNA4f4lSyRK7n7+A==",
+  "dgSpecHash": "559cBSL9Y+8MAU1554j0F9EMgu9ymbF8QIAaA2h0yTayjYlwN3jXmou4MbglNZQud6Vtoj8M+WwxpHxPHHKp1Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\najda\\Source\\Repos\\Stan-Na-Dan\\StanNaDan\\StanNaDan.csproj",
+  "projectFilePath": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\StanNaDan.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\najda\\.nuget\\packages\\antlr3.runtime\\3.5.1\\antlr3.runtime.3.5.1.nupkg.sha512",
     "C:\\Users\\najda\\.nuget\\packages\\fluentnhibernate\\3.3.0\\fluentnhibernate.3.3.0.nupkg.sha512",

@@ -7,7 +7,7 @@
         virtual public required int IdSobe { get; set; }
         //veza
         virtual public required Nekretnina Nekretnina { get; set; }
-        virtual public IList<IznajmljenaSoba> IznajmljivanjaSobe { get; set; } = [];
+        virtual public IList<Najam> Najmovi { get; set; } = [];
         virtual public IList<ZajednickeProstorije> ZajednickeProstorije { get; set; } = [];
     }
 }

@@ -7,5 +7,6 @@
 
         //veze
         public virtual required Poslovnica PoslovnicaZaduzenaZaNjega { get; set; }
+        public virtual IList<Nekretnina>? Nekretnine { get; set; }
     }
 }

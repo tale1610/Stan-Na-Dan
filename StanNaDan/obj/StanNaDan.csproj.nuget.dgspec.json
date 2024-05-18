@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\najda\\Source\\Repos\\Stan-Na-Dan\\StanNaDan\\StanNaDan.csproj": {}
+    "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\StanNaDan.csproj": {}
   },
   "projects": {
-    "C:\\Users\\najda\\Source\\Repos\\Stan-Na-Dan\\StanNaDan\\StanNaDan.csproj": {
+    "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\StanNaDan.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\najda\\Source\\Repos\\Stan-Na-Dan\\StanNaDan\\StanNaDan.csproj",
+        "projectUniqueName": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\StanNaDan.csproj",
         "projectName": "StanNaDan",
-        "projectPath": "C:\\Users\\najda\\Source\\Repos\\Stan-Na-Dan\\StanNaDan\\StanNaDan.csproj",
+        "projectPath": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\StanNaDan.csproj",
         "packagesPath": "C:\\Users\\najda\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\najda\\Source\\Repos\\Stan-Na-Dan\\StanNaDan\\obj\\",
+        "outputPath": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\najda\\AppData\\Roaming\\NuGet\\NuGet.Config",

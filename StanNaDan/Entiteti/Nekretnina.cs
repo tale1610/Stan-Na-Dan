@@ -12,7 +12,6 @@
         virtual public required bool PosedujeTV { get; set; }
         virtual public required bool PosedujeInternet { get; set; }
         virtual public required bool PosedujeKuhinju { get; set; }
-        virtual public required string TipNekretnine { get; set; }
 
         //veze
         virtual public required Kvart Kvart { get; set; }
@@ -24,16 +23,17 @@
         virtual public IList<SajtoviNekretnine> SajtoviNekretnine { get; set; } = [];
         virtual public IList<Najam> Najmovi { get; set; } = [];
     }
+
+    public class Stan : Nekretnina
+    {
+        public int Sprat { get; set; }
+        public bool PosedujeLift { get; set; }
+    }
+
+    public class Kuca : Nekretnina
+    {
+        public int Spratnos { get; set; }
+        public bool PosedujeDvoriste { get; set; }
+    }
 }
 
-public class Stan: Nekretnina
-{
-    public int Sprat { get; set; }
-    public bool PosedujeLift { get; set; }
-}
-
-public class Kuca: Nekretnina
-{
-    public int Spratnos { get; set; }
-    public bool PosedujeDvoriste { get; set; }
-}
