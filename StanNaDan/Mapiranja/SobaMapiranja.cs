@@ -1,28 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace StanNaDan.Mapiranja;
 
-namespace StanNaDan.Mapiranja
+class SobaMapiranja : ClassMap<Soba>
 {
-    class SobaMapiranja : ClassMap<Soba>
-    {
-        public SobaMapiranja() {
-            Table("SOBA");
+    public SobaMapiranja() {
+        Table("SOBA");
 
-            Id(p => p.ID, "ID").GeneratedBy.TriggerIdentity();
+        CompositeId(p => p.ID)
+            .KeyProperty(p => p.IdSobe, "ID_SOBE")// ako ne valja kompozitni kljuc mozda treba da se izbaci ova linija
+            .KeyReference(p => p.Nekretnina, "ID_NEKRENTINE");
 
-            Map(p => p.IdSobe, "ID_SOBE_U_NEKRETNINI");
+        //Id(p => p.ID, "ID").GeneratedBy.Assigned();
 
-            References(p => p.Nekretnina).Column("ID_NEKRENTINE").LazyLoad();
+        //Map(p => p.IdSobe, "ID_SOBE_U_NEKRETNINI");
 
-            HasManyToMany(p => p.Najmovi)
-                .Table("IZNAJMLJENA_SOBA")
-                .ParentKeyColumn("ID_SOBE")
-                .ChildKeyColumn("ID_NAJMA"); 
+        //References(p => p.Nekretnina).Column("ID_NEKRENTINE").LazyLoad();
 
-            HasMany(p => p.ZajednickeProstorije).KeyColumn("ID_SOBE").Cascade.All().Inverse();
-        }
+        HasManyToMany(p => p.Najmovi)
+            .Table("IZNAJMLJENA_SOBA")
+            .ParentKeyColumn("ID_SOBE")
+            .ChildKeyColumn("ID_NAJMA"); 
+
+        HasMany(p => p.ZajednickeProstorije).KeyColumn("ID_SOBE").Cascade.All().Inverse();
     }
 }

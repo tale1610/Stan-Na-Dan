@@ -1,13 +1,11 @@
-﻿namespace StanNaDan.Entiteti
+﻿namespace StanNaDan.Entiteti;
+
+public class Soba
 {
-    public class Soba
-    {
-        //surogat kljuc
-        virtual public int ID { get; protected set; }
-        virtual public required int IdSobe { get; set; }
-        //veza
-        virtual public required Nekretnina Nekretnina { get; set; }
-        virtual public IList<Najam> Najmovi { get; set; } = [];
-        virtual public IList<ZajednickeProstorije> ZajednickeProstorije { get; set; } = [];
-    }
+    //kompozitni kljuc
+    virtual public required SobaId ID { get; set; }
+    //veza
+    //virtual public required Nekretnina Nekretnina { get; set; } // ova veza na klasu je prebacena u klasu Id
+    virtual public IList<IznajmljenaSoba> Najmovi { get; set; } = [];
+    virtual public IList<ZajednickeProstorije> ZajednickeProstorije { get; set; } = [];
 }

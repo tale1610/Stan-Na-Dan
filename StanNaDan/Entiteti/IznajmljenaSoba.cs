@@ -1,8 +1,8 @@
-﻿namespace StanNaDan.Entiteti
+﻿namespace StanNaDan.Entiteti;
+
+public class IznajmljenaSoba
 {
-    public class IznajmljenaSoba
-    {
-        public int ID { get; protected set; }
-        public required Soba Soba { get; set; }
-    }
+    virtual public required IznajmljenaSobaId ID { get; set; }
+    //virtual public required Soba Soba { get; set; }
+    //virtual public required Najam Najam { get; set; }
 }
