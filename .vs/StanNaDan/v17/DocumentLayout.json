@@ -3,66 +3,6 @@
   "WorkspaceRootPath": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|c:\\users\\najda\\source\\repos\\stan-na-dan\\stannadan\\entiteti\\fizickolice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|solutionrelative:stannadan\\entiteti\\fizickolice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|c:\\users\\najda\\source\\repos\\stan-na-dan\\stannadan\\entiteti\\vlasnik.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|solutionrelative:stannadan\\entiteti\\vlasnik.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|c:\\users\\najda\\source\\repos\\stan-na-dan\\stannadan\\mapiranja\\sajtovimapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|solutionrelative:stannadan\\mapiranja\\sajtovimapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|c:\\users\\najda\\source\\repos\\stan-na-dan\\stannadan\\entiteti\\sajtovinekretnine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|solutionrelative:stannadan\\entiteti\\sajtovinekretnine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|c:\\users\\najda\\source\\repos\\stan-na-dan\\stannadan\\mapiranja\\telefonikontaktosobemapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|solutionrelative:stannadan\\mapiranja\\telefonikontaktosobemapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|c:\\users\\najda\\source\\repos\\stan-na-dan\\stannadan\\entiteti\\telefonikontaktosobe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|solutionrelative:stannadan\\entiteti\\telefonikontaktosobe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|c:\\users\\najda\\source\\repos\\stan-na-dan\\stannadan\\mapiranja\\brojevitelefonamapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|solutionrelative:stannadan\\mapiranja\\brojevitelefonamapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|c:\\users\\najda\\source\\repos\\stan-na-dan\\stannadan\\entiteti\\brojevitelefona.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|solutionrelative:stannadan\\entiteti\\brojevitelefona.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|c:\\users\\najda\\source\\repos\\stan-na-dan\\stannadan\\mapiranja\\zajednickeprostorijemapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|solutionrelative:stannadan\\mapiranja\\zajednickeprostorijemapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|c:\\users\\najda\\source\\repos\\stan-na-dan\\stannadan\\entiteti\\zajednickeprostorije.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|solutionrelative:stannadan\\entiteti\\zajednickeprostorije.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|c:\\users\\najda\\source\\repos\\stan-na-dan\\stannadan\\mapiranja\\iznajmljenasobamapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|solutionrelative:stannadan\\mapiranja\\iznajmljenasobamapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|c:\\users\\najda\\source\\repos\\stan-na-dan\\stannadan\\entiteti\\iznajmljenasoba.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|solutionrelative:stannadan\\entiteti\\iznajmljenasoba.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|c:\\users\\najda\\source\\repos\\stan-na-dan\\stannadan\\mapiranja\\nekretninamapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|solutionrelative:stannadan\\mapiranja\\nekretninamapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|c:\\users\\najda\\source\\repos\\stan-na-dan\\stannadan\\entiteti\\nekretnina.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|solutionrelative:stannadan\\entiteti\\nekretnina.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|c:\\users\\najda\\source\\repos\\stan-na-dan\\stannadan\\mapiranja\\zaposlenimapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|solutionrelative:stannadan\\mapiranja\\zaposlenimapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|c:\\users\\najda\\source\\repos\\stan-na-dan\\stannadan\\mapiranja\\dodatnaopremamapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|solutionrelative:stannadan\\mapiranja\\dodatnaopremamapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -71,64 +11,56 @@
       "RelativeMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|solutionrelative:stannadan\\entiteti\\dodatnaoprema.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|c:\\users\\najda\\source\\repos\\stan-na-dan\\stannadan\\mapiranja\\parkingmapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|solutionrelative:stannadan\\mapiranja\\parkingmapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|c:\\users\\najda\\source\\repos\\stan-na-dan\\stannadan\\mapiranja\\iznajmljenasobamapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|solutionrelative:stannadan\\mapiranja\\iznajmljenasobamapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|c:\\users\\najda\\source\\repos\\stan-na-dan\\stannadan\\entiteti\\parking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|solutionrelative:stannadan\\entiteti\\parking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|c:\\users\\najda\\source\\repos\\stan-na-dan\\stannadan\\mapiranja\\parkingmapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|solutionrelative:stannadan\\mapiranja\\parkingmapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|c:\\users\\najda\\source\\repos\\stan-na-dan\\stannadan\\mapiranja\\krevetmapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|solutionrelative:stannadan\\mapiranja\\krevetmapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|c:\\users\\najda\\source\\repos\\stan-na-dan\\stannadan\\entiteti\\krevet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|solutionrelative:stannadan\\entiteti\\krevet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|c:\\users\\najda\\source\\repos\\stan-na-dan\\stannadan\\mapiranja\\sobamapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|solutionrelative:stannadan\\mapiranja\\sobamapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|c:\\users\\najda\\source\\repos\\stan-na-dan\\stannadan\\entiteti\\soba.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|solutionrelative:stannadan\\entiteti\\soba.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|c:\\users\\najda\\source\\repos\\stan-na-dan\\stannadan\\mapiranja\\najammapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|solutionrelative:stannadan\\mapiranja\\najammapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|c:\\users\\najda\\source\\repos\\stan-na-dan\\stannadan\\mapiranja\\spoljnisaradnikmapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|solutionrelative:stannadan\\mapiranja\\spoljnisaradnikmapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|c:\\users\\najda\\source\\repos\\stan-na-dan\\stannadan\\entiteti\\iznajmljenasoba.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|solutionrelative:stannadan\\entiteti\\iznajmljenasoba.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|c:\\users\\najda\\source\\repos\\stan-na-dan\\stannadan\\entiteti\\spoljnisaradnik.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|solutionrelative:stannadan\\entiteti\\spoljnisaradnik.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|c:\\users\\najda\\source\\repos\\stan-na-dan\\stannadan\\mapiranja\\spoljnisaradnikmapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|solutionrelative:stannadan\\mapiranja\\spoljnisaradnikmapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|c:\\users\\najda\\source\\repos\\stan-na-dan\\stannadan\\mapiranja\\vlasnikmapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|solutionrelative:stannadan\\mapiranja\\vlasnikmapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|c:\\users\\najda\\source\\repos\\stan-na-dan\\stannadan\\entiteti\\zaposleni.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|solutionrelative:stannadan\\entiteti\\zaposleni.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|c:\\users\\najda\\source\\repos\\stan-na-dan\\stannadan\\entiteti\\vlasnik.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|solutionrelative:stannadan\\entiteti\\vlasnik.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|c:\\users\\najda\\source\\repos\\stan-na-dan\\stannadan\\entiteti\\nekretnina.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|solutionrelative:stannadan\\entiteti\\nekretnina.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|c:\\users\\najda\\source\\repos\\stan-na-dan\\stannadan\\entiteti\\najam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|solutionrelative:stannadan\\entiteti\\najam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|c:\\users\\najda\\source\\repos\\stan-na-dan\\stannadan\\mapiranja\\kvartmapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|solutionrelative:stannadan\\mapiranja\\kvartmapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|c:\\users\\najda\\source\\repos\\stan-na-dan\\stannadan\\mapiranja\\najammapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|solutionrelative:stannadan\\mapiranja\\najammapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|c:\\users\\najda\\source\\repos\\stan-na-dan\\stannadan\\entiteti\\kvart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|solutionrelative:stannadan\\entiteti\\kvart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|c:\\users\\najda\\source\\repos\\stan-na-dan\\stannadan\\mapiranja\\poslovnicamapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|solutionrelative:stannadan\\mapiranja\\poslovnicamapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|c:\\users\\najda\\source\\repos\\stan-na-dan\\stannadan\\mapiranja\\zaposlenimapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20C49E58-36DB-4C03-A724-CF4B20C88400}|StanNaDan\\StanNaDan.csproj|solutionrelative:stannadan\\mapiranja\\zaposlenimapiranja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -138,154 +70,76 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "FizickoLice.cs",
-              "DocumentMoniker": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Entiteti\\FizickoLice.cs",
-              "RelativeDocumentMoniker": "StanNaDan\\Entiteti\\FizickoLice.cs",
-              "ToolTip": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Entiteti\\FizickoLice.cs",
-              "RelativeToolTip": "StanNaDan\\Entiteti\\FizickoLice.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAAAgwAAAAAAAAAAA",
+              "DocumentIndex": 1,
+              "Title": "DodatnaOprema.cs",
+              "DocumentMoniker": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Entiteti\\DodatnaOprema.cs",
+              "RelativeDocumentMoniker": "StanNaDan\\Entiteti\\DodatnaOprema.cs",
+              "ToolTip": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Entiteti\\DodatnaOprema.cs",
+              "RelativeToolTip": "StanNaDan\\Entiteti\\DodatnaOprema.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T22:17:50.069Z",
+              "WhenOpened": "2024-05-19T12:38:08.181Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DodatnaOpremaMapiranja.cs",
+              "DocumentMoniker": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Mapiranja\\DodatnaOpremaMapiranja.cs",
+              "RelativeDocumentMoniker": "StanNaDan\\Mapiranja\\DodatnaOpremaMapiranja.cs",
+              "ToolTip": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Mapiranja\\DodatnaOpremaMapiranja.cs",
+              "RelativeToolTip": "StanNaDan\\Mapiranja\\DodatnaOpremaMapiranja.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T12:19:04.818Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "SajtoviNekretnine.cs",
-              "DocumentMoniker": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Entiteti\\SajtoviNekretnine.cs",
-              "RelativeDocumentMoniker": "StanNaDan\\Entiteti\\SajtoviNekretnine.cs",
-              "ToolTip": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Entiteti\\SajtoviNekretnine.cs",
-              "RelativeToolTip": "StanNaDan\\Entiteti\\SajtoviNekretnine.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAA5AAAA",
+              "Title": "ParkingMapiranja.cs",
+              "DocumentMoniker": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Mapiranja\\ParkingMapiranja.cs",
+              "RelativeDocumentMoniker": "StanNaDan\\Mapiranja\\ParkingMapiranja.cs",
+              "ToolTip": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Mapiranja\\ParkingMapiranja.cs",
+              "RelativeToolTip": "StanNaDan\\Mapiranja\\ParkingMapiranja.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T21:28:29.112Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SajtoviMapiranja.cs",
-              "DocumentMoniker": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Mapiranja\\SajtoviMapiranja.cs",
-              "RelativeDocumentMoniker": "StanNaDan\\Mapiranja\\SajtoviMapiranja.cs",
-              "ToolTip": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Mapiranja\\SajtoviMapiranja.cs",
-              "RelativeToolTip": "StanNaDan\\Mapiranja\\SajtoviMapiranja.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAhAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T21:46:57.093Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "TelefoniKontaktOsobe.cs",
-              "DocumentMoniker": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Entiteti\\TelefoniKontaktOsobe.cs",
-              "RelativeDocumentMoniker": "StanNaDan\\Entiteti\\TelefoniKontaktOsobe.cs",
-              "ToolTip": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Entiteti\\TelefoniKontaktOsobe.cs",
-              "RelativeToolTip": "StanNaDan\\Entiteti\\TelefoniKontaktOsobe.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T21:45:30.573Z",
+              "WhenOpened": "2024-05-19T12:16:00.822Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "TelefoniKontaktOsobeMapiranja.cs",
-              "DocumentMoniker": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Mapiranja\\TelefoniKontaktOsobeMapiranja.cs",
-              "RelativeDocumentMoniker": "StanNaDan\\Mapiranja\\TelefoniKontaktOsobeMapiranja.cs",
-              "ToolTip": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Mapiranja\\TelefoniKontaktOsobeMapiranja.cs",
-              "RelativeToolTip": "StanNaDan\\Mapiranja\\TelefoniKontaktOsobeMapiranja.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAsAAAA",
+              "Title": "KrevetMapiranja.cs",
+              "DocumentMoniker": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Mapiranja\\KrevetMapiranja.cs",
+              "RelativeDocumentMoniker": "StanNaDan\\Mapiranja\\KrevetMapiranja.cs",
+              "ToolTip": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Mapiranja\\KrevetMapiranja.cs",
+              "RelativeToolTip": "StanNaDan\\Mapiranja\\KrevetMapiranja.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAvAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T21:44:50.104Z",
+              "WhenOpened": "2024-05-19T12:14:33.873Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "BrojeviTelefonaMapiranja.cs",
-              "DocumentMoniker": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Mapiranja\\BrojeviTelefonaMapiranja.cs",
-              "RelativeDocumentMoniker": "StanNaDan\\Mapiranja\\BrojeviTelefonaMapiranja.cs",
-              "ToolTip": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Mapiranja\\BrojeviTelefonaMapiranja.cs",
-              "RelativeToolTip": "StanNaDan\\Mapiranja\\BrojeviTelefonaMapiranja.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAABKAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T21:38:36.41Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Vlasnik.cs",
-              "DocumentMoniker": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Entiteti\\Vlasnik.cs",
-              "RelativeDocumentMoniker": "StanNaDan\\Entiteti\\Vlasnik.cs",
-              "ToolTip": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Entiteti\\Vlasnik.cs",
-              "RelativeToolTip": "StanNaDan\\Entiteti\\Vlasnik.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T19:06:27.546Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "BrojeviTelefona.cs",
-              "DocumentMoniker": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Entiteti\\BrojeviTelefona.cs",
-              "RelativeDocumentMoniker": "StanNaDan\\Entiteti\\BrojeviTelefona.cs",
-              "ToolTip": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Entiteti\\BrojeviTelefona.cs",
-              "RelativeToolTip": "StanNaDan\\Entiteti\\BrojeviTelefona.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T21:39:17.063Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ZajednickeProstorijeMapiranja.cs",
-              "DocumentMoniker": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Mapiranja\\ZajednickeProstorijeMapiranja.cs",
-              "RelativeDocumentMoniker": "StanNaDan\\Mapiranja\\ZajednickeProstorijeMapiranja.cs",
-              "ToolTip": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Mapiranja\\ZajednickeProstorijeMapiranja.cs",
-              "RelativeToolTip": "StanNaDan\\Mapiranja\\ZajednickeProstorijeMapiranja.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAABBAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T21:35:53.364Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "ZajednickeProstorije.cs",
-              "DocumentMoniker": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Entiteti\\ZajednickeProstorije.cs",
-              "RelativeDocumentMoniker": "StanNaDan\\Entiteti\\ZajednickeProstorije.cs",
-              "ToolTip": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Entiteti\\ZajednickeProstorije.cs",
-              "RelativeToolTip": "StanNaDan\\Entiteti\\ZajednickeProstorije.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T21:35:35.101Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 2,
               "Title": "IznajmljenaSobaMapiranja.cs",
               "DocumentMoniker": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Mapiranja\\IznajmljenaSobaMapiranja.cs",
               "RelativeDocumentMoniker": "StanNaDan\\Mapiranja\\IznajmljenaSobaMapiranja.cs",
               "ToolTip": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Mapiranja\\IznajmljenaSobaMapiranja.cs",
               "RelativeToolTip": "StanNaDan\\Mapiranja\\IznajmljenaSobaMapiranja.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T21:31:57.262Z",
+              "WhenOpened": "2024-05-19T12:13:01.804Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 6,
               "Title": "IznajmljenaSoba.cs",
               "DocumentMoniker": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Entiteti\\IznajmljenaSoba.cs",
               "RelativeDocumentMoniker": "StanNaDan\\Entiteti\\IznajmljenaSoba.cs",
@@ -293,72 +147,85 @@
               "RelativeToolTip": "StanNaDan\\Entiteti\\IznajmljenaSoba.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T21:31:38.378Z",
+              "WhenOpened": "2024-05-19T12:12:33.168Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 5,
+              "Title": "SobaMapiranja.cs",
+              "DocumentMoniker": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Mapiranja\\SobaMapiranja.cs",
+              "RelativeDocumentMoniker": "StanNaDan\\Mapiranja\\SobaMapiranja.cs",
+              "ToolTip": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Mapiranja\\SobaMapiranja.cs",
+              "RelativeToolTip": "StanNaDan\\Mapiranja\\SobaMapiranja.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T12:03:03.2Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "SpoljniSaradnik.cs",
+              "DocumentMoniker": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Entiteti\\SpoljniSaradnik.cs",
+              "RelativeDocumentMoniker": "StanNaDan\\Entiteti\\SpoljniSaradnik.cs",
+              "ToolTip": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Entiteti\\SpoljniSaradnik.cs",
+              "RelativeToolTip": "StanNaDan\\Entiteti\\SpoljniSaradnik.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T12:00:05.185Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "SpoljniSaradnikMapiranja.cs",
+              "DocumentMoniker": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Mapiranja\\SpoljniSaradnikMapiranja.cs",
+              "RelativeDocumentMoniker": "StanNaDan\\Mapiranja\\SpoljniSaradnikMapiranja.cs",
+              "ToolTip": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Mapiranja\\SpoljniSaradnikMapiranja.cs",
+              "RelativeToolTip": "StanNaDan\\Mapiranja\\SpoljniSaradnikMapiranja.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T11:59:51.063Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "Nekretnina.cs",
               "DocumentMoniker": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Entiteti\\Nekretnina.cs",
               "RelativeDocumentMoniker": "StanNaDan\\Entiteti\\Nekretnina.cs",
               "ToolTip": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Entiteti\\Nekretnina.cs",
               "RelativeToolTip": "StanNaDan\\Entiteti\\Nekretnina.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAAAqwBYAAAAuAAAA",
+              "ViewState": "AQIAAAcAAAAAAAAAAAA5wAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T21:05:57.23Z",
+              "WhenOpened": "2024-05-19T11:19:18.099Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "NekretninaMapiranja.cs",
-              "DocumentMoniker": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Mapiranja\\NekretninaMapiranja.cs",
-              "RelativeDocumentMoniker": "StanNaDan\\Mapiranja\\NekretninaMapiranja.cs",
-              "ToolTip": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Mapiranja\\NekretninaMapiranja.cs",
-              "RelativeToolTip": "StanNaDan\\Mapiranja\\NekretninaMapiranja.cs",
-              "ViewState": "AQIAADkAAAAAAAAAAAAwwB4AAABIAAAA",
+              "DocumentIndex": 10,
+              "Title": "Vlasnik.cs",
+              "DocumentMoniker": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Entiteti\\Vlasnik.cs",
+              "RelativeDocumentMoniker": "StanNaDan\\Entiteti\\Vlasnik.cs",
+              "ToolTip": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Entiteti\\Vlasnik.cs",
+              "RelativeToolTip": "StanNaDan\\Entiteti\\Vlasnik.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAA7AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T21:04:48.169Z",
+              "WhenOpened": "2024-05-19T11:18:13.073Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "DodatnaOprema.cs",
-              "DocumentMoniker": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Entiteti\\DodatnaOprema.cs",
-              "RelativeDocumentMoniker": "StanNaDan\\Entiteti\\DodatnaOprema.cs",
-              "ToolTip": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Entiteti\\DodatnaOprema.cs",
-              "RelativeToolTip": "StanNaDan\\Entiteti\\DodatnaOprema.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "DocumentIndex": 9,
+              "Title": "VlasnikMapiranja.cs",
+              "DocumentMoniker": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Mapiranja\\VlasnikMapiranja.cs",
+              "RelativeDocumentMoniker": "StanNaDan\\Mapiranja\\VlasnikMapiranja.cs",
+              "ToolTip": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Mapiranja\\VlasnikMapiranja.cs",
+              "RelativeToolTip": "StanNaDan\\Mapiranja\\VlasnikMapiranja.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T21:01:33.932Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "DodatnaOpremaMapiranja.cs",
-              "DocumentMoniker": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Mapiranja\\DodatnaOpremaMapiranja.cs",
-              "RelativeDocumentMoniker": "StanNaDan\\Mapiranja\\DodatnaOpremaMapiranja.cs",
-              "ToolTip": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Mapiranja\\DodatnaOpremaMapiranja.cs",
-              "RelativeToolTip": "StanNaDan\\Mapiranja\\DodatnaOpremaMapiranja.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAABUAAABNAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T20:59:19.431Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "ParkingMapiranja.cs",
-              "DocumentMoniker": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Mapiranja\\ParkingMapiranja.cs",
-              "RelativeDocumentMoniker": "StanNaDan\\Mapiranja\\ParkingMapiranja.cs",
-              "ToolTip": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Mapiranja\\ParkingMapiranja.cs",
-              "RelativeToolTip": "StanNaDan\\Mapiranja\\ParkingMapiranja.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAgwA0AAAA+AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T20:53:23.354Z",
+              "WhenOpened": "2024-05-19T11:18:05.719Z",
               "EditorCaption": ""
             },
             {
@@ -369,144 +236,27 @@
               "RelativeDocumentMoniker": "StanNaDan\\Mapiranja\\ZaposleniMapiranja.cs",
               "ToolTip": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Mapiranja\\ZaposleniMapiranja.cs",
               "RelativeToolTip": "StanNaDan\\Mapiranja\\ZaposleniMapiranja.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAA0AAAAAAAAA",
+              "ViewState": "AQIAABQAAAAAAAAAAAAkwDIAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T20:00:38.373Z",
+              "WhenOpened": "2024-05-19T11:09:53.109Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "Parking.cs",
-              "DocumentMoniker": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Entiteti\\Parking.cs",
-              "RelativeDocumentMoniker": "StanNaDan\\Entiteti\\Parking.cs",
-              "ToolTip": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Entiteti\\Parking.cs",
-              "RelativeToolTip": "StanNaDan\\Entiteti\\Parking.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T20:53:05.71Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "Krevet.cs",
-              "DocumentMoniker": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Entiteti\\Krevet.cs",
-              "RelativeDocumentMoniker": "StanNaDan\\Entiteti\\Krevet.cs",
-              "ToolTip": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Entiteti\\Krevet.cs",
-              "RelativeToolTip": "StanNaDan\\Entiteti\\Krevet.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T20:49:07.907Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "KrevetMapiranja.cs",
-              "DocumentMoniker": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Mapiranja\\KrevetMapiranja.cs",
-              "RelativeDocumentMoniker": "StanNaDan\\Mapiranja\\KrevetMapiranja.cs",
-              "ToolTip": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Mapiranja\\KrevetMapiranja.cs",
-              "RelativeToolTip": "StanNaDan\\Mapiranja\\KrevetMapiranja.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T20:48:07.65Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "SobaMapiranja.cs",
-              "DocumentMoniker": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Mapiranja\\SobaMapiranja.cs",
-              "RelativeDocumentMoniker": "StanNaDan\\Mapiranja\\SobaMapiranja.cs",
-              "ToolTip": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Mapiranja\\SobaMapiranja.cs",
-              "RelativeToolTip": "StanNaDan\\Mapiranja\\SobaMapiranja.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAgwA0AAAA+AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T20:36:26.136Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "Soba.cs",
-              "DocumentMoniker": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Entiteti\\Soba.cs",
-              "RelativeDocumentMoniker": "StanNaDan\\Entiteti\\Soba.cs",
-              "ToolTip": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Entiteti\\Soba.cs",
-              "RelativeToolTip": "StanNaDan\\Entiteti\\Soba.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAA4AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T19:06:11.063Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "SpoljniSaradnikMapiranja.cs",
-              "DocumentMoniker": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Mapiranja\\SpoljniSaradnikMapiranja.cs",
-              "RelativeDocumentMoniker": "StanNaDan\\Mapiranja\\SpoljniSaradnikMapiranja.cs",
-              "ToolTip": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Mapiranja\\SpoljniSaradnikMapiranja.cs",
-              "RelativeToolTip": "StanNaDan\\Mapiranja\\SpoljniSaradnikMapiranja.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAwA8AAAA9AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T20:20:27.174Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "SpoljniSaradnik.cs",
-              "DocumentMoniker": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Entiteti\\SpoljniSaradnik.cs",
-              "RelativeDocumentMoniker": "StanNaDan\\Entiteti\\SpoljniSaradnik.cs",
-              "ToolTip": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Entiteti\\SpoljniSaradnik.cs",
-              "RelativeToolTip": "StanNaDan\\Entiteti\\SpoljniSaradnik.cs",
-              "ViewState": "AQIAAAQAAAAAAAAAAAAzwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T20:17:21.649Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "VlasnikMapiranja.cs",
-              "DocumentMoniker": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Mapiranja\\VlasnikMapiranja.cs",
-              "RelativeDocumentMoniker": "StanNaDan\\Mapiranja\\VlasnikMapiranja.cs",
-              "ToolTip": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Mapiranja\\VlasnikMapiranja.cs",
-              "RelativeToolTip": "StanNaDan\\Mapiranja\\VlasnikMapiranja.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T19:59:08.885Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 13,
               "Title": "NajamMapiranja.cs",
               "DocumentMoniker": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Mapiranja\\NajamMapiranja.cs",
               "RelativeDocumentMoniker": "StanNaDan\\Mapiranja\\NajamMapiranja.cs",
               "ToolTip": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Mapiranja\\NajamMapiranja.cs",
               "RelativeToolTip": "StanNaDan\\Mapiranja\\NajamMapiranja.cs",
-              "ViewState": "AQIAABEAAAAAAAAAAAAYwCMAAAApAAAA",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAQwCEAAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T19:24:39.079Z",
+              "WhenOpened": "2024-05-19T11:09:11.197Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "Zaposleni.cs",
-              "DocumentMoniker": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Entiteti\\Zaposleni.cs",
-              "RelativeDocumentMoniker": "StanNaDan\\Entiteti\\Zaposleni.cs",
-              "ToolTip": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Entiteti\\Zaposleni.cs",
-              "RelativeToolTip": "StanNaDan\\Entiteti\\Zaposleni.cs",
-              "ViewState": "AQIAACQAAAAAAAAAAAAowAkAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T20:01:51.647Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 12,
               "Title": "Najam.cs",
               "DocumentMoniker": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Entiteti\\Najam.cs",
               "RelativeDocumentMoniker": "StanNaDan\\Entiteti\\Najam.cs",
@@ -514,46 +264,7 @@
               "RelativeToolTip": "StanNaDan\\Entiteti\\Najam.cs",
               "ViewState": "AQIAAAkAAAAAAAAAAAAowBQAAAA2AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T19:25:28.603Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "PoslovnicaMapiranja.cs",
-              "DocumentMoniker": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Mapiranja\\PoslovnicaMapiranja.cs",
-              "RelativeDocumentMoniker": "StanNaDan\\Mapiranja\\PoslovnicaMapiranja.cs",
-              "ToolTip": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Mapiranja\\PoslovnicaMapiranja.cs",
-              "RelativeToolTip": "StanNaDan\\Mapiranja\\PoslovnicaMapiranja.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T19:22:39.294Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "Kvart.cs",
-              "DocumentMoniker": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Entiteti\\Kvart.cs",
-              "RelativeDocumentMoniker": "StanNaDan\\Entiteti\\Kvart.cs",
-              "ToolTip": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Entiteti\\Kvart.cs",
-              "RelativeToolTip": "StanNaDan\\Entiteti\\Kvart.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAABCAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T19:03:42.071Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "KvartMapiranja.cs",
-              "DocumentMoniker": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Mapiranja\\KvartMapiranja.cs",
-              "RelativeDocumentMoniker": "StanNaDan\\Mapiranja\\KvartMapiranja.cs",
-              "ToolTip": "C:\\Users\\najda\\source\\repos\\Stan-Na-Dan\\StanNaDan\\Mapiranja\\KvartMapiranja.cs",
-              "RelativeToolTip": "StanNaDan\\Mapiranja\\KvartMapiranja.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAA8AAAA0AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T19:03:38.801Z",
+              "WhenOpened": "2024-05-19T11:08:56.5Z",
               "EditorCaption": ""
             }
           ]

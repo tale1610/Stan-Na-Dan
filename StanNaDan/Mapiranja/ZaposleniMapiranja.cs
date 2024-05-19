@@ -20,34 +20,35 @@ namespace StanNaDan.Mapiranja
             Map(p => p.DatumZaposlenja, "DATUM_ZAPOSLENJA");
         }
     }
-}
-
-class SefMapiranja : SubclassMap<Sef>
-{
-    public SefMapiranja()
+    class SefMapiranja : SubclassMap<Sef>
     {
-        DiscriminatorValue("sef");
+        public SefMapiranja()
+        {
+            DiscriminatorValue("sef");
 
-        Map(p => p.DatumPostavljanja, "DATUM_POSTAVLJANJA");
+            Map(p => p.DatumPostavljanja, "DATUM_POSTAVLJANJA");
+        }
+    }
+    class AgentMapiranja : SubclassMap<Agent>
+    {
+        public AgentMapiranja()
+        {
+            DiscriminatorValue("agent");
+
+            Map(p => p.StrucnaSprema, "STRUCNA_SPREMA");
+
+            HasMany(p => p.AngazovaniSaradnici).KeyColumn("MBR_AGENTA").Cascade.All().Inverse();
+            HasMany(p => p.RealizovaniNajmovi).KeyColumn("MBR_AGENTA").Cascade.All().Inverse();
+
+        }
+    }
+    class RadnikMapiranja : SubclassMap<Radnik>
+    {
+        public RadnikMapiranja()
+        {
+            DiscriminatorValue("ostali");
+        }
     }
 }
-class AgentMapiranja : SubclassMap<Agent>
-{
-    public AgentMapiranja()
-    {
-        DiscriminatorValue("agent");
 
-        Map(p => p.StrucnaSprema, "STRUCNA_SPREMA");
 
-        HasMany(p=> p.AngazovaniSaradnici).KeyColumn("MBR_AGENTA").Cascade.All().Inverse();
-        HasMany(p => p.RealizovaniNajmovi).KeyColumn("MBR_AGENTA").Cascade.All().Inverse();
-
-    }
-}
-class RadnikMapiranja : SubclassMap<Radnik>
-{
-    public RadnikMapiranja()
-    {
-        DiscriminatorValue("ostali");
-    }
-}

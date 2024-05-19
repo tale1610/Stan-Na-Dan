@@ -13,7 +13,7 @@ namespace StanNaDan.Mapiranja
 
             Id(p => p.ID, "ID").GeneratedBy.TriggerIdentity();
 
-            Map(p => p.IdParkinga, "ID_PARKINGA");
+            Map(p => p.IdParkinga, "ID_PARKINGA_NEKRETNINE");
             Map(p => p.Besplatan, "BESPLATAN");
             Map(p => p.Cena, "CENA");
             Map(p => p.USastavuNekretnine, "U_SASTAVU_NEKRETNINE");

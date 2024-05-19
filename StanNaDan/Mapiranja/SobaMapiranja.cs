@@ -13,7 +13,7 @@ namespace StanNaDan.Mapiranja
 
             Id(p => p.ID, "ID").GeneratedBy.TriggerIdentity();
 
-            Map(p => p.IdSobe, "ID_SOBE");
+            Map(p => p.IdSobe, "ID_SOBE_U_NEKRETNINI");
 
             References(p => p.Nekretnina).Column("ID_NEKRENTINE").LazyLoad();
 

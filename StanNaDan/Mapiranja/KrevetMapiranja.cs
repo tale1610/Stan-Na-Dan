@@ -15,7 +15,7 @@ namespace StanNaDan.Mapiranja
 
             Map(p => p.Tip, "TIP");
             Map(p => p.Dimenzije, "DIMENZIJE");
-            Map(p => p.IdKreveta, "ID_KREVETA");
+            Map(p => p.IdKreveta, "ID_KREVETA_U_NEKRETNINI");
 
             References(p => p.Nekretnina).Column("ID_NEKRETNINE").LazyLoad();
 

@@ -12,9 +12,9 @@ namespace StanNaDan.Mapiranja
 
             Table("DODATNA_OPREMA");
 
-            Id(p => p.ID, "ID").GeneratedBy.TriggerIdentity();
+            Id(p => p.IdOpreme, "ID").GeneratedBy.TriggerIdentity();
 
-            Map(p => p.IdOpreme, "ID_OPREME");
+            Map(p => p.IdOpreme, "ID_OPREME_U_NEKRETNINI");
             Map(p => p.TipOpreme, "TIP_OPREME");
             Map(p => p.BesplatnoKoriscenje, "BESPLATNO_KORISCENJE");
             Map(p => p.CenaKoriscenja, "CENA_KORISCENJA");

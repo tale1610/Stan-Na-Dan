@@ -2,7 +2,6 @@
 {
     public class DodatnaOprema
     {
-        virtual public  int ID { get; protected set; }
         virtual public required int IdOpreme { get; set; }
         virtual public required Nekretnina Nekretnina { get; set; }
 

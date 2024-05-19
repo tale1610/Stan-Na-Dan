@@ -14,6 +14,24 @@
         //public required string TipPosla { get; set; }        
     }
 
+    public class Sef : Zaposleni
+    {
+        virtual public required DateTime? DatumPostavljanja { get; set; }
+    }
+
+    public class Agent : Zaposleni
+    {
+        virtual public string? StrucnaSprema { get; set; }
+        //veze
+        virtual public IList<SpoljniSaradnik> AngazovaniSaradnici { get; set; } = [];
+        virtual public IList<Najam> RealizovaniNajmovi { get; set; } = [];
+    }
+
+    public class Radnik : Zaposleni
+    {
+
+    }
+
     //public class DozvoljeniTipoviPosla : ValidationAttribute
     //{
     //    private readonly string[] _dozvoljeniTipovi;
@@ -35,20 +53,3 @@
     //}
 }
 
-public class Sef: Zaposleni
-{
-    virtual public required DateTime? DatumPostavljanja { get; set; }
-}
-
-public class Agent: Zaposleni
-{
-    virtual public string? StrucnaSprema { get; set; }
-    //veze
-    virtual public IList<SpoljniSaradnik> AngazovaniSaradnici { get; set; } = [];
-    virtual public IList<Najam> RealizovaniNajmovi { get; set; } = [];
-}
-
-public class Radnik : Zaposleni
-{
-
-}
