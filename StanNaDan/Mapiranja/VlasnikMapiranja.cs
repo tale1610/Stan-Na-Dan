@@ -19,10 +19,6 @@ namespace StanNaDan.Mapiranja
 
             HasMany(p => p.Nekretnine).KeyColumn("ID_VLASNIKA").LazyLoad().Inverse().Cascade.All();
 
-            //NIJE POTPUNA ZA SAD
-            //HasOne(p => p.FizickoLice).Constrained().Cascade.All();
-
-            //HasOne(p => p.PravnoLice).Constrained().Cascade.All();
             HasOne(x => x.FizickoLice).PropertyRef(x => x.Vlasnik).Cascade.All();
             HasOne(x => x.PravnoLice).PropertyRef(x => x.Vlasnik).Cascade.All();
 

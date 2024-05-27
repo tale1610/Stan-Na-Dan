@@ -759,7 +759,43 @@ public class DTOManager
     #endregion
 
     #region Vlasnik
+    public static void obrisiVlasnika(string jmbg = null, string pib = null)
+    {
+        ISession? session = null;
+        try
+        {
+            session = DataLayer.GetSession();
 
+            if (session != null && session.IsOpen)
+            {
+                if (jmbg != null)
+                {
+                    FizickoLice fizickoLice = session.Load<FizickoLice>(jmbg);
+                    int idVlasnika = fizickoLice.Vlasnik.IdVlasnika;
+                    session.Delete(fizickoLice);
+                    session.Flush();
+                    MessageBox.Show($"Uspesno ste obrisali vlasnika sa ID: {idVlasnika}.", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);//vidi kako ce ovo da se ponasa sa usrani najmovi kad se posle trazi najam na kom je on radio
+                }
+                if (pib != null)
+                {
+                    PravnoLice pravnoLice = session.Load<PravnoLice>(pib);
+                    int idVlasnika = pravnoLice.Vlasnik.IdVlasnika;
+                    session.Delete(pravnoLice);
+                    session.Flush();
+                    MessageBox.Show($"Uspesno ste obrisali vlasnika sa ID: {idVlasnika}.", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);//vidi kako ce ovo da se ponasa sa usrani najmovi kad se posle trazi najam na kom je on radio
+
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.FormatExceptionMessage());
+        }
+        finally
+        {
+            session?.Close();
+        }
+    }
     #endregion
 
     #region FizickoLice

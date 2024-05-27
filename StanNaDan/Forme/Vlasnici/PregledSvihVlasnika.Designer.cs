@@ -168,6 +168,7 @@
             btnObrisiFizickoLice.TabIndex = 7;
             btnObrisiFizickoLice.Text = "Obrisi Fizicko Lice";
             btnObrisiFizickoLice.UseVisualStyleBackColor = true;
+            btnObrisiFizickoLice.Click += btnObrisiFizickoLice_Click;
             // 
             // btnDodajFizickoLice
             // 
@@ -219,6 +220,7 @@
             btnObrisiPravnoLice.TabIndex = 11;
             btnObrisiPravnoLice.Text = "Obrisi Pravno Lice";
             btnObrisiPravnoLice.UseVisualStyleBackColor = true;
+            btnObrisiPravnoLice.Click += btnObrisiPravnoLice_Click;
             // 
             // btnDodajPravnoLice
             // 

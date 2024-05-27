@@ -60,5 +60,41 @@ namespace StanNaDan.Forme.Vlasnici
             formaDodajPravnoLice.ShowDialog();
             this.popuniPodacima();
         }
+
+        private void btnObrisiFizickoLice_Click(object sender, EventArgs e)
+        {
+            if (listaFizickihLica.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Izaberite fizicko lice koje zelite da obrisete!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else if (listaFizickihLica.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("Mozete obrisati samo jedno fizicko lice jednovremeno!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            string JMBG = listaFizickihLica.SelectedItems[0].SubItems[0].Text;
+            DTOManager.obrisiVlasnika(JMBG);
+            this.popuniPodacima();
+        }
+
+        private void btnObrisiPravnoLice_Click(object sender, EventArgs e)
+        {
+            if (listaFizickihLica.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Izaberite pravno lice koje zelite da obrisete!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else if (listaFizickihLica.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("Mozete obrisati samo jedno pravno lice jednovremeno!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            string pib = listaPravnihLica.SelectedItems[0].SubItems[0].Text;
+            DTOManager.obrisiVlasnika(pib);
+            this.popuniPodacima();
+        }
     }
 }
