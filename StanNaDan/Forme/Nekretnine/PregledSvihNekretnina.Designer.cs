@@ -169,6 +169,7 @@
             btnPrikaziSajtove.TabIndex = 13;
             btnPrikaziSajtove.Text = "Prikazi Sajtove Oglasavanja";
             btnPrikaziSajtove.UseVisualStyleBackColor = true;
+            btnPrikaziSajtove.Click += btnPrikaziSajtove_Click;
             // 
             // btnPrikaziSveSobe
             // 
