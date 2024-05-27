@@ -54,5 +54,24 @@ namespace StanNaDan.Forme.SpoljniSaradnici
 
             this.popuniPodacima();
         }
+
+        private void btnObrisiSpoljnogSaradnika_Click(object sender, EventArgs e)
+        {
+            if (listaSpoljnihSaradnika.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Izaberite spoljnog saradnika kojeg zelite da obrisete!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else if (listaSpoljnihSaradnika.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("Mozete obrisati samo jednog spoljnog saradnika jednovremeno!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            string _mbr = listaSpoljnihSaradnika.SelectedItems[0].SubItems[0].Text;
+            int _idSpoljnog = Int32.Parse(listaSpoljnihSaradnika.SelectedItems[0].SubItems[1].Text);
+            DTOManager.obrisiSpoljnogSaradnika(_mbr, _idSpoljnog);
+            this.popuniPodacima();
+        }
     }
 }

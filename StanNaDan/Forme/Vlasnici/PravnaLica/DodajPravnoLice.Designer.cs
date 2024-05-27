@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnDodajPravnoLice = new Button();
             groupBox1 = new GroupBox();
             groupBox3 = new GroupBox();
             tbEmailKontaktOsobe = new TextBox();
@@ -46,20 +45,11 @@
             tbBanka = new TextBox();
             label2 = new Label();
             label1 = new Label();
+            btnDodajPravnoLice = new Button();
             groupBox1.SuspendLayout();
             groupBox3.SuspendLayout();
             groupBox2.SuspendLayout();
             SuspendLayout();
-            // 
-            // btnDodajPravnoLice
-            // 
-            btnDodajPravnoLice.Location = new Point(112, 501);
-            btnDodajPravnoLice.Name = "btnDodajPravnoLice";
-            btnDodajPravnoLice.Size = new Size(245, 29);
-            btnDodajPravnoLice.TabIndex = 3;
-            btnDodajPravnoLice.Text = "Dodaj Pravno Lice";
-            btnDodajPravnoLice.UseVisualStyleBackColor = true;
-            btnDodajPravnoLice.Click += btnDodajFizickoLice_Click;
             // 
             // groupBox1
             // 
@@ -216,6 +206,16 @@
             label1.TabIndex = 0;
             label1.Text = "Banka:";
             // 
+            // btnDodajPravnoLice
+            // 
+            btnDodajPravnoLice.Location = new Point(104, 490);
+            btnDodajPravnoLice.Name = "btnDodajPravnoLice";
+            btnDodajPravnoLice.Size = new Size(245, 29);
+            btnDodajPravnoLice.TabIndex = 4;
+            btnDodajPravnoLice.Text = "Dodaj Pravno Lice";
+            btnDodajPravnoLice.UseVisualStyleBackColor = true;
+            btnDodajPravnoLice.Click += btnDodajPravnoLice_Click;
+            // 
             // DodajPravnoLice
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -234,8 +234,6 @@
         }
 
         #endregion
-
-        private Button btnDodajPravnoLice;
         private GroupBox groupBox1;
         private GroupBox groupBox3;
         private TextBox tbEmailKontaktOsobe;
@@ -253,5 +251,6 @@
         private TextBox tbBanka;
         private Label label2;
         private Label label1;
+        private Button btnDodajPravnoLice;
     }
 }

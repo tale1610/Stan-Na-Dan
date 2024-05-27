@@ -505,6 +505,86 @@ public class DTOManager
         }
     }
 
+    public static SpoljniSaradnikBasic vratiSpoljnogSaradnika(string mbrAgentaAngazovanja, int idSpoljnogSaradnika)
+    {
+        SpoljniSaradnikBasic spoljniToReturn = new SpoljniSaradnikBasic();
+        ISession? session = null;
+        try
+        {
+            SpoljniSaradnikId ssID = new()
+            {
+                AgentAngazovanja = session.Load<Agent>(mbrAgentaAngazovanja),
+                IdSaradnika = idSpoljnogSaradnika
+            };
+            SpoljniSaradnik spoljniSaradnik = session.Load<SpoljniSaradnik>(ssID);
+            PoslovnicaBasic poslovnicaBasic = new()
+            {
+                ID = spoljniSaradnik.ID.AgentAngazovanja.Poslovnica.ID,
+                Adresa = spoljniSaradnik.ID.AgentAngazovanja.Poslovnica.Adresa,
+                RadnoVreme = spoljniSaradnik.ID.AgentAngazovanja.Poslovnica.RadnoVreme,
+                Sef = spoljniSaradnik.ID.AgentAngazovanja.Poslovnica.Sef == null ? spoljniSaradnik.ID.AgentAngazovanja.Poslovnica.Sef : null
+            };
+            AgentBasic agentAngazovanjaBasic = new()
+            {
+                DatumZaposlenja = spoljniSaradnik.ID.AgentAngazovanja.DatumZaposlenja,
+                Ime = spoljniSaradnik.ID.AgentAngazovanja.Ime,
+                Prezime = spoljniSaradnik.ID.AgentAngazovanja.Prezime,
+                MBR = spoljniSaradnik.ID.AgentAngazovanja.MBR,
+                StrucnaSprema = spoljniSaradnik.ID.AgentAngazovanja.StrucnaSprema,
+                Poslovnica = poslovnicaBasic
+            };
+            spoljniToReturn.IdSaradnika = spoljniSaradnik.ID.IdSaradnika;
+            spoljniToReturn.DatumAngazovanja = spoljniSaradnik.DatumAngazovanja;
+            spoljniToReturn.ProcenatOdNajma = spoljniSaradnik.ProcenatOdNajma;
+            spoljniToReturn.AgentAngazovanja = agentAngazovanjaBasic;
+            spoljniToReturn.Ime = spoljniSaradnik.Ime;
+            spoljniToReturn.Prezime = spoljniSaradnik.Prezime;
+            spoljniToReturn.Telefon = spoljniSaradnik.Telefon;
+
+            return spoljniToReturn;
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.FormatExceptionMessage());
+            return new SpoljniSaradnikBasic();
+        }
+        finally
+        {
+            session?.Close();
+        }
+    }
+
+    public static void obrisiSpoljnogSaradnika(string mbrAgentaAngazovanja, int idSpoljnog)
+    {
+        ISession? session = null;
+        try
+        {
+            session = DataLayer.GetSession();
+
+            if (session != null && session.IsOpen)
+            {
+                SpoljniSaradnikId ssID = new()
+                {
+                    AgentAngazovanja = session.Load<Agent>(mbrAgentaAngazovanja),
+                    IdSaradnika = idSpoljnog
+                };
+                SpoljniSaradnik spoljniSaradnik = session.Load<SpoljniSaradnik>(ssID);//ucitamo ga za brisanje
+                string ime = spoljniSaradnik.Ime;
+                session.Delete(spoljniSaradnik);
+                session.Flush();
+                MessageBox.Show($"Uspesno ste obrisali spoljnog saradnika {ime}.", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);//vidi kako ce ovo da se ponasa sa usrani najmovi kad se posle trazi najam na kom je on radio
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.FormatExceptionMessage());
+        }
+        finally
+        {
+            session?.Close();
+        }
+    }
+
     public static void dodajNovogSpoljnogSaradnika(SpoljniSaradnikBasic ssBasic, string mbrAgentaAngazovanja)
     {
         ISession? session = null;
@@ -545,6 +625,8 @@ public class DTOManager
             session?.Close();
         }
     }
+
+
 
     #endregion
 
@@ -814,9 +896,9 @@ public class DTOManager
                     //TODO: DODAJ NJEGOVE NEKRETNINE I NJEGOVE BROJEVE TELEFONA
                 };
 
-                session.SaveOrUpdate(pravnoLiceBasic);
+                session.SaveOrUpdate(pravnoLice);
                 session.Flush();
-                MessageBox.Show($"Fizicko lice {pravnoLiceBasic.Naziv} je upisano u bazu podataka kao vlasnik sa ID {vlasnik.IdVlasnika}.");
+                MessageBox.Show($"Fizicko lice {pravnoLice.Naziv} je upisano u bazu podataka kao vlasnik sa ID {vlasnik.IdVlasnika}.");
             }
         }
         catch (Exception ex)
