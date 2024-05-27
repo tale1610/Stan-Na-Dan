@@ -16,5 +16,24 @@ namespace StanNaDan.Forme.Nekretnine
         {
             InitializeComponent();
         }
+
+        public void popuniPodacima()
+        {
+            listaNekretnina.Items.Clear();
+            List<NekretninaPregled> podaci = DTOManager.VratiSveNekretnine();
+
+            foreach (NekretninaPregled n in podaci)
+            {
+                ListViewItem item;
+                item = new ListViewItem(new string[] { n.IdNekretnine.ToString(), "nemoguce", n.Ulica + " " + n.Broj, n.Kvadratura.ToString(), n.BrojSpavacihSoba.ToString(), n.BrojKupatila.ToString(), n.BrojTerasa.ToString() });
+                listaNekretnina.Items.Add(item);
+            }
+            listaNekretnina.Refresh();
+        }
+
+        private void PregledSvihNekretnina_Load(object sender, EventArgs e)
+        {
+            popuniPodacima();
+        }
     }
 }

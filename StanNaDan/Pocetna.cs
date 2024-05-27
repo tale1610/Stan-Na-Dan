@@ -1,5 +1,6 @@
 ﻿using StanNaDan.Forme;
 using StanNaDan.Forme.Kvartovi;
+using StanNaDan.Forme.Nekretnine;
 using StanNaDan.Forme.Vlasnici;
 using StanNaDan.Forme.Zaposleni;
 using System;
@@ -47,7 +48,8 @@ namespace StanNaDan
 
         private void btnNekretnine_Click(object sender, EventArgs e)
         {
-
+            PregledSvihNekretnina formaPregledSvihNekretnina = new PregledSvihNekretnina();
+            formaPregledSvihNekretnina.ShowDialog();
         }
     }
 }

@@ -1010,7 +1010,7 @@ public class DTOManager
         return nekretnine;
     }
 
-    public static void IzmeniNekretninu(FizickoLiceBasic flBasic = null, PravnoLiceBasic plBasic = null, NekretninaBasic izmenjenaNekretnina)
+    public static void IzmeniNekretninu(NekretninaBasic izmenjenaNekretnina, FizickoLiceBasic flBasic = null, PravnoLiceBasic plBasic = null)
     {
         ISession? session = null;
         try
