@@ -1270,7 +1270,7 @@ public class DTOManager
         }
     }
 
-    public static void ObrisiDodatnuOpremu(DodatnaOpremaId id)// proveri!
+    public static void ObrisiDodatnuOpremu(int idOpreme, int idNekretnine)
     {
         ISession? session = null;
         try
@@ -1278,16 +1278,22 @@ public class DTOManager
             session = DataLayer.GetSession();
             if (session != null && session.IsOpen)
             {
-                DodatnaOprema oprema = session.Get<DodatnaOprema>(id);
+                Nekretnina nekretnina = session.Get<Nekretnina>(idNekretnine);
+                DodatnaOpremaId doID = new()
+                {
+                    IdOpreme = idOpreme,
+                    Nekretnina = nekretnina
+                };
+                DodatnaOprema oprema = session.Get<DodatnaOprema>(doID);
                 if (oprema != null)
                 {
                     session.Delete(oprema);
                     session.Flush();
-                    Console.WriteLine($"Dodatna oprema sa ID {id} je obrisana.");
+                    Console.WriteLine($"Dodatna oprema sa ID {doID} je obrisana.");
                 }
                 else
                 {
-                    Console.WriteLine($"Dodatna oprema sa ID {id} nije pronađena.");
+                    Console.WriteLine($"Dodatna oprema sa ID {doID} nije pronađena.");
                 }
             }
         }
@@ -1302,6 +1308,207 @@ public class DTOManager
     }
 
     #endregion
+
+    #region Krevet
+
+    public static void DodajKrevet(int idNekretnine, KrevetBasic noviKrevet)
+    {
+        ISession? session = null;
+        try
+        {
+            session = DataLayer.GetSession();
+            if (session != null && session.IsOpen)
+            {
+                Nekretnina nekretnina = session.Load<Nekretnina>(idNekretnine);
+                KrevetId kID = new()
+                {
+                    IdKreveta = noviKrevet.IdKreveta,
+                    Nekretnina = nekretnina
+                };
+                Krevet krevet = new Krevet
+                {
+                    ID = kID,
+                    Tip = noviKrevet.Tip,
+                    Dimenzije = noviKrevet.Dimenzije
+                };
+
+                session.Save(krevet);
+                session.Flush();
+                Console.WriteLine("Novi krevet je uspešno dodan.");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.FormatExceptionMessage());
+        }
+        finally
+        {
+            session?.Close();
+        }
+    }
+
+    public static List<KrevetPregled> VratiSveKrevete(int idNekretnine)
+    {
+        List<KrevetPregled> kreveti = new List<KrevetPregled>();
+        ISession? session = null;
+        try
+        {
+            session = DataLayer.GetSession();
+            if (session != null && session.IsOpen)
+            {
+                IEnumerable<Krevet> sviKreveti = from krevet 
+                                                 in session.Query<Krevet>()
+                                                 where krevet.ID.Nekretnina.IdNekretnine == idNekretnine
+                                                 select krevet;
+
+                foreach (Krevet k in sviKreveti)
+                {
+                    kreveti.Add(new KrevetPregled(
+                        k.ID.IdKreveta,
+                        k.ID.Nekretnina.IdNekretnine,
+                        k.Tip,
+                        k.Dimenzije
+                    ));
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.FormatExceptionMessage());
+        }
+        finally
+        {
+            session?.Close();
+        }
+
+        return kreveti;
+    }
+
+    public static KrevetPregled VratiKrevet(int idKreveta, int idNekretnine)
+    {
+        ISession? session = null;
+        try
+        {
+            session = DataLayer.GetSession();
+            if (session != null && session.IsOpen)
+            {
+                Nekretnina nekretnina = session.Load<Nekretnina>(idNekretnine);
+                KrevetId kID = new()
+                {
+                    IdKreveta = idKreveta,
+                    Nekretnina = nekretnina
+                };
+                Krevet krevet = session.Get<Krevet>(kID);
+                if (krevet != null)
+                {
+                    return new KrevetPregled(
+                        krevet.ID.IdKreveta,
+                        krevet.ID.Nekretnina.IdNekretnine,
+                        krevet.Tip,
+                        krevet.Dimenzije
+                    );
+                }
+                else
+                {
+                    Console.WriteLine($"Krevet sa ID {idKreveta} nije pronađen.");
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.FormatExceptionMessage());
+            return null;
+        }
+        finally
+        {
+            session?.Close();
+        }
+    }
+
+    public static void IzmeniKrevet(KrevetBasic izmenjeniKrevet, int idNekretnine)
+    {
+        ISession? session = null;
+        try
+        {
+            session = DataLayer.GetSession();
+            if (session != null && session.IsOpen)
+            {
+                Nekretnina nekretnina = session.Load<Nekretnina>(idNekretnine);
+                KrevetId kID = new()
+                {
+                    IdKreveta = izmenjeniKrevet.IdKreveta,
+                    Nekretnina = nekretnina
+                };
+                Krevet krevet = session.Get<Krevet>(kID);
+                if (krevet != null)
+                {
+                    krevet.Tip = izmenjeniKrevet.Tip;
+                    krevet.Dimenzije = izmenjeniKrevet.Dimenzije;
+
+                    session.Update(krevet);
+                    session.Flush();
+                    Console.WriteLine($"Podaci za krevet sa ID {izmenjeniKrevet.IdKreveta} su izmenjeni.");
+                }
+                else
+                {
+                    Console.WriteLine($"Krevet sa ID {izmenjeniKrevet.IdKreveta} nije pronađen.");
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.FormatExceptionMessage());
+        }
+        finally
+        {
+            session?.Close();
+        }
+    }
+
+    public static void ObrisiKrevet(int idKreveta, int idNekretnine)
+    {
+        ISession? session = null;
+        try
+        {
+            session = DataLayer.GetSession();
+            if (session != null && session.IsOpen)
+            {
+                Nekretnina nekretnina = session.Load<Nekretnina>(idNekretnine);
+                KrevetId kID = new()
+                {
+                    IdKreveta = idKreveta,
+                    Nekretnina = nekretnina
+                };
+                Krevet krevet = session.Get<Krevet>(kID);
+                if (krevet != null)
+                {
+                    session.Delete(krevet);
+                    session.Flush();
+                    Console.WriteLine($"Krevet sa ID {kID} je obrisan.");
+                }
+                else
+                {
+                    Console.WriteLine($"Krevet sa ID {kID} nije pronađen.");
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.FormatExceptionMessage());
+        }
+        finally
+        {
+            session?.Close();
+        }
+    }
+
+    #endregion
+
 
 }
 

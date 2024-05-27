@@ -635,15 +635,17 @@ public class IznajmljenaSobaPregled
 
 public class KrevetBasic
 {
-    public KrevetId ID { get; set; }
+    public int IdKreveta { get; set; }
+    public NekretninaBasic Nekretnina { get; set; }
     public string Tip { get; set; }
     public string Dimenzije { get; set; }
 
     public KrevetBasic() { }
 
-    public KrevetBasic(KrevetId id, string tip, string dimenzije)
+    public KrevetBasic(int id, NekretninaBasic nekretnina, string tip, string dimenzije)
     {
-        ID = id;
+        IdKreveta = id;
+        Nekretnina = nekretnina;
         Tip = tip;
         Dimenzije = dimenzije;
     }
@@ -651,15 +653,17 @@ public class KrevetBasic
 
 public class KrevetPregled
 {
-    public KrevetId ID { get; set; }
+    public int IdKreveta { get; set; }
+    public int IdNekretnine { get; set; }
     public string Tip { get; set; }
     public string Dimenzije { get; set; }
 
     public KrevetPregled() { }
 
-    public KrevetPregled(KrevetId id, string tip, string dimenzije)
+    public KrevetPregled(int idKreveta, int idNekretnine, string tip, string dimenzije)
     {
-        ID = id;
+        IdKreveta = idKreveta;
+        IdNekretnine = idNekretnine;
         Tip = tip;
         Dimenzije = dimenzije;
     }
