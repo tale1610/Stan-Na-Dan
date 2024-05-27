@@ -16,8 +16,7 @@ namespace StanNaDan.Mapiranja
             .KeyProperty(p => p.Sajt, "SAJT")
             .KeyReference(p => p.Nekretnina, "ID_NEKRETNINE");
 
-            //Map(p => p.Sajt, "Sajt");
-            //References(p => p.Nekretnina).Column("ID_NEKRETNINE").LazyLoad();
+
         }
     }
 }

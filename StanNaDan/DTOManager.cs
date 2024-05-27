@@ -1857,7 +1857,8 @@ public class DTOManager
                 {
                     sajtovi.Add(new SajtoviNekretninePregled(
                         s.ID.Sajt,
-                        s.ID.Nekretnina.IdNekretnine
+                        s.ID.Nekretnina.IdNekretnine,
+                        s.ID.Nekretnina.Ulica + " " + s.ID.Nekretnina.Broj
                     ));
                 }
             }
@@ -1893,7 +1894,8 @@ public class DTOManager
                 {
                     return new SajtoviNekretninePregled(
                         sajtNekretnine.ID.Sajt,
-                        sajtNekretnine.ID.Nekretnina.IdNekretnine
+                        sajtNekretnine.ID.Nekretnina.IdNekretnine,
+                        sajtNekretnine.ID.Nekretnina.Ulica + " " + sajtNekretnine.ID.Nekretnina.Broj
                     );
                 }
                 else

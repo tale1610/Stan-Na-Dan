@@ -823,13 +823,15 @@ public class SajtoviNekretninePregled
 {
     public string Sajt { get; set; }
     public int IdNekretnine { get; set; }
+    public string AdresaNekretnine { get; set; }
 
     public SajtoviNekretninePregled() { }
 
-    public SajtoviNekretninePregled(string sajt, int idNekretnine)
+    public SajtoviNekretninePregled(string sajt, int idNekretnine, string adresaNekretnine)
     {
         Sajt = sajt;
         IdNekretnine = idNekretnine;
+        AdresaNekretnine = adresaNekretnine;
     }
 }
 
