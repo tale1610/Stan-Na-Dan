@@ -759,7 +759,8 @@ public class NajamPregled
 
 public class ParkingBasic
 {
-    public ParkingId ID { get; set; }
+    public int IdParkinga { get; set; }
+    public NekretninaBasic Nekretnina { get; set; }
     public bool Besplatan { get; set; }
     public double Cena { get; set; }
     public bool USastavuNekretnine { get; set; }
@@ -767,9 +768,10 @@ public class ParkingBasic
 
     public ParkingBasic() { }
 
-    public ParkingBasic(ParkingId id, bool besplatan, double cena, bool uSastavuNekretnine, bool uSastavuJavnogParkinga)
+    public ParkingBasic(int id, NekretninaBasic nekretnina, bool besplatan, double cena, bool uSastavuNekretnine, bool uSastavuJavnogParkinga)
     {
-        ID = id;
+        IdParkinga = id;
+        Nekretnina = nekretnina;
         Besplatan = besplatan;
         Cena = cena;
         USastavuNekretnine = uSastavuNekretnine;
@@ -779,7 +781,8 @@ public class ParkingBasic
 
 public class ParkingPregled
 {
-    public ParkingId ID { get; set; }
+    public int IdParkinga { get; set; }
+    public int IdNekretnine { get; set; }
     public bool Besplatan { get; set; }
     public double Cena { get; set; }
     public bool USastavuNekretnine { get; set; }
@@ -787,9 +790,10 @@ public class ParkingPregled
 
     public ParkingPregled() { }
 
-    public ParkingPregled(ParkingId id, bool besplatan, double cena, bool uSastavuNekretnine, bool uSastavuJavnogParkinga)
+    public ParkingPregled(int idParkinga, int idNekretnine, bool besplatan, double cena, bool uSastavuNekretnine, bool uSastavuJavnogParkinga)
     {
-        ID = id;
+        IdParkinga = idParkinga;
+        IdNekretnine = idNekretnine;
         Besplatan = besplatan;
         Cena = cena;
         USastavuNekretnine = uSastavuNekretnine;
@@ -803,25 +807,29 @@ public class ParkingPregled
 
 public class SajtoviNekretnineBasic
 {
-    public SajtoviNekretnineId ID { get; set; }
+    public string Sajt { get; set; }
+    public NekretninaBasic Nekretnina { get; set; }
 
     public SajtoviNekretnineBasic() { }
 
-    public SajtoviNekretnineBasic(SajtoviNekretnineId id)
+    public SajtoviNekretnineBasic(string sajt, NekretninaBasic nekretnina)
     {
-        ID = id;
+        Sajt = sajt;
+        Nekretnina = nekretnina;
     }
 }
 
 public class SajtoviNekretninePregled
 {
-    public SajtoviNekretnineId ID { get; set; }
+    public string Sajt { get; set; }
+    public int IdNekretnine { get; set; }
 
     public SajtoviNekretninePregled() { }
 
-    public SajtoviNekretninePregled(SajtoviNekretnineId id)
+    public SajtoviNekretninePregled(string sajt, int idNekretnine)
     {
-        ID = id;
+        Sajt = sajt;
+        IdNekretnine = idNekretnine;
     }
 }
 
