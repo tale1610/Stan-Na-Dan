@@ -15,9 +15,9 @@ namespace StanNaDan.Mapiranja
 
             Map(p => p.GradskaZona, "GRADSKA_ZONA");
 
-            //HasMany(p => p.Nekretnine).KeyColumn("ID_KVARTA").LazyLoad().Inverse().Cascade.All();
+            HasMany(p => p.Nekretnine).KeyColumn("ID_KVARTA").LazyLoad().Cascade.All().Inverse();
 
-            References(p => p.PoslovnicaZaduzenaZaNjega).Column("ID_POSLOVNICE").LazyLoad().Cascade.All();
+            References(p => p.PoslovnicaZaduzenaZaNjega).Column("ID_POSLOVNICE").LazyLoad();
 
         }
     }

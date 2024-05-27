@@ -1,4 +1,5 @@
 ﻿using StanNaDan.Forme.Vlasnici.FizickaLica;
+using StanNaDan.Forme.Vlasnici.PravnaLica;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -50,6 +51,13 @@ namespace StanNaDan.Forme.Vlasnici
         {
             DodajFizickoLice formaDodajFizickoLice = new DodajFizickoLice();
             formaDodajFizickoLice.ShowDialog();
+            this.popuniPodacima();
+        }
+
+        private void btnDodajPravnoLice_Click(object sender, EventArgs e)
+        {
+            DodajPravnoLice formaDodajPravnoLice = new DodajPravnoLice();
+            formaDodajPravnoLice.ShowDialog();
             this.popuniPodacima();
         }
     }

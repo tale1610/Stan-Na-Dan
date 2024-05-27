@@ -86,8 +86,15 @@ namespace StanNaDan.Forme.Nekretnine.DodatnaOprema
                 return;
             }
 
-            int idOpreme = Int32.Parse(listaDodatnihOprema.SelectedItems[0].SubItems[0].Text);
-            IzmeniDodatnuOpremu formaIzmeniDodatnuOpremu = new IzmeniDodatnuOpremu(this.IdNekretnine, idOpreme);
+            DodatnaOpremaBasic dob = new()
+            {
+                BesplatnoKoriscenje = listaDodatnihOprema.SelectedItems[0].SubItems[3].Text == "Besplatno koriscenje" ? true : false,
+                CenaKoriscenja = listaDodatnihOprema.SelectedItems[0].SubItems[3].Text == "Besplatno koriscenje" ? null : Double.Parse(listaDodatnihOprema.SelectedItems[0].SubItems[3].Text),
+                IdOpreme = Int32.Parse(listaDodatnihOprema.SelectedItems[0].SubItems[0].Text),
+                TipOpreme = listaDodatnihOprema.SelectedItems[0].SubItems[2].Text
+            };
+
+            IzmeniDodatnuOpremu formaIzmeniDodatnuOpremu = new IzmeniDodatnuOpremu(this.IdNekretnine, dob);
             formaIzmeniDodatnuOpremu.ShowDialog();
             this.popuniPodacima();
         }

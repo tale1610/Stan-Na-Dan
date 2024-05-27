@@ -13,19 +13,17 @@ namespace StanNaDan.Forme.Nekretnine.DodatnaOprema
     public partial class IzmeniDodatnuOpremu : Form
     {
         int IdNekretnine;
-        int IdOpreme;
         DodatnaOpremaBasic dodatnaOpremaBasic;
         public IzmeniDodatnuOpremu()
         {
             InitializeComponent();
         }
 
-        public IzmeniDodatnuOpremu(int idNekretnine, int idOpreme)
+        public IzmeniDodatnuOpremu(int idNekretnine, DodatnaOpremaBasic dodatnaOpremaBasic)
         {
             InitializeComponent();
             this.IdNekretnine = idNekretnine;
-            this.dodatnaOpremaBasic = new DodatnaOpremaBasic();
-            this.IdOpreme = idOpreme;
+            this.dodatnaOpremaBasic = dodatnaOpremaBasic;
         }
 
         private void btnIzmeniDodatnuOpremu_Click(object sender, EventArgs e)
@@ -37,7 +35,6 @@ namespace StanNaDan.Forme.Nekretnine.DodatnaOprema
 
             if (result == DialogResult.OK)
             {
-                this.dodatnaOpremaBasic.IdOpreme = this.IdOpreme;
                 this.dodatnaOpremaBasic.TipOpreme = tbTipOpreme.Text;
                 this.dodatnaOpremaBasic.BesplatnoKoriscenje = cbBesplatnoKoriscenje.Checked;
                 if (cbBesplatnoKoriscenje.Checked == false)
@@ -59,11 +56,23 @@ namespace StanNaDan.Forme.Nekretnine.DodatnaOprema
 
         private void cbBesplatnoKoriscenje_CheckedChanged(object sender, EventArgs e)
         {
-            if(cbBesplatnoKoriscenje.Checked == true) 
+            if (cbBesplatnoKoriscenje.Checked == true)
             {
                 tbCenaKoriscenja.Enabled = false;
             }
-            else { tbCenaKoriscenja.Enabled=true; }
+            else { tbCenaKoriscenja.Enabled = true; }
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void IzmeniDodatnuOpremu_Load(object sender, EventArgs e)
+        {
+            tbCenaKoriscenja.Text = this.dodatnaOpremaBasic.CenaKoriscenja.ToString();
+            tbTipOpreme.Text = this.dodatnaOpremaBasic.TipOpreme;
+            cbBesplatnoKoriscenje.Checked = this.dodatnaOpremaBasic.BesplatnoKoriscenje;
         }
     }
 }

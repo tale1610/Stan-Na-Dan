@@ -37,11 +37,14 @@
             telefon = new ColumnHeader();
             procenatOdNajma = new ColumnHeader();
             btnDodajNovogSpoljnogSaradnika = new Button();
+            btnObrisiSpoljnogSaradnika = new Button();
             SuspendLayout();
             // 
             // listaSpoljnihSaradnika
             // 
             listaSpoljnihSaradnika.Columns.AddRange(new ColumnHeader[] { mbrAgenta, ID, Ime, Prezime, datumAngazovanja, telefon, procenatOdNajma });
+            listaSpoljnihSaradnika.FullRowSelect = true;
+            listaSpoljnihSaradnika.GridLines = true;
             listaSpoljnihSaradnika.Location = new Point(12, 12);
             listaSpoljnihSaradnika.Name = "listaSpoljnihSaradnika";
             listaSpoljnihSaradnika.Size = new Size(743, 327);
@@ -93,11 +96,22 @@
             btnDodajNovogSpoljnogSaradnika.UseVisualStyleBackColor = true;
             btnDodajNovogSpoljnogSaradnika.Click += btnDodajNovogSpoljnogSaradnika_Click;
             // 
+            // btnObrisiSpoljnogSaradnika
+            // 
+            btnObrisiSpoljnogSaradnika.Location = new Point(761, 88);
+            btnObrisiSpoljnogSaradnika.Name = "btnObrisiSpoljnogSaradnika";
+            btnObrisiSpoljnogSaradnika.Size = new Size(200, 54);
+            btnObrisiSpoljnogSaradnika.TabIndex = 2;
+            btnObrisiSpoljnogSaradnika.Text = "Raspusti Spoljnog Saradnika";
+            btnObrisiSpoljnogSaradnika.UseVisualStyleBackColor = true;
+            btnObrisiSpoljnogSaradnika.Click += btnObrisiSpoljnogSaradnika_Click;
+            // 
             // PregledSpoljnihSaradnikaAgenta
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(970, 450);
+            Controls.Add(btnObrisiSpoljnogSaradnika);
             Controls.Add(btnDodajNovogSpoljnogSaradnika);
             Controls.Add(listaSpoljnihSaradnika);
             Name = "PregledSpoljnihSaradnikaAgenta";
@@ -117,5 +131,6 @@
         private ColumnHeader telefon;
         private ColumnHeader procenatOdNajma;
         private Button btnDodajNovogSpoljnogSaradnika;
+        private Button btnObrisiSpoljnogSaradnika;
     }
 }
