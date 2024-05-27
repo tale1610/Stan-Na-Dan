@@ -131,6 +131,7 @@
             btnPrikaziSveNajmove.TabIndex = 9;
             btnPrikaziSveNajmove.Text = "Prikazi Sve Najmove";
             btnPrikaziSveNajmove.UseVisualStyleBackColor = true;
+            btnPrikaziSveNajmove.Click += btnPrikaziSveNajmove_Click;
             // 
             // btnPrikaziParkinge
             // 
