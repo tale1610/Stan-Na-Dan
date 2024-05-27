@@ -675,12 +675,12 @@ public class KrevetPregled
 
 public class NajamBasic
 {
-    public int IdNajma { get; protected set; }
+    public int IdNajma { get; set; }
     public DateTime DatumPocetka { get; set; }
     public DateTime DatumZavrsetka { get; set; }
     public int BrojDana { get; set; }
     public double CenaPoDanu { get; set; }
-    public int Popust { get; set; }
+    public int Popust { get; set; } // Popust u procentima
     public double CenaSaPopustom { get; set; }
     public double ZaradaOdDodatnihUsluga { get; set; }
     public double UkupnaCena { get; set; }
@@ -694,17 +694,17 @@ public class NajamBasic
 
     public NajamBasic() { }
 
-    public NajamBasic(int idNajma, DateTime datumPocetka, DateTime datumZavrsetka, int brojDana, double cenaPoDanu, int popust, double cenaSaPopustom, double zaradaOdDodatnihUsluga, double ukupnaCena, double provizijaAgencije, NekretninaBasic nekretnina, AgentBasic agent, SpoljniSaradnikBasic? spoljniSaradnik/*, IList<IznajmljenaSobaBasic>? sobe*/)
+    public NajamBasic(int idNajma, DateTime datumPocetka, DateTime datumZavrsetka, double cenaPoDanu, int popust, double zaradaOdDodatnihUsluga, double provizijaAgencije, NekretninaBasic nekretnina, AgentBasic agent, SpoljniSaradnikBasic? spoljniSaradnik/*, IList<IznajmljenaSobaBasic>? sobe*/)
     {
         IdNajma = idNajma;
         DatumPocetka = datumPocetka;
         DatumZavrsetka = datumZavrsetka;
-        BrojDana = brojDana;
+        BrojDana = (DatumZavrsetka - DatumPocetka).Days;
         CenaPoDanu = cenaPoDanu;
         Popust = popust;
-        CenaSaPopustom = cenaSaPopustom;
+        CenaSaPopustom = CenaPoDanu * BrojDana * (1 - Popust / 100.0);
         ZaradaOdDodatnihUsluga = zaradaOdDodatnihUsluga;
-        UkupnaCena = ukupnaCena;
+        UkupnaCena = CenaSaPopustom + ZaradaOdDodatnihUsluga;
         ProvizijaAgencije = provizijaAgencije;
         Nekretnina = nekretnina;
         Agent = agent;
@@ -720,7 +720,7 @@ public class NajamPregled
     public DateTime DatumZavrsetka { get; set; }
     public int BrojDana { get; set; }
     public double CenaPoDanu { get; set; }
-    public int Popust { get; set; }
+    public int Popust { get; set; } // Popust u procentima
     public double CenaSaPopustom { get; set; }
     public double ZaradaOdDodatnihUsluga { get; set; }
     public double UkupnaCena { get; set; }
@@ -734,17 +734,17 @@ public class NajamPregled
 
     public NajamPregled() { }
 
-    public NajamPregled(int idNajma, DateTime datumPocetka, DateTime datumZavrsetka, int brojDana, double cenaPoDanu, int popust, double cenaSaPopustom, double zaradaOdDodatnihUsluga, double ukupnaCena, double provizijaAgencije, string adresaNekretnine, string imeAgenta, string imeSpoljnogSaradnika/*, IList<int>? idSoba*/)
+    public NajamPregled(int idNajma, DateTime datumPocetka, DateTime datumZavrsetka, double cenaPoDanu, int popust, double zaradaOdDodatnihUsluga, double provizijaAgencije, string adresaNekretnine, string imeAgenta, string imeSpoljnogSaradnika/*, IList<int>? idSoba*/)
     {
         IdNajma = idNajma;
         DatumPocetka = datumPocetka;
         DatumZavrsetka = datumZavrsetka;
-        BrojDana = brojDana;
+        BrojDana = (DatumZavrsetka - DatumPocetka).Days;
         CenaPoDanu = cenaPoDanu;
         Popust = popust;
-        CenaSaPopustom = cenaSaPopustom;
+        CenaSaPopustom = CenaPoDanu * BrojDana * (1 - Popust / 100.0);
         ZaradaOdDodatnihUsluga = zaradaOdDodatnihUsluga;
-        UkupnaCena = ukupnaCena;
+        UkupnaCena = CenaSaPopustom + ZaradaOdDodatnihUsluga;
         ProvizijaAgencije = provizijaAgencije;
         AdresaNekretnine = adresaNekretnine;
         ImeAgenta = imeAgenta;
@@ -841,27 +841,31 @@ public class SajtoviNekretninePregled
 
 public class SobaBasic
 {
-    public SobaId ID { get; set; }
-    public IList<IznajmljenaSoba> Najmovi { get; set; } = new List<IznajmljenaSoba>();
-    public IList<ZajednickeProstorije> ZajednickeProstorije { get; set; } = new List<ZajednickeProstorije>();
+    public int IdSobe { get; set; }
+    public NekretninaBasic Nekretnina { get; set; }
+    //public IList<IznajmljenaSoba> Najmovi { get; set; } = new List<IznajmljenaSoba>();
+    //public IList<ZajednickeProstorije> ZajednickeProstorije { get; set; } = new List<ZajednickeProstorije>();
 
     public SobaBasic() { }
 
-    public SobaBasic(SobaId id)
+    public SobaBasic(int idSobe, NekretninaBasic nekretnina)
     {
-        ID = id;
+        IdSobe = idSobe;
+        Nekretnina = nekretnina;
     }
 }
 
 public class SobaPregled
 {
-    public SobaId ID { get; set; }
+    public int IdSobe { get; set; }
+    public int IdNekretnine { get; set; }
 
     public SobaPregled() { }
 
-    public SobaPregled(SobaId id)
+    public SobaPregled(int idSobe, int idNekretnine)
     {
-        ID = id;
+        IdSobe = idSobe;
+        IdNekretnine = idNekretnine;
     }
 }
 
@@ -872,11 +876,11 @@ public class SobaPregled
 public class TelefoniKontaktOsobeBasic
 {
     public string BrojTelefona { get; set; }
-    public PravnoLice PravnoLice { get; set; }
+    public PravnoLiceBasic PravnoLice { get; set; }
 
     public TelefoniKontaktOsobeBasic() { }
 
-    public TelefoniKontaktOsobeBasic(string brojTelefona, PravnoLice pravnoLice)
+    public TelefoniKontaktOsobeBasic(string brojTelefona, PravnoLiceBasic pravnoLice)
     {
         BrojTelefona = brojTelefona;
         PravnoLice = pravnoLice;
@@ -887,18 +891,18 @@ public class TelefoniKontaktOsobePregled
 {
     public string BrojTelefona { get; set; }
     public string PIB { get; set; }
-    public string Ime { get; set; }
-    public string Prezime { get; set; }
+    public string Naziv { get; set; }
+    public string ImeKontaktOsobe { get; set; }
     // Dodaj ovde ostale atribute koje želiš koristiti iz klase PravnoLice
 
     public TelefoniKontaktOsobePregled() { }
 
-    public TelefoniKontaktOsobePregled(string brojTelefona, string pib, string ime, string prezime)
+    public TelefoniKontaktOsobePregled(string brojTelefona, string pib, string naziv, string imeKontaktOsobe)
     {
         BrojTelefona = brojTelefona;
         PIB = pib;
-        Ime = ime;
-        Prezime = prezime;
+        Naziv = naziv;
+        ImeKontaktOsobe = imeKontaktOsobe;
     }
 }
 
@@ -908,25 +912,31 @@ public class TelefoniKontaktOsobePregled
 
 public class ZajednickeProstorijeBasic
 {
-    public ZajednickeProstorijeId ID { get; set; }
+    public Soba Soba { get; set; }
+    public string ZajednickaProstorija { get; set; }
 
     public ZajednickeProstorijeBasic() { }
 
-    public ZajednickeProstorijeBasic(ZajednickeProstorijeId id)
+    public ZajednickeProstorijeBasic(Soba soba, string zajednickaProstorija)
     {
-        ID = id;
+        Soba = soba;
+        ZajednickaProstorija = zajednickaProstorija;
     }
 }
 
 public class ZajednickeProstorijePregled
 {
-    public ZajednickeProstorijeId ID { get; set; }
+    public int IdNekretnine { get; set; }
+    public int IdSobe { get; set; }
+    public string ZajednickaProstorija { get; set; }
 
     public ZajednickeProstorijePregled() { }
 
-    public ZajednickeProstorijePregled(ZajednickeProstorijeId id)
+    public ZajednickeProstorijePregled(int idNekretnine, int idSobe, string zajednicka)
     {
-        ID = id;
+        IdNekretnine = idNekretnine;
+        IdSobe = idSobe;
+        ZajednickaProstorija = zajednicka;
     }
 }
 
