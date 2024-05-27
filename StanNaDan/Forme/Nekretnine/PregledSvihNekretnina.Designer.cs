@@ -141,6 +141,7 @@
             btnPrikaziParkinge.TabIndex = 10;
             btnPrikaziParkinge.Text = "Prikazi Parking Mesta";
             btnPrikaziParkinge.UseVisualStyleBackColor = true;
+            btnPrikaziParkinge.Click += btnPrikaziParkinge_Click;
             // 
             // btnPrikaziDodatnuOpremu
             // 
@@ -160,6 +161,7 @@
             btnPrikaziKrevete.TabIndex = 12;
             btnPrikaziKrevete.Text = "Prikazi Krevete";
             btnPrikaziKrevete.UseVisualStyleBackColor = true;
+            btnPrikaziKrevete.Click += btnPrikaziKrevete_Click;
             // 
             // btnPrikaziSajtove
             // 

@@ -1,5 +1,7 @@
 ﻿using StanNaDan.Forme.Nekretnine.DodatnaOprema;
+using StanNaDan.Forme.Nekretnine.Kreveti;
 using StanNaDan.Forme.Nekretnine.Sajtovi;
+using StanNaDan.Forme.Parking;
 using StanNaDan.Forme.Zaposleni;
 using System;
 using System.Collections.Generic;
@@ -96,6 +98,42 @@ namespace StanNaDan.Forme.Nekretnine
             int idNekretnine = Int32.Parse(listaNekretnina.SelectedItems[0].SubItems[0].Text);
             PregledOglasavanjaNekretnine formaPregledOglasavanjaNekretnine = new PregledOglasavanjaNekretnine(idNekretnine);
             formaPregledOglasavanjaNekretnine.ShowDialog();
+            this.popuniPodacima();
+        }
+
+        private void btnPrikaziParkinge_Click(object sender, EventArgs e)
+        {
+            if (listaNekretnina.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Izaberite nekretninu cija parking mesta zelite da vidite!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else if (listaNekretnina.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("Mozete odabrati samo jednu nekretninu za prikaz jednovremeno!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            int idNekretnine = Int32.Parse(listaNekretnina.SelectedItems[0].SubItems[0].Text);
+            PregledSvihParkinga formaPregledSvihParkinga = new PregledSvihParkinga(idNekretnine);
+            formaPregledSvihParkinga.ShowDialog();
+            this.popuniPodacima();
+        }
+
+        private void btnPrikaziKrevete_Click(object sender, EventArgs e)
+        {
+            if (listaNekretnina.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Izaberite nekretninu cije krevete zelite da vidite!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else if (listaNekretnina.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("Mozete odabrati samo jednu nekretninu za prikaz jednovremeno!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            int idNekretnine = Int32.Parse(listaNekretnina.SelectedItems[0].SubItems[0].Text);
+            PregledSvihKreveta formaPregledSvihKreveta = new PregledSvihKreveta(idNekretnine);
+            formaPregledSvihKreveta.ShowDialog();
             this.popuniPodacima();
         }
     }

@@ -1433,7 +1433,7 @@ public class DTOManager
         }
     }
 
-    public static List<KrevetPregled> VratiSveKrevete(int idNekretnine)
+    public static List<KrevetPregled> VratiSveKreveteNekretnine(int idNekretnine)
     {
         List<KrevetPregled> kreveti = new List<KrevetPregled>();
         ISession? session = null;
