@@ -28,10 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            listaNekretnina = new ListView();
-            ID = new ColumnHeader();
+            listaKreveta = new ListView();
             IdKreveta = new ColumnHeader();
-            IdNekretnine = new ColumnHeader();
             Tip = new ColumnHeader();
             Dimenzije = new ColumnHeader();
             btnDodajKrevet = new Button();
@@ -39,32 +37,22 @@
             btnIzmeniKrevet = new Button();
             SuspendLayout();
             // 
-            // listaNekretnina
+            // listaKreveta
             // 
-            listaNekretnina.Columns.AddRange(new ColumnHeader[] { ID, IdKreveta, IdNekretnine, Tip, Dimenzije });
-            listaNekretnina.FullRowSelect = true;
-            listaNekretnina.GridLines = true;
-            listaNekretnina.Location = new Point(12, 12);
-            listaNekretnina.Name = "listaNekretnina";
-            listaNekretnina.Size = new Size(463, 408);
-            listaNekretnina.TabIndex = 8;
-            listaNekretnina.UseCompatibleStateImageBehavior = false;
-            listaNekretnina.View = View.Details;
-            // 
-            // ID
-            // 
-            ID.Text = "ID";
-            ID.Width = 50;
+            listaKreveta.Columns.AddRange(new ColumnHeader[] { IdKreveta, Tip, Dimenzije });
+            listaKreveta.FullRowSelect = true;
+            listaKreveta.GridLines = true;
+            listaKreveta.Location = new Point(12, 12);
+            listaKreveta.Name = "listaKreveta";
+            listaKreveta.Size = new Size(463, 408);
+            listaKreveta.TabIndex = 8;
+            listaKreveta.UseCompatibleStateImageBehavior = false;
+            listaKreveta.View = View.Details;
             // 
             // IdKreveta
             // 
             IdKreveta.Text = "Id Kreveta";
             IdKreveta.Width = 100;
-            // 
-            // IdNekretnine
-            // 
-            IdNekretnine.Text = "Id Nekretnine";
-            IdNekretnine.Width = 110;
             // 
             // Tip
             // 
@@ -111,18 +99,17 @@
             Controls.Add(btnIzmeniKrevet);
             Controls.Add(btnObrisiKrevet);
             Controls.Add(btnDodajKrevet);
-            Controls.Add(listaNekretnina);
+            Controls.Add(listaKreveta);
             Name = "PregledSvihKreveta";
             Text = "PregledSvihKreveta";
+            Load += PregledSvihKreveta_Load;
             ResumeLayout(false);
         }
 
         #endregion
 
-        private ListView listaNekretnina;
-        private ColumnHeader ID;
+        private ListView listaKreveta;
         private ColumnHeader IdKreveta;
-        private ColumnHeader IdNekretnine;
         private ColumnHeader Tip;
         private ColumnHeader Dimenzije;
         private Button btnDodajKrevet;

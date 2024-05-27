@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            listaNekretnina = new ListView();
+            listaParkinga = new ListView();
             ID = new ColumnHeader();
             Besplatan = new ColumnHeader();
             Cena = new ColumnHeader();
@@ -39,17 +39,17 @@
             btnIzmeniParking = new Button();
             SuspendLayout();
             // 
-            // listaNekretnina
+            // listaParkinga
             // 
-            listaNekretnina.Columns.AddRange(new ColumnHeader[] { ID, Besplatan, Cena, USastavuNekretnine, USastavuJavnogParkinga });
-            listaNekretnina.FullRowSelect = true;
-            listaNekretnina.GridLines = true;
-            listaNekretnina.Location = new Point(12, 12);
-            listaNekretnina.Name = "listaNekretnina";
-            listaNekretnina.Size = new Size(605, 408);
-            listaNekretnina.TabIndex = 7;
-            listaNekretnina.UseCompatibleStateImageBehavior = false;
-            listaNekretnina.View = View.Details;
+            listaParkinga.Columns.AddRange(new ColumnHeader[] { ID, Besplatan, Cena, USastavuNekretnine, USastavuJavnogParkinga });
+            listaParkinga.FullRowSelect = true;
+            listaParkinga.GridLines = true;
+            listaParkinga.Location = new Point(12, 12);
+            listaParkinga.Name = "listaParkinga";
+            listaParkinga.Size = new Size(607, 408);
+            listaParkinga.TabIndex = 7;
+            listaParkinga.UseCompatibleStateImageBehavior = false;
+            listaParkinga.View = View.Details;
             // 
             // ID
             // 
@@ -111,15 +111,16 @@
             Controls.Add(btnIzmeniParking);
             Controls.Add(btnObrisiParking);
             Controls.Add(btnDodajParking);
-            Controls.Add(listaNekretnina);
+            Controls.Add(listaParkinga);
             Name = "PregledSvihParkinga";
             Text = "PregledSvihParkinga";
+            Load += PregledSvihParkinga_Load;
             ResumeLayout(false);
         }
 
         #endregion
 
-        private ListView listaNekretnina;
+        private ListView listaParkinga;
         private ColumnHeader ID;
         private ColumnHeader Besplatan;
         private ColumnHeader Cena;

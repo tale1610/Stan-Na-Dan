@@ -1433,7 +1433,7 @@ public class DTOManager
         }
     }
 
-    public static List<KrevetPregled> VratiSveKrevete(int idNekretnine)
+    public static List<KrevetPregled> VratiSveKreveteNekretnine(int idNekretnine)
     {
         List<KrevetPregled> kreveti = new List<KrevetPregled>();
         ISession? session = null;
@@ -1985,6 +1985,187 @@ public class DTOManager
                 else
                 {
                     Console.WriteLine($"Sajt nekretnine sa sajtom {sajt} i ID-om nekretnine {idNekretnine} nije pronađen.");
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.FormatExceptionMessage());
+        }
+        finally
+        {
+            session?.Close();
+        }
+    }
+
+    #endregion
+
+    #region BrojeviTelefona
+
+    public static void DodajBrojTelefona(BrojeviTelefonaBasic noviBroj, string jmbgFizickogLica)
+    {
+        ISession? session = null;
+        try
+        {
+            session = DataLayer.GetSession();
+            if (session != null && session.IsOpen)
+            {
+                FizickoLice fizickoLice = session.Load<FizickoLice>(jmbgFizickogLica);
+                BrojeviTelefona brojTelefona = new BrojeviTelefona
+                {
+                    BrojTelefona = noviBroj.BrojTelefona,
+                    FizickoLice = fizickoLice
+                };
+
+                session.Save(brojTelefona);
+                session.Flush();
+                Console.WriteLine("Novi broj telefona je uspešno dodat.");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.FormatExceptionMessage());
+        }
+        finally
+        {
+            session?.Close();
+        }
+    }
+
+    public static List<BrojeviTelefonaPregled> VratiSveBrojeveTelefona(string jmbgFizickogLica)
+    {
+        List<BrojeviTelefonaPregled> brojevi = new List<BrojeviTelefonaPregled>();
+        ISession? session = null;
+        try
+        {
+            session = DataLayer.GetSession();
+            if (session != null && session.IsOpen)
+            {
+                IEnumerable<BrojeviTelefona> sviBrojevi = from broj
+                                                          in session.Query<BrojeviTelefona>()
+                                                          where broj.FizickoLice.JMBG == jmbgFizickogLica
+                                                          select broj;
+
+                foreach (BrojeviTelefona b in sviBrojevi)
+                {
+                    brojevi.Add(new BrojeviTelefonaPregled(
+                        b.BrojTelefona,
+                        b.FizickoLice.JMBG,
+                        b.FizickoLice.Ime,
+                        b.FizickoLice.Prezime
+                    ));
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.FormatExceptionMessage());
+        }
+        finally
+        {
+            session?.Close();
+        }
+
+        return brojevi;
+    }
+
+    public static BrojeviTelefonaPregled VratiBrojTelefona(string brojTelefona, string jmbgFizickogLica)
+    {
+        ISession? session = null;
+        try
+        {
+            session = DataLayer.GetSession();
+            if (session != null && session.IsOpen)
+            {
+                FizickoLice fizickoLice = session.Load<FizickoLice>(jmbgFizickogLica);
+                BrojeviTelefona brojTelefonaObj = session.Get<BrojeviTelefona>(brojTelefona);
+
+                if (brojTelefonaObj != null)
+                {
+                    return new BrojeviTelefonaPregled(
+                        brojTelefonaObj.BrojTelefona,
+                        brojTelefonaObj.FizickoLice.JMBG,
+                        brojTelefonaObj.FizickoLice.Ime,
+                        brojTelefonaObj.FizickoLice.Prezime
+                    );
+                }
+                else
+                {
+                    Console.WriteLine($"Broj telefona sa brojem {brojTelefona} i JMBG-om {jmbgFizickogLica} nije pronađen.");
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.FormatExceptionMessage());
+            return null;
+        }
+        finally
+        {
+            session?.Close();
+        }
+    }
+
+    public static void IzmeniBrojTelefona(BrojeviTelefonaBasic izmenjeniBroj, string jmbgFizickogLica)
+    {
+        ISession? session = null;
+        try
+        {
+            session = DataLayer.GetSession();
+            if (session != null && session.IsOpen)
+            {
+                FizickoLice fizickoLice = session.Load<FizickoLice>(jmbgFizickogLica);
+                BrojeviTelefona brojTelefona = session.Get<BrojeviTelefona>(izmenjeniBroj.BrojTelefona);
+
+                if (brojTelefona != null)
+                {
+                    brojTelefona.BrojTelefona = izmenjeniBroj.BrojTelefona;
+                    brojTelefona.FizickoLice = fizickoLice;
+
+                    session.Update(brojTelefona);
+                    session.Flush();
+                    Console.WriteLine($"Podaci za broj telefona {izmenjeniBroj.BrojTelefona} su izmenjeni.");
+                }
+                else
+                {
+                    Console.WriteLine($"Broj telefona sa brojem {izmenjeniBroj.BrojTelefona} i JMBG-om {jmbgFizickogLica} nije pronađen.");
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.FormatExceptionMessage());
+        }
+        finally
+        {
+            session?.Close();
+        }
+    }
+
+    public static void ObrisiBrojTelefona(string brojTelefona, string jmbgFizickogLica)
+    {
+        ISession? session = null;
+        try
+        {
+            session = DataLayer.GetSession();
+            if (session != null && session.IsOpen)
+            {
+                FizickoLice fizickoLice = session.Load<FizickoLice>(jmbgFizickogLica);
+                BrojeviTelefona brojTelefonaObj = session.Get<BrojeviTelefona>(brojTelefona);
+                if (brojTelefonaObj != null)
+                {
+                    session.Delete(brojTelefonaObj);
+                    session.Flush();
+                    Console.WriteLine($"Broj telefona {brojTelefona} za fizičko lice sa JMBG-om {jmbgFizickogLica} je obrisan.");
+                }
+                else
+                {
+                    Console.WriteLine($"Broj telefona {brojTelefona} za fizičko lice sa JMBG-om {jmbgFizickogLica} nije pronađen.");
                 }
             }
         }
