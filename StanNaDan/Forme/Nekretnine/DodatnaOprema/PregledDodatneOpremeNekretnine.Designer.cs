@@ -88,6 +88,7 @@
             btnIzmeniOpremu.TabIndex = 8;
             btnIzmeniOpremu.Text = "Izmeni Opremu";
             btnIzmeniOpremu.UseVisualStyleBackColor = true;
+            btnIzmeniOpremu.Click += btnIzmeniOpremu_Click;
             // 
             // btnObrisiOpremu
             // 

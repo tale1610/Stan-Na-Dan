@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StanNaDan.Forme.Zaposleni;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -69,6 +70,25 @@ namespace StanNaDan.Forme.Nekretnine.DodatnaOprema
         {
             DodajDodatnuOpremu formaDodajDodatnuOpremu = new DodajDodatnuOpremu(this.IdNekretnine);
             formaDodajDodatnuOpremu.ShowDialog();
+            this.popuniPodacima();
+        }
+
+        private void btnIzmeniOpremu_Click(object sender, EventArgs e)
+        {
+            if (listaDodatnihOprema.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Izaberite dodatnu opremu koju zelite da izmenite!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else if (listaDodatnihOprema.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("Mozete odabrati samo jednu dodatnu opremu za menjanje jednovremeno!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            int idOpreme = Int32.Parse(listaDodatnihOprema.SelectedItems[0].SubItems[0].Text);
+            IzmeniDodatnuOpremu formaIzmeniDodatnuOpremu = new IzmeniDodatnuOpremu(this.IdNekretnine, idOpreme);
+            formaIzmeniDodatnuOpremu.ShowDialog();
             this.popuniPodacima();
         }
     }

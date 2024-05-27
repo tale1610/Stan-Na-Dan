@@ -1229,7 +1229,7 @@ public class DTOManager
         }
     }
 
-    public static void IzmeniDodatnuOpremu(DodatnaOpremaBasic izmenjenaOprema)
+    public static void IzmeniDodatnuOpremu(DodatnaOpremaBasic izmenjenaOprema, int idNekretnine)
     {
         ISession? session = null;
         try
@@ -1240,7 +1240,7 @@ public class DTOManager
                 DodatnaOpremaId doID = new()
                 { 
                     IdOpreme = izmenjenaOprema.IdOpreme,
-                    Nekretnina = session.Get<Nekretnina>(izmenjenaOprema.Nekretnina.IdNekretnine)
+                    Nekretnina = session.Get<Nekretnina>(idNekretnine)
                 };
 
                 DodatnaOprema oprema = session.Get<DodatnaOprema>(doID);

@@ -45,6 +45,7 @@
             btnPrikaziKrevete = new Button();
             btnPrikaziSajtove = new Button();
             btnPrikaziSveSobe = new Button();
+            label1 = new Label();
             SuspendLayout();
             // 
             // listaNekretnina
@@ -176,11 +177,21 @@
             btnPrikaziSveSobe.Text = "Prikazi Sobe";
             btnPrikaziSveSobe.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(292, 446);
+            label1.Name = "label1";
+            label1.Size = new Size(791, 20);
+            label1.TabIndex = 15;
+            label1.Text = "Namerno je ovako ruzna forma da me podseca da mozda drugacije prikazem nekretnine, kao kuce i stanove odvojeno";
+            // 
             // PregledSvihNekretnina
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1395, 450);
+            ClientSize = new Size(1395, 475);
+            Controls.Add(label1);
             Controls.Add(btnPrikaziSveSobe);
             Controls.Add(btnPrikaziSajtove);
             Controls.Add(btnPrikaziKrevete);
@@ -195,6 +206,7 @@
             Text = "PregledSvihNekretnina";
             Load += PregledSvihNekretnina_Load;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -216,5 +228,6 @@
         private Button btnPrikaziKrevete;
         private Button btnPrikaziSajtove;
         private Button btnPrikaziSveSobe;
+        private Label label1;
     }
 }

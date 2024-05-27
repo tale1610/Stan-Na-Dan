@@ -32,12 +32,12 @@ namespace StanNaDan.Forme
                 this.poslovnica.RadnoVreme = tbRadnoVreme.Text;
 
                 DTOManager.dodajPoslovnicu(this.poslovnica);
-                MessageBox.Show($"Uspesno ste dodali novu poslovnicu na adresi {this.poslovnica.Adresa}!");
+                MessageBox.Show($"Uspesno ste dodali novu poslovnicu na adresi {this.poslovnica.Adresa}!","Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
             else
             {
-                MessageBox.Show("Odustali ste od dodavanja nove poslovnice!");
+                MessageBox.Show("Odustali ste od dodavanja nove poslovnice!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
         }
