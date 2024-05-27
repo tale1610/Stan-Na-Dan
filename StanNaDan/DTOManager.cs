@@ -873,7 +873,7 @@ public class DTOManager
         }
     }
 
-    public static List<NekretninaPregled> VratiSveNekretnine()
+    public static List<NekretninaPregled> VratiSveNekretnine()// dodaj prikaz da li je stan ili kuca
     {
         List<NekretninaPregled> nekretnine = new List<NekretninaPregled>();
         ISession? session = null;
@@ -1010,7 +1010,7 @@ public class DTOManager
         return nekretnine;
     }
 
-    public static void IzmeniNekretninu(FizickoLiceBasic flBasic = null, PravnoLiceBasic plBasic = null, NekretninaBasic izmenjenaNekretnina)
+    public static void IzmeniNekretninu(NekretninaBasic izmenjenaNekretnina, FizickoLiceBasic flBasic = null, PravnoLiceBasic plBasic = null)
     {
         ISession? session = null;
         try
@@ -1094,6 +1094,200 @@ public class DTOManager
                 {
                     // Prikaz poruke kada nekretnina nije pronađena može se prilagoditi tvojoj aplikaciji
                     Console.WriteLine($"Nekretnina sa ID {idNekretnine} nije pronađena.");
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.FormatExceptionMessage());
+        }
+        finally
+        {
+            session?.Close();
+        }
+    }
+
+    #endregion
+
+    #region DodatnaOprema
+
+    public static void DodajDodatnuOpremu(DodatnaOpremaBasic novaOprema, int idNekretnine)
+    {
+        ISession? session = null;
+        try
+        {
+            session = DataLayer.GetSession();
+            if (session != null && session.IsOpen)
+            {
+                Nekretnina nekretnina = session.Load<Nekretnina>(idNekretnine);
+                DodatnaOpremaId doID = new()
+                { 
+                    IdOpreme = novaOprema.IdOpreme,
+                    Nekretnina = nekretnina
+                };
+
+                DodatnaOprema dodatnaOprema = new DodatnaOprema
+                {
+                    ID = doID,
+                    TipOpreme = novaOprema.TipOpreme,
+                    BesplatnoKoriscenje = novaOprema.BesplatnoKoriscenje,
+                    CenaKoriscenja = novaOprema.CenaKoriscenja
+                };
+
+                session.Save(dodatnaOprema);
+                session.Flush();
+                Console.WriteLine("Nova dodatna oprema je uspešno dodata.");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.FormatExceptionMessage());
+        }
+        finally
+        {
+            session?.Close();
+        }
+    }
+
+    public static List<DodatnaOpremaPregled> VratiSvuDodatnuOpremuNekretnine(int idNekretnine)
+    {
+        List<DodatnaOpremaPregled> dodatnaOprema = new List<DodatnaOpremaPregled>();
+        ISession? session = null;
+        try
+        {
+            session = DataLayer.GetSession();
+            if (session != null && session.IsOpen)
+            {
+                IEnumerable<DodatnaOprema> svaOprema = from oprema 
+                                                       in session.Query<DodatnaOprema>()
+                                                       where oprema.ID.Nekretnina.IdNekretnine == idNekretnine
+                                                       select oprema;
+
+                foreach (DodatnaOprema op in svaOprema)
+                {
+                    dodatnaOprema.Add(new DodatnaOpremaPregled(
+                        op.ID.IdOpreme,
+                        op.ID.Nekretnina.IdNekretnine,
+                        op.TipOpreme,
+                        op.BesplatnoKoriscenje,
+                        op.CenaKoriscenja
+                    ));
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.FormatExceptionMessage());
+            return new List<DodatnaOpremaPregled>();
+        }
+        finally
+        {
+            session?.Close();
+        }
+
+        return dodatnaOprema;
+    }
+
+    public static DodatnaOpremaPregled VratiDodatnuOpremu(DodatnaOpremaId id)
+    {
+        ISession? session = null;
+        try
+        {
+            session = DataLayer.GetSession();
+            if (session != null && session.IsOpen)
+            {
+                DodatnaOprema oprema = session.Get<DodatnaOprema>(id);
+                if (oprema != null)
+                {
+                    return new DodatnaOpremaPregled(
+                        oprema.ID.IdOpreme,
+                        oprema.ID.Nekretnina.IdNekretnine,
+                        oprema.TipOpreme,
+                        oprema.BesplatnoKoriscenje,
+                        oprema.CenaKoriscenja
+                    );
+                }
+                else
+                {
+                    Console.WriteLine($"Dodatna oprema sa ID {id} nije pronađena.");
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.FormatExceptionMessage());
+            return null;
+        }
+        finally
+        {
+            session?.Close();
+        }
+    }
+
+    public static void IzmeniDodatnuOpremu(DodatnaOpremaBasic izmenjenaOprema)
+    {
+        ISession? session = null;
+        try
+        {
+            session = DataLayer.GetSession();
+            if (session != null && session.IsOpen)
+            {
+                DodatnaOpremaId doID = new()
+                { 
+                    IdOpreme = izmenjenaOprema.IdOpreme,
+                    Nekretnina = session.Get<Nekretnina>(izmenjenaOprema.Nekretnina.IdNekretnine)
+                };
+
+                DodatnaOprema oprema = session.Get<DodatnaOprema>(doID);
+                if (oprema != null)
+                {
+                    oprema.TipOpreme = izmenjenaOprema.TipOpreme;
+                    oprema.BesplatnoKoriscenje = izmenjenaOprema.BesplatnoKoriscenje;
+                    oprema.CenaKoriscenja = izmenjenaOprema.CenaKoriscenja;
+
+                    session.Update(oprema);
+                    session.Flush();
+                    Console.WriteLine($"Podaci za dodatnu opremu sa ID {izmenjenaOprema.ID} su izmenjeni.");
+                }
+                else
+                {
+                    Console.WriteLine($"Dodatna oprema sa ID {izmenjenaOprema.ID} nije pronađena.");
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.FormatExceptionMessage());
+        }
+        finally
+        {
+            session?.Close();
+        }
+    }
+
+    public static void ObrisiDodatnuOpremu(DodatnaOpremaId id)// proveri!
+    {
+        ISession? session = null;
+        try
+        {
+            session = DataLayer.GetSession();
+            if (session != null && session.IsOpen)
+            {
+                DodatnaOprema oprema = session.Get<DodatnaOprema>(id);
+                if (oprema != null)
+                {
+                    session.Delete(oprema);
+                    session.Flush();
+                    Console.WriteLine($"Dodatna oprema sa ID {id} je obrisana.");
+                }
+                else
+                {
+                    Console.WriteLine($"Dodatna oprema sa ID {id} nije pronađena.");
                 }
             }
         }
