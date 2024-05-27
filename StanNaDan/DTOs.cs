@@ -563,16 +563,18 @@ public class BrojeviTelefonaPregled
 
 public class DodatnaOpremaBasic
 {
-    public DodatnaOpremaId ID { get; set; }
+    public int IdOpreme { get; set; }
+    public NekretninaBasic Nekretnina { get; set; }
     public string TipOpreme { get; set; }
     public bool BesplatnoKoriscenje { get; set; }
     public double? CenaKoriscenja { get; set; }
 
     public DodatnaOpremaBasic() { }
 
-    public DodatnaOpremaBasic(DodatnaOpremaId id, string tipOpreme, bool besplatnoKoriscenje, double? cenaKoriscenja)
+    public DodatnaOpremaBasic(int id, NekretninaBasic nBasic, string tipOpreme, bool besplatnoKoriscenje, double? cenaKoriscenja)
     {
-        ID = id;
+        IdOpreme = id;
+        Nekretnina = nBasic;
         TipOpreme = tipOpreme;
         BesplatnoKoriscenje = besplatnoKoriscenje;
         CenaKoriscenja = cenaKoriscenja;
@@ -581,16 +583,18 @@ public class DodatnaOpremaBasic
 
 public class DodatnaOpremaPregled
 {
-    public DodatnaOpremaId ID { get; set; }
+    public int IdOpreme { get; set; }
+    public int IdNekretnine { get; set; }
     public string TipOpreme { get; set; }
     public bool BesplatnoKoriscenje { get; set; }
     public double? CenaKoriscenja { get; set; }
 
     public DodatnaOpremaPregled() { }
 
-    public DodatnaOpremaPregled(DodatnaOpremaId id, string tipOpreme, bool besplatnoKoriscenje, double? cenaKoriscenja)
+    public DodatnaOpremaPregled(int id, int idNekretnine, string tipOpreme, bool besplatnoKoriscenje, double? cenaKoriscenja)
     {
-        ID = id;
+        IdOpreme = id;
+        IdNekretnine = idNekretnine;
         TipOpreme = tipOpreme;
         BesplatnoKoriscenje = besplatnoKoriscenje;
         CenaKoriscenja = cenaKoriscenja;
