@@ -78,6 +78,7 @@
             btnDodajNovuOpremu.TabIndex = 7;
             btnDodajNovuOpremu.Text = "Dodaj Novu Opremu";
             btnDodajNovuOpremu.UseVisualStyleBackColor = true;
+            btnDodajNovuOpremu.Click += btnDodajNovuOpremu_Click;
             // 
             // btnIzmeniOpremu
             // 
@@ -96,6 +97,7 @@
             btnObrisiOpremu.TabIndex = 9;
             btnObrisiOpremu.Text = "Obrisi Opremu";
             btnObrisiOpremu.UseVisualStyleBackColor = true;
+            btnObrisiOpremu.Click += btnObrisiOpremu_Click;
             // 
             // PregledDodatneOpremeNekretnine
             // 

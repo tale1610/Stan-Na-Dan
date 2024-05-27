@@ -147,6 +147,7 @@
             btnPrikaziDodatnuOpremu.TabIndex = 11;
             btnPrikaziDodatnuOpremu.Text = "Prikazi Dodatnu Opremu";
             btnPrikaziDodatnuOpremu.UseVisualStyleBackColor = true;
+            btnPrikaziDodatnuOpremu.Click += btnPrikaziDodatnuOpremu_Click;
             // 
             // btnPrikaziKrevete
             // 

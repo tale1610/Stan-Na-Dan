@@ -32,16 +32,44 @@ namespace StanNaDan.Forme.Nekretnine.DodatnaOprema
                 ListViewItem item;
                 if (dop.BesplatnoKoriscenje)
                 {
-
+                    item = new ListViewItem(new string[] { dop.IdOpreme.ToString(), dop.IdNekretnine.ToString(), dop.TipOpreme, "Besplatno koriscenje" });
                 }
-                item = new ListViewItem(new string[] { dop.IdOpreme.ToString(), dop.IdNekretnine.ToString(), dop.TipOpreme, dop.CenaKoriscenja.ToString() });
+                else
+                {
+                    item = new ListViewItem(new string[] { dop.IdOpreme.ToString(), dop.IdNekretnine.ToString(), dop.TipOpreme, dop.CenaKoriscenja.ToString() });
+                }
                 listaDodatnihOprema.Items.Add(item);
             }
             listaDodatnihOprema.Refresh();
         }
         private void PregledDodatneOpremeNekretnine_Load(object sender, EventArgs e)
         {
+            popuniPodacima();
+        }
 
+        private void btnObrisiOpremu_Click(object sender, EventArgs e)
+        {
+            if (listaDodatnihOprema.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Izaberite opremu koju zelite da obrisete!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else if (listaDodatnihOprema.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("Mozete obrisati samo jednu opremu jednovremeno!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            int idOpreme = Int32.Parse(listaDodatnihOprema.SelectedItems[0].SubItems[0].Text);
+            DTOManager.ObrisiDodatnuOpremu(idOpreme, this.IdNekretnine);
+            this.popuniPodacima();
+        }
+
+        private void btnDodajNovuOpremu_Click(object sender, EventArgs e)
+        {
+            DodajDodatnuOpremu formaDodajDodatnuOpremu = new DodajDodatnuOpremu(this.IdNekretnine);
+            formaDodajDodatnuOpremu.ShowDialog();
+            this.popuniPodacima();
         }
     }
 }

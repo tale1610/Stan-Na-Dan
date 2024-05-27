@@ -1,4 +1,6 @@
-﻿using System;
+﻿using StanNaDan.Forme.Nekretnine.DodatnaOprema;
+using StanNaDan.Forme.Zaposleni;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -34,6 +36,25 @@ namespace StanNaDan.Forme.Nekretnine
         private void PregledSvihNekretnina_Load(object sender, EventArgs e)
         {
             popuniPodacima();
+        }
+
+        private void btnPrikaziDodatnuOpremu_Click(object sender, EventArgs e)
+        {
+            if (listaNekretnina.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Izaberite nekretninu ciju dodatnu opremu zelite da vidite!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else if (listaNekretnina.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("Mozete odabrati samo jednu nekretninu za prikaz jednovremeno!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            int idNekretnine = Int32.Parse(listaNekretnina.SelectedItems[0].SubItems[0].Text);
+            PregledDodatneOpremeNekretnine formaPregledDodatneOpremeNekretnine = new PregledDodatneOpremeNekretnine(idNekretnine);
+            formaPregledDodatneOpremeNekretnine.ShowDialog();
+            this.popuniPodacima();
         }
     }
 }
