@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace StanNaDan.Forme.Nekretnine.Sajtovi
+namespace StanNaDan.Forme.Zaposleni.Sefovi
 {
-    public partial class PregledIzdavanjaNekretnine : Form
+    public partial class IzmeniSefa : Form
     {
-        public PregledIzdavanjaNekretnine()
+        public IzmeniSefa()
         {
             InitializeComponent();
         }
