@@ -103,6 +103,7 @@
             btnDodajNekretninu.TabIndex = 6;
             btnDodajNekretninu.Text = "Dodaj Nekretninu";
             btnDodajNekretninu.UseVisualStyleBackColor = true;
+            btnDodajNekretninu.Click += btnDodajNekretninu_Click;
             // 
             // btnObrisiNekretninu
             // 

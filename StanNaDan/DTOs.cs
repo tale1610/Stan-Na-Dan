@@ -399,8 +399,8 @@ public class NekretninaBasic
     public bool PosedujeKuhinju { get; set; }
     //public PoslovnicaBasic Poslovnica { get; set; } // Ovo dodaj ako je neophodno, ako ne, možeš izostaviti
     //veze
-    virtual public required KvartBasic Kvart { get; set; }
-    virtual public required VlasnikBasic Vlasnik { get; set; }
+    virtual public KvartBasic Kvart { get; set; }
+    virtual public VlasnikBasic Vlasnik { get; set; }
     virtual public IList<DodatnaOprema> DodatnaOprema { get; set; } = [];
     virtual public IList<Parking> Parking { get; set; } = [];
     virtual public IList<Krevet> Kreveti { get; set; } = [];

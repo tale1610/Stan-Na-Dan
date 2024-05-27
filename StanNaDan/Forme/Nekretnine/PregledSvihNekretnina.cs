@@ -56,5 +56,12 @@ namespace StanNaDan.Forme.Nekretnine
             formaPregledDodatneOpremeNekretnine.ShowDialog();
             this.popuniPodacima();
         }
+
+        private void btnDodajNekretninu_Click(object sender, EventArgs e)
+        {
+            DodajNekretninu formaDodaj = new DodajNekretninu();
+            formaDodaj.ShowDialog();
+            this.popuniPodacima();
+        }
     }
 }
