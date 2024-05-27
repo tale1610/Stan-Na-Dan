@@ -25,12 +25,16 @@ namespace StanNaDan.Forme.Nekretnine.DodatnaOprema
         public void popuniPodacima()
         {
             listaDodatnihOprema.Items.Clear();
-            //List<DodatnaOpremaPregled> podaci = DTOManager.VratiSvuDodatnuOpremuNekretnine();
+            List<DodatnaOpremaPregled> podaci = DTOManager.VratiSvuDodatnuOpremuNekretnine(this.IdNekretnine);
 
             foreach (DodatnaOpremaPregled dop in podaci)
             {
                 ListViewItem item;
-                item = new ListViewItem(new string[] {  });
+                if (dop.BesplatnoKoriscenje)
+                {
+
+                }
+                item = new ListViewItem(new string[] { dop.IdOpreme.ToString(), dop.IdNekretnine.ToString(), dop.TipOpreme, dop.CenaKoriscenja.ToString() });
                 listaDodatnihOprema.Items.Add(item);
             }
             listaDodatnihOprema.Refresh();
