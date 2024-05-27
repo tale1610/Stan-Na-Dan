@@ -1252,11 +1252,11 @@ public class DTOManager
 
                     session.Update(oprema);
                     session.Flush();
-                    Console.WriteLine($"Podaci za dodatnu opremu sa ID {izmenjenaOprema.ID} su izmenjeni.");
+                    Console.WriteLine($"Podaci za dodatnu opremu sa ID {doID} su izmenjeni.");
                 }
                 else
                 {
-                    Console.WriteLine($"Dodatna oprema sa ID {izmenjenaOprema.ID} nije pronađena.");
+                    Console.WriteLine($"Dodatna oprema sa ID {doID} nije pronađena.");
                 }
             }
         }
