@@ -63,6 +63,7 @@
             groupBox1.TabIndex = 2;
             groupBox1.TabStop = false;
             groupBox1.Text = "Podaci o dodatnoj opremi";
+            groupBox1.Enter += groupBox1_Enter;
             // 
             // tbCenaKoriscenja
             // 
@@ -124,6 +125,7 @@
             Controls.Add(groupBox1);
             Name = "IzmeniDodatnuOpremu";
             Text = "IzmeniDodatnuOpremu";
+            Load += IzmeniDodatnuOpremu_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);

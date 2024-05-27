@@ -41,11 +41,11 @@
             kontaktOsoba = new ColumnHeader();
             emailKontaktOsobe = new ColumnHeader();
             groupBox1 = new GroupBox();
-            groupBox2 = new GroupBox();
-            btnDodajFizickoLice = new Button();
-            btnObrisiFizickoLice = new Button();
-            btnIzmeniFizickoLice = new Button();
             btnPrikaziNekretnineFizickogLica = new Button();
+            btnIzmeniFizickoLice = new Button();
+            btnObrisiFizickoLice = new Button();
+            btnDodajFizickoLice = new Button();
+            groupBox2 = new GroupBox();
             btnPrikaziNekretninePravnogLica = new Button();
             btnIzmeniPravnoLice = new Button();
             btnObrisiPravnoLice = new Button();
@@ -142,6 +142,43 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Fizicka lica";
             // 
+            // btnPrikaziNekretnineFizickogLica
+            // 
+            btnPrikaziNekretnineFizickogLica.Location = new Point(791, 186);
+            btnPrikaziNekretnineFizickogLica.Name = "btnPrikaziNekretnineFizickogLica";
+            btnPrikaziNekretnineFizickogLica.Size = new Size(231, 29);
+            btnPrikaziNekretnineFizickogLica.TabIndex = 9;
+            btnPrikaziNekretnineFizickogLica.Text = "Prikazi Nekretnine Fizickog Lica";
+            btnPrikaziNekretnineFizickogLica.UseVisualStyleBackColor = true;
+            // 
+            // btnIzmeniFizickoLice
+            // 
+            btnIzmeniFizickoLice.Location = new Point(791, 116);
+            btnIzmeniFizickoLice.Name = "btnIzmeniFizickoLice";
+            btnIzmeniFizickoLice.Size = new Size(231, 29);
+            btnIzmeniFizickoLice.TabIndex = 8;
+            btnIzmeniFizickoLice.Text = "Izmeni Fizicko Lice";
+            btnIzmeniFizickoLice.UseVisualStyleBackColor = true;
+            // 
+            // btnObrisiFizickoLice
+            // 
+            btnObrisiFizickoLice.Location = new Point(791, 71);
+            btnObrisiFizickoLice.Name = "btnObrisiFizickoLice";
+            btnObrisiFizickoLice.Size = new Size(231, 29);
+            btnObrisiFizickoLice.TabIndex = 7;
+            btnObrisiFizickoLice.Text = "Obrisi Fizicko Lice";
+            btnObrisiFizickoLice.UseVisualStyleBackColor = true;
+            // 
+            // btnDodajFizickoLice
+            // 
+            btnDodajFizickoLice.Location = new Point(791, 26);
+            btnDodajFizickoLice.Name = "btnDodajFizickoLice";
+            btnDodajFizickoLice.Size = new Size(231, 29);
+            btnDodajFizickoLice.TabIndex = 6;
+            btnDodajFizickoLice.Text = "Dodaj Fizicko Lice";
+            btnDodajFizickoLice.UseVisualStyleBackColor = true;
+            btnDodajFizickoLice.Click += btnDodajFizickoLice_Click;
+            // 
             // groupBox2
             // 
             groupBox2.Controls.Add(btnPrikaziNekretninePravnogLica);
@@ -155,43 +192,6 @@
             groupBox2.TabIndex = 8;
             groupBox2.TabStop = false;
             groupBox2.Text = "Pravna lica";
-            // 
-            // btnDodajFizickoLice
-            // 
-            btnDodajFizickoLice.Location = new Point(791, 26);
-            btnDodajFizickoLice.Name = "btnDodajFizickoLice";
-            btnDodajFizickoLice.Size = new Size(231, 29);
-            btnDodajFizickoLice.TabIndex = 6;
-            btnDodajFizickoLice.Text = "Dodaj Fizicko Lice";
-            btnDodajFizickoLice.UseVisualStyleBackColor = true;
-            btnDodajFizickoLice.Click += btnDodajFizickoLice_Click;
-            // 
-            // btnObrisiFizickoLice
-            // 
-            btnObrisiFizickoLice.Location = new Point(791, 71);
-            btnObrisiFizickoLice.Name = "btnObrisiFizickoLice";
-            btnObrisiFizickoLice.Size = new Size(231, 29);
-            btnObrisiFizickoLice.TabIndex = 7;
-            btnObrisiFizickoLice.Text = "Obrisi Fizicko Lice";
-            btnObrisiFizickoLice.UseVisualStyleBackColor = true;
-            // 
-            // btnIzmeniFizickoLice
-            // 
-            btnIzmeniFizickoLice.Location = new Point(791, 116);
-            btnIzmeniFizickoLice.Name = "btnIzmeniFizickoLice";
-            btnIzmeniFizickoLice.Size = new Size(231, 29);
-            btnIzmeniFizickoLice.TabIndex = 8;
-            btnIzmeniFizickoLice.Text = "Izmeni Fizicko Lice";
-            btnIzmeniFizickoLice.UseVisualStyleBackColor = true;
-            // 
-            // btnPrikaziNekretnineFizickogLica
-            // 
-            btnPrikaziNekretnineFizickogLica.Location = new Point(791, 186);
-            btnPrikaziNekretnineFizickogLica.Name = "btnPrikaziNekretnineFizickogLica";
-            btnPrikaziNekretnineFizickogLica.Size = new Size(231, 29);
-            btnPrikaziNekretnineFizickogLica.TabIndex = 9;
-            btnPrikaziNekretnineFizickogLica.Text = "Prikazi Nekretnine Fizickog Lica";
-            btnPrikaziNekretnineFizickogLica.UseVisualStyleBackColor = true;
             // 
             // btnPrikaziNekretninePravnogLica
             // 
@@ -228,6 +228,7 @@
             btnDodajPravnoLice.TabIndex = 10;
             btnDodajPravnoLice.Text = "Dodaj Pravno Lice";
             btnDodajPravnoLice.UseVisualStyleBackColor = true;
+            btnDodajPravnoLice.Click += btnDodajPravnoLice_Click;
             // 
             // PregledSvihVlasnika
             // 
