@@ -40,8 +40,8 @@ namespace StanNaDan.Mapiranja
 
             Map(p => p.StrucnaSprema, "STRUCNA_SPREMA");
 
-            HasMany(p => p.AngazovaniSaradnici).KeyColumn("MBR_AGENTA").Cascade.SaveUpdate().Inverse();//ovo sam stavio bez cascade.all() jer ako se obrise zaposleni iz baze podataka, sa cascade.all bi otisli i njegovi spoljni saradnici, i najmovi koje je realizovao (linija ispod), sto je besmisleno jer najmovi bi trebali da ostanu kad se obrise agent koji je realizovao najam, e sad to je malo cudno jer sta ako se onda zatrazi taj najam i pokusa da vrati tog agenta a on vise ne postoji u bazi sta onda
-            HasMany(p => p.RealizovaniNajmovi).KeyColumn("MBR_AGENTA").Cascade.SaveUpdate().Inverse();
+            HasMany(p => p.AngazovaniSaradnici).KeyColumn("MBR_AGENTA").Cascade.All().Inverse();
+            HasMany(p => p.RealizovaniNajmovi).KeyColumn("MBR_AGENTA").Cascade.All().Inverse();
         }
     }
     class RadnikMapiranja : SubclassMap<Radnik>

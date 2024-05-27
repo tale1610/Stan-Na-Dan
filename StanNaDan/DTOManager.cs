@@ -349,6 +349,7 @@ public class DTOManager
                     Poslovnica = poslovnica
                     //TODO: DODAJ ANGAZOVANE SARADNIKE I REALIZOVANE NAJMOVE
                 };
+                poslovnica.Zaposleni.Add(agent);
 
                 session.SaveOrUpdate(agent);
                 session.Flush();
@@ -423,6 +424,7 @@ public class DTOManager
                     Poslovnica = poslovnica
                 };
                 poslovnica.Sef = sef;
+                poslovnica.Zaposleni.Add(sef);
 
                 session.SaveOrUpdate(poslovnica);
                 session.Flush();
@@ -610,6 +612,7 @@ public class DTOManager
                     ID = ssID
                     //TODO: DODAJ I REALIZOVANE NAJMOVE
                 };
+                agent.AngazovaniSaradnici.Add(spoljniSaradnik);
 
                 session.SaveOrUpdate(spoljniSaradnik);
                 session.Flush();
@@ -737,6 +740,7 @@ public class DTOManager
                     PoslovnicaZaduzenaZaNjega = poslovnica
                     //TODO: DODAJ NEKRETNINE KOJE SE NALAZE NA NJEMU
                 };
+                poslovnica.Kvartovi.Add(kvart);
 
                 session.SaveOrUpdate(kvart);
                 session.Flush();
