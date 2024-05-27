@@ -31,8 +31,8 @@ namespace StanNaDan.Mapiranja
             References(p => p.Agent).Column("MBR_AGENTA").LazyLoad().Cascade.All();
 
             References(p => p.SpoljniSaradnik)
-            .Columns("MBR_AGENTA", "ID_SPOLJNJEG_RADNIKA").Not.Insert().Not.Update()//ForeignKey("FK_NAJAM_SPOLJNI")//ovde ti je potencijalno pucanje ako nesto zeza
-            .Cascade.All().NotFound.Ignore();
+            .Columns("MBR_AGENTA_ZA_SPOLJNOG", "ID_SPOLJNJEG_RADNIKA")//.Not.Insert().Not.Update()//ForeignKey("FK_NAJAM_SPOLJNI")//ovde ti je potencijalno pucanje ako nesto zeza
+            .Cascade.All();//.NotFound.Ignore();
 
             
 
