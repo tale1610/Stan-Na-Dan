@@ -40,5 +40,23 @@ namespace StanNaDan.Forme.Najam
             formaDodajNajam.ShowDialog();
             this.popuniPodacima();
         }
+
+        private void btnObrisiNajam_Click(object sender, EventArgs e)
+        {
+            if (listaNajmova.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Izaberite najam koji zelite da obrisete!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else if (listaNajmova.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("Mozete obrisati samo jedan najam jednovremeno!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            int idNajma = Int32.Parse(listaNajmova.SelectedItems[0].SubItems[0].Text);
+            DTOManager.ObrisiNajam(idNajma);
+            this.popuniPodacima();
+        }
     }
 }

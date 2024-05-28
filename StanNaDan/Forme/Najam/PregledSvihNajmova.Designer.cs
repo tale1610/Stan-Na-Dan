@@ -130,6 +130,7 @@
             btnObrisiNajam.TabIndex = 8;
             btnObrisiNajam.Text = "Obrisi Najam";
             btnObrisiNajam.UseVisualStyleBackColor = true;
+            btnObrisiNajam.Click += btnObrisiNajam_Click;
             // 
             // btnIzmeniNajam
             // 
