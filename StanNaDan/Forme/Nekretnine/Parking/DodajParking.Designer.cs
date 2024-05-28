@@ -29,7 +29,9 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
-            textBox1 = new TextBox();
+            tbIdParkinga = new TextBox();
+            label5 = new Label();
+            tbCena = new TextBox();
             chBUSastavuJavnogParkinga = new CheckBox();
             chBUSastavuNekrenine = new CheckBox();
             chBBesplatan = new CheckBox();
@@ -38,8 +40,6 @@
             label2 = new Label();
             label1 = new Label();
             btnDodajParking = new Button();
-            label5 = new Label();
-            tbIdParkinga = new TextBox();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -47,7 +47,7 @@
             // 
             groupBox1.Controls.Add(tbIdParkinga);
             groupBox1.Controls.Add(label5);
-            groupBox1.Controls.Add(textBox1);
+            groupBox1.Controls.Add(tbCena);
             groupBox1.Controls.Add(chBUSastavuJavnogParkinga);
             groupBox1.Controls.Add(chBUSastavuNekrenine);
             groupBox1.Controls.Add(chBBesplatan);
@@ -62,12 +62,28 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Podaci O Parkingu";
             // 
-            // textBox1
+            // tbIdParkinga
             // 
-            textBox1.Location = new Point(248, 116);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(115, 27);
-            textBox1.TabIndex = 7;
+            tbIdParkinga.Location = new Point(248, 34);
+            tbIdParkinga.Name = "tbIdParkinga";
+            tbIdParkinga.Size = new Size(125, 27);
+            tbIdParkinga.TabIndex = 9;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(41, 37);
+            label5.Name = "label5";
+            label5.Size = new Size(85, 20);
+            label5.TabIndex = 8;
+            label5.Text = "Id Parkinga:";
+            // 
+            // tbCena
+            // 
+            tbCena.Location = new Point(248, 116);
+            tbCena.Name = "tbCena";
+            tbCena.Size = new Size(115, 27);
+            tbCena.TabIndex = 7;
             // 
             // chBUSastavuJavnogParkinga
             // 
@@ -140,22 +156,7 @@
             btnDodajParking.TabIndex = 1;
             btnDodajParking.Text = "Dodaj Parking";
             btnDodajParking.UseVisualStyleBackColor = true;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(41, 37);
-            label5.Name = "label5";
-            label5.Size = new Size(85, 20);
-            label5.TabIndex = 8;
-            label5.Text = "Id Parkinga:";
-            // 
-            // tbIdParkinga
-            // 
-            tbIdParkinga.Location = new Point(248, 34);
-            tbIdParkinga.Name = "tbIdParkinga";
-            tbIdParkinga.Size = new Size(125, 27);
-            tbIdParkinga.TabIndex = 9;
+            btnDodajParking.Click += btnDodajParking_Click;
             // 
             // DodajParking
             // 
@@ -174,7 +175,7 @@
         #endregion
 
         private GroupBox groupBox1;
-        private TextBox textBox1;
+        private TextBox tbCena;
         private CheckBox chBUSastavuJavnogParkinga;
         private CheckBox chBUSastavuNekrenine;
         private CheckBox chBBesplatan;

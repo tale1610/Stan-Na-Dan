@@ -136,5 +136,23 @@ namespace StanNaDan.Forme.Nekretnine
             formaPregledSvihKreveta.ShowDialog();
             this.popuniPodacima();
         }
+
+        private void btnObrisiNekretninu_Click(object sender, EventArgs e)
+        {
+            if (listaNekretnina.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Izaberite nekretninu koju zelite da obrisete!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else if (listaNekretnina.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("Mozete obrisati samo jednu nekretninu jednovremeno!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            int idNekretnine = Int32.Parse(listaNekretnina.SelectedItems[0].SubItems[0].Text);
+            DTOManager.ObrisiNekretninu(idNekretnine);
+            this.popuniPodacima();
+        }
     }
 }

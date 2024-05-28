@@ -138,7 +138,7 @@ namespace StanNaDan
                 {
                     var vlasnik = session.Load<Vlasnik>(1);
                     MessageBox.Show($"Nadjen vlasnik sa id: {vlasnik.IdVlasnika}, njemu ce da se pripise ova nekretnina.");
-                    var kvart = session.Load<Kvart>(8);
+                    var kvart = session.Load<Kvart>(2);
                     Kuca nekretnina = new()
                     {
                         Ulica = "Slavonska",

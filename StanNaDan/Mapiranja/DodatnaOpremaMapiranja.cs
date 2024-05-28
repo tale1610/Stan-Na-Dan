@@ -20,8 +20,6 @@ namespace StanNaDan.Mapiranja
             Map(p => p.BesplatnoKoriscenje, "BESPLATNO_KORISCENJE").CustomType<BooleanToStringType>();
             Map(p => p.CenaKoriscenja, "CENA_KORISCENJA");
 
-            //References(p => p.Nekretnina).Column("ID_NEKRETNINE").LazyLoad(); //ako nesot jebe omoguci i ovo i u entitetu dodaj ovaj property tj skini komentar
-            //References(x => x.Nekretnina).Column("ID_NEKRETNINE").Not.Insert().Not.Update();
         }
     }
 }

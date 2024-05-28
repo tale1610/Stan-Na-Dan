@@ -1,5 +1,6 @@
 ﻿using NHibernate;
 using StanNaDan.Entiteti;
+using System;
 using System.Runtime.Intrinsics.X86;
 
 namespace StanNaDan;
@@ -955,7 +956,7 @@ public class DTOManager
 
     #region Nekretnina
 
-    public static void DodajNekretninu(int idKvarta, int idVlasnika, NekretninaBasic novaNekretnina)
+    public static void DodajNekretninu(int idKvarta, int idVlasnika, KucaBasic kucaBasic = null, StanBasic stanBasic = null)
     {
         ISession? session = null;
         try
@@ -965,30 +966,62 @@ public class DTOManager
             {
                 Kvart kvart = session.Load<Kvart>(idKvarta);
                 Vlasnik vlasnik = session.Load<Vlasnik>(idVlasnika);
-                Nekretnina nekretnina = new Nekretnina
+                if (kucaBasic != null)
                 {
-                    Ulica = novaNekretnina.Ulica,
-                    Broj = novaNekretnina.Broj,
-                    Kvadratura = novaNekretnina.Kvadratura,
-                    BrojTerasa = novaNekretnina.BrojTerasa,
-                    BrojKupatila = novaNekretnina.BrojKupatila,
-                    BrojSpavacihSoba = novaNekretnina.BrojSpavacihSoba,
-                    PosedujeTV = novaNekretnina.PosedujeTV,
-                    PosedujeInternet = novaNekretnina.PosedujeInternet,
-                    PosedujeKuhinju = novaNekretnina.PosedujeKuhinju,
-                    Kvart = kvart,
-                    Vlasnik = vlasnik
-                };
+                    Kuca kuca = new()
+                    {
+                        Ulica = kucaBasic.Ulica,
+                        Broj = kucaBasic.Broj,
+                        BrojKupatila = kucaBasic.BrojKupatila,
+                        BrojSpavacihSoba = kucaBasic.BrojSpavacihSoba,
+                        BrojTerasa = kucaBasic.BrojTerasa,
+                        Kvadratura = kucaBasic.Kvadratura,
+                        Kvart = kvart,
+                        Vlasnik = vlasnik,
+                        PosedujeInternet = kucaBasic.PosedujeInternet,
+                        PosedujeKuhinju = kucaBasic.PosedujeKuhinju,
+                        PosedujeTV = kucaBasic.PosedujeTV,
+                        Spratnos = kucaBasic.Spratnost,
+                        PosedujeDvoriste = kucaBasic.PosedujeDvoriste
+                    };
+                    
 
-                session.Save(nekretnina);
-                session.Flush();
-                // Prikaz poruke o uspešnom dodavanju može se prilagoditi tvojoj aplikaciji
-                Console.WriteLine("Nova nekretnina je uspešno dodata.");
+                    vlasnik.Nekretnine.Add(kuca);
+                    kvart.Nekretnine.Add(kuca);
+                    session.SaveOrUpdate(kuca);
+                    session.Flush();
+                    MessageBox.Show($"Nova kuca na adresi {kuca.Ulica} {kuca.Broj} je uspešno dodata.");
+                }
+                else if (stanBasic != null)
+                {
+                    Stan stan = new()
+                    {
+                        Ulica = stanBasic.Ulica,
+                        Broj = stanBasic.Broj,
+                        BrojKupatila = stanBasic.BrojKupatila,
+                        BrojSpavacihSoba = stanBasic.BrojSpavacihSoba,
+                        BrojTerasa = stanBasic.BrojTerasa,
+                        Kvadratura = stanBasic.Kvadratura,
+                        Kvart = kvart,
+                        Vlasnik = vlasnik,
+                        PosedujeInternet = stanBasic.PosedujeInternet,
+                        PosedujeKuhinju = stanBasic.PosedujeKuhinju,
+                        PosedujeTV = stanBasic.PosedujeTV,
+                        Sprat = stanBasic.Sprat,
+                        PosedujeLift = stanBasic.PosedujeLift
+                    };
+
+                    vlasnik.Nekretnine.Add(stan);
+                    kvart.Nekretnine.Add(stan);
+                    session.SaveOrUpdate(stan);
+                    session.Flush();
+                    MessageBox.Show($"Novi stan na adresi {stan.Ulica} {stan.Broj} je uspešno dodat.");
+                }
             }
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.FormatExceptionMessage());
+            MessageBox.Show(ex.FormatExceptionMessage());
         }
         finally
         {
@@ -1102,8 +1135,6 @@ public class DTOManager
 
                 foreach (StanNaDan.Entiteti.Nekretnina p in sveNekretnine)
                 {
-                    if (p.Kvart.ID == idVlasnika)
-                    {
                         nekretnine.Add(new NekretninaPregled(
                         p.IdNekretnine,
                         p.Ulica,
@@ -1117,7 +1148,7 @@ public class DTOManager
                         p.PosedujeKuhinju,
                         p.Kvart.GradskaZona,
                         p.Vlasnik.IdVlasnika));
-                    }
+                    
                 }
             }
         }
@@ -1178,18 +1209,18 @@ public class DTOManager
                     session.Update(nekretnina);
                     session.Flush();
                     // Prikaz poruke o uspešnoj izmeni može se prilagoditi tvojoj aplikaciji
-                    Console.WriteLine($"Podaci za nekretninu sa ID {izmenjenaNekretnina.IdNekretnine} su izmenjeni.");
+                    MessageBox.Show($"Podaci za nekretninu sa ID {izmenjenaNekretnina.IdNekretnine} su izmenjeni.");
                 }
                 else
                 {
                     // Prikaz poruke kada nekretnina nije pronađena može se prilagoditi tvojoj aplikaciji
-                    Console.WriteLine($"Nekretnina sa ID {izmenjenaNekretnina.IdNekretnine} nije pronađena.");
+                    MessageBox.Show($"Nekretnina sa ID {izmenjenaNekretnina.IdNekretnine} nije pronađena.");
                 }
             }
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.FormatExceptionMessage());
+            MessageBox.Show(ex.FormatExceptionMessage());
         }
         finally
         {
@@ -1210,19 +1241,17 @@ public class DTOManager
                 {
                     session.Delete(nekretnina);
                     session.Flush();
-                    // Prikaz poruke o uspešnom brisanju može se prilagoditi tvojoj aplikaciji
-                    Console.WriteLine($"Nekretnina sa ID {idNekretnine} je obrisana.");
+                    MessageBox.Show($"Nekretnina sa ID {idNekretnine} je obrisana.");
                 }
                 else
                 {
-                    // Prikaz poruke kada nekretnina nije pronađena može se prilagoditi tvojoj aplikaciji
-                    Console.WriteLine($"Nekretnina sa ID {idNekretnine} nije pronađena.");
+                    MessageBox.Show($"Nekretnina sa ID {idNekretnine} nije pronađena.");
                 }
             }
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.FormatExceptionMessage());
+            MessageBox.Show(ex.FormatExceptionMessage());
         }
         finally
         {
@@ -1256,15 +1285,16 @@ public class DTOManager
                     BesplatnoKoriscenje = novaOprema.BesplatnoKoriscenje,
                     CenaKoriscenja = novaOprema.CenaKoriscenja
                 };
+                nekretnina.DodatnaOprema.Add(dodatnaOprema);
 
                 session.Save(dodatnaOprema);
                 session.Flush();
-                Console.WriteLine("Nova dodatna oprema je uspešno dodata.");
+                MessageBox.Show("Nova dodatna oprema je uspešno dodata.");
             }
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.FormatExceptionMessage());
+            MessageBox.Show(ex.FormatExceptionMessage());
         }
         finally
         {
@@ -1332,7 +1362,7 @@ public class DTOManager
                 }
                 else
                 {
-                    Console.WriteLine($"Dodatna oprema sa ID {id} nije pronađena.");
+                    MessageBox.Show($"Dodatna oprema sa ID {id} nije pronađena.");
                     return null;
                 }
             }
@@ -1343,7 +1373,7 @@ public class DTOManager
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.FormatExceptionMessage());
+            MessageBox.Show(ex.FormatExceptionMessage());
             return null;
         }
         finally
@@ -1375,17 +1405,17 @@ public class DTOManager
 
                     session.Update(oprema);
                     session.Flush();
-                    Console.WriteLine($"Podaci za dodatnu opremu sa ID {doID} su izmenjeni.");
+                    MessageBox.Show($"Podaci za dodatnu opremu sa ID {doID} su izmenjeni.");
                 }
                 else
                 {
-                    Console.WriteLine($"Dodatna oprema sa ID {doID} nije pronađena.");
+                    MessageBox.Show($"Dodatna oprema sa ID {doID} nije pronađena.");
                 }
             }
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.FormatExceptionMessage());
+            MessageBox.Show(ex.FormatExceptionMessage());
         }
         finally
         {
@@ -1412,17 +1442,17 @@ public class DTOManager
                 {
                     session.Delete(oprema);
                     session.Flush();
-                    Console.WriteLine($"Dodatna oprema sa ID {doID} je obrisana.");
+                    MessageBox.Show($"Dodatna oprema sa ID {doID} je obrisana.");
                 }
                 else
                 {
-                    Console.WriteLine($"Dodatna oprema sa ID {doID} nije pronađena.");
+                    MessageBox.Show($"Dodatna oprema sa ID {doID} nije pronađena.");
                 }
             }
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.FormatExceptionMessage());
+            MessageBox.Show(ex.FormatExceptionMessage());
         }
         finally
         {
@@ -1454,15 +1484,16 @@ public class DTOManager
                     Tip = noviKrevet.Tip,
                     Dimenzije = noviKrevet.Dimenzije
                 };
+                nekretnina.Kreveti.Add(krevet);
 
-                session.Save(krevet);
+                session.SaveOrUpdate(krevet);
                 session.Flush();
-                Console.WriteLine("Novi krevet je uspešno dodan.");
+                MessageBox.Show("Novi krevet je uspešno dodan.");
             }
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.FormatExceptionMessage());
+            MessageBox.Show(ex.FormatExceptionMessage());
         }
         finally
         {
@@ -1497,7 +1528,7 @@ public class DTOManager
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.FormatExceptionMessage());
+            MessageBox.Show(ex.FormatExceptionMessage());
         }
         finally
         {
@@ -1533,7 +1564,7 @@ public class DTOManager
                 }
                 else
                 {
-                    Console.WriteLine($"Krevet sa ID {idKreveta} nije pronađen.");
+                    MessageBox.Show($"Krevet sa ID {idKreveta} nije pronađen.");
                     return null;
                 }
             }
@@ -1544,7 +1575,7 @@ public class DTOManager
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.FormatExceptionMessage());
+            MessageBox.Show(ex.FormatExceptionMessage());
             return null;
         }
         finally
@@ -1575,17 +1606,17 @@ public class DTOManager
 
                     session.Update(krevet);
                     session.Flush();
-                    Console.WriteLine($"Podaci za krevet sa ID {izmenjeniKrevet.IdKreveta} su izmenjeni.");
+                    MessageBox.Show($"Podaci za krevet sa ID {izmenjeniKrevet.IdKreveta} su izmenjeni.");
                 }
                 else
                 {
-                    Console.WriteLine($"Krevet sa ID {izmenjeniKrevet.IdKreveta} nije pronađen.");
+                    MessageBox.Show($"Krevet sa ID {izmenjeniKrevet.IdKreveta} nije pronađen.");
                 }
             }
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.FormatExceptionMessage());
+            MessageBox.Show(ex.FormatExceptionMessage());
         }
         finally
         {
@@ -1612,17 +1643,17 @@ public class DTOManager
                 {
                     session.Delete(krevet);
                     session.Flush();
-                    Console.WriteLine($"Krevet sa ID {kID} je obrisan.");
+                    MessageBox.Show($"Krevet sa ID {kID} je obrisan.");
                 }
                 else
                 {
-                    Console.WriteLine($"Krevet sa ID {kID} nije pronađen.");
+                    MessageBox.Show($"Krevet sa ID {kID} nije pronađen.");
                 }
             }
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.FormatExceptionMessage());
+            MessageBox.Show(ex.FormatExceptionMessage());
         }
         finally
         {
@@ -1656,15 +1687,16 @@ public class DTOManager
                     USastavuNekretnine = noviParking.USastavuNekretnine,
                     USastavuJavnogParkinga = noviParking.USastavuJavnogParkinga
                 };
+                nekretnina.Parking.Add(parking);
 
                 session.Save(parking);
                 session.Flush();
-                Console.WriteLine("Novi parking je uspešno dodat.");
+                MessageBox.Show("Novi parking je uspešno dodat.");
             }
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.FormatExceptionMessage());
+            MessageBox.Show(ex.FormatExceptionMessage());
         }
         finally
         {
@@ -1701,7 +1733,7 @@ public class DTOManager
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.FormatExceptionMessage());
+            MessageBox.Show(ex.FormatExceptionMessage());
         }
         finally
         {
@@ -1739,7 +1771,7 @@ public class DTOManager
                 }
                 else
                 {
-                    Console.WriteLine($"Parking sa ID {pID} nije pronađen.");
+                    MessageBox.Show($"Parking sa ID {pID} nije pronađen.");
                     return null;
                 }
             }
@@ -1750,7 +1782,7 @@ public class DTOManager
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.FormatExceptionMessage());
+            MessageBox.Show(ex.FormatExceptionMessage());
             return null;
         }
         finally
@@ -1783,17 +1815,17 @@ public class DTOManager
 
                     session.Update(parking);
                     session.Flush();
-                    Console.WriteLine($"Podaci za parking sa ID {pID} su izmenjeni.");
+                    MessageBox.Show($"Podaci za parking sa ID {pID} su izmenjeni.");
                 }
                 else
                 {
-                    Console.WriteLine($"Parking sa ID {pID} nije pronađen.");
+                    MessageBox.Show($"Parking sa ID {pID} nije pronađen.");
                 }
             }
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.FormatExceptionMessage());
+            MessageBox.Show(ex.FormatExceptionMessage());
         }
         finally
         {
@@ -1820,17 +1852,17 @@ public class DTOManager
                 {
                     session.Delete(parking);
                     session.Flush();
-                    Console.WriteLine($"Parking sa ID {pID} je obrisan.");
+                    MessageBox.Show($"Parking sa ID {pID} je obrisan.");
                 }
                 else
                 {
-                    Console.WriteLine($"Parking sa ID {pID} nije pronađen.");
+                    MessageBox.Show($"Parking sa ID {pID} nije pronađen.");
                 }
             }
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.FormatExceptionMessage());
+            MessageBox.Show(ex.FormatExceptionMessage());
         }
         finally
         {
@@ -1856,19 +1888,20 @@ public class DTOManager
                     Sajt = noviSajt.Sajt,
                     Nekretnina = nekretnina
                 };
-                SajtoviNekretnine sajtoviNekretnine = new()
+                SajtoviNekretnine sajtIzdavanja = new()
                 {
                     ID = sajtID
                 };
+                nekretnina.SajtoviNekretnine.Add(sajtIzdavanja);
 
-                session.Save(sajtoviNekretnine);
+                session.Save(sajtIzdavanja);
                 session.Flush();
-                Console.WriteLine("Novi sajt nekretnine je uspešno dodat.");
+                MessageBox.Show("Novi sajt nekretnine je uspešno dodat.");
             }
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.FormatExceptionMessage());
+            MessageBox.Show(ex.FormatExceptionMessage());
         }
         finally
         {
@@ -1902,7 +1935,7 @@ public class DTOManager
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.FormatExceptionMessage());
+            MessageBox.Show(ex.FormatExceptionMessage());
         }
         finally
         {
@@ -1937,7 +1970,7 @@ public class DTOManager
                 }
                 else
                 {
-                    Console.WriteLine($"Sajt nekretnine sa sajtom {sajt} i ID-om nekretnine {idNekretnine} nije pronađen.");
+                    MessageBox.Show($"Sajt nekretnine sa sajtom {sajt} i ID-om nekretnine {idNekretnine} nije pronađen.");
                     return null;
                 }
             }
@@ -1948,7 +1981,7 @@ public class DTOManager
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.FormatExceptionMessage());
+            MessageBox.Show(ex.FormatExceptionMessage());
             return null;
         }
         finally
@@ -1980,17 +2013,17 @@ public class DTOManager
 
                     session.Update(sajtNekretnine);
                     session.Flush();
-                    Console.WriteLine($"Podaci za sajt nekretnine sa sajtom {izmenjeniSajt.Sajt} su izmenjeni.");
+                    MessageBox.Show($"Podaci za sajt nekretnine sa sajtom {izmenjeniSajt.Sajt} su izmenjeni.");
                 }
                 else
                 {
-                    Console.WriteLine($"Sajt nekretnine sa sajtom {izmenjeniSajt.Sajt} i ID-om nekretnine {idNekretnine} nije pronađen.");
+                    MessageBox.Show($"Sajt nekretnine sa sajtom {izmenjeniSajt.Sajt} i ID-om nekretnine {idNekretnine} nije pronađen.");
                 }
             }
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.FormatExceptionMessage());
+            MessageBox.Show(ex.FormatExceptionMessage());
         }
         finally
         {
@@ -2017,17 +2050,17 @@ public class DTOManager
                 {
                     session.Delete(sajtNekretnine);
                     session.Flush();
-                    Console.WriteLine($"Sajt nekretnine sa sajtom {sajt} i ID-om nekretnine {idNekretnine} je obrisan.");
+                    MessageBox.Show($"Sajt nekretnine sa sajtom {sajt} i ID-om nekretnine {idNekretnine} je obrisan.");
                 }
                 else
                 {
-                    Console.WriteLine($"Sajt nekretnine sa sajtom {sajt} i ID-om nekretnine {idNekretnine} nije pronađen.");
+                    MessageBox.Show($"Sajt nekretnine sa sajtom {sajt} i ID-om nekretnine {idNekretnine} nije pronađen.");
                 }
             }
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.FormatExceptionMessage());
+            MessageBox.Show(ex.FormatExceptionMessage());
         }
         finally
         {
@@ -2056,12 +2089,12 @@ public class DTOManager
 
                 session.Save(brojTelefona);
                 session.Flush();
-                Console.WriteLine("Novi broj telefona je uspešno dodat.");
+                MessageBox.Show("Novi broj telefona je uspešno dodat.");
             }
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.FormatExceptionMessage());
+            MessageBox.Show(ex.FormatExceptionMessage());
         }
         finally
         {
@@ -2096,7 +2129,7 @@ public class DTOManager
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.FormatExceptionMessage());
+            MessageBox.Show(ex.FormatExceptionMessage());
         }
         finally
         {
@@ -2128,7 +2161,7 @@ public class DTOManager
                 }
                 else
                 {
-                    Console.WriteLine($"Broj telefona sa brojem {brojTelefona} i JMBG-om {jmbgFizickogLica} nije pronađen.");
+                    MessageBox.Show($"Broj telefona sa brojem {brojTelefona} i JMBG-om {jmbgFizickogLica} nije pronađen.");
                     return null;
                 }
             }
@@ -2139,7 +2172,7 @@ public class DTOManager
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.FormatExceptionMessage());
+            MessageBox.Show(ex.FormatExceptionMessage());
             return null;
         }
         finally
@@ -2166,17 +2199,17 @@ public class DTOManager
 
                     session.Update(brojTelefona);
                     session.Flush();
-                    Console.WriteLine($"Podaci za broj telefona {izmenjeniBroj.BrojTelefona} su izmenjeni.");
+                    MessageBox.Show($"Podaci za broj telefona {izmenjeniBroj.BrojTelefona} su izmenjeni.");
                 }
                 else
                 {
-                    Console.WriteLine($"Broj telefona sa brojem {izmenjeniBroj.BrojTelefona} i JMBG-om {jmbgFizickogLica} nije pronađen.");
+                    MessageBox.Show($"Broj telefona sa brojem {izmenjeniBroj.BrojTelefona} i JMBG-om {jmbgFizickogLica} nije pronađen.");
                 }
             }
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.FormatExceptionMessage());
+            MessageBox.Show(ex.FormatExceptionMessage());
         }
         finally
         {
@@ -2198,17 +2231,17 @@ public class DTOManager
                 {
                     session.Delete(brojTelefonaObj);
                     session.Flush();
-                    Console.WriteLine($"Broj telefona {brojTelefona} za fizičko lice sa JMBG-om {jmbgFizickogLica} je obrisan.");
+                    MessageBox.Show($"Broj telefona {brojTelefona} za fizičko lice sa JMBG-om {jmbgFizickogLica} je obrisan.");
                 }
                 else
                 {
-                    Console.WriteLine($"Broj telefona {brojTelefona} za fizičko lice sa JMBG-om {jmbgFizickogLica} nije pronađen.");
+                    MessageBox.Show($"Broj telefona {brojTelefona} za fizičko lice sa JMBG-om {jmbgFizickogLica} nije pronađen.");
                 }
             }
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.FormatExceptionMessage());
+            MessageBox.Show(ex.FormatExceptionMessage());
         }
         finally
         {
@@ -2237,12 +2270,12 @@ public class DTOManager
 
                 session.Save(telefon);
                 session.Flush();
-                Console.WriteLine("Novi telefon kontakt osobe je uspešno dodat.");
+                MessageBox.Show("Novi telefon kontakt osobe je uspešno dodat.");
             }
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.FormatExceptionMessage());
+            MessageBox.Show(ex.FormatExceptionMessage());
         }
         finally
         {
@@ -2277,7 +2310,7 @@ public class DTOManager
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.FormatExceptionMessage());
+            MessageBox.Show(ex.FormatExceptionMessage());
         }
         finally
         {
@@ -2308,7 +2341,7 @@ public class DTOManager
                 }
                 else
                 {
-                    Console.WriteLine($"Telefon kontakt osobe sa brojem {brojTelefona} i PIB-om {pibPravnogLica} nije pronađen.");
+                    MessageBox.Show($"Telefon kontakt osobe sa brojem {brojTelefona} i PIB-om {pibPravnogLica} nije pronađen.");
                     return null;
                 }
             }
@@ -2319,7 +2352,7 @@ public class DTOManager
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.FormatExceptionMessage());
+            MessageBox.Show(ex.FormatExceptionMessage());
             return null;
         }
         finally
@@ -2345,17 +2378,17 @@ public class DTOManager
 
                     session.Update(telefon);
                     session.Flush();
-                    Console.WriteLine($"Podaci za telefon kontakt osobe {izmenjeniTelefon.BrojTelefona} su izmenjeni.");
+                    MessageBox.Show($"Podaci za telefon kontakt osobe {izmenjeniTelefon.BrojTelefona} su izmenjeni.");
                 }
                 else
                 {
-                    Console.WriteLine($"Telefon kontakt osobe sa brojem {izmenjeniTelefon.BrojTelefona} i PIB-om {pibPravnogLica} nije pronađen.");
+                    MessageBox.Show($"Telefon kontakt osobe sa brojem {izmenjeniTelefon.BrojTelefona} i PIB-om {pibPravnogLica} nije pronađen.");
                 }
             }
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.FormatExceptionMessage());
+            MessageBox.Show(ex.FormatExceptionMessage());
         }
         finally
         {
@@ -2377,17 +2410,17 @@ public class DTOManager
                 {
                     session.Delete(telefon);
                     session.Flush();
-                    Console.WriteLine($"Telefon kontakt osobe {brojTelefona} za pravno lice sa PIB-om {pibPravnogLica} je obrisan.");
+                    MessageBox.Show($"Telefon kontakt osobe {brojTelefona} za pravno lice sa PIB-om {pibPravnogLica} je obrisan.");
                 }
                 else
                 {
-                    Console.WriteLine($"Telefon kontakt osobe {brojTelefona} za pravno lice sa PIB-om {pibPravnogLica} nije pronađen.");
+                    MessageBox.Show($"Telefon kontakt osobe {brojTelefona} za pravno lice sa PIB-om {pibPravnogLica} nije pronađen.");
                 }
             }
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.FormatExceptionMessage());
+            MessageBox.Show(ex.FormatExceptionMessage());
         }
         finally
         {
@@ -2396,7 +2429,7 @@ public class DTOManager
     }
 
     #endregion
-
+    /*
     #region Soba
 
     public static void DodajSobu(SobaBasic novaSoba, int idNekretnine)
@@ -2420,12 +2453,12 @@ public class DTOManager
 
                 session.Save(soba);
                 session.Flush();
-                Console.WriteLine("Nova soba je uspešno dodata.");
+                MessageBox.Show("Nova soba je uspešno dodata.");
             }
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.FormatExceptionMessage());
+            MessageBox.Show(ex.FormatExceptionMessage());
         }
         finally
         {
@@ -2458,7 +2491,7 @@ public class DTOManager
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.FormatExceptionMessage());
+            MessageBox.Show(ex.FormatExceptionMessage());
         }
         finally
         {
@@ -2492,7 +2525,7 @@ public class DTOManager
                 }
                 else
                 {
-                    Console.WriteLine($"Soba sa ID {sID} nije pronađena.");
+                    MessageBox.Show($"Soba sa ID {sID} nije pronađena.");
                     return null;
                 }
             }
@@ -2503,7 +2536,7 @@ public class DTOManager
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.FormatExceptionMessage());
+            MessageBox.Show(ex.FormatExceptionMessage());
             return null;
         }
         finally
@@ -2533,17 +2566,17 @@ public class DTOManager
 
                     session.Update(soba);
                     session.Flush();
-                    Console.WriteLine($"Podaci za sobu sa ID {sID} su izmenjeni.");
+                    MessageBox.Show($"Podaci za sobu sa ID {sID} su izmenjeni.");
                 }
                 else
                 {
-                    Console.WriteLine($"Soba sa ID {sID} nije pronađena.");
+                    MessageBox.Show($"Soba sa ID {sID} nije pronađena.");
                 }
             }
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.FormatExceptionMessage());
+            MessageBox.Show(ex.FormatExceptionMessage());
         }
         finally
         {
@@ -2570,17 +2603,17 @@ public class DTOManager
                 {
                     session.Delete(soba);
                     session.Flush();
-                    Console.WriteLine($"Soba sa ID {sID} je obrisana.");
+                    MessageBox.Show($"Soba sa ID {sID} je obrisana.");
                 }
                 else
                 {
-                    Console.WriteLine($"Soba sa ID {sID} nije pronađena.");
+                    MessageBox.Show($"Soba sa ID {sID} nije pronađena.");
                 }
             }
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.FormatExceptionMessage());
+            MessageBox.Show(ex.FormatExceptionMessage());
         }
         finally
         {
@@ -2613,12 +2646,12 @@ public class DTOManager
 
                 session.Save(zajednickaProstorija);
                 session.Flush();
-                Console.WriteLine("Nova zajednička prostorija je uspešno dodata.");
+                MessageBox.Show("Nova zajednička prostorija je uspešno dodata.");
             }
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.FormatExceptionMessage());
+            MessageBox.Show(ex.FormatExceptionMessage());
         }
         finally
         {
@@ -2652,7 +2685,7 @@ public class DTOManager
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.FormatExceptionMessage());
+            MessageBox.Show(ex.FormatExceptionMessage());
         }
         finally
         {
@@ -2687,7 +2720,7 @@ public class DTOManager
                 }
                 else
                 {
-                    Console.WriteLine($"Zajednička prostorija sa ID {zpID} nije pronađena.");
+                    MessageBox.Show($"Zajednička prostorija sa ID {zpID} nije pronađena.");
                     return null;
                 }
             }
@@ -2698,7 +2731,7 @@ public class DTOManager
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.FormatExceptionMessage());
+            MessageBox.Show(ex.FormatExceptionMessage());
             return null;
         }
         finally
@@ -2728,17 +2761,17 @@ public class DTOManager
 
                     session.Update(prostorija);
                     session.Flush();
-                    Console.WriteLine($"Podaci za zajedničku prostoriju sa ID {zpID} su izmenjeni.");
+                    MessageBox.Show($"Podaci za zajedničku prostoriju sa ID {zpID} su izmenjeni.");
                 }
                 else
                 {
-                    Console.WriteLine($"Zajednička prostorija sa ID {zpID} nije pronađena.");
+                    MessageBox.Show($"Zajednička prostorija sa ID {zpID} nije pronađena.");
                 }
             }
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.FormatExceptionMessage());
+            MessageBox.Show(ex.FormatExceptionMessage());
         }
         finally
         {
@@ -2765,17 +2798,17 @@ public class DTOManager
                 {
                     session.Delete(prostorija);
                     session.Flush();
-                    Console.WriteLine($"Zajednička prostorija sa ID {zpID} je obrisana.");
+                    MessageBox.Show($"Zajednička prostorija sa ID {zpID} je obrisana.");
                 }
                 else
                 {
-                    Console.WriteLine($"Zajednička prostorija sa ID {zpID} nije pronađena.");
+                    MessageBox.Show($"Zajednička prostorija sa ID {zpID} nije pronađena.");
                 }
             }
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.FormatExceptionMessage());
+            MessageBox.Show(ex.FormatExceptionMessage());
         }
         finally
         {
@@ -2817,12 +2850,12 @@ public class DTOManager
 
                 session.Save(najam);
                 session.Flush();
-                Console.WriteLine("Novi najam je uspešno dodat.");
+                MessageBox.Show("Novi najam je uspešno dodat.");
             }
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.FormatExceptionMessage());
+            MessageBox.Show(ex.FormatExceptionMessage());
         }
         finally
         {
@@ -2861,7 +2894,7 @@ public class DTOManager
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.FormatExceptionMessage());
+            MessageBox.Show(ex.FormatExceptionMessage());
         }
         finally
         {
@@ -2897,7 +2930,7 @@ public class DTOManager
                 }
                 else
                 {
-                    Console.WriteLine($"Najam sa ID {idNajma} nije pronađen.");
+                    MessageBox.Show($"Najam sa ID {idNajma} nije pronađen.");
                     return null;
                 }
             }
@@ -2908,7 +2941,7 @@ public class DTOManager
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.FormatExceptionMessage());
+            MessageBox.Show(ex.FormatExceptionMessage());
             return null;
         }
         finally
@@ -2940,17 +2973,17 @@ public class DTOManager
 
                     session.Update(najam);
                     session.Flush();
-                    Console.WriteLine($"Podaci za najam sa ID {izmenjenNajam.IdNajma} su izmenjeni.");
+                    MessageBox.Show($"Podaci za najam sa ID {izmenjenNajam.IdNajma} su izmenjeni.");
                 }
                 else
                 {
-                    Console.WriteLine($"Najam sa ID {izmenjenNajam.IdNajma} nije pronađen.");
+                    MessageBox.Show($"Najam sa ID {izmenjenNajam.IdNajma} nije pronađen.");
                 }
             }
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.FormatExceptionMessage());
+            MessageBox.Show(ex.FormatExceptionMessage());
         }
         finally
         {
@@ -2971,17 +3004,17 @@ public class DTOManager
                 {
                     session.Delete(najam);
                     session.Flush();
-                    Console.WriteLine($"Najam sa ID {idNajma} je obrisan.");
+                    MessageBox.Show($"Najam sa ID {idNajma} je obrisan.");
                 }
                 else
                 {
-                    Console.WriteLine($"Najam sa ID {idNajma} nije pronađen.");
+                    MessageBox.Show($"Najam sa ID {idNajma} nije pronađen.");
                 }
             }
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.FormatExceptionMessage());
+            MessageBox.Show(ex.FormatExceptionMessage());
         }
         finally
         {
@@ -2990,5 +3023,5 @@ public class DTOManager
     }
 
     #endregion
-
+    */
 }

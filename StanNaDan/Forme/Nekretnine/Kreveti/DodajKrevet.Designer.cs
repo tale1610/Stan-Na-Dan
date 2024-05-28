@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
-            tbIdKreveta = new TextBox();
-            tbTip = new TextBox();
             tbDimenzije = new TextBox();
+            tbTip = new TextBox();
+            tbIdKreveta = new TextBox();
+            label3 = new Label();
+            label2 = new Label();
+            label1 = new Label();
             btnDodajKrevet = new Button();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -54,23 +54,26 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Podaci O Krevetu";
             // 
-            // label1
+            // tbDimenzije
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(34, 51);
-            label1.Name = "label1";
-            label1.Size = new Size(79, 20);
-            label1.TabIndex = 0;
-            label1.Text = "Id Kreveta:";
+            tbDimenzije.Location = new Point(155, 132);
+            tbDimenzije.Name = "tbDimenzije";
+            tbDimenzije.Size = new Size(125, 27);
+            tbDimenzije.TabIndex = 5;
             // 
-            // label2
+            // tbTip
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(34, 91);
-            label2.Name = "label2";
-            label2.Size = new Size(33, 20);
-            label2.TabIndex = 1;
-            label2.Text = "Tip:";
+            tbTip.Location = new Point(155, 88);
+            tbTip.Name = "tbTip";
+            tbTip.Size = new Size(125, 27);
+            tbTip.TabIndex = 4;
+            // 
+            // tbIdKreveta
+            // 
+            tbIdKreveta.Location = new Point(155, 48);
+            tbIdKreveta.Name = "tbIdKreveta";
+            tbIdKreveta.Size = new Size(125, 27);
+            tbIdKreveta.TabIndex = 3;
             // 
             // label3
             // 
@@ -81,26 +84,23 @@
             label3.TabIndex = 2;
             label3.Text = "Dimenzije:";
             // 
-            // tbIdKreveta
+            // label2
             // 
-            tbIdKreveta.Location = new Point(155, 48);
-            tbIdKreveta.Name = "tbIdKreveta";
-            tbIdKreveta.Size = new Size(125, 27);
-            tbIdKreveta.TabIndex = 3;
+            label2.AutoSize = true;
+            label2.Location = new Point(34, 91);
+            label2.Name = "label2";
+            label2.Size = new Size(33, 20);
+            label2.TabIndex = 1;
+            label2.Text = "Tip:";
             // 
-            // tbTip
+            // label1
             // 
-            tbTip.Location = new Point(155, 88);
-            tbTip.Name = "tbTip";
-            tbTip.Size = new Size(125, 27);
-            tbTip.TabIndex = 4;
-            // 
-            // tbDimenzije
-            // 
-            tbDimenzije.Location = new Point(155, 132);
-            tbDimenzije.Name = "tbDimenzije";
-            tbDimenzije.Size = new Size(125, 27);
-            tbDimenzije.TabIndex = 5;
+            label1.AutoSize = true;
+            label1.Location = new Point(34, 51);
+            label1.Name = "label1";
+            label1.Size = new Size(79, 20);
+            label1.TabIndex = 0;
+            label1.Text = "Id Kreveta:";
             // 
             // btnDodajKrevet
             // 
@@ -110,6 +110,7 @@
             btnDodajKrevet.TabIndex = 1;
             btnDodajKrevet.Text = "Dodaj Krevet";
             btnDodajKrevet.UseVisualStyleBackColor = true;
+            btnDodajKrevet.Click += btnDodajKrevet_Click;
             // 
             // DodajKrevet
             // 

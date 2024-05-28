@@ -78,27 +78,29 @@
             // 
             // btnDodajParking
             // 
-            btnDodajParking.Location = new Point(677, 12);
+            btnDodajParking.Location = new Point(625, 12);
             btnDodajParking.Name = "btnDodajParking";
-            btnDodajParking.Size = new Size(134, 29);
+            btnDodajParking.Size = new Size(209, 29);
             btnDodajParking.TabIndex = 8;
             btnDodajParking.Text = "Dodaj Parking";
             btnDodajParking.UseVisualStyleBackColor = true;
+            btnDodajParking.Click += btnDodajParking_Click;
             // 
             // btnObrisiParking
             // 
-            btnObrisiParking.Location = new Point(677, 65);
+            btnObrisiParking.Location = new Point(625, 65);
             btnObrisiParking.Name = "btnObrisiParking";
-            btnObrisiParking.Size = new Size(134, 29);
+            btnObrisiParking.Size = new Size(209, 29);
             btnObrisiParking.TabIndex = 9;
             btnObrisiParking.Text = "Obrisi Parking";
             btnObrisiParking.UseVisualStyleBackColor = true;
+            btnObrisiParking.Click += btnObrisiParking_Click;
             // 
             // btnIzmeniParking
             // 
-            btnIzmeniParking.Location = new Point(677, 117);
+            btnIzmeniParking.Location = new Point(625, 117);
             btnIzmeniParking.Name = "btnIzmeniParking";
-            btnIzmeniParking.Size = new Size(134, 31);
+            btnIzmeniParking.Size = new Size(209, 31);
             btnIzmeniParking.TabIndex = 10;
             btnIzmeniParking.Text = "Izmeni Parking";
             btnIzmeniParking.UseVisualStyleBackColor = true;

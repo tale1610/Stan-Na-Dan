@@ -41,5 +41,23 @@ namespace StanNaDan.Forme.Nekretnine.Sajtovi
         {
             popuniPodacima();
         }
+
+        private void btnObrisiSajt_Click(object sender, EventArgs e)
+        {
+            if (listaSajtova.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Izaberite sajt koji zelite da obrisete!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else if (listaSajtova.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("Mozete obrisati samo jedan sajt jednovremeno!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            string sajt = listaSajtova.SelectedItems[0].SubItems[2].Text;
+            DTOManager.ObrisiSajtNekretnine(sajt, this.IdNekretnine);
+            this.popuniPodacima();
+        }
     }
 }

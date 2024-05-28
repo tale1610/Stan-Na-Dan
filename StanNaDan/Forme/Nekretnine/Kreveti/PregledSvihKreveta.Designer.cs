@@ -66,27 +66,29 @@
             // 
             // btnDodajKrevet
             // 
-            btnDodajKrevet.Location = new Point(555, 12);
+            btnDodajKrevet.Location = new Point(508, 12);
             btnDodajKrevet.Name = "btnDodajKrevet";
-            btnDodajKrevet.Size = new Size(116, 29);
+            btnDodajKrevet.Size = new Size(199, 29);
             btnDodajKrevet.TabIndex = 9;
             btnDodajKrevet.Text = "Dodaj Krevet";
             btnDodajKrevet.UseVisualStyleBackColor = true;
+            btnDodajKrevet.Click += btnDodajKrevet_Click;
             // 
             // btnObrisiKrevet
             // 
-            btnObrisiKrevet.Location = new Point(557, 58);
+            btnObrisiKrevet.Location = new Point(510, 129);
             btnObrisiKrevet.Name = "btnObrisiKrevet";
-            btnObrisiKrevet.Size = new Size(114, 29);
+            btnObrisiKrevet.Size = new Size(195, 29);
             btnObrisiKrevet.TabIndex = 10;
             btnObrisiKrevet.Text = "Obrisi Krevet";
             btnObrisiKrevet.UseVisualStyleBackColor = true;
+            btnObrisiKrevet.Click += btnObrisiKrevet_Click;
             // 
             // btnIzmeniKrevet
             // 
-            btnIzmeniKrevet.Location = new Point(555, 104);
+            btnIzmeniKrevet.Location = new Point(508, 69);
             btnIzmeniKrevet.Name = "btnIzmeniKrevet";
-            btnIzmeniKrevet.Size = new Size(116, 31);
+            btnIzmeniKrevet.Size = new Size(197, 31);
             btnIzmeniKrevet.TabIndex = 11;
             btnIzmeniKrevet.Text = "Izmeni Krevet";
             btnIzmeniKrevet.UseVisualStyleBackColor = true;
@@ -95,7 +97,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(717, 450);
             Controls.Add(btnIzmeniKrevet);
             Controls.Add(btnObrisiKrevet);
             Controls.Add(btnDodajKrevet);

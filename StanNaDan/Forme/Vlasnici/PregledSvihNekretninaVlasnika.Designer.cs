@@ -1,6 +1,6 @@
-﻿namespace StanNaDan.Forme.Vlasnici.FizickaLica
+﻿namespace StanNaDan.Forme.Vlasnici
 {
-    partial class PrikaziNekretnineFizickogLica
+    partial class PregledSvihNekretninaVlasnika
     {
         /// <summary>
         /// Required designer variable.
@@ -36,6 +36,9 @@
             BrSpavacih = new ColumnHeader();
             brKupatila = new ColumnHeader();
             brTerasa = new ColumnHeader();
+            btnDodajNekretninu = new Button();
+            btnIzmeniNekretninu = new Button();
+            btnObrisiNekretninu = new Button();
             SuspendLayout();
             // 
             // listaNekretnina
@@ -45,8 +48,8 @@
             listaNekretnina.GridLines = true;
             listaNekretnina.Location = new Point(12, 12);
             listaNekretnina.Name = "listaNekretnina";
-            listaNekretnina.Size = new Size(804, 408);
-            listaNekretnina.TabIndex = 6;
+            listaNekretnina.Size = new Size(804, 358);
+            listaNekretnina.TabIndex = 7;
             listaNekretnina.UseCompatibleStateImageBehavior = false;
             listaNekretnina.View = View.Details;
             // 
@@ -85,14 +88,46 @@
             brTerasa.Text = "Broj Terasa";
             brTerasa.Width = 100;
             // 
-            // PrikaziNekretnineFizickogLica
+            // btnDodajNekretninu
+            // 
+            btnDodajNekretninu.Location = new Point(831, 12);
+            btnDodajNekretninu.Name = "btnDodajNekretninu";
+            btnDodajNekretninu.Size = new Size(201, 29);
+            btnDodajNekretninu.TabIndex = 8;
+            btnDodajNekretninu.Text = "Dodaj Novu Nekretninu";
+            btnDodajNekretninu.UseVisualStyleBackColor = true;
+            btnDodajNekretninu.Click += btnDodajNekretninu_Click;
+            // 
+            // btnIzmeniNekretninu
+            // 
+            btnIzmeniNekretninu.Location = new Point(831, 63);
+            btnIzmeniNekretninu.Name = "btnIzmeniNekretninu";
+            btnIzmeniNekretninu.Size = new Size(201, 29);
+            btnIzmeniNekretninu.TabIndex = 9;
+            btnIzmeniNekretninu.Text = "Izmeni Nekretninu";
+            btnIzmeniNekretninu.UseVisualStyleBackColor = true;
+            // 
+            // btnObrisiNekretninu
+            // 
+            btnObrisiNekretninu.Location = new Point(831, 117);
+            btnObrisiNekretninu.Name = "btnObrisiNekretninu";
+            btnObrisiNekretninu.Size = new Size(201, 29);
+            btnObrisiNekretninu.TabIndex = 10;
+            btnObrisiNekretninu.Text = "Obrisi Nekretninu";
+            btnObrisiNekretninu.UseVisualStyleBackColor = true;
+            // 
+            // PregledSvihNekretninaVlasnika
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1044, 450);
+            ClientSize = new Size(1044, 391);
+            Controls.Add(btnObrisiNekretninu);
+            Controls.Add(btnIzmeniNekretninu);
+            Controls.Add(btnDodajNekretninu);
             Controls.Add(listaNekretnina);
-            Name = "PrikaziNekretnineFizickogLica";
-            Text = "PrikaziNekretnineFizickogLica";
+            Name = "PregledSvihNekretninaVlasnika";
+            Text = "PrikaziSveNekretnineVlasnika";
+            Load += PrikaziSveNekretnineVlasnika_Load;
             ResumeLayout(false);
         }
 
@@ -106,5 +141,8 @@
         private ColumnHeader BrSpavacih;
         private ColumnHeader brKupatila;
         private ColumnHeader brTerasa;
+        private Button btnDodajNekretninu;
+        private Button btnIzmeniNekretninu;
+        private Button btnObrisiNekretninu;
     }
 }

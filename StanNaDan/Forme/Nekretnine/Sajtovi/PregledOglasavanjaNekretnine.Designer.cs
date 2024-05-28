@@ -90,6 +90,7 @@
             btnObrisiSajt.TabIndex = 4;
             btnObrisiSajt.Text = "Obrisi Sajt";
             btnObrisiSajt.UseVisualStyleBackColor = true;
+            btnObrisiSajt.Click += btnObrisiSajt_Click;
             // 
             // PregledOglasavanjaNekretnine
             // 

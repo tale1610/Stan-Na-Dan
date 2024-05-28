@@ -34,12 +34,14 @@
             prezime = new ColumnHeader();
             mestoStanovanja = new ColumnHeader();
             email = new ColumnHeader();
+            idVlasnika = new ColumnHeader();
             listaPravnihLica = new ListView();
             pib = new ColumnHeader();
             naziv = new ColumnHeader();
             adresaSedista = new ColumnHeader();
             kontaktOsoba = new ColumnHeader();
             emailKontaktOsobe = new ColumnHeader();
+            idVl = new ColumnHeader();
             groupBox1 = new GroupBox();
             btnPrikaziNekretnineFizickogLica = new Button();
             btnIzmeniFizickoLice = new Button();
@@ -56,7 +58,7 @@
             // 
             // listaFizickihLica
             // 
-            listaFizickihLica.Columns.AddRange(new ColumnHeader[] { jmbg, ime, prezime, mestoStanovanja, email });
+            listaFizickihLica.Columns.AddRange(new ColumnHeader[] { jmbg, ime, prezime, mestoStanovanja, email, idVlasnika });
             listaFizickihLica.FullRowSelect = true;
             listaFizickihLica.GridLines = true;
             listaFizickihLica.Location = new Point(6, 26);
@@ -91,9 +93,14 @@
             email.Text = "Email";
             email.Width = 200;
             // 
+            // idVlasnika
+            // 
+            idVlasnika.Text = "ID Vlasnika";
+            idVlasnika.Width = 80;
+            // 
             // listaPravnihLica
             // 
-            listaPravnihLica.Columns.AddRange(new ColumnHeader[] { pib, naziv, adresaSedista, kontaktOsoba, emailKontaktOsobe });
+            listaPravnihLica.Columns.AddRange(new ColumnHeader[] { pib, naziv, adresaSedista, kontaktOsoba, emailKontaktOsobe, idVl });
             listaPravnihLica.FullRowSelect = true;
             listaPravnihLica.GridLines = true;
             listaPravnihLica.Location = new Point(6, 26);
@@ -128,6 +135,11 @@
             emailKontaktOsobe.Text = "Email";
             emailKontaktOsobe.Width = 200;
             // 
+            // idVl
+            // 
+            idVl.Text = "ID Vlasnika";
+            idVl.Width = 80;
+            // 
             // groupBox1
             // 
             groupBox1.Controls.Add(btnPrikaziNekretnineFizickogLica);
@@ -141,6 +153,7 @@
             groupBox1.TabIndex = 7;
             groupBox1.TabStop = false;
             groupBox1.Text = "Fizicka lica";
+            groupBox1.Enter += groupBox1_Enter;
             // 
             // btnPrikaziNekretnineFizickogLica
             // 
@@ -150,6 +163,7 @@
             btnPrikaziNekretnineFizickogLica.TabIndex = 9;
             btnPrikaziNekretnineFizickogLica.Text = "Prikazi Nekretnine Fizickog Lica";
             btnPrikaziNekretnineFizickogLica.UseVisualStyleBackColor = true;
+            btnPrikaziNekretnineFizickogLica.Click += btnPrikaziNekretnineFizickogLica_Click;
             // 
             // btnIzmeniFizickoLice
             // 
@@ -202,6 +216,7 @@
             btnPrikaziNekretninePravnogLica.TabIndex = 13;
             btnPrikaziNekretninePravnogLica.Text = "Prikazi Nekretnine Pravnog Lica";
             btnPrikaziNekretninePravnogLica.UseVisualStyleBackColor = true;
+            btnPrikaziNekretninePravnogLica.Click += btnPrikaziNekretninePravnogLica_Click;
             // 
             // btnIzmeniPravnoLice
             // 
@@ -271,5 +286,7 @@
         private Button btnIzmeniPravnoLice;
         private Button btnObrisiPravnoLice;
         private Button btnDodajPravnoLice;
+        private ColumnHeader idVlasnika;
+        private ColumnHeader idVl;
     }
 }

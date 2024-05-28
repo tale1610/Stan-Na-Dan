@@ -26,9 +26,9 @@ namespace StanNaDan.Mapiranja
             Map(p => p.Ulica, "ULICA");
             Map(p => p.Broj, "BROJ");
 
-            References(p => p.Kvart).Column("ID_KVARTA").LazyLoad().Cascade.All();
+            References(p => p.Kvart).Column("ID_KVARTA").LazyLoad();
 
-            References(p => p.Vlasnik).Column("ID_VLASNIKA").LazyLoad().Cascade.All();
+            References(p => p.Vlasnik).Column("ID_VLASNIKA").LazyLoad();
 
             HasMany(p => p.DodatnaOprema).KeyColumn("ID_NEKRETNINE").LazyLoad().Cascade.All().Inverse();
 
@@ -41,7 +41,6 @@ namespace StanNaDan.Mapiranja
             HasMany(p => p.SajtoviNekretnine).KeyColumn("ID_NEKRETNINE").LazyLoad().Cascade.All().Inverse();
 
             HasMany(p => p.Najmovi).KeyColumn("ID_NEKRETNINE").LazyLoad().Cascade.All().Inverse();
-
         }
     }
 

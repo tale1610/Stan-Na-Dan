@@ -19,8 +19,7 @@ namespace StanNaDan.Mapiranja
             Map(p => p.Cena, "CENA");
             Map(p => p.USastavuNekretnine, "U_SASTAVU_NEKRETNINE").CustomType<BooleanToStringType>();
             Map(p => p.USastavuJavnogParkinga, "U_SASTAVU_JAVNOG_PARKINGA").CustomType<BooleanToStringType>();
-
-            //References(p => p.Nekretnina).Column("ID_NEKRETNINE").LazyLoad();
+            
         }
 
     }

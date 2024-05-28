@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            cbKvartovi = new ComboBox();
+            label15 = new Label();
             chbPosedujeDvoriste = new CheckBox();
             chbPosedujeLift = new CheckBox();
             tbSpratnostKuce = new TextBox();
@@ -37,7 +39,6 @@
             label13 = new Label();
             label12 = new Label();
             label11 = new Label();
-            btnDodajNekretninu = new Button();
             tbBroj = new TextBox();
             tbUlica = new TextBox();
             chbPosedujeKuhinju = new CheckBox();
@@ -56,15 +57,16 @@
             label4 = new Label();
             label3 = new Label();
             lblKvadratura = new Label();
-            tbAdresa = new TextBox();
-            label2 = new Label();
             label1 = new Label();
             cbTip = new ComboBox();
+            btnDodajNekretninu = new Button();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(cbKvartovi);
+            groupBox1.Controls.Add(label15);
             groupBox1.Controls.Add(chbPosedujeDvoriste);
             groupBox1.Controls.Add(chbPosedujeLift);
             groupBox1.Controls.Add(tbSpratnostKuce);
@@ -91,21 +93,36 @@
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(lblKvadratura);
-            groupBox1.Controls.Add(tbAdresa);
-            groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(cbTip);
-            groupBox1.Location = new Point(28, 35);
+            groupBox1.Location = new Point(12, 12);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(380, 624);
+            groupBox1.Size = new Size(380, 670);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Podaci o nekretnini";
             // 
+            // cbKvartovi
+            // 
+            cbKvartovi.FormattingEnabled = true;
+            cbKvartovi.Location = new Point(183, 608);
+            cbKvartovi.Name = "cbKvartovi";
+            cbKvartovi.Size = new Size(151, 28);
+            cbKvartovi.TabIndex = 32;
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Location = new Point(23, 616);
+            label15.Name = "label15";
+            label15.Size = new Size(45, 20);
+            label15.TabIndex = 31;
+            label15.Text = "Kvart:";
+            // 
             // chbPosedujeDvoriste
             // 
             chbPosedujeDvoriste.AutoSize = true;
-            chbPosedujeDvoriste.Location = new Point(316, 595);
+            chbPosedujeDvoriste.Location = new Point(316, 570);
             chbPosedujeDvoriste.Name = "chbPosedujeDvoriste";
             chbPosedujeDvoriste.Size = new Size(18, 17);
             chbPosedujeDvoriste.TabIndex = 30;
@@ -114,7 +131,7 @@
             // chbPosedujeLift
             // 
             chbPosedujeLift.AutoSize = true;
-            chbPosedujeLift.Location = new Point(316, 521);
+            chbPosedujeLift.Location = new Point(316, 489);
             chbPosedujeLift.Name = "chbPosedujeLift";
             chbPosedujeLift.Size = new Size(18, 17);
             chbPosedujeLift.TabIndex = 29;
@@ -122,14 +139,14 @@
             // 
             // tbSpratnostKuce
             // 
-            tbSpratnostKuce.Location = new Point(183, 554);
+            tbSpratnostKuce.Location = new Point(183, 529);
             tbSpratnostKuce.Name = "tbSpratnostKuce";
             tbSpratnostKuce.Size = new Size(151, 27);
             tbSpratnostKuce.TabIndex = 28;
             // 
             // tbSprat
             // 
-            tbSprat.Location = new Point(183, 480);
+            tbSprat.Location = new Point(183, 448);
             tbSprat.Name = "tbSprat";
             tbSprat.Size = new Size(151, 27);
             tbSprat.TabIndex = 27;
@@ -137,7 +154,7 @@
             // label14
             // 
             label14.AutoSize = true;
-            label14.Location = new Point(23, 592);
+            label14.Location = new Point(23, 567);
             label14.Name = "label14";
             label14.Size = new Size(128, 20);
             label14.TabIndex = 26;
@@ -146,7 +163,7 @@
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new Point(23, 557);
+            label13.Location = new Point(23, 532);
             label13.Name = "label13";
             label13.Size = new Size(109, 20);
             label13.TabIndex = 25;
@@ -155,7 +172,7 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(23, 521);
+            label12.Location = new Point(23, 489);
             label12.Name = "label12";
             label12.Size = new Size(93, 20);
             label12.TabIndex = 24;
@@ -164,32 +181,22 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(23, 483);
+            label11.Location = new Point(23, 451);
             label11.Name = "label11";
             label11.Size = new Size(47, 20);
             label11.TabIndex = 23;
             label11.Text = "Sprat:";
             // 
-            // btnDodajNekretninu
-            // 
-            btnDodajNekretninu.Location = new Point(97, 665);
-            btnDodajNekretninu.Name = "btnDodajNekretninu";
-            btnDodajNekretninu.Size = new Size(160, 42);
-            btnDodajNekretninu.TabIndex = 22;
-            btnDodajNekretninu.Text = "Dodaj nekretninu";
-            btnDodajNekretninu.UseVisualStyleBackColor = true;
-            btnDodajNekretninu.Click += btnDodajNekretninu_Click;
-            // 
             // tbBroj
             // 
-            tbBroj.Location = new Point(183, 435);
+            tbBroj.Location = new Point(183, 403);
             tbBroj.Name = "tbBroj";
             tbBroj.Size = new Size(151, 27);
             tbBroj.TabIndex = 21;
             // 
             // tbUlica
             // 
-            tbUlica.Location = new Point(183, 398);
+            tbUlica.Location = new Point(183, 366);
             tbUlica.Name = "tbUlica";
             tbUlica.Size = new Size(151, 27);
             tbUlica.TabIndex = 20;
@@ -197,7 +204,7 @@
             // chbPosedujeKuhinju
             // 
             chbPosedujeKuhinju.AutoSize = true;
-            chbPosedujeKuhinju.Location = new Point(316, 337);
+            chbPosedujeKuhinju.Location = new Point(316, 305);
             chbPosedujeKuhinju.Name = "chbPosedujeKuhinju";
             chbPosedujeKuhinju.Size = new Size(18, 17);
             chbPosedujeKuhinju.TabIndex = 19;
@@ -206,7 +213,7 @@
             // chbPosedujeInternet
             // 
             chbPosedujeInternet.AutoSize = true;
-            chbPosedujeInternet.Location = new Point(316, 373);
+            chbPosedujeInternet.Location = new Point(316, 341);
             chbPosedujeInternet.Name = "chbPosedujeInternet";
             chbPosedujeInternet.Size = new Size(18, 17);
             chbPosedujeInternet.TabIndex = 18;
@@ -215,7 +222,7 @@
             // chbPosedujeTVPrikljucak
             // 
             chbPosedujeTVPrikljucak.AutoSize = true;
-            chbPosedujeTVPrikljucak.Location = new Point(316, 297);
+            chbPosedujeTVPrikljucak.Location = new Point(316, 265);
             chbPosedujeTVPrikljucak.Name = "chbPosedujeTVPrikljucak";
             chbPosedujeTVPrikljucak.Size = new Size(18, 17);
             chbPosedujeTVPrikljucak.TabIndex = 17;
@@ -223,28 +230,28 @@
             // 
             // tbBrojSpavacihSoba
             // 
-            tbBrojSpavacihSoba.Location = new Point(183, 255);
+            tbBrojSpavacihSoba.Location = new Point(183, 223);
             tbBrojSpavacihSoba.Name = "tbBrojSpavacihSoba";
             tbBrojSpavacihSoba.Size = new Size(151, 27);
             tbBrojSpavacihSoba.TabIndex = 16;
             // 
             // tbBrojKupatila
             // 
-            tbBrojKupatila.Location = new Point(183, 213);
+            tbBrojKupatila.Location = new Point(183, 181);
             tbBrojKupatila.Name = "tbBrojKupatila";
             tbBrojKupatila.Size = new Size(151, 27);
             tbBrojKupatila.TabIndex = 15;
             // 
             // tbBrojTerasa
             // 
-            tbBrojTerasa.Location = new Point(183, 168);
+            tbBrojTerasa.Location = new Point(183, 136);
             tbBrojTerasa.Name = "tbBrojTerasa";
             tbBrojTerasa.Size = new Size(151, 27);
             tbBrojTerasa.TabIndex = 14;
             // 
             // tbKvadratura
             // 
-            tbKvadratura.Location = new Point(183, 128);
+            tbKvadratura.Location = new Point(183, 96);
             tbKvadratura.Name = "tbKvadratura";
             tbKvadratura.Size = new Size(151, 27);
             tbKvadratura.TabIndex = 13;
@@ -252,7 +259,7 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(23, 442);
+            label10.Location = new Point(23, 410);
             label10.Name = "label10";
             label10.Size = new Size(39, 20);
             label10.TabIndex = 12;
@@ -261,7 +268,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(23, 405);
+            label9.Location = new Point(23, 373);
             label9.Name = "label9";
             label9.Size = new Size(45, 20);
             label9.TabIndex = 11;
@@ -270,7 +277,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(23, 373);
+            label8.Location = new Point(23, 341);
             label8.Name = "label8";
             label8.Size = new Size(126, 20);
             label8.TabIndex = 10;
@@ -279,7 +286,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(23, 334);
+            label7.Location = new Point(23, 302);
             label7.Name = "label7";
             label7.Size = new Size(122, 20);
             label7.TabIndex = 9;
@@ -288,7 +295,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(23, 294);
+            label6.Location = new Point(23, 262);
             label6.Name = "label6";
             label6.Size = new Size(159, 20);
             label6.TabIndex = 8;
@@ -297,7 +304,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(23, 168);
+            label5.Location = new Point(23, 136);
             label5.Name = "label5";
             label5.Size = new Size(83, 20);
             label5.TabIndex = 7;
@@ -306,7 +313,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(23, 213);
+            label4.Location = new Point(23, 181);
             label4.Name = "label4";
             label4.Size = new Size(96, 20);
             label4.TabIndex = 6;
@@ -315,7 +322,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(23, 255);
+            label3.Location = new Point(23, 223);
             label3.Name = "label3";
             label3.Size = new Size(136, 20);
             label3.TabIndex = 5;
@@ -324,27 +331,11 @@
             // lblKvadratura
             // 
             lblKvadratura.AutoSize = true;
-            lblKvadratura.Location = new Point(23, 131);
+            lblKvadratura.Location = new Point(23, 99);
             lblKvadratura.Name = "lblKvadratura";
             lblKvadratura.Size = new Size(83, 20);
             lblKvadratura.TabIndex = 4;
             lblKvadratura.Text = "Kvadratura:";
-            // 
-            // tbAdresa
-            // 
-            tbAdresa.Location = new Point(183, 92);
-            tbAdresa.Name = "tbAdresa";
-            tbAdresa.Size = new Size(151, 27);
-            tbAdresa.TabIndex = 3;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(23, 92);
-            label2.Name = "label2";
-            label2.Size = new Size(58, 20);
-            label2.TabIndex = 2;
-            label2.Text = "Adresa:";
             // 
             // label1
             // 
@@ -363,15 +354,26 @@
             cbTip.Size = new Size(151, 28);
             cbTip.TabIndex = 0;
             // 
+            // btnDodajNekretninu
+            // 
+            btnDodajNekretninu.Location = new Point(112, 713);
+            btnDodajNekretninu.Name = "btnDodajNekretninu";
+            btnDodajNekretninu.Size = new Size(160, 42);
+            btnDodajNekretninu.TabIndex = 22;
+            btnDodajNekretninu.Text = "Dodaj nekretninu";
+            btnDodajNekretninu.UseVisualStyleBackColor = true;
+            btnDodajNekretninu.Click += btnDodajNekretninu_Click;
+            // 
             // DodajNekretninu
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(427, 751);
+            ClientSize = new Size(427, 790);
             Controls.Add(groupBox1);
             Controls.Add(btnDodajNekretninu);
             Name = "DodajNekretninu";
             Text = "DodajNekretninu";
+            Load += DodajNekretninu_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);
@@ -384,8 +386,6 @@
         private Label label4;
         private Label label3;
         private Label lblKvadratura;
-        private TextBox tbAdresa;
-        private Label label2;
         private Label label1;
         private ComboBox cbTip;
         private TextBox tbKvadratura;
@@ -411,5 +411,7 @@
         private Label label11;
         private CheckBox chbPosedujeDvoriste;
         private CheckBox chbPosedujeLift;
+        private ComboBox cbKvartovi;
+        private Label label15;
     }
 }

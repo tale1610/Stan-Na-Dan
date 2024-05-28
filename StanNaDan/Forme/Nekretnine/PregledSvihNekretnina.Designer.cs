@@ -113,6 +113,7 @@
             btnObrisiNekretninu.TabIndex = 7;
             btnObrisiNekretninu.Text = "Obrisi Nekretninu";
             btnObrisiNekretninu.UseVisualStyleBackColor = true;
+            btnObrisiNekretninu.Click += btnObrisiNekretninu_Click;
             // 
             // btnIzmeniNekretninu
             // 
