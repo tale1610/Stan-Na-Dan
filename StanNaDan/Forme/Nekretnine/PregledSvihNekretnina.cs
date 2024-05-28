@@ -1,4 +1,5 @@
-﻿using StanNaDan.Forme.Nekretnine.DodatnaOprema;
+﻿using StanNaDan.Forme.Najam;
+using StanNaDan.Forme.Nekretnine.DodatnaOprema;
 using StanNaDan.Forme.Nekretnine.Kreveti;
 using StanNaDan.Forme.Nekretnine.Sajtovi;
 using StanNaDan.Forme.Parking;
@@ -96,7 +97,9 @@ namespace StanNaDan.Forme.Nekretnine
                 return;
             }
             int idNekretnine = Int32.Parse(listaNekretnina.SelectedItems[0].SubItems[0].Text);
-
+            PregledSvihNajmovaNekretnine formaPregledSvihNajmovaNekretnine = new PregledSvihNajmovaNekretnine(idNekretnine);
+            formaPregledSvihNajmovaNekretnine.ShowDialog();
+            this.popuniPodacima();
         }
 
         private void btnPrikaziSajtove_Click(object sender, EventArgs e)

@@ -14,8 +14,7 @@
             Map(x => x.EmailKontaktOsobe, "EMAIL_KONTAKT_OSOBE");
 
             References(x => x.Vlasnik, "ID_VLASNIKA").Unique().Cascade.All();
-
-            //HasMany(x => x.TelefoniKontaktOsobe).KeyColumn("PIB_PRAVNOG_LICA").LazyLoad().Cascade.All();
+            HasMany(x => x.TelefoniKontaktOsobe).KeyColumn("PIB_FIRME").LazyLoad().Cascade.All();
         }
     }
 }

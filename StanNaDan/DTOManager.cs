@@ -2429,7 +2429,7 @@ public class DTOManager
     }
 
     #endregion
-    /*
+    
     #region Soba
 
     public static void DodajSobu(SobaBasic novaSoba, int idNekretnine)
@@ -2817,7 +2817,7 @@ public class DTOManager
     }
 
     #endregion
-    */
+    
     #region Najam
 
     public static void DodajNajam(NajamBasic noviNajam, int idNekretnine, string mbrAgenta, int? idSpoljnogSaradnika = null)
@@ -2901,6 +2901,49 @@ public class DTOManager
             if (session != null && session.IsOpen)
             {
                 IEnumerable<Najam> sviNajmovi = from n in session.Query<Najam>()
+                                                select n;
+
+                foreach (Najam n in sviNajmovi)
+                {
+                    najmovi.Add(new NajamPregled(
+                        n.IdNajma,
+                        n.DatumPocetka,
+                        n.DatumZavrsetka,
+                        n.CenaPoDanu,
+                        n.Popust,
+                        n.ZaradaOdDodatnihUsluga,
+                        n.ProvizijaAgencije,
+                        n.Nekretnina.Ulica + " " + n.Nekretnina.Broj,
+                        n.Agent.Ime,
+                        n.SpoljniSaradnik?.Ime ?? string.Empty
+                    ));
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.FormatExceptionMessage());
+        }
+        finally
+        {
+            session?.Close();
+        }
+
+        return najmovi;
+    }
+
+    public static List<NajamPregled> VratiSveNajmoveNekretnine(int idNekretnine)
+    {
+        List<NajamPregled> najmovi = new List<NajamPregled>();
+        ISession? session = null;
+        try
+        {
+            session = DataLayer.GetSession();
+            if (session != null && session.IsOpen)
+            {
+                IEnumerable<Najam> sviNajmovi = from n 
+                                                in session.Query<Najam>()
+                                                where n.Nekretnina.IdNekretnine == idNekretnine
                                                 select n;
 
                 foreach (Najam n in sviNajmovi)
