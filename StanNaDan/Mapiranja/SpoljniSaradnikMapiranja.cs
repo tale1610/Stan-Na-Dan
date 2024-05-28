@@ -17,11 +17,11 @@
             Map(p => p.ProcenatOdNajma, "PROCENAT_OD_NAJMA");
 
 
-            //HasMany(p => p.RealizovaniNajmovi)
-            //.Table("NAJAM")
-            //.KeyColumns.Add("MBR_RADNIKA", "ID_Spoljnjeg_Radnika")
-            //.LazyLoad()
-            //.Cascade.All();
+            HasMany(p => p.RealizovaniNajmovi)
+            .Table("NAJAM")
+            .KeyColumns.Add("MBR_RADNIKA_ZA_SPOLJNOG", "ID_Spoljnjeg_Radnika")
+            .LazyLoad()
+            .Cascade.All();
         }
     }
 }

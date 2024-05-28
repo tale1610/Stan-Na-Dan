@@ -7,8 +7,8 @@ public class Najam
     virtual public required DateTime DatumZavrsetka { get; set; }
     virtual public required int BrojDana { get; set; }
     virtual public required double CenaPoDanu { get; set; }
-    virtual public int Popust { get; set; }
-    virtual public double CenaSaPopustom { get; set; }
+    virtual public int? Popust { get; set; }
+    virtual public double? CenaSaPopustom { get; set; }
     virtual public double ZaradaOdDodatnihUsluga { get; set; }
     virtual public double UkupnaCena { get; set; }
     virtual public double ProvizijaAgencije { get; set; }

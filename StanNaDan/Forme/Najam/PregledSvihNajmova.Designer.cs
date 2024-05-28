@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            listaNekretnina = new ListView();
+            listaNajmova = new ListView();
             ID = new ColumnHeader();
             DatumPocetka = new ColumnHeader();
             DatumZavrsetka = new ColumnHeader();
@@ -37,23 +37,25 @@
             CenaSaPopustom = new ColumnHeader();
             ZaradaOdDodatnihUsluga = new ColumnHeader();
             UkupnaCena = new ColumnHeader();
-            ProvizijeAgenta = new ColumnHeader();
+            ProvizijaAgencije = new ColumnHeader();
+            Agent = new ColumnHeader();
+            Spoljni = new ColumnHeader();
             btnDodajNoviNajam = new Button();
             btnObrisiNajam = new Button();
             btnIzmeniNajam = new Button();
             SuspendLayout();
             // 
-            // listaNekretnina
+            // listaNajmova
             // 
-            listaNekretnina.Columns.AddRange(new ColumnHeader[] { ID, DatumPocetka, DatumZavrsetka, BrojDana, CenaPoDanu, CenaSaPopustom, ZaradaOdDodatnihUsluga, UkupnaCena, ProvizijeAgenta });
-            listaNekretnina.FullRowSelect = true;
-            listaNekretnina.GridLines = true;
-            listaNekretnina.Location = new Point(12, 12);
-            listaNekretnina.Name = "listaNekretnina";
-            listaNekretnina.Size = new Size(1188, 408);
-            listaNekretnina.TabIndex = 6;
-            listaNekretnina.UseCompatibleStateImageBehavior = false;
-            listaNekretnina.View = View.Details;
+            listaNajmova.Columns.AddRange(new ColumnHeader[] { ID, DatumPocetka, DatumZavrsetka, BrojDana, CenaPoDanu, CenaSaPopustom, ZaradaOdDodatnihUsluga, UkupnaCena, ProvizijaAgencije, Agent, Spoljni });
+            listaNajmova.FullRowSelect = true;
+            listaNajmova.GridLines = true;
+            listaNajmova.Location = new Point(12, 12);
+            listaNajmova.Name = "listaNajmova";
+            listaNajmova.Size = new Size(1191, 408);
+            listaNajmova.TabIndex = 6;
+            listaNajmova.UseCompatibleStateImageBehavior = false;
+            listaNajmova.View = View.Details;
             // 
             // ID
             // 
@@ -62,18 +64,18 @@
             // 
             // DatumPocetka
             // 
-            DatumPocetka.Text = "Datum Pocetka";
-            DatumPocetka.Width = 150;
+            DatumPocetka.Text = "Pocetak";
+            DatumPocetka.Width = 90;
             // 
             // DatumZavrsetka
             // 
-            DatumZavrsetka.Text = "DatumZavrsetka";
-            DatumZavrsetka.Width = 150;
+            DatumZavrsetka.Text = "Zavrsetak";
+            DatumZavrsetka.Width = 90;
             // 
             // BrojDana
             // 
             BrojDana.Text = "Broj Dana";
-            BrojDana.Width = 150;
+            BrojDana.Width = 80;
             // 
             // CenaPoDanu
             // 
@@ -83,7 +85,7 @@
             // CenaSaPopustom
             // 
             CenaSaPopustom.Text = "Cena Sa Popustom";
-            CenaSaPopustom.Width = 150;
+            CenaSaPopustom.Width = 135;
             // 
             // ZaradaOdDodatnihUsluga
             // 
@@ -95,34 +97,44 @@
             UkupnaCena.Text = "Ukupna Cena";
             UkupnaCena.Width = 100;
             // 
-            // ProvizijeAgenta
+            // ProvizijaAgencije
             // 
-            ProvizijeAgenta.Text = "Provizije Agenta";
-            ProvizijeAgenta.Width = 120;
+            ProvizijaAgencije.Text = "Provizija Agencije";
+            ProvizijaAgencije.Width = 130;
+            // 
+            // Agent
+            // 
+            Agent.Text = "Agent";
+            Agent.Width = 80;
+            // 
+            // Spoljni
+            // 
+            Spoljni.Text = "Spoljni Saradnik";
+            Spoljni.Width = 120;
             // 
             // btnDodajNoviNajam
             // 
-            btnDodajNoviNajam.Location = new Point(1256, 28);
+            btnDodajNoviNajam.Location = new Point(1209, 12);
             btnDodajNoviNajam.Name = "btnDodajNoviNajam";
-            btnDodajNoviNajam.Size = new Size(163, 29);
+            btnDodajNoviNajam.Size = new Size(227, 29);
             btnDodajNoviNajam.TabIndex = 7;
             btnDodajNoviNajam.Text = "Dodaj Novi Najam";
             btnDodajNoviNajam.UseVisualStyleBackColor = true;
             // 
             // btnObrisiNajam
             // 
-            btnObrisiNajam.Location = new Point(1270, 95);
+            btnObrisiNajam.Location = new Point(1209, 56);
             btnObrisiNajam.Name = "btnObrisiNajam";
-            btnObrisiNajam.Size = new Size(149, 30);
+            btnObrisiNajam.Size = new Size(227, 30);
             btnObrisiNajam.TabIndex = 8;
             btnObrisiNajam.Text = "Obrisi Najam";
             btnObrisiNajam.UseVisualStyleBackColor = true;
             // 
             // btnIzmeniNajam
             // 
-            btnIzmeniNajam.Location = new Point(1273, 154);
+            btnIzmeniNajam.Location = new Point(1209, 102);
             btnIzmeniNajam.Name = "btnIzmeniNajam";
-            btnIzmeniNajam.Size = new Size(146, 29);
+            btnIzmeniNajam.Size = new Size(227, 29);
             btnIzmeniNajam.TabIndex = 9;
             btnIzmeniNajam.Text = "Izmeni Najam";
             btnIzmeniNajam.UseVisualStyleBackColor = true;
@@ -131,19 +143,20 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1445, 450);
+            ClientSize = new Size(1444, 450);
             Controls.Add(btnIzmeniNajam);
             Controls.Add(btnObrisiNajam);
             Controls.Add(btnDodajNoviNajam);
-            Controls.Add(listaNekretnina);
+            Controls.Add(listaNajmova);
             Name = "PregledSvihNajmova";
             Text = "PregledSvihNajmova";
+            Load += PregledSvihNajmova_Load;
             ResumeLayout(false);
         }
 
         #endregion
 
-        private ListView listaNekretnina;
+        private ListView listaNajmova;
         private ColumnHeader ID;
         private ColumnHeader DatumPocetka;
         private ColumnHeader DatumZavrsetka;
@@ -152,9 +165,11 @@
         private ColumnHeader CenaSaPopustom;
         private ColumnHeader ZaradaOdDodatnihUsluga;
         private ColumnHeader UkupnaCena;
-        private ColumnHeader ProvizijeAgenta;
+        private ColumnHeader ProvizijaAgencije;
         private Button btnDodajNoviNajam;
         private Button btnObrisiNajam;
         private Button btnIzmeniNajam;
+        private ColumnHeader Agent;
+        private ColumnHeader Spoljni;
     }
 }

@@ -16,7 +16,7 @@ namespace StanNaDan.Mapiranja
             .KeyReference(p => p.Nekretnina, "ID_NEKRETNINE");
 
             Map(p => p.Besplatan, "BESPLATAN").CustomType<BooleanToStringType>();
-            Map(p => p.Cena, "CENA");
+            Map(p => p.Cena, "CENA").Nullable();
             Map(p => p.USastavuNekretnine, "U_SASTAVU_NEKRETNINE").CustomType<BooleanToStringType>();
             Map(p => p.USastavuJavnogParkinga, "U_SASTAVU_JAVNOG_PARKINGA").CustomType<BooleanToStringType>();
             

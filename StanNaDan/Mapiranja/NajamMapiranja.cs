@@ -20,19 +20,20 @@ namespace StanNaDan.Mapiranja
             Map(p => p.DatumZavrsetka, "DATUM_ZAVRSETKA");
             Map(p => p.BrojDana, "BROJ_DANA");
             Map(p => p.CenaPoDanu, "CENA_PO_DANU");
+            Map(p => p.Popust, "POPUST").Nullable();
             Map(p => p.CenaSaPopustom, "CENA_SA_POPUSTOM");
             Map(p => p.ZaradaOdDodatnihUsluga, "ZARADA_OD_DODATNIH_USLUGA");
             Map(p => p.UkupnaCena, "UKUPNA_CENA");
             Map(p => p.ProvizijaAgencije, "PROVIZIJA_AGENCIJE");
 
-            References(p => p.Nekretnina).Column("ID_NEKRETNINE").LazyLoad().Cascade.All();
+            References(p => p.Nekretnina).Column("ID_NEKRETNINE").LazyLoad();
 
             
-            References(p => p.Agent).Column("MBR_AGENTA").LazyLoad().Cascade.All();
+            References(p => p.Agent).Column("MBR_AGENTA").LazyLoad();
 
             References(p => p.SpoljniSaradnik)
-            .Columns("MBR_AGENTA_ZA_SPOLJNOG", "ID_SPOLJNJEG_RADNIKA")//.Not.Insert().Not.Update()//ForeignKey("FK_NAJAM_SPOLJNI")//ovde ti je potencijalno pucanje ako nesto zeza
-            .Cascade.All();//.NotFound.Ignore();
+            .Columns("MBR_AGENTA_ZA_SPOLJNOG", "ID_SPOLJNJEG_RADNIKA");//.Not.Insert().Not.Update()//ForeignKey("FK_NAJAM_SPOLJNI")//ovde ti je potencijalno pucanje ako nesto zeza
+            //.Cascade.All();//.NotFound.Ignore();//namerno iskljucen cascadeAll jer agenti mogu da realizuju vise najmova, nema smisla ako se obrise najam da se obrise agent
 
             
 

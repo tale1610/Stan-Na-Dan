@@ -18,7 +18,7 @@ namespace StanNaDan.Mapiranja
              
             Map(p => p.TipOpreme, "TIP_OPREME");
             Map(p => p.BesplatnoKoriscenje, "BESPLATNO_KORISCENJE").CustomType<BooleanToStringType>();
-            Map(p => p.CenaKoriscenja, "CENA_KORISCENJA");
+            Map(p => p.CenaKoriscenja, "CENA_KORISCENJA").Nullable();
 
         }
     }

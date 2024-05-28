@@ -681,7 +681,7 @@ public class NajamBasic
     public int BrojDana { get; set; }
     public double CenaPoDanu { get; set; }
     public int Popust { get; set; } // Popust u procentima
-    public double CenaSaPopustom { get; set; }
+    public double CenaSaPopustom { get; set; } //dnevno
     public double ZaradaOdDodatnihUsluga { get; set; }
     public double UkupnaCena { get; set; }
     public double ProvizijaAgencije { get; set; }
@@ -702,9 +702,9 @@ public class NajamBasic
         BrojDana = (DatumZavrsetka - DatumPocetka).Days;
         CenaPoDanu = cenaPoDanu;
         Popust = popust;
-        CenaSaPopustom = CenaPoDanu * BrojDana * (1 - Popust / 100.0);
+        CenaSaPopustom = popust > 0 ? CenaPoDanu - (CenaPoDanu / Popust) : 0;
         ZaradaOdDodatnihUsluga = zaradaOdDodatnihUsluga;
-        UkupnaCena = CenaSaPopustom + ZaradaOdDodatnihUsluga;
+        UkupnaCena = popust > 0 ? CenaSaPopustom * BrojDana + ZaradaOdDodatnihUsluga : cenaPoDanu * BrojDana + ZaradaOdDodatnihUsluga;
         ProvizijaAgencije = provizijaAgencije;
         Nekretnina = nekretnina;
         Agent = agent;
@@ -720,10 +720,10 @@ public class NajamPregled
     public DateTime DatumZavrsetka { get; set; }
     public int BrojDana { get; set; }
     public double CenaPoDanu { get; set; }
-    public int Popust { get; set; } // Popust u procentima
-    public double CenaSaPopustom { get; set; }
+    public int? Popust { get; set; } // Popust u procentima
+    public double? CenaSaPopustom { get; set; }
     public double ZaradaOdDodatnihUsluga { get; set; }
-    public double UkupnaCena { get; set; }
+    public double? UkupnaCena { get; set; }
     public double ProvizijaAgencije { get; set; }
 
     // veze:
@@ -734,7 +734,7 @@ public class NajamPregled
 
     public NajamPregled() { }
 
-    public NajamPregled(int idNajma, DateTime datumPocetka, DateTime datumZavrsetka, double cenaPoDanu, int popust, double zaradaOdDodatnihUsluga, double provizijaAgencije, string adresaNekretnine, string imeAgenta, string imeSpoljnogSaradnika/*, IList<int>? idSoba*/)
+    public NajamPregled(int idNajma, DateTime datumPocetka, DateTime datumZavrsetka, double cenaPoDanu, int? popust, double zaradaOdDodatnihUsluga, double provizijaAgencije, string adresaNekretnine, string imeAgenta, string imeSpoljnogSaradnika/*, IList<int>? idSoba*/)
     {
         IdNajma = idNajma;
         DatumPocetka = datumPocetka;
@@ -742,9 +742,9 @@ public class NajamPregled
         BrojDana = (DatumZavrsetka - DatumPocetka).Days;
         CenaPoDanu = cenaPoDanu;
         Popust = popust;
-        CenaSaPopustom = CenaPoDanu * BrojDana * (1 - Popust / 100.0);
+        CenaSaPopustom = Popust > 0 ? CenaPoDanu - (CenaPoDanu / Popust) : 0;
         ZaradaOdDodatnihUsluga = zaradaOdDodatnihUsluga;
-        UkupnaCena = CenaSaPopustom + ZaradaOdDodatnihUsluga;
+        UkupnaCena = Popust > 0 ? CenaSaPopustom * BrojDana + ZaradaOdDodatnihUsluga : cenaPoDanu * BrojDana + ZaradaOdDodatnihUsluga;
         ProvizijaAgencije = provizijaAgencije;
         AdresaNekretnine = adresaNekretnine;
         ImeAgenta = imeAgenta;
@@ -762,13 +762,13 @@ public class ParkingBasic
     public int IdParkinga { get; set; }
     public NekretninaBasic Nekretnina { get; set; }
     public bool Besplatan { get; set; }
-    public double Cena { get; set; }
+    public double? Cena { get; set; }
     public bool USastavuNekretnine { get; set; }
     public bool USastavuJavnogParkinga { get; set; }
 
     public ParkingBasic() { }
 
-    public ParkingBasic(int id, NekretninaBasic nekretnina, bool besplatan, double cena, bool uSastavuNekretnine, bool uSastavuJavnogParkinga)
+    public ParkingBasic(int id, NekretninaBasic nekretnina, bool besplatan, double? cena, bool uSastavuNekretnine, bool uSastavuJavnogParkinga)
     {
         IdParkinga = id;
         Nekretnina = nekretnina;
@@ -784,13 +784,13 @@ public class ParkingPregled
     public int IdParkinga { get; set; }
     public int IdNekretnine { get; set; }
     public bool Besplatan { get; set; }
-    public double Cena { get; set; }
+    public double? Cena { get; set; }
     public bool USastavuNekretnine { get; set; }
     public bool USastavuJavnogParkinga { get; set; }
 
     public ParkingPregled() { }
 
-    public ParkingPregled(int idParkinga, int idNekretnine, bool besplatan, double cena, bool uSastavuNekretnine, bool uSastavuJavnogParkinga)
+    public ParkingPregled(int idParkinga, int idNekretnine, bool besplatan, double? cena, bool uSastavuNekretnine, bool uSastavuJavnogParkinga)
     {
         IdParkinga = idParkinga;
         IdNekretnine = idNekretnine;
