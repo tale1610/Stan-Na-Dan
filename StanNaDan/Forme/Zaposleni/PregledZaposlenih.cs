@@ -13,9 +13,20 @@ namespace StanNaDan.Forme.Zaposleni
 {
     public partial class PregledZaposlenih : Form
     {
+        public string izabraniAgentMBR;
         public PregledZaposlenih()
         {
             InitializeComponent();
+            btnIzaberiAgenta.Visible = false;
+        }
+        public PregledZaposlenih(string izbor)
+        {
+            InitializeComponent();
+            btnDodajZaposlenog.Visible = false;
+            btnObrisiRadnika.Visible = false;
+            btnIzmeniRadnika.Visible = false;
+            btnPrikaziSveSpoljneSaradnikeAgenta.Visible = false;
+            btnIzaberiAgenta.Visible = true;
         }
         public void popuniPodacima()
         {
@@ -86,6 +97,29 @@ namespace StanNaDan.Forme.Zaposleni
             PregledSpoljnihSaradnikaAgenta formaPregledSpoljnihSaradnikaAgenta = new PregledSpoljnihSaradnikaAgenta(mbrAgenta);
             formaPregledSpoljnihSaradnikaAgenta.ShowDialog();
             this.popuniPodacima();
+        }
+
+        private void btnIzaberiAgenta_Click(object sender, EventArgs e)
+        {
+            if (listaZaposlenih.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Izaberite agenta kojeg zelite!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else if (listaZaposlenih.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("Mozete izabrati samo jednog zaposlenog jednovremeno!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else if (listaZaposlenih.SelectedItems[0].SubItems[5].Text == "Sef")
+            {
+                MessageBox.Show("Morate izabrati agenta!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            this.izabraniAgentMBR = listaZaposlenih.SelectedItems[0].SubItems[0].Text;
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
     }
 }

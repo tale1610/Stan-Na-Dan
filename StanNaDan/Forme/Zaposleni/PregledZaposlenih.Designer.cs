@@ -39,6 +39,7 @@
             AdresaPoslovnice = new ColumnHeader();
             TipPosla = new ColumnHeader();
             btnPrikaziSveSpoljneSaradnikeAgenta = new Button();
+            btnIzaberiAgenta = new Button();
             SuspendLayout();
             // 
             // btnIzmeniRadnika
@@ -123,11 +124,22 @@
             btnPrikaziSveSpoljneSaradnikeAgenta.UseVisualStyleBackColor = true;
             btnPrikaziSveSpoljneSaradnikeAgenta.Click += btnPrikaziSveSpoljneSaradnikeAgenta_Click;
             // 
+            // btnIzaberiAgenta
+            // 
+            btnIzaberiAgenta.Location = new Point(944, 260);
+            btnIzaberiAgenta.Name = "btnIzaberiAgenta";
+            btnIzaberiAgenta.Size = new Size(185, 29);
+            btnIzaberiAgenta.TabIndex = 9;
+            btnIzaberiAgenta.Text = "Izaberi Agenta";
+            btnIzaberiAgenta.UseVisualStyleBackColor = true;
+            btnIzaberiAgenta.Click += btnIzaberiAgenta_Click;
+            // 
             // PregledZaposlenih
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1141, 507);
+            Controls.Add(btnIzaberiAgenta);
             Controls.Add(btnPrikaziSveSpoljneSaradnikeAgenta);
             Controls.Add(btnIzmeniRadnika);
             Controls.Add(btnObrisiRadnika);
@@ -152,5 +164,6 @@
         private ColumnHeader AdresaPoslovnice;
         private ColumnHeader TipPosla;
         private Button btnPrikaziSveSpoljneSaradnikeAgenta;
+        private Button btnIzaberiAgenta;
     }
 }

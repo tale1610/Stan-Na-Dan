@@ -33,5 +33,12 @@ namespace StanNaDan.Forme.Najam
         {
             popuniPodacima();
         }
+
+        private void btnDodajNoviNajam_Click(object sender, EventArgs e)
+        {
+            DodajNajam formaDodajNajam = new DodajNajam();
+            formaDodajNajam.ShowDialog();
+            this.popuniPodacima();
+        }
     }
 }

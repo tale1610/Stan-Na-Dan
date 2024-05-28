@@ -702,7 +702,7 @@ public class NajamBasic
         BrojDana = (DatumZavrsetka - DatumPocetka).Days;
         CenaPoDanu = cenaPoDanu;
         Popust = popust;
-        CenaSaPopustom = popust > 0 ? CenaPoDanu - (CenaPoDanu / Popust) : 0;
+        CenaSaPopustom = popust > 0 ? CenaPoDanu - (CenaPoDanu / (100 / Popust)) : 0;
         ZaradaOdDodatnihUsluga = zaradaOdDodatnihUsluga;
         UkupnaCena = popust > 0 ? CenaSaPopustom * BrojDana + ZaradaOdDodatnihUsluga : cenaPoDanu * BrojDana + ZaradaOdDodatnihUsluga;
         ProvizijaAgencije = provizijaAgencije;
@@ -742,7 +742,7 @@ public class NajamPregled
         BrojDana = (DatumZavrsetka - DatumPocetka).Days;
         CenaPoDanu = cenaPoDanu;
         Popust = popust;
-        CenaSaPopustom = Popust > 0 ? CenaPoDanu - (CenaPoDanu / Popust) : 0;
+        CenaSaPopustom = Popust > 0 ? CenaPoDanu - (CenaPoDanu / (100 / Popust)) : 0;
         ZaradaOdDodatnihUsluga = zaradaOdDodatnihUsluga;
         UkupnaCena = Popust > 0 ? CenaSaPopustom * BrojDana + ZaradaOdDodatnihUsluga : cenaPoDanu * BrojDana + ZaradaOdDodatnihUsluga;
         ProvizijaAgencije = provizijaAgencije;

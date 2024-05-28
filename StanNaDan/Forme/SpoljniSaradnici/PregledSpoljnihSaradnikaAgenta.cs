@@ -15,19 +15,30 @@ namespace StanNaDan.Forme.SpoljniSaradnici
     {
         string MbrAgenta;
         SpoljniSaradnikBasic SpoljniSaradnikBasic;
+        public int izabraniSpoljniID;
         public PregledSpoljnihSaradnikaAgenta()
         {
             InitializeComponent();
             this.SpoljniSaradnikBasic = new SpoljniSaradnikBasic();
         }
 
+
         public PregledSpoljnihSaradnikaAgenta(string mbrAgenta)
         {
             InitializeComponent();
             this.SpoljniSaradnikBasic = new SpoljniSaradnikBasic();
             this.MbrAgenta = mbrAgenta;
+            this.btnIzaberiSpoljnog.Visible = false;
         }
-
+        public PregledSpoljnihSaradnikaAgenta(string mbrAgenta, string izaberi)
+        {
+            InitializeComponent();
+            this.SpoljniSaradnikBasic = new SpoljniSaradnikBasic();
+            this.MbrAgenta = mbrAgenta;
+            this.btnDodajNovogSpoljnogSaradnika.Visible = false;
+            this.btnObrisiSpoljnogSaradnika.Visible = false;
+            this.btnIzaberiSpoljnog.Visible = true;
+        }
         public void popuniPodacima()
         {
             listaSpoljnihSaradnika.Items.Clear();
@@ -72,6 +83,25 @@ namespace StanNaDan.Forme.SpoljniSaradnici
             int _idSpoljnog = Int32.Parse(listaSpoljnihSaradnika.SelectedItems[0].SubItems[1].Text);
             DTOManager.obrisiSpoljnogSaradnika(_mbr, _idSpoljnog);
             this.popuniPodacima();
+        }
+
+        private void btnIzaberiSpoljnog_Click(object sender, EventArgs e)
+        {
+            if (listaSpoljnihSaradnika.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Izaberite spoljnog saradnika kojeg zelite!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else if (listaSpoljnihSaradnika.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("Mozete izabrati samo jednog spoljnog saradnika jednovremeno!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            int _idSpoljnog = Int32.Parse(listaSpoljnihSaradnika.SelectedItems[0].SubItems[1].Text);
+            this.izabraniSpoljniID = _idSpoljnog;
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
     }
 }

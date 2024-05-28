@@ -46,6 +46,7 @@
             btnPrikaziSajtove = new Button();
             btnPrikaziSveSobe = new Button();
             label1 = new Label();
+            btnIzaberiNekretninu = new Button();
             SuspendLayout();
             // 
             // listaNekretnina
@@ -192,11 +193,22 @@
             label1.TabIndex = 15;
             label1.Text = "Namerno je ovako ruzna forma da me podseca da mozda drugacije prikazem nekretnine, kao kuce i stanove odvojeno";
             // 
+            // btnIzaberiNekretninu
+            // 
+            btnIzaberiNekretninu.Location = new Point(1165, 180);
+            btnIzaberiNekretninu.Name = "btnIzaberiNekretninu";
+            btnIzaberiNekretninu.Size = new Size(185, 29);
+            btnIzaberiNekretninu.TabIndex = 16;
+            btnIzaberiNekretninu.Text = "Izaberi Nekretninu";
+            btnIzaberiNekretninu.UseVisualStyleBackColor = true;
+            btnIzaberiNekretninu.Click += btnIzaberiNekretninu_Click;
+            // 
             // PregledSvihNekretnina
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1395, 475);
+            Controls.Add(btnIzaberiNekretninu);
             Controls.Add(label1);
             Controls.Add(btnPrikaziSveSobe);
             Controls.Add(btnPrikaziSajtove);
@@ -235,5 +247,6 @@
         private Button btnPrikaziSajtove;
         private Button btnPrikaziSveSobe;
         private Label label1;
+        private Button btnIzaberiNekretninu;
     }
 }

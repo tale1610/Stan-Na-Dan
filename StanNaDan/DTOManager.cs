@@ -2820,7 +2820,7 @@ public class DTOManager
     */
     #region Najam
 
-    public static void DodajNajam(NajamBasic noviNajam, int idNekretnine, int idAgenta, int? idSpoljnogSaradnika = null)
+    public static void DodajNajam(NajamBasic noviNajam, int idNekretnine, string mbrAgenta, int? idSpoljnogSaradnika = null)
     {
         ISession? session = null;
         try
@@ -2829,8 +2829,21 @@ public class DTOManager
             if (session != null && session.IsOpen)
             {
                 Nekretnina nekretnina = session.Load<Nekretnina>(idNekretnine);
-                Agent agent = session.Load<Agent>(idAgenta);
-                SpoljniSaradnik? spoljniSaradnik = idSpoljnogSaradnika.HasValue ? session.Load<SpoljniSaradnik>(idSpoljnogSaradnika.Value) : null;
+                Agent agent = session.Load<Agent>(mbrAgenta);
+                SpoljniSaradnik spoljni;
+                if (idSpoljnogSaradnika.HasValue)
+                {
+                    SpoljniSaradnikId ssID = new()
+                    {
+                        AgentAngazovanja = agent,
+                        IdSaradnika = idSpoljnogSaradnika.Value
+                    };
+                    spoljni = session.Load<SpoljniSaradnik>(ssID);
+                }
+                else
+                {
+                    spoljni = null;
+                }
                 double zaradaOdDodatnihUsluga = 0;
                 foreach (var dop in nekretnina.DodatnaOprema)
                 {
@@ -2847,19 +2860,19 @@ public class DTOManager
                     BrojDana = (noviNajam.DatumZavrsetka - noviNajam.DatumPocetka).Days,
                     CenaPoDanu = noviNajam.CenaPoDanu,
                     Popust = noviNajam.Popust > 0 ? noviNajam.Popust : null,
-                    CenaSaPopustom = noviNajam.Popust > 0 ? noviNajam.CenaPoDanu - (noviNajam.CenaPoDanu / noviNajam.Popust) : null,
-                    ZaradaOdDodatnihUsluga = noviNajam.ZaradaOdDodatnihUsluga,
+                    CenaSaPopustom = noviNajam.Popust > 0 ? noviNajam.CenaPoDanu - (noviNajam.CenaPoDanu / (100/noviNajam.Popust)) : null,
+                    ZaradaOdDodatnihUsluga = zaradaOdDodatnihUsluga,
                     UkupnaCena = noviNajam.Popust > 0 ? noviNajam.CenaSaPopustom * noviNajam.BrojDana + zaradaOdDodatnihUsluga : noviNajam.CenaPoDanu * noviNajam.BrojDana + zaradaOdDodatnihUsluga,
                     ProvizijaAgencije = noviNajam.ProvizijaAgencije,
                     Nekretnina = nekretnina,
                     Agent = agent,
-                    SpoljniSaradnik = spoljniSaradnik
+                    SpoljniSaradnik = spoljni
                 };
                 agent.RealizovaniNajmovi.Add(najam);
                 nekretnina.Najmovi.Add(najam);
-                if (spoljniSaradnik != null)
+                if (spoljni != null)
                 {
-                    spoljniSaradnik.RealizovaniNajmovi.Add(najam);
+                    spoljni.RealizovaniNajmovi.Add(najam);
                 }
 
 

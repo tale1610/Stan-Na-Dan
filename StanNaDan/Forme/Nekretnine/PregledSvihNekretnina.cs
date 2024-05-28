@@ -17,9 +17,25 @@ namespace StanNaDan.Forme.Nekretnine
 {
     public partial class PregledSvihNekretnina : Form
     {
+        public int izabaranaNekretninaID;
         public PregledSvihNekretnina()
         {
             InitializeComponent();
+            this.btnIzaberiNekretninu.Visible = false;
+        }
+        public PregledSvihNekretnina(string biranje)
+        {
+            InitializeComponent();
+            this.btnDodajNekretninu.Visible = false;
+            this.btnObrisiNekretninu.Visible = false;
+            this.btnIzmeniNekretninu.Visible = false;
+            this.btnPrikaziDodatnuOpremu.Visible = false;
+            this.btnPrikaziKrevete.Visible = false;
+            this.btnPrikaziSajtove.Visible = false;
+            this.btnPrikaziSveNajmove.Visible = false;
+            this.btnPrikaziSveSobe.Visible = false;
+            this.btnPrikaziParkinge.Visible = false;
+            this.btnIzaberiNekretninu.Visible = true;
         }
 
         public void popuniPodacima()
@@ -153,6 +169,25 @@ namespace StanNaDan.Forme.Nekretnine
             int idNekretnine = Int32.Parse(listaNekretnina.SelectedItems[0].SubItems[0].Text);
             DTOManager.ObrisiNekretninu(idNekretnine);
             this.popuniPodacima();
+        }
+
+        private void btnIzaberiNekretninu_Click(object sender, EventArgs e)
+        {
+            if (listaNekretnina.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Izaberite nekretninu koju zelite!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else if (listaNekretnina.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("Mozete izabrati samo jednu nekretninu jednovremeno!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            int idNekretnine = Int32.Parse(listaNekretnina.SelectedItems[0].SubItems[0].Text);
+            this.izabaranaNekretninaID = idNekretnine;
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
     }
 }

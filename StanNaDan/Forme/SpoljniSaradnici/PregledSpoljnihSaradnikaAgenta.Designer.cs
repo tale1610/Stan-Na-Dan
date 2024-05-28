@@ -38,6 +38,7 @@
             procenatOdNajma = new ColumnHeader();
             btnDodajNovogSpoljnogSaradnika = new Button();
             btnObrisiSpoljnogSaradnika = new Button();
+            btnIzaberiSpoljnog = new Button();
             SuspendLayout();
             // 
             // listaSpoljnihSaradnika
@@ -106,11 +107,22 @@
             btnObrisiSpoljnogSaradnika.UseVisualStyleBackColor = true;
             btnObrisiSpoljnogSaradnika.Click += btnObrisiSpoljnogSaradnika_Click;
             // 
+            // btnIzaberiSpoljnog
+            // 
+            btnIzaberiSpoljnog.Location = new Point(761, 160);
+            btnIzaberiSpoljnog.Name = "btnIzaberiSpoljnog";
+            btnIzaberiSpoljnog.Size = new Size(200, 55);
+            btnIzaberiSpoljnog.TabIndex = 3;
+            btnIzaberiSpoljnog.Text = "IzaberiSpoljnogSaradnika";
+            btnIzaberiSpoljnog.UseVisualStyleBackColor = true;
+            btnIzaberiSpoljnog.Click += btnIzaberiSpoljnog_Click;
+            // 
             // PregledSpoljnihSaradnikaAgenta
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(970, 450);
+            Controls.Add(btnIzaberiSpoljnog);
             Controls.Add(btnObrisiSpoljnogSaradnika);
             Controls.Add(btnDodajNovogSpoljnogSaradnika);
             Controls.Add(listaSpoljnihSaradnika);
@@ -132,5 +144,6 @@
         private ColumnHeader procenatOdNajma;
         private Button btnDodajNovogSpoljnogSaradnika;
         private Button btnObrisiSpoljnogSaradnika;
+        private Button btnIzaberiSpoljnog;
     }
 }

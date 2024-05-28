@@ -19,7 +19,7 @@
 
             HasMany(p => p.RealizovaniNajmovi)
             .Table("NAJAM")
-            .KeyColumns.Add("MBR_RADNIKA_ZA_SPOLJNOG", "ID_Spoljnjeg_Radnika")
+            .KeyColumns.Add("MBR_AGENTA_ZA_SPOLJNOG", "ID_Spoljnjeg_Radnika")
             .LazyLoad()
             .Cascade.All();
         }

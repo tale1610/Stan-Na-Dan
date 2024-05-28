@@ -120,6 +120,7 @@
             btnDodajNoviNajam.TabIndex = 7;
             btnDodajNoviNajam.Text = "Dodaj Novi Najam";
             btnDodajNoviNajam.UseVisualStyleBackColor = true;
+            btnDodajNoviNajam.Click += btnDodajNoviNajam_Click;
             // 
             // btnObrisiNajam
             // 
