@@ -1,5 +1,7 @@
 ﻿using StanNaDan.Forme.Vlasnici.FizickaLica;
+using StanNaDan.Forme.Vlasnici.FizickaLica.BrojeviTelefona;
 using StanNaDan.Forme.Vlasnici.PravnaLica;
+using StanNaDan.Forme.Vlasnici.PravnaLica.TelefoniKontaktOsobe;
 using StanNaDan.Forme.Zaposleni;
 using System;
 using System.Collections.Generic;
@@ -139,6 +141,44 @@ namespace StanNaDan.Forme.Vlasnici
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnPrikaziBrojeveTelefona_Click(object sender, EventArgs e)
+        {
+            if (listaFizickihLica.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Izaberite fizicko lice cije nekretnine zelite da vidite!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else if (listaFizickihLica.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("Mozete odabrati samo jedno fizicko lice za prikaz jednovremeno!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            string jmbg = listaFizickihLica.SelectedItems[0].SubItems[0].Text;
+            PregledSvihBrojevaTelefona formaPregledSvihBrojevaTelefona = new PregledSvihBrojevaTelefona(jmbg);
+            formaPregledSvihBrojevaTelefona.ShowDialog();
+            this.popuniPodacima();
+        }
+
+        private void btnPrikaziTelefoneKontaktOsoba_Click(object sender, EventArgs e)
+        {
+            if (listaPravnihLica.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Izaberite pravno lice cije nekretnine zelite da vidite!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else if (listaFizickihLica.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("Mozete odabrati samo jedno pravno lice za prikaz jednovremeno!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            string pib = listaPravnihLica.SelectedItems[0].SubItems[0].Text;
+            PregledSvihTelefonaKontaktOsoba formaPregledSvihTelefonaKontaktOsoba = new PregledSvihTelefonaKontaktOsoba(pib);
+            formaPregledSvihTelefonaKontaktOsoba.ShowDialog();
+            this.popuniPodacima();
         }
     }
 }

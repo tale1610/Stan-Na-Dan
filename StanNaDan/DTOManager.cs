@@ -2429,7 +2429,7 @@ public class DTOManager
     }
 
     #endregion
-    /*
+
     #region Soba
 
     public static void DodajSobu(SobaBasic novaSoba, int idNekretnine)
@@ -2817,7 +2817,7 @@ public class DTOManager
     }
 
     #endregion
-    */
+
     #region Najam
 
     public static void DodajNajam(NajamBasic noviNajam, int idNekretnine, string mbrAgenta, int? idSpoljnogSaradnika = null)
@@ -2900,7 +2900,8 @@ public class DTOManager
             session = DataLayer.GetSession();
             if (session != null && session.IsOpen)
             {
-                IEnumerable<Najam> sviNajmovi = from n in session.Query<Najam>()
+                IEnumerable<Najam> sviNajmovi = from n 
+                                                in session.Query<Najam>()
                                                 select n;
 
                 foreach (Najam n in sviNajmovi)
@@ -3051,5 +3052,226 @@ public class DTOManager
     }
 
     #endregion
-    
+
+    #region IznajmljenaSoba
+    public static void DodajIznajmljenuSobu(IznajmljenaSobaBasic novaSoba, int idNekretnine, int idSobe, int idNajma)
+    {
+        ISession? session = null;
+        try
+        {
+            session = DataLayer.GetSession();
+            if (session != null && session.IsOpen)
+            {
+                Soba soba = session.Load<Soba>(new SobaId { IdSobe = idSobe, Nekretnina = session.Load<Nekretnina>(idNekretnine) });
+                Najam najam = session.Load<Najam>(idNajma);
+
+                IznajmljenaSobaId iznID = new()
+                { 
+                    Soba = soba.ID,
+                    Najam = najam
+                };
+
+                IznajmljenaSoba iznajmljenaSoba = new()
+                {
+                    ID = iznID
+                };
+
+                session.Save(iznajmljenaSoba);
+                session.Flush();
+                MessageBox.Show("Iznajmljena soba je uspešno dodata.");
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.FormatExceptionMessage());
+        }
+        finally
+        {
+            session?.Close();
+        }
+    }
+
+    public static List<IznajmljenaSobaPregled> VratiSveIznajmljeneSobe()
+    {
+        List<IznajmljenaSobaPregled> iznajmljeneSobe = new List<IznajmljenaSobaPregled>();
+        ISession? session = null;
+        try
+        {
+            session = DataLayer.GetSession();
+            if (session != null && session.IsOpen)
+            {
+                IEnumerable<IznajmljenaSoba> sveSobe = from s 
+                                                       in session.Query<IznajmljenaSoba>() 
+                                                       select s;
+
+                foreach (IznajmljenaSoba s in sveSobe)
+                {
+                    iznajmljeneSobe.Add(new IznajmljenaSobaPregled(
+                        s.ID.Soba.IdSobe,
+                        s.ID.Soba.Nekretnina.IdNekretnine,
+                        new NajamPregled(
+                            s.ID.Najam.IdNajma,
+                            s.ID.Najam.DatumPocetka,
+                            s.ID.Najam.DatumZavrsetka,
+                            s.ID.Najam.CenaPoDanu,
+                            s.ID.Najam.Popust,
+                            s.ID.Najam.ZaradaOdDodatnihUsluga,
+                            s.ID.Najam.ProvizijaAgencije,
+                            s.ID.Najam.Nekretnina.Ulica + " " + s.ID.Najam.Nekretnina.Broj,
+                            s.ID.Najam.Agent.Ime,
+                            s.ID.Najam.SpoljniSaradnik?.Ime ?? string.Empty
+                        )
+                    ));
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.FormatExceptionMessage());
+        }
+        finally
+        {
+            session?.Close();
+        }
+
+        return iznajmljeneSobe;
+    }
+
+    public static IznajmljenaSobaPregled VratiIznajmljenuSobu(int idSobe, int idNekretnine, int idNajma)
+    {
+        ISession? session = null;
+        try
+        {
+            session = DataLayer.GetSession();
+            if (session != null && session.IsOpen)
+            {
+                IznajmljenaSobaId id = new IznajmljenaSobaId
+                {
+                    Soba = new SobaId { IdSobe = idSobe, Nekretnina = session.Load<Nekretnina>(idNekretnine) },
+                    Najam = session.Load<Najam>(idNajma)
+                };
+
+                IznajmljenaSoba iznajmljenaSoba = session.Get<IznajmljenaSoba>(id);
+                if (iznajmljenaSoba != null)
+                {
+                    return new IznajmljenaSobaPregled(
+                        iznajmljenaSoba.ID.Soba.IdSobe,
+                        iznajmljenaSoba.ID.Soba.Nekretnina.IdNekretnine,
+                        new NajamPregled(
+                            iznajmljenaSoba.ID.Najam.IdNajma,
+                            iznajmljenaSoba.ID.Najam.DatumPocetka,
+                            iznajmljenaSoba.ID.Najam.DatumZavrsetka,
+                            iznajmljenaSoba.ID.Najam.CenaPoDanu,
+                            iznajmljenaSoba.ID.Najam.Popust,
+                            iznajmljenaSoba.ID.Najam.ZaradaOdDodatnihUsluga,
+                            iznajmljenaSoba.ID.Najam.ProvizijaAgencije,
+                            iznajmljenaSoba.ID.Najam.Nekretnina.Ulica + " " + iznajmljenaSoba.ID.Najam.Nekretnina.Broj,
+                            iznajmljenaSoba.ID.Najam.Agent.Ime,
+                            iznajmljenaSoba.ID.Najam.SpoljniSaradnik?.Ime ?? string.Empty
+                        )
+                    );
+                }
+                else
+                {
+                    MessageBox.Show($"Iznajmljena soba nije pronađena.");
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.FormatExceptionMessage());
+            return null;
+        }
+        finally
+        {
+            session?.Close();
+        }
+    }
+
+    public static void IzmeniIznajmljenuSobu(IznajmljenaSobaBasic izmenjenaSoba, int idNekretnine, int idSobe, int idNajma)
+    {
+        ISession? session = null;
+        try
+        {
+            session = DataLayer.GetSession();
+            if (session != null && session.IsOpen)
+            {
+                IznajmljenaSobaId id = new IznajmljenaSobaId
+                {
+                    Soba = new SobaId { IdSobe = idSobe, Nekretnina = session.Load<Nekretnina>(idNekretnine) },
+                    Najam = session.Load<Najam>(idNajma)
+                };
+
+                IznajmljenaSoba iznajmljenaSoba = session.Get<IznajmljenaSoba>(id);
+                if (iznajmljenaSoba != null)
+                {
+                    iznajmljenaSoba.ID.Soba = new SobaId 
+                    { 
+                        IdSobe = izmenjenaSoba.Soba.IdSobe, 
+                        Nekretnina = session.Load<Nekretnina>(izmenjenaSoba.Soba.Nekretnina.IdNekretnine) 
+                    };
+                    iznajmljenaSoba.ID.Najam = session.Load<Najam>(izmenjenaSoba.Najam.IdNajma);
+
+                    session.Update(iznajmljenaSoba);
+                    session.Flush();
+                    MessageBox.Show($"Podaci za iznajmljenu sobu su izmenjeni.");
+                }
+                else
+                {
+                    MessageBox.Show($"Iznajmljena soba nije pronađena.");
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.FormatExceptionMessage());
+        }
+        finally
+        {
+            session?.Close();
+        }
+    }
+
+    public static void ObrisiIznajmljenuSobu(int idSobe, int idNekretnine, int idNajma)
+    {
+        ISession? session = null;
+        try
+        {
+            session = DataLayer.GetSession();
+            if (session != null && session.IsOpen)
+            {
+                IznajmljenaSobaId id = new()
+                {
+                    Soba = new SobaId { IdSobe = idSobe, Nekretnina = session.Load<Nekretnina>(idNekretnine) },
+                    Najam = session.Load<Najam>(idNajma)
+                };
+
+                IznajmljenaSoba iznajmljenaSoba = session.Get<IznajmljenaSoba>(id);
+                if (iznajmljenaSoba != null)
+                {
+                    session.Delete(iznajmljenaSoba);
+                    session.Flush();
+                    MessageBox.Show($"Iznajmljena soba je obrisana.");
+                }
+                else
+                {
+                    MessageBox.Show($"Iznajmljena soba nije pronađena.");
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.FormatExceptionMessage());
+        }
+        finally
+        {
+            session?.Close();
+        }
+    }
+    #endregion
 }

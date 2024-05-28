@@ -607,25 +607,31 @@ public class DodatnaOpremaPregled
 
 public class IznajmljenaSobaBasic
 {
-    public IznajmljenaSobaId ID { get; set; }
+    public SobaBasic Soba { get; set; }
+    public NajamBasic Najam { get; set; }
 
     public IznajmljenaSobaBasic() { }
 
-    public IznajmljenaSobaBasic(IznajmljenaSobaId id)
+    public IznajmljenaSobaBasic(SobaBasic soba, NajamBasic najam)
     {
-        ID = id;
+        Soba = soba;
+        Najam = najam;
     }
 }
 
 public class IznajmljenaSobaPregled
 {
-    public IznajmljenaSobaId ID { get; set; }
+    public int IdSobe { get; set; }
+    public int IdNekretnine { get; set; }
+    public NajamPregled Najam { get; set; }
 
     public IznajmljenaSobaPregled() { }
 
-    public IznajmljenaSobaPregled(IznajmljenaSobaId id)
+    public IznajmljenaSobaPregled(int idSobe, int idNekretnine, NajamPregled najam)
     {
-        ID = id;
+        IdSobe = idSobe;
+        IdNekretnine = idNekretnine;
+        Najam = najam;
     }
 }
 
