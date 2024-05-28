@@ -19,7 +19,7 @@
 
             References(x => x.Vlasnik, "ID_VLASNIKA").Unique().Cascade.All();
 
-            //HasMany(x => x.BrojeviTelefona).KeyColumn("JMBG_FIZICKOG_LICA").LazyLoad().Cascade.All();
+            HasMany(x => x.BrojeviTelefona).KeyColumn("JMBG_LICA").LazyLoad().Cascade.All();
         }
     }
 }
