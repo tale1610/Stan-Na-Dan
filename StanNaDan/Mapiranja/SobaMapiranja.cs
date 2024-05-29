@@ -10,11 +10,17 @@ class SobaMapiranja : ClassMap<Soba>
             .KeyReference(p => p.Nekretnina, "ID_NEKRETNINE")
             .KeyProperty(p => p.IdSobe, "ID_SOBE");
 
-        //HasManyToMany(p => p.Najmovi)
-        //    .Table("IZNAJMLJENA_SOBA")
-        //    .ParentKeyColumns.Add("ID_SOBE", "ID_NEKRETNINE")
-        //    .ChildKeyColumn("ID_NAJMA");
+        HasMany(x => x.ZajednickeProstorije)
+                .KeyColumns.Add("ID_NEKRETNINE", "ID_SOBE")
+                .Cascade.All()
+                .Inverse();
 
-        //HasMany(p => p.ZajednickeProstorije).KeyColumn("ID_SOBE").Cascade.All().Inverse();
+        HasManyToMany(p => p.Najmovi)
+                .Table("IZNAJMLJENA_SOBA")
+                .ParentKeyColumns.Add("ID_NEKRETNINE", "ID_SOBE")
+                .ChildKeyColumn("ID_NAJMA")
+                .Cascade.All();
+
+        HasMany(p => p.IznajmljivanjaSobe).KeyColumns.Add("ID_NEKRETNINE", "ID_SOBE").LazyLoad().Cascade.All().Inverse();
     }
 }

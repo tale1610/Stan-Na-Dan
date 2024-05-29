@@ -32,16 +32,15 @@ namespace StanNaDan.Mapiranja
             References(p => p.Agent).Column("MBR_AGENTA").LazyLoad();
 
             References(p => p.SpoljniSaradnik)
-            .Columns("MBR_AGENTA_ZA_SPOLJNOG", "ID_SPOLJNJEG_RADNIKA");//.Not.Insert().Not.Update()//ForeignKey("FK_NAJAM_SPOLJNI")//ovde ti je potencijalno pucanje ako nesto zeza
-            //.Cascade.All();//.NotFound.Ignore();//namerno iskljucen cascadeAll jer agenti mogu da realizuju vise najmova, nema smisla ako se obrise najam da se obrise agent
+            .Columns("MBR_AGENTA_ZA_SPOLJNOG", "ID_SPOLJNJEG_RADNIKA");
 
-            
+            HasManyToMany(p => p.Sobe)
+                .Table("IZNAJMLJENA_SOBA")
+                .ParentKeyColumn("ID_NAJMA")
+                .ChildKeyColumns.Add("ID_NEKRETNINE", "ID_SOBE")
+                .Cascade.All();
 
-            //HasManyToMany(p => p.Sobe)
-            //    .Table("IZNAJMLJENA_SOBA")
-            //    .ParentKeyColumn("ID_NAJMA")
-            //    .ChildKeyColumn("ID_SOBE")
-            //    .Cascade.All().Inverse();
+            HasMany(p => p.IznajmljivanjaSoba).KeyColumn("ID_NAJMA").LazyLoad().Cascade.All().Inverse();
         }
     }
 }
