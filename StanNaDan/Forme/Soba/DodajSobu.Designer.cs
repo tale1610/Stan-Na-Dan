@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
-            label1 = new Label();
             tbIdSobe = new TextBox();
+            label1 = new Label();
             btnDodajSobu = new Button();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -46,6 +46,13 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Podaci O Sobi";
             // 
+            // tbIdSobe
+            // 
+            tbIdSobe.Location = new Point(125, 44);
+            tbIdSobe.Name = "tbIdSobe";
+            tbIdSobe.Size = new Size(125, 27);
+            tbIdSobe.TabIndex = 1;
+            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -55,13 +62,6 @@
             label1.TabIndex = 0;
             label1.Text = "Id Sobe:";
             // 
-            // tbIdSobe
-            // 
-            tbIdSobe.Location = new Point(125, 44);
-            tbIdSobe.Name = "tbIdSobe";
-            tbIdSobe.Size = new Size(125, 27);
-            tbIdSobe.TabIndex = 1;
-            // 
             // btnDodajSobu
             // 
             btnDodajSobu.Location = new Point(101, 130);
@@ -70,6 +70,7 @@
             btnDodajSobu.TabIndex = 1;
             btnDodajSobu.Text = "Dodaj Sobu";
             btnDodajSobu.UseVisualStyleBackColor = true;
+            btnDodajSobu.Click += btnDodajSobu_Click;
             // 
             // DodajSobu
             // 

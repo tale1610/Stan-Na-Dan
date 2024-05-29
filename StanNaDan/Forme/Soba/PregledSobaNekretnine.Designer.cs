@@ -31,8 +31,7 @@
             btnObrisiSobu = new Button();
             btnIzmeniSobu = new Button();
             tbDodajSobu = new Button();
-            listaPoslovnica = new ListView();
-            ID = new ColumnHeader();
+            listaSoba = new ListView();
             IdNekretnine = new ColumnHeader();
             IdSobe = new ColumnHeader();
             SuspendLayout();
@@ -45,6 +44,7 @@
             btnObrisiSobu.TabIndex = 8;
             btnObrisiSobu.Text = "Obrisi Sobu";
             btnObrisiSobu.UseVisualStyleBackColor = true;
+            btnObrisiSobu.Click += btnObrisiSobu_Click;
             // 
             // btnIzmeniSobu
             // 
@@ -63,23 +63,19 @@
             tbDodajSobu.TabIndex = 6;
             tbDodajSobu.Text = "Dodaj Sobu";
             tbDodajSobu.UseVisualStyleBackColor = true;
+            tbDodajSobu.Click += tbDodajSobu_Click;
             // 
-            // listaPoslovnica
+            // listaSoba
             // 
-            listaPoslovnica.Columns.AddRange(new ColumnHeader[] { ID, IdNekretnine, IdSobe });
-            listaPoslovnica.FullRowSelect = true;
-            listaPoslovnica.GridLines = true;
-            listaPoslovnica.Location = new Point(12, 12);
-            listaPoslovnica.Name = "listaPoslovnica";
-            listaPoslovnica.Size = new Size(264, 411);
-            listaPoslovnica.TabIndex = 5;
-            listaPoslovnica.UseCompatibleStateImageBehavior = false;
-            listaPoslovnica.View = View.Details;
-            // 
-            // ID
-            // 
-            ID.Text = "ID";
-            ID.Width = 50;
+            listaSoba.Columns.AddRange(new ColumnHeader[] { IdNekretnine, IdSobe });
+            listaSoba.FullRowSelect = true;
+            listaSoba.GridLines = true;
+            listaSoba.Location = new Point(12, 12);
+            listaSoba.Name = "listaSoba";
+            listaSoba.Size = new Size(264, 411);
+            listaSoba.TabIndex = 5;
+            listaSoba.UseCompatibleStateImageBehavior = false;
+            listaSoba.View = View.Details;
             // 
             // IdNekretnine
             // 
@@ -99,9 +95,10 @@
             Controls.Add(btnObrisiSobu);
             Controls.Add(btnIzmeniSobu);
             Controls.Add(tbDodajSobu);
-            Controls.Add(listaPoslovnica);
+            Controls.Add(listaSoba);
             Name = "PregledSobaNekretnine";
             Text = "PregledSobaNekretnine";
+            Load += PregledSobaNekretnine_Load;
             ResumeLayout(false);
         }
 
@@ -110,8 +107,7 @@
         private Button btnObrisiSobu;
         private Button btnIzmeniSobu;
         private Button tbDodajSobu;
-        private ListView listaPoslovnica;
-        private ColumnHeader ID;
+        private ListView listaSoba;
         private ColumnHeader IdNekretnine;
         private ColumnHeader IdSobe;
     }

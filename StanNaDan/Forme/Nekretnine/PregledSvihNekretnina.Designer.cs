@@ -181,8 +181,9 @@
             btnPrikaziSveSobe.Name = "btnPrikaziSveSobe";
             btnPrikaziSveSobe.Size = new Size(205, 29);
             btnPrikaziSveSobe.TabIndex = 14;
-            btnPrikaziSveSobe.Text = "Prikazi Sobe";
+            btnPrikaziSveSobe.Text = "Prikazi Sobe Za Izdavanje";
             btnPrikaziSveSobe.UseVisualStyleBackColor = true;
+            btnPrikaziSveSobe.Click += btnPrikaziSveSobe_Click;
             // 
             // label1
             // 

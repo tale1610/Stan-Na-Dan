@@ -2,6 +2,7 @@
 using StanNaDan.Forme.Kvartovi;
 using StanNaDan.Forme.Najam;
 using StanNaDan.Forme.Nekretnine;
+using StanNaDan.Forme.Soba;
 using StanNaDan.Forme.Vlasnici;
 using StanNaDan.Forme.Zaposleni;
 using System;
@@ -57,6 +58,12 @@ namespace StanNaDan
         {
             PregledSvihNajmova formaPregledSvihNajmova = new PregledSvihNajmova();
             formaPregledSvihNajmova.ShowDialog();
+        }
+
+        private void btnSobe_Click(object sender, EventArgs e)
+        {
+            PregledSvihSoba formaPregledSvihSoba = new PregledSvihSoba();
+            formaPregledSvihSoba.ShowDialog();
         }
     }
 }

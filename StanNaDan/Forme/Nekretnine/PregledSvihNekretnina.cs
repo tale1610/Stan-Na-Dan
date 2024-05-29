@@ -3,6 +3,7 @@ using StanNaDan.Forme.Nekretnine.DodatnaOprema;
 using StanNaDan.Forme.Nekretnine.Kreveti;
 using StanNaDan.Forme.Nekretnine.Sajtovi;
 using StanNaDan.Forme.Parking;
+using StanNaDan.Forme.Soba;
 using StanNaDan.Forme.Zaposleni;
 using System;
 using System.Collections.Generic;
@@ -79,7 +80,7 @@ namespace StanNaDan.Forme.Nekretnine
 
         private void btnDodajNekretninu_Click(object sender, EventArgs e)
         {
-            DodajNekretninu formaDodaj = new DodajNekretninu();
+            DodajNekretninu formaDodaj = new DodajNekretninu();//DODAJ IZBOR VLASNIKA AKO OSTAJE OVO DUGME DA FUNKCIONISE
             formaDodaj.ShowDialog();
             this.popuniPodacima();
         }
@@ -191,6 +192,24 @@ namespace StanNaDan.Forme.Nekretnine
             this.izabaranaNekretninaID = idNekretnine;
             this.DialogResult = DialogResult.OK;
             this.Close();
+        }
+
+        private void btnPrikaziSveSobe_Click(object sender, EventArgs e)
+        {
+            if (listaNekretnina.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Izaberite nekretninu cije sobe zelite da vidite!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else if (listaNekretnina.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("Mozete odabrati samo jednu nekretninu za prikaz jednovremeno!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            int idNekretnine = Int32.Parse(listaNekretnina.SelectedItems[0].SubItems[0].Text);
+            PregledSobaNekretnine formaPregledSvihSobaNekretnine = new PregledSobaNekretnine(idNekretnine);
+            formaPregledSvihSobaNekretnine.ShowDialog();
+            this.popuniPodacima();
         }
     }
 }

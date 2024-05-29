@@ -2,16 +2,7 @@
 using StanNaDan.Forme.Vlasnici.FizickaLica.BrojeviTelefona;
 using StanNaDan.Forme.Vlasnici.PravnaLica;
 using StanNaDan.Forme.Vlasnici.PravnaLica.TelefoniKontaktOsobe;
-using StanNaDan.Forme.Zaposleni;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+
 
 namespace StanNaDan.Forme.Vlasnici
 {
@@ -84,19 +75,19 @@ namespace StanNaDan.Forme.Vlasnici
 
         private void btnObrisiPravnoLice_Click(object sender, EventArgs e)
         {
-            if (listaFizickihLica.SelectedItems.Count == 0)
+            if (listaPravnihLica.SelectedItems.Count == 0)
             {
                 MessageBox.Show("Izaberite pravno lice koje zelite da obrisete!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            else if (listaFizickihLica.SelectedItems.Count > 1)
+            else if (listaPravnihLica.SelectedItems.Count > 1)
             {
                 MessageBox.Show("Mozete obrisati samo jedno pravno lice jednovremeno!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
             string pib = listaPravnihLica.SelectedItems[0].SubItems[0].Text;
-            DTOManager.obrisiVlasnika(pib);
+            DTOManager.obrisiVlasnika(null, pib);
             this.popuniPodacima();
         }
 
@@ -147,7 +138,7 @@ namespace StanNaDan.Forme.Vlasnici
         {
             if (listaFizickihLica.SelectedItems.Count == 0)
             {
-                MessageBox.Show("Izaberite fizicko lice cije nekretnine zelite da vidite!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Izaberite fizicko lice cije brojeve telefona zelite da vidite!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             else if (listaFizickihLica.SelectedItems.Count > 1)
@@ -166,7 +157,7 @@ namespace StanNaDan.Forme.Vlasnici
         {
             if (listaPravnihLica.SelectedItems.Count == 0)
             {
-                MessageBox.Show("Izaberite pravno lice cije nekretnine zelite da vidite!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Izaberite pravno lice cije brojeve telefona zelite da vidite!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             else if (listaFizickihLica.SelectedItems.Count > 1)

@@ -4,6 +4,7 @@ public class ZajednickeProstorijeId
 {
     virtual public required Soba Soba { get; set; }
     virtual public required string ZajednickaProstorija { get; set; }
+
     public override bool Equals(object? obj)
     {
         if (ReferenceEquals(this, obj))
@@ -18,11 +19,11 @@ public class ZajednickeProstorijeId
 
         ZajednickeProstorijeId compare = (ZajednickeProstorijeId)obj;
 
-        return Soba.ID == compare.Soba.ID && ZajednickaProstorija == compare.ZajednickaProstorija;
+        return ZajednickaProstorija == compare.ZajednickaProstorija && Soba?.ID.Equals(compare.Soba?.ID) == true;
     }
 
     public override int GetHashCode()
     {
-        return base.GetHashCode();
+        return HashCode.Combine(ZajednickaProstorija, Soba?.ID);
     }
 }

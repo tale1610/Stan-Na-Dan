@@ -2450,6 +2450,7 @@ public class DTOManager
                 {
                     ID = sID
                 };
+                nekretnina.Sobe.Add(soba);
 
                 session.Save(soba);
                 session.Flush();
@@ -2465,7 +2466,39 @@ public class DTOManager
             session?.Close();
         }
     }
+    public static List<SobaPregled> VratiSveSobe()
+    {
+        List<SobaPregled> sobe = new List<SobaPregled>();
+        ISession? session = null;
+        try
+        {
+            session = DataLayer.GetSession();
+            if (session != null && session.IsOpen)
+            {
+                IEnumerable<Soba> sveSobe = from soba
+                                            in session.Query<Soba>()
+                                            select soba;
 
+                foreach (Soba s in sveSobe)
+                {
+                    sobe.Add(new SobaPregled(
+                        s.ID.IdSobe,
+                        s.ID.Nekretnina.IdNekretnine
+                    ));
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.FormatExceptionMessage());
+        }
+        finally
+        {
+            session?.Close();
+        }
+
+        return sobe;
+    }
     public static List<SobaPregled> VratiSveSobeNekretnine(int idNekretnine)
     {
         List<SobaPregled> sobe = new List<SobaPregled>();
@@ -2659,7 +2692,7 @@ public class DTOManager
         }
     }
 
-    public static List<ZajednickeProstorijePregled> VratiSveZajednickeProstorije(int idSobe, int idNekretnine)
+    public static List<ZajednickeProstorijePregled> VratiSveZajednickeProstorijeSobe(int idSobe, int idNekretnine)
     {
         List<ZajednickeProstorijePregled> prostorije = new List<ZajednickeProstorijePregled>();
         ISession? session = null;

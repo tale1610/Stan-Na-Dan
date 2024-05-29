@@ -36,6 +36,7 @@
             btnVlasnici = new Button();
             btnNekretnine = new Button();
             btnNajmovi = new Button();
+            btnSobe = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -70,7 +71,7 @@
             // 
             // btnTestForma
             // 
-            btnTestForma.Location = new Point(204, 574);
+            btnTestForma.Location = new Point(204, 584);
             btnTestForma.Name = "btnTestForma";
             btnTestForma.Size = new Size(261, 82);
             btnTestForma.TabIndex = 3;
@@ -100,7 +101,7 @@
             // 
             // btnNajmovi
             // 
-            btnNajmovi.Location = new Point(204, 476);
+            btnNajmovi.Location = new Point(12, 476);
             btnNajmovi.Name = "btnNajmovi";
             btnNajmovi.Size = new Size(261, 92);
             btnNajmovi.TabIndex = 6;
@@ -108,11 +109,22 @@
             btnNajmovi.UseVisualStyleBackColor = true;
             btnNajmovi.Click += btnNajmovi_Click;
             // 
+            // btnSobe
+            // 
+            btnSobe.Location = new Point(371, 476);
+            btnSobe.Name = "btnSobe";
+            btnSobe.Size = new Size(274, 92);
+            btnSobe.TabIndex = 7;
+            btnSobe.Text = "Sobe";
+            btnSobe.UseVisualStyleBackColor = true;
+            btnSobe.Click += btnSobe_Click;
+            // 
             // Pocetna
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(657, 678);
+            Controls.Add(btnSobe);
             Controls.Add(btnNajmovi);
             Controls.Add(btnNekretnine);
             Controls.Add(btnVlasnici);
@@ -135,5 +147,6 @@
         private Button btnVlasnici;
         private Button btnNekretnine;
         private Button btnNajmovi;
+        private Button btnSobe;
     }
 }

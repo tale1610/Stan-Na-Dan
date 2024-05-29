@@ -16,5 +16,27 @@ namespace StanNaDan.Forme.Soba
         {
             InitializeComponent();
         }
+        public void popuniPodacima()
+        {
+            listaSoba.Items.Clear();
+            List<SobaPregled> podaci = DTOManager.VratiSveSobe();
+
+            foreach (SobaPregled s in podaci)
+            {
+                ListViewItem item;
+                item = new ListViewItem(new string[] { s.IdNekretnine.ToString(), s.IdSobe.ToString() });
+                listaSoba.Items.Add(item);
+            }
+            listaSoba.Refresh();
+        }
+        private void PregledSvihSoba_Load(object sender, EventArgs e)
+        {
+            popuniPodacima();
+        }
+
+        private void btnZajednickeProstorije_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
