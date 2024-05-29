@@ -50,9 +50,10 @@
             listaNajmova.Columns.AddRange(new ColumnHeader[] { ID, DatumPocetka, DatumZavrsetka, BrojDana, CenaPoDanu, CenaSaPopustom, ZaradaOdDodatnihUsluga, UkupnaCena, ProvizijaAgencije, Agent, Spoljni });
             listaNajmova.FullRowSelect = true;
             listaNajmova.GridLines = true;
-            listaNajmova.Location = new Point(12, 12);
+            listaNajmova.Location = new Point(10, 9);
+            listaNajmova.Margin = new Padding(3, 2, 3, 2);
             listaNajmova.Name = "listaNajmova";
-            listaNajmova.Size = new Size(1191, 408);
+            listaNajmova.Size = new Size(1043, 307);
             listaNajmova.TabIndex = 6;
             listaNajmova.UseCompatibleStateImageBehavior = false;
             listaNajmova.View = View.Details;
@@ -114,9 +115,10 @@
             // 
             // btnDodajNoviNajam
             // 
-            btnDodajNoviNajam.Location = new Point(1209, 12);
+            btnDodajNoviNajam.Location = new Point(1058, 9);
+            btnDodajNoviNajam.Margin = new Padding(3, 2, 3, 2);
             btnDodajNoviNajam.Name = "btnDodajNoviNajam";
-            btnDodajNoviNajam.Size = new Size(227, 29);
+            btnDodajNoviNajam.Size = new Size(199, 22);
             btnDodajNoviNajam.TabIndex = 7;
             btnDodajNoviNajam.Text = "Dodaj Novi Najam";
             btnDodajNoviNajam.UseVisualStyleBackColor = true;
@@ -124,9 +126,10 @@
             // 
             // btnObrisiNajam
             // 
-            btnObrisiNajam.Location = new Point(1209, 56);
+            btnObrisiNajam.Location = new Point(1058, 42);
+            btnObrisiNajam.Margin = new Padding(3, 2, 3, 2);
             btnObrisiNajam.Name = "btnObrisiNajam";
-            btnObrisiNajam.Size = new Size(227, 30);
+            btnObrisiNajam.Size = new Size(199, 22);
             btnObrisiNajam.TabIndex = 8;
             btnObrisiNajam.Text = "Obrisi Najam";
             btnObrisiNajam.UseVisualStyleBackColor = true;
@@ -134,22 +137,25 @@
             // 
             // btnIzmeniNajam
             // 
-            btnIzmeniNajam.Location = new Point(1209, 102);
+            btnIzmeniNajam.Location = new Point(1058, 76);
+            btnIzmeniNajam.Margin = new Padding(3, 2, 3, 2);
             btnIzmeniNajam.Name = "btnIzmeniNajam";
-            btnIzmeniNajam.Size = new Size(227, 29);
+            btnIzmeniNajam.Size = new Size(199, 22);
             btnIzmeniNajam.TabIndex = 9;
             btnIzmeniNajam.Text = "Izmeni Najam";
             btnIzmeniNajam.UseVisualStyleBackColor = true;
+            btnIzmeniNajam.Click += btnIzmeniNajam_Click;
             // 
             // PregledSvihNajmova
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1444, 450);
+            ClientSize = new Size(1264, 338);
             Controls.Add(btnIzmeniNajam);
             Controls.Add(btnObrisiNajam);
             Controls.Add(btnDodajNoviNajam);
             Controls.Add(listaNajmova);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "PregledSvihNajmova";
             Text = "PregledSvihNajmova";
             Load += PregledSvihNajmova_Load;

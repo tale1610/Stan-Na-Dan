@@ -1,4 +1,7 @@
 ﻿using StanNaDan.Forme.SpoljniSaradnici;
+using StanNaDan.Forme.Vlasnici.FizickaLica;
+using StanNaDan.Forme.Zaposleni.Agenti;
+using StanNaDan.Forme.Zaposleni.Sefovi;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -50,6 +53,9 @@ namespace StanNaDan.Forme.Zaposleni
         {
             //TODO: Ostavi za kraj jer vec imas dodavanje radnika iz PregledPoslovnica i radi kako treba, ovde kad se klikne na dugme 
             //prikazi samo formu sa svim poslovnicama, izaberi poslovnicu na formi, pa se vrati ovde i kreiraj radnika
+            PregledPoslovnica formaPregledPoslovnica = new PregledPoslovnica();
+            formaPregledPoslovnica.ShowDialog();
+            this.popuniPodacima();
         }
 
         private void btnObrisiRadnika_Click(object sender, EventArgs e)
@@ -72,7 +78,33 @@ namespace StanNaDan.Forme.Zaposleni
 
         private void btnIzmeniRadnika_Click(object sender, EventArgs e)
         {
+            if (listaZaposlenih.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Morate da izaberete zaposlenog cije podatke zelite da izmenite!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (listaZaposlenih.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("Mozete izmeniti podatke samo o jednom zaposlenom jednovremeno!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
 
+            string mbr = listaZaposlenih.SelectedItems[0].SubItems[0].Text;
+            string tipPosla = listaZaposlenih.SelectedItems[0].SubItems[5].Text;
+            if (tipPosla == "Sef")
+            {
+                SefBasic sefBasic = DTOManager.vratiSefa(mbr);
+                IzmeniSefa formaIzmeni = new IzmeniSefa(sefBasic);
+                formaIzmeni.ShowDialog();
+            }
+            else
+            {
+                AgentBasic agentBasic = DTOManager.vratiAgenta(mbr);
+                IzmeniAgenta formaIzmeni = new IzmeniAgenta(agentBasic);
+                formaIzmeni.ShowDialog();
+            }
+
+            this.popuniPodacima();
         }
 
         private void btnPrikaziSveSpoljneSaradnikeAgenta_Click(object sender, EventArgs e)

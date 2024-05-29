@@ -315,9 +315,12 @@ public class DTOManager
 
             if (session != null && session.IsOpen)
             {
-                Agent agent = session.Load<Agent>(mbr);
-                PoslovnicaBasic poslovnicaBasic = new PoslovnicaBasic(agent.Poslovnica.ID, agent.Poslovnica.Adresa, agent.Poslovnica.RadnoVreme, agent.Poslovnica.Sef);
-                agentBasic = new AgentBasic(agent.MBR, agent.Ime, agent.Prezime, agent.DatumZaposlenja, agent.StrucnaSprema, poslovnicaBasic);
+                Agent agent = session.Get<Agent>(mbr);
+                if (agent != null)
+                {
+                    PoslovnicaBasic poslovnicaBasic = new PoslovnicaBasic(agent.Poslovnica.ID, agent.Poslovnica.Adresa, agent.Poslovnica.RadnoVreme, agent.Poslovnica.Sef);
+                    agentBasic = new AgentBasic(agent.MBR, agent.Ime, agent.Prezime, agent.DatumZaposlenja, agent.StrucnaSprema, poslovnicaBasic);
+                }
             }
         }
         catch (Exception ex)
@@ -368,6 +371,46 @@ public class DTOManager
             session?.Close();
         }
     }
+
+    public static void IzmeniAgenta(AgentBasic agentBasic)
+    {
+        ISession? session = null;
+        try
+        {
+            session = DataLayer.GetSession();
+
+            if (session != null && session.IsOpen)
+            {
+                Agent agent = session.Get<Agent>(agentBasic.MBR);
+
+                if (agent != null)
+                {
+                    agent.Ime = agentBasic.Ime;
+                    agent.Prezime = agentBasic.Prezime;
+                    agent.DatumZaposlenja = agentBasic.DatumZaposlenja;
+                    agent.StrucnaSprema = agentBasic.StrucnaSprema;
+
+                    session.Update(agent);
+                    session.Flush();
+
+                    MessageBox.Show($"Podaci za agenta sa MBR {agentBasic.MBR} su izmenjeni.");
+                }
+                else
+                {
+                    MessageBox.Show($"Agent sa MBR {agentBasic.MBR} nije pronađen.");
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.FormatExceptionMessage());
+        }
+        finally
+        {
+            session?.Close();
+        }
+    }
+
     #endregion
 
     #region Sef
@@ -400,6 +443,47 @@ public class DTOManager
         {
             session?.Close();
         }
+    }
+
+    public static SefBasic vratiSefa(string mbr)
+    {
+        SefBasic sefBasic = new SefBasic();
+        ISession? session = null;
+        try
+        {
+            session = DataLayer.GetSession();
+
+            if (session != null && session.IsOpen)
+            {
+                Sef sef = session.Get<Sef>(mbr);
+                if (sef != null)
+                {
+                    PoslovnicaBasic poslovnicaBasic = new PoslovnicaBasic(
+                        sef.Poslovnica.ID, 
+                        sef.Poslovnica.Adresa, 
+                        sef.Poslovnica.RadnoVreme, 
+                        sef.Poslovnica.Sef
+                        );
+                    sefBasic = new SefBasic(
+                        sef.MBR,
+                        sef.Ime, 
+                        sef.Prezime, 
+                        sef.DatumZaposlenja, 
+                        sef.DatumPostavljanja, 
+                        poslovnicaBasic
+                        );
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.FormatExceptionMessage());
+        }
+        finally
+        {
+            session?.Close();
+        }
+        return sefBasic;
     }
 
     public static void dodajNovogSefa(int idPoslovnice, SefBasic sefBasic)
@@ -443,6 +527,43 @@ public class DTOManager
             session?.Close();
         }
     }
+
+    public static void IzmeniSefa(SefBasic izmenjeniSef)
+    {
+        ISession? session = null;
+        try
+        {
+            session = DataLayer.GetSession();
+            if (session != null && session.IsOpen)
+            {
+                Sef sef = session.Get<Sef>(izmenjeniSef.MBR);
+                if (sef != null)
+                {
+                    sef.Ime = izmenjeniSef.Ime;
+                    sef.Prezime = izmenjeniSef.Prezime;
+                    sef.DatumZaposlenja = izmenjeniSef.DatumZaposlenja;
+                    sef.DatumPostavljanja = izmenjeniSef.DatumPostavljanja;
+
+                    session.Update(sef);
+                    session.Flush();
+                    MessageBox.Show($"Podaci za šefa sa MBR {izmenjeniSef.MBR} su izmenjeni.");
+                }
+                else
+                {
+                    MessageBox.Show($"Šef sa MBR {izmenjeniSef.MBR} nije pronađen.");
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.FormatExceptionMessage());
+        }
+        finally
+        {
+            session?.Close();
+        }
+    }
+
 
     #endregion
 
@@ -3577,7 +3698,7 @@ public class DTOManager
         return najmovi;
     }
 
-    public static NajamPregled VratiNajam(int idNajma)
+    public static NajamBasic VratiNajam(int idNajma)
     {
         ISession? session = null;
         try
@@ -3588,18 +3709,16 @@ public class DTOManager
                 Najam najam = session.Get<Najam>(idNajma);
                 if (najam != null)
                 {
-                    return new NajamPregled(
-                        najam.IdNajma,
-                        najam.DatumPocetka,
-                        najam.DatumZavrsetka,
-                        najam.CenaPoDanu,
-                        najam.Popust,
-                        najam.ZaradaOdDodatnihUsluga,
-                        najam.ProvizijaAgencije,
-                        najam.Nekretnina.Ulica + " " + najam.Nekretnina.Broj,
-                        najam.Agent.Ime,
-                        najam.SpoljniSaradnik?.Ime ?? string.Empty
-                    );
+                    return new NajamBasic
+                    {  
+                        IdNajma = najam.IdNajma,
+                        DatumPocetka = najam.DatumPocetka,
+                        DatumZavrsetka = najam.DatumZavrsetka,
+                        CenaPoDanu = najam.CenaPoDanu,
+                        Popust = najam.Popust ?? 0,
+                        ZaradaOdDodatnihUsluga = najam.ZaradaOdDodatnihUsluga,
+                        ProvizijaAgencije = najam.ProvizijaAgencije
+                    };
                 }
                 else
                 {

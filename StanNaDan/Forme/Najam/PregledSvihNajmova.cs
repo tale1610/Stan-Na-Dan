@@ -1,4 +1,7 @@
-﻿namespace StanNaDan.Forme.Najam
+﻿using StanNaDan.Forme.Zaposleni.Agenti;
+using StanNaDan.Forme.Zaposleni.Sefovi;
+
+namespace StanNaDan.Forme.Najam
 {
     public partial class PregledSvihNajmova : Form
     {
@@ -46,6 +49,27 @@
 
             int idNajma = Int32.Parse(listaNajmova.SelectedItems[0].SubItems[0].Text);
             DTOManager.ObrisiNajam(idNajma);
+            this.popuniPodacima();
+        }
+
+        private void btnIzmeniNajam_Click(object sender, EventArgs e)
+        {
+            if (listaNajmova.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Izaberite najam koji zelite da izmenite!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else if (listaNajmova.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("Mozete izmeniti samo jedan najam jednovremeno!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            int id = Int32.Parse(listaNajmova.SelectedItems[0].SubItems[0].Text);
+            NajamBasic najamBasic = DTOManager.VratiNajam(id);
+            IzmeniNajam formaIzmeni = new IzmeniNajam(najamBasic);
+            formaIzmeni.ShowDialog();
+
             this.popuniPodacima();
         }
     }

@@ -74,8 +74,8 @@ public class ZaposleniBasic
 //sad to i za agenta sefa i ostalog
 public class SefBasic : ZaposleniBasic
 {
-    public DateTime DatumPostavljanja { get; set; }
-    public SefBasic(string MBR, string ime, string prezime, DateTime datumZaposlenja, DateTime datumPostavljanja, PoslovnicaBasic poslovnica) :base(MBR, ime, prezime, datumZaposlenja, poslovnica)
+    public DateTime? DatumPostavljanja { get; set; }
+    public SefBasic(string MBR, string ime, string prezime, DateTime datumZaposlenja, DateTime? datumPostavljanja, PoslovnicaBasic poslovnica) :base(MBR, ime, prezime, datumZaposlenja, poslovnica)
     {
         this.DatumPostavljanja = datumPostavljanja;
     }
@@ -131,8 +131,8 @@ public class ZaposleniPregled
 //opet isto to i za sefa i agenta i ostalo, ali sad razmisli da l da izbacis svuda iz pregled poslovnicu mada msm da ne treba
 public class SefPregled : ZaposleniPregled
 {
-    public DateTime DatumPostavljanja { get; set; }
-    public SefPregled(string MBR, string ime, string prezime, DateTime datumZaposlenja, string adresaPoslovnice, string pozicija, DateTime datumPostavljanja) : base(MBR, ime, prezime, datumZaposlenja, adresaPoslovnice, pozicija)
+    public DateTime? DatumPostavljanja { get; set; }
+    public SefPregled(string MBR, string ime, string prezime, DateTime datumZaposlenja, string adresaPoslovnice, string pozicija, DateTime? datumPostavljanja) : base(MBR, ime, prezime, datumZaposlenja, adresaPoslovnice, pozicija)
     {
         this.DatumPostavljanja = datumPostavljanja;
     }
