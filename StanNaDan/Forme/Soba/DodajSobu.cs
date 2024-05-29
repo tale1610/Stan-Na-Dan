@@ -37,14 +37,19 @@ namespace StanNaDan.Forme.Soba
             {
                 this.sobaBasic.IdSobe = Int32.Parse(tbIdSobe.Text);
                 DTOManager.DodajSobu(this.sobaBasic, this.IdNekretnine);
-                MessageBox.Show($"Uspesno ste dodali novu dodatnu opremu nekretnini sa ID: {this.IdNekretnine}!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Uspesno ste dodali novu sobu nekretnini sa ID: {this.IdNekretnine}!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
-            }
+            }   
             else
             {
                 MessageBox.Show("Odustali ste od dodavanja nove sobe!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

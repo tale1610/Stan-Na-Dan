@@ -18,6 +18,7 @@ public class Najam
                                                                 //a upisuju se podaci i u tabelu izdata soba
     virtual public required Agent Agent { get; set; }
     virtual public SpoljniSaradnik? SpoljniSaradnik { get; set; }
-    virtual public IList<IznajmljenaSoba>? Sobe { get; set; }
+    virtual public IList<IznajmljenaSoba>? IznajmljivanjaSoba { get; set; } = [];
+    virtual public IList<Soba>? Sobe { get; set; } = [];
         
 }

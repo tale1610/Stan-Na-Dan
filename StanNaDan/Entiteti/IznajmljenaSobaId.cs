@@ -1,28 +1,30 @@
-﻿namespace StanNaDan.Entiteti;
-
-public class IznajmljenaSobaId
+﻿namespace StanNaDan.Entiteti
 {
-    virtual public required SobaId Soba { get; set; } //ovaj se sadrzi od ova tri dole
-    virtual public required Najam Najam { get; set; }
-    public override bool Equals(object? obj)
+    public class IznajmljenaSobaId
     {
-        if (ReferenceEquals(this, obj))
+        virtual public required Soba Soba { get; set; }
+        virtual public required Najam Najam { get; set; }
+
+        public override bool Equals(object? obj)
         {
-            return true;
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj?.GetType() != typeof(IznajmljenaSobaId))
+            {
+                return false;
+            }
+
+            IznajmljenaSobaId compare = (IznajmljenaSobaId)obj;
+
+            return Soba.Equals(compare.Soba) && Najam?.IdNajma == compare.Najam?.IdNajma;
         }
 
-        if (obj?.GetType() != typeof(IznajmljenaSobaId))
+        public override int GetHashCode()
         {
-            return false;
+            return HashCode.Combine(Soba, Najam?.IdNajma);
         }
-
-        IznajmljenaSobaId compare = (IznajmljenaSobaId)obj;
-
-        return Soba.Nekretnina == compare.Soba.Nekretnina && Soba.IdSobe == Soba.IdSobe && Najam?.IdNajma == compare.Najam?.IdNajma;
-    }
-
-    public override int GetHashCode()
-    {
-        return base.GetHashCode();
     }
 }

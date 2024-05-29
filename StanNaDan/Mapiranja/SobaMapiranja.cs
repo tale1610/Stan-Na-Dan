@@ -15,11 +15,12 @@ class SobaMapiranja : ClassMap<Soba>
                 .Cascade.All()
                 .Inverse();
 
-        //HasManyToMany(p => p.Najmovi)
-        //    .Table("IZNAJMLJENA_SOBA")
-        //    .ParentKeyColumns.Add("ID_SOBE", "ID_NEKRETNINE")
-        //    .ChildKeyColumn("ID_NAJMA");
+        HasManyToMany(p => p.Najmovi)
+                .Table("IZNAJMLJENA_SOBA")
+                .ParentKeyColumns.Add("ID_NEKRETNINE", "ID_SOBE")
+                .ChildKeyColumn("ID_NAJMA")
+                .Cascade.All();
 
-        //HasMany(p => p.ZajednickeProstorije).KeyColumn("ID_SOBE").Cascade.All().Inverse();
+        HasMany(p => p.IznajmljivanjaSobe).KeyColumns.Add("ID_NEKRETNINE", "ID_SOBE").LazyLoad().Cascade.All().Inverse();
     }
 }

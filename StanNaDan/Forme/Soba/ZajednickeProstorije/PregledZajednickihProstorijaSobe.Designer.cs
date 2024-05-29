@@ -59,7 +59,7 @@
             btnDodajZajednickuProstoriju.TabIndex = 7;
             btnDodajZajednickuProstoriju.Text = "Dodaj Prostoriju";
             btnDodajZajednickuProstoriju.UseVisualStyleBackColor = true;
-            btnDodajZajednickuProstoriju.Click += this.btnDodajZajednickuProstoriju_Click;
+            btnDodajZajednickuProstoriju.Click += btnDodajZajednickuProstoriju_Click;
             // 
             // btnObrisiZajednickuProstoriju
             // 
@@ -80,7 +80,7 @@
             Controls.Add(listaProstorija);
             Name = "PregledZajednickihProstorijaSobe";
             Text = "PregledZajednickihProstorija";
-            Load += this.PregledZajednickihProstorijaSobe_Load_1;
+            Load += PregledZajednickihProstorijaSobe_Load;
             ResumeLayout(false);
         }
 

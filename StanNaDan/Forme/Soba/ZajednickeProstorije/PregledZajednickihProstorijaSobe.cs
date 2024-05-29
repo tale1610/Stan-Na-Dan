@@ -38,5 +38,17 @@ namespace StanNaDan.Forme.Soba.ZajednickeProstorije
             }
             listaProstorija.Refresh();
         }
+
+        private void PregledZajednickihProstorijaSobe_Load(object sender, EventArgs e)
+        {
+            popuniPodacima();
+        }
+
+        private void btnDodajZajednickuProstoriju_Click(object sender, EventArgs e)
+        {
+            DodajZajednickuProstorijuSobi formaDodajZajednickuProstorijuSobi = new DodajZajednickuProstorijuSobi(idNekretnine, idSobe);
+            formaDodajZajednickuProstorijuSobi.ShowDialog();
+            this.popuniPodacima();
+        }
     }
 }
