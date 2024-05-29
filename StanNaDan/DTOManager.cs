@@ -1,4 +1,5 @@
-﻿using NHibernate;
+﻿using FluentNHibernate.Utils;
+using NHibernate;
 using StanNaDan.Entiteti;
 using System;
 using System.Runtime.Intrinsics.X86;
@@ -181,7 +182,7 @@ public class DTOManager
                 }
 
                 IEnumerable<StanNaDan.Entiteti.Agent> sviAgenti = from agent
-                                                                     in session.Query<StanNaDan.Entiteti.Agent>()
+                                                                  in session.Query<StanNaDan.Entiteti.Agent>()
                                                                   select agent;
 
                 foreach (StanNaDan.Entiteti.Agent z in sviAgenti)
@@ -833,6 +834,42 @@ public class DTOManager
         }
     }
 
+    public static FizickoLiceBasic VratiFizickoLice(string jmbg)
+    {
+        ISession? session = null;
+        try
+        {
+            session = DataLayer.GetSession();
+            if (session != null && session.IsOpen)
+            {
+                FizickoLice fizickoLice = session.Get<FizickoLice>(jmbg);
+                if (fizickoLice != null)
+                {
+                    VlasnikBasic vlasnikPregled = new VlasnikBasic(fizickoLice.Vlasnik.IdVlasnika, fizickoLice.Vlasnik.Banka, fizickoLice.Vlasnik.BrojBankovnogRacuna);
+                    return new FizickoLiceBasic(fizickoLice.JMBG, fizickoLice.Ime, fizickoLice.ImeRoditelja, fizickoLice.Prezime, fizickoLice.Drzava, fizickoLice.MestoStanovanja, fizickoLice.AdresaStanovanja, fizickoLice.DatumRodjenja, fizickoLice.Email, vlasnikPregled);
+                }
+                else
+                {
+                    MessageBox.Show($"Fizicko lice sa JMBG {jmbg} nije pronađeno.");
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.FormatExceptionMessage());
+            return null;
+        }
+        finally
+        {
+            session?.Close();
+        }
+    }
+
     public static void dodajNovoFizickoLice(FizickoLiceBasic fizickoLiceBasic)
     {
         ISession? session = null;
@@ -866,6 +903,80 @@ public class DTOManager
                 session.SaveOrUpdate(fizickoLice);
                 session.Flush();
                 MessageBox.Show($"Fizicko lice {fizickoLice.Ime} {fizickoLice.Prezime} je upisano u bazu podataka kao vlasnik sa ID {vlasnik.IdVlasnika}.");
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.FormatExceptionMessage());
+        }
+        finally
+        {
+            session?.Close();
+        }
+    }
+
+    public static void IzmeniFizickoLice(FizickoLiceBasic izmenjenoFizickoLice)
+    {
+        ISession? session = null;
+        try
+        {
+            session = DataLayer.GetSession();
+            if (session != null && session.IsOpen)
+            {
+                FizickoLice fizickoLice = session.Get<FizickoLice>(izmenjenoFizickoLice.JMBG);
+                if (fizickoLice != null)
+                {
+                    fizickoLice.Ime = izmenjenoFizickoLice.Ime;
+                    fizickoLice.Prezime = izmenjenoFizickoLice.Prezime;
+                    fizickoLice.ImeRoditelja = izmenjenoFizickoLice.ImeRoditelja;
+                    fizickoLice.MestoStanovanja = izmenjenoFizickoLice.MestoStanovanja;
+                    fizickoLice.AdresaStanovanja = izmenjenoFizickoLice.AdresaStanovanja;
+                    fizickoLice.DatumRodjenja = izmenjenoFizickoLice.DatumRodjenja;
+                    fizickoLice.Drzava = izmenjenoFizickoLice.Drzava;
+                    fizickoLice.Email = izmenjenoFizickoLice.Email;
+
+                    fizickoLice.Vlasnik.Banka = izmenjenoFizickoLice.Vlasnik.Banka;
+                    fizickoLice.Vlasnik.BrojBankovnogRacuna = izmenjenoFizickoLice.Vlasnik.BrojBankovnogRacuna;
+
+                    session.Update(fizickoLice);
+                    session.Flush();
+                    MessageBox.Show($"Podaci za fizicko lice sa JMBG {izmenjenoFizickoLice.JMBG} su izmenjeni.");
+                }
+                else
+                {
+                    MessageBox.Show($"Fizicko lice sa JMBG {izmenjenoFizickoLice.JMBG} nije pronađeno.");
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.FormatExceptionMessage());
+        }
+        finally
+        {
+            session?.Close();
+        }
+    }
+
+    public static void ObrisiFizickoLice(string jmbg)
+    {
+        ISession? session = null;
+        try
+        {
+            session = DataLayer.GetSession();
+            if (session != null && session.IsOpen)
+            {
+                FizickoLice fizickoLice = session.Get<FizickoLice>(jmbg);
+                if (fizickoLice != null)
+                {
+                    session.Delete(fizickoLice);
+                    session.Flush();
+                    MessageBox.Show($"Fizicko lice sa JMBG {jmbg} je obrisano.");
+                }
+                else
+                {
+                    MessageBox.Show($"Fizicko lice sa JMBG {jmbg} nije pronađeno.");
+                }
             }
         }
         catch (Exception ex)
@@ -941,6 +1052,111 @@ public class DTOManager
                 session.SaveOrUpdate(pravnoLice);
                 session.Flush();
                 MessageBox.Show($"Fizicko lice {pravnoLice.Naziv} je upisano u bazu podataka kao vlasnik sa ID {vlasnik.IdVlasnika}.");
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.FormatExceptionMessage());
+        }
+        finally
+        {
+            session?.Close();
+        }
+    }
+
+    public static PravnoLiceBasic vratiPravnoLice(string pib)
+    {
+        ISession? session = null;
+        try
+        {
+            session = DataLayer.GetSession();
+            if (session != null && session.IsOpen)
+            {
+                PravnoLice pravnoLice = session.Get<PravnoLice>(pib);
+                if (pravnoLice != null)
+                {
+                    VlasnikBasic vlasnikPregled = new VlasnikBasic(pravnoLice.Vlasnik.IdVlasnika, pravnoLice.Vlasnik.Banka, pravnoLice.Vlasnik.BrojBankovnogRacuna);
+                    return new PravnoLiceBasic(pravnoLice.PIB, pravnoLice.Naziv, pravnoLice.AdresaSedista, pravnoLice.ImeKontaktOsobe, pravnoLice.EmailKontaktOsobe, vlasnikPregled);
+                }
+                else
+                {
+                    MessageBox.Show($"Pravno lice sa PIB {pib} nije pronađeno.");
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.FormatExceptionMessage());
+            return null;
+        }
+        finally
+        {
+            session?.Close();
+        }
+    }
+
+    public static void izmeniPravnoLice(PravnoLiceBasic izmenjenoPravnoLice)
+    {
+        ISession? session = null;
+        try
+        {
+            session = DataLayer.GetSession();
+            if (session != null && session.IsOpen)
+            {
+                PravnoLice pravnoLice = session.Get<PravnoLice>(izmenjenoPravnoLice.PIB);
+                if (pravnoLice != null)
+                {
+                    pravnoLice.Naziv = izmenjenoPravnoLice.Naziv;
+                    pravnoLice.AdresaSedista = izmenjenoPravnoLice.AdresaSedista;
+                    pravnoLice.ImeKontaktOsobe = izmenjenoPravnoLice.ImeKontaktOsobe;
+                    pravnoLice.EmailKontaktOsobe = izmenjenoPravnoLice.EmailKontaktOsobe;
+                    pravnoLice.Vlasnik.Banka = izmenjenoPravnoLice.Vlasnik.Banka;
+                    pravnoLice.Vlasnik.BrojBankovnogRacuna = izmenjenoPravnoLice.Vlasnik.BrojBankovnogRacuna;
+
+                    session.Update(pravnoLice);
+                    session.Flush();
+                    MessageBox.Show($"Podaci za pravno lice sa PIB {izmenjenoPravnoLice.PIB} su izmenjeni.");
+                }
+                else
+                {
+                    MessageBox.Show($"Pravno lice sa PIB {izmenjenoPravnoLice.PIB} nije pronađeno.");
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.FormatExceptionMessage());
+        }
+        finally
+        {
+            session?.Close();
+        }
+    }
+
+    public static void obrisiPravnoLice(string pib)
+    {
+        ISession? session = null;
+        try
+        {
+            session = DataLayer.GetSession();
+            if (session != null && session.IsOpen)
+            {
+                PravnoLice pravnoLice = session.Get<PravnoLice>(pib);
+                if (pravnoLice != null)
+                {
+                    session.Delete(pravnoLice);
+                    session.Flush();
+                    MessageBox.Show($"Pravno lice sa PIB {pib} je obrisano.");
+                }
+                else
+                {
+                    MessageBox.Show($"Pravno lice sa PIB {pib} nije pronađeno.");
+                }
             }
         }
         catch (Exception ex)
@@ -1029,7 +1245,50 @@ public class DTOManager
         }
     }
 
-    public static List<NekretninaPregled> VratiSveNekretnine()// dodaj prikaz da li je stan ili kuca
+    //public static List<NekretninaPregled> VratiSveNekretnine()// dodaj prikaz da li je stan ili kuca
+    //{
+    //    List<NekretninaPregled> nekretnine = new List<NekretninaPregled>();
+    //    ISession? session = null;
+    //    try
+    //    {
+    //        session = DataLayer.GetSession();
+    //        if (session != null && session.IsOpen)
+    //        {
+    //            IEnumerable<StanNaDan.Entiteti.Nekretnina> sveNekretnine = from nekretnina
+    //                                                                       in session.Query<StanNaDan.Entiteti.Nekretnina>()
+    //                                                                       select nekretnina;
+
+    //            foreach (StanNaDan.Entiteti.Nekretnina p in sveNekretnine)
+    //            {
+    //                nekretnine.Add(new NekretninaPregled(
+    //                    p.IdNekretnine,
+    //                    p.Ulica,
+    //                    p.Broj,
+    //                    p.Kvadratura,
+    //                    p.BrojTerasa,
+    //                    p.BrojKupatila,
+    //                    p.BrojSpavacihSoba,
+    //                    p.PosedujeTV,
+    //                    p.PosedujeInternet,
+    //                    p.PosedujeKuhinju,
+    //                    p.Kvart.GradskaZona,
+    //                    p.Vlasnik.IdVlasnika));
+    //            }
+    //        }
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        MessageBox.Show(ex.FormatExceptionMessage());
+    //    }
+    //    finally
+    //    {
+    //        session?.Close();
+    //    }
+
+    //    return nekretnine;
+    //}
+
+    public static List<NekretninaPregled> VratiSveNekretnine()
     {
         List<NekretninaPregled> nekretnine = new List<NekretninaPregled>();
         ISession? session = null;
@@ -1038,25 +1297,50 @@ public class DTOManager
             session = DataLayer.GetSession();
             if (session != null && session.IsOpen)
             {
-                IEnumerable<StanNaDan.Entiteti.Nekretnina> sveNekretnine = from nekretnina
-                                                                           in session.Query<StanNaDan.Entiteti.Nekretnina>()
-                                                                           select nekretnina;
+                IEnumerable<StanNaDan.Entiteti.Stan> sviStanovi = from stan
+                                                                  in session.Query<StanNaDan.Entiteti.Stan>()
+                                                                  select stan;
 
-                foreach (StanNaDan.Entiteti.Nekretnina p in sveNekretnine)
+                foreach (StanNaDan.Entiteti.Stan s in sviStanovi)
                 {
-                    nekretnine.Add(new NekretninaPregled(
-                        p.IdNekretnine,
-                        p.Ulica,
-                        p.Broj,
-                        p.Kvadratura,
-                        p.BrojTerasa,
-                        p.BrojKupatila,
-                        p.BrojSpavacihSoba,
-                        p.PosedujeTV,
-                        p.PosedujeInternet,
-                        p.PosedujeKuhinju,
-                        p.Kvart.GradskaZona,
-                        p.Vlasnik.IdVlasnika));
+                    nekretnine.Add(new StanPregled(
+                        s.IdNekretnine,
+                        s.Ulica,
+                        s.Broj,
+                        s.Kvadratura,
+                        s.BrojTerasa,
+                        s.BrojKupatila,
+                        s.BrojSpavacihSoba,
+                        s.PosedujeTV,
+                        s.PosedujeInternet,
+                        s.PosedujeKuhinju,
+                        s.Kvart.GradskaZona,
+                        s.Vlasnik.IdVlasnika,
+                        s.Sprat,
+                        s.PosedujeLift));
+                }
+
+                IEnumerable<StanNaDan.Entiteti.Kuca> sveKuce = from kuca
+                                                                in session.Query<StanNaDan.Entiteti.Kuca>()
+                                                               select kuca;
+
+                foreach (StanNaDan.Entiteti.Kuca k in sveKuce)
+                {
+                    nekretnine.Add(new KucaPregled(
+                        k.IdNekretnine,
+                        k.Ulica,
+                        k.Broj,
+                        k.Kvadratura,
+                        k.BrojTerasa,
+                        k.BrojKupatila,
+                        k.BrojSpavacihSoba,
+                        k.PosedujeTV,
+                        k.PosedujeInternet,
+                        k.PosedujeKuhinju,
+                        k.Kvart.GradskaZona,
+                        k.Vlasnik.IdVlasnika,
+                        k.Spratnos,
+                        k.PosedujeDvoriste));
                 }
             }
         }
@@ -1072,6 +1356,7 @@ public class DTOManager
         return nekretnine;
     }
 
+
     public static List<NekretninaPregled> VratiSveNekretnineKvarta(int idKvarta)
     {
         List<NekretninaPregled> nekretnine = new List<NekretninaPregled>();
@@ -1081,29 +1366,77 @@ public class DTOManager
             session = DataLayer.GetSession();
             if (session != null && session.IsOpen)
             {
-                IEnumerable<StanNaDan.Entiteti.Nekretnina> sveNekretnine = from nekretnina
-                                                                           in session.Query<StanNaDan.Entiteti.Nekretnina>()
-                                                                           where nekretnina.Kvart.ID == idKvarta
-                                                                           select nekretnina;
+                //IEnumerable<StanNaDan.Entiteti.Nekretnina> sveNekretnine = from nekretnina
+                //                                                           in session.Query<StanNaDan.Entiteti.Nekretnina>()
+                //                                                           where nekretnina.Kvart.ID == idKvarta
+                //                                                           select nekretnina;
 
-                foreach (StanNaDan.Entiteti.Nekretnina p in sveNekretnine)
+                //foreach (StanNaDan.Entiteti.Nekretnina p in sveNekretnine)
+                //{
+                //    if (p.Kvart.ID == idKvarta)
+                //    {
+                //        nekretnine.Add(new NekretninaPregled(
+                //            p.IdNekretnine,
+                //            p.Ulica,
+                //            p.Broj,
+                //            p.Kvadratura,
+                //            p.BrojTerasa,
+                //            p.BrojKupatila,
+                //            p.BrojSpavacihSoba,
+                //            p.PosedujeTV,
+                //            p.PosedujeInternet,
+                //            p.PosedujeKuhinju,
+                //            p.Kvart.GradskaZona,
+                //            p.Vlasnik.IdVlasnika));
+                //    }
+                //}
+
+                IEnumerable<StanNaDan.Entiteti.Stan> sviStanovi = from stan
+                                                                  in session.Query<StanNaDan.Entiteti.Stan>()
+                                                                  where stan.Kvart.ID == idKvarta
+                                                                  select stan;
+
+                foreach (StanNaDan.Entiteti.Stan s in sviStanovi)
                 {
-                    if (p.Kvart.ID == idKvarta)
-                    {
-                        nekretnine.Add(new NekretninaPregled(
-                            p.IdNekretnine,
-                            p.Ulica,
-                            p.Broj,
-                            p.Kvadratura,
-                            p.BrojTerasa,
-                            p.BrojKupatila,
-                            p.BrojSpavacihSoba,
-                            p.PosedujeTV,
-                            p.PosedujeInternet,
-                            p.PosedujeKuhinju,
-                            p.Kvart.GradskaZona,
-                            p.Vlasnik.IdVlasnika));
-                    }
+                    nekretnine.Add(new StanPregled(
+                        s.IdNekretnine,
+                        s.Ulica,
+                        s.Broj,
+                        s.Kvadratura,
+                        s.BrojTerasa,
+                        s.BrojKupatila,
+                        s.BrojSpavacihSoba,
+                        s.PosedujeTV,
+                        s.PosedujeInternet,
+                        s.PosedujeKuhinju,
+                        s.Kvart.GradskaZona,
+                        s.Vlasnik.IdVlasnika,
+                        s.Sprat,
+                        s.PosedujeLift));
+                }
+
+                IEnumerable<StanNaDan.Entiteti.Kuca> sveKuce = from kuca
+                                                               in session.Query<StanNaDan.Entiteti.Kuca>()
+                                                               where kuca.Kvart.ID == idKvarta
+                                                               select kuca;
+
+                foreach (StanNaDan.Entiteti.Kuca k in sveKuce)
+                {
+                    nekretnine.Add(new KucaPregled(
+                        k.IdNekretnine,
+                        k.Ulica,
+                        k.Broj,
+                        k.Kvadratura,
+                        k.BrojTerasa,
+                        k.BrojKupatila,
+                        k.BrojSpavacihSoba,
+                        k.PosedujeTV,
+                        k.PosedujeInternet,
+                        k.PosedujeKuhinju,
+                        k.Kvart.GradskaZona,
+                        k.Vlasnik.IdVlasnika,
+                        k.Spratnos,
+                        k.PosedujeDvoriste));
                 }
             }
         }
@@ -1128,27 +1461,75 @@ public class DTOManager
             session = DataLayer.GetSession();
             if (session != null && session.IsOpen)
             {
-                IEnumerable<StanNaDan.Entiteti.Nekretnina> sveNekretnine = from nekretnina
-                                                                           in session.Query<StanNaDan.Entiteti.Nekretnina>()
-                                                                           where nekretnina.Vlasnik.IdVlasnika == idVlasnika
-                                                                           select nekretnina;
+                //IEnumerable<StanNaDan.Entiteti.Nekretnina> sveNekretnine = from nekretnina
+                //                                                           in session.Query<StanNaDan.Entiteti.Nekretnina>()
+                //                                                           where nekretnina.Vlasnik.IdVlasnika == idVlasnika
+                //                                                           select nekretnina;
 
-                foreach (StanNaDan.Entiteti.Nekretnina p in sveNekretnine)
-                {
-                        nekretnine.Add(new NekretninaPregled(
-                        p.IdNekretnine,
-                        p.Ulica,
-                        p.Broj,
-                        p.Kvadratura,
-                        p.BrojTerasa,
-                        p.BrojKupatila,
-                        p.BrojSpavacihSoba,
-                        p.PosedujeTV,
-                        p.PosedujeInternet,
-                        p.PosedujeKuhinju,
-                        p.Kvart.GradskaZona,
-                        p.Vlasnik.IdVlasnika));
+                //foreach (StanNaDan.Entiteti.Nekretnina p in sveNekretnine)
+                //{
+                //        nekretnine.Add(new NekretninaPregled(
+                //        p.IdNekretnine,
+                //        p.Ulica,
+                //        p.Broj,
+                //        p.Kvadratura,
+                //        p.BrojTerasa,
+                //        p.BrojKupatila,
+                //        p.BrojSpavacihSoba,
+                //        p.PosedujeTV,
+                //        p.PosedujeInternet,
+                //        p.PosedujeKuhinju,
+                //        p.Kvart.GradskaZona,
+                //        p.Vlasnik.IdVlasnika));
                     
+                //}
+
+                IEnumerable<StanNaDan.Entiteti.Stan> sviStanovi = from stan
+                                                                  in session.Query<StanNaDan.Entiteti.Stan>()
+                                                                  where stan.Vlasnik.IdVlasnika == idVlasnika
+                                                                  select stan;
+
+                foreach (StanNaDan.Entiteti.Stan s in sviStanovi)
+                {
+                    nekretnine.Add(new StanPregled(
+                        s.IdNekretnine,
+                        s.Ulica,
+                        s.Broj,
+                        s.Kvadratura,
+                        s.BrojTerasa,
+                        s.BrojKupatila,
+                        s.BrojSpavacihSoba,
+                        s.PosedujeTV,
+                        s.PosedujeInternet,
+                        s.PosedujeKuhinju,
+                        s.Kvart.GradskaZona,
+                        s.Vlasnik.IdVlasnika,
+                        s.Sprat,
+                        s.PosedujeLift));
+                }
+
+                IEnumerable<StanNaDan.Entiteti.Kuca> sveKuce = from kuca
+                                                               in session.Query<StanNaDan.Entiteti.Kuca>()
+                                                               where kuca.Vlasnik.IdVlasnika == idVlasnika
+                                                               select kuca;
+
+                foreach (StanNaDan.Entiteti.Kuca k in sveKuce)
+                {
+                    nekretnine.Add(new KucaPregled(
+                        k.IdNekretnine,
+                        k.Ulica,
+                        k.Broj,
+                        k.Kvadratura,
+                        k.BrojTerasa,
+                        k.BrojKupatila,
+                        k.BrojSpavacihSoba,
+                        k.PosedujeTV,
+                        k.PosedujeInternet,
+                        k.PosedujeKuhinju,
+                        k.Kvart.GradskaZona,
+                        k.Vlasnik.IdVlasnika,
+                        k.Spratnos,
+                        k.PosedujeDvoriste));
                 }
             }
         }
@@ -1163,6 +1544,97 @@ public class DTOManager
 
         return nekretnine;
     }
+
+    public static NekretninaBasic VratiNekretninu(int idNekretnine)
+    {
+        ISession? session = null;
+        try
+        {
+            session = DataLayer.GetSession();
+            if (session != null && session.IsOpen)
+            {
+                Stan stan = session.Get<Stan>(idNekretnine);
+                if (stan != null)
+                {
+                    KvartBasic kvartBasic = new()
+                    {    
+                        IdKvarta = stan.Kvart.ID,
+                        GradskaZona = stan.Kvart.GradskaZona
+                    };
+
+                    VlasnikBasic vlasnikBasic = new()
+                    {
+                        IdVlasnika = stan.Vlasnik.IdVlasnika,
+                        Banka = stan.Vlasnik.Banka,
+                        BrojBankovnogRacuna = stan.Vlasnik.BrojBankovnogRacuna
+                    };
+
+                    return new StanBasic(
+                        stan.IdNekretnine,
+                        stan.Ulica,
+                        stan.Broj,
+                        stan.Kvadratura,
+                        stan.BrojTerasa,
+                        stan.BrojKupatila,
+                        stan.BrojSpavacihSoba,
+                        stan.PosedujeTV,
+                        stan.PosedujeInternet,
+                        stan.PosedujeKuhinju,
+                        kvartBasic,
+                        vlasnikBasic,
+                        stan.Sprat,
+                        stan.PosedujeLift
+                    );
+                }
+                else
+                {
+                    Kuca kuca = session.Get<Kuca>(idNekretnine);
+                    if (kuca != null)
+                    {
+                        KvartBasic kvartBasic = new()
+                        {
+                            IdKvarta = kuca.Kvart.ID,
+                            GradskaZona = kuca.Kvart.GradskaZona
+                        };
+
+                        VlasnikBasic vlasnikBasic = new()
+                        {
+                            IdVlasnika = kuca.Vlasnik.IdVlasnika,
+                            Banka = kuca.Vlasnik.Banka,
+                            BrojBankovnogRacuna = kuca.Vlasnik.BrojBankovnogRacuna
+                        };
+
+                        return new KucaBasic(
+                            kuca.IdNekretnine,
+                            kuca.Ulica,
+                            kuca.Broj,
+                            kuca.Kvadratura,
+                            kuca.BrojTerasa,
+                            kuca.BrojKupatila,
+                            kuca.BrojSpavacihSoba,
+                            kuca.PosedujeTV,
+                            kuca.PosedujeInternet,
+                            kuca.PosedujeKuhinju,
+                            kvartBasic,
+                            vlasnikBasic,
+                            kuca.Spratnos,
+                            kuca.PosedujeDvoriste
+                        );
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.FormatExceptionMessage());
+        }
+        finally
+        {
+            session?.Close();
+        }
+        return null;
+    }
+
 
     public static void IzmeniNekretninu(NekretninaBasic izmenjenaNekretnina, FizickoLiceBasic flBasic = null, PravnoLiceBasic plBasic = null)
     {
@@ -1215,6 +1687,102 @@ public class DTOManager
                 {
                     // Prikaz poruke kada nekretnina nije pronađena može se prilagoditi tvojoj aplikaciji
                     MessageBox.Show($"Nekretnina sa ID {izmenjenaNekretnina.IdNekretnine} nije pronađena.");
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.FormatExceptionMessage());
+        }
+        finally
+        {
+            session?.Close();
+        }
+    }
+
+    public static void IzmeniStan(StanBasic izmenjenStan, int idVlasnika)
+    {
+        ISession? session = null;
+        try
+        {
+            session = DataLayer.GetSession();
+            if (session != null && session.IsOpen)
+            {
+                Stan stan = session.Get<Stan>(izmenjenStan.IdNekretnine);
+                Vlasnik vlasnik = session.Get<Vlasnik>(idVlasnika);
+                if (stan != null)
+                {
+                    if (vlasnik != null)
+                    {
+                        stan.Ulica = izmenjenStan.Ulica;
+                        stan.Broj = izmenjenStan.Broj;
+                        stan.Kvadratura = izmenjenStan.Kvadratura;
+                        stan.BrojTerasa = izmenjenStan.BrojTerasa;
+                        stan.BrojKupatila = izmenjenStan.BrojKupatila;
+                        stan.BrojSpavacihSoba = izmenjenStan.BrojSpavacihSoba;
+                        stan.PosedujeTV = izmenjenStan.PosedujeTV;
+                        stan.PosedujeInternet = izmenjenStan.PosedujeInternet;
+                        stan.PosedujeKuhinju = izmenjenStan.PosedujeKuhinju;
+                        stan.Vlasnik = vlasnik;
+                        stan.Sprat = izmenjenStan.Sprat;
+                        stan.PosedujeLift = izmenjenStan.PosedujeLift;
+                    }
+
+                    session.Update(stan);
+                    session.Flush();
+                    MessageBox.Show($"Podaci za stan sa ID {izmenjenStan.IdNekretnine} su izmenjeni.");
+                }
+                else
+                {
+                    MessageBox.Show($"Stan sa ID {izmenjenStan.IdNekretnine} nije pronađen.");
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.FormatExceptionMessage());
+        }
+        finally
+        {
+            session?.Close();
+        }
+    }
+
+    public static void IzmeniKucu(KucaBasic izmenjenaKuca, int idVlasnika)
+    {
+        ISession? session = null;
+        try
+        {
+            session = DataLayer.GetSession();
+            if (session != null && session.IsOpen)
+            {
+                Kuca kuca = session.Get<Kuca>(izmenjenaKuca.IdNekretnine);
+                Vlasnik vlasnik = session.Get<Vlasnik>(idVlasnika);
+                if (kuca != null)
+                {
+                    if (vlasnik != null)
+                    {
+                        kuca.Ulica = izmenjenaKuca.Ulica;
+                        kuca.Broj = izmenjenaKuca.Broj;
+                        kuca.Kvadratura = izmenjenaKuca.Kvadratura;
+                        kuca.BrojTerasa = izmenjenaKuca.BrojTerasa;
+                        kuca.BrojKupatila = izmenjenaKuca.BrojKupatila;
+                        kuca.BrojSpavacihSoba = izmenjenaKuca.BrojSpavacihSoba;
+                        kuca.PosedujeTV = izmenjenaKuca.PosedujeTV;
+                        kuca.PosedujeInternet = izmenjenaKuca.PosedujeInternet;
+                        kuca.PosedujeKuhinju = izmenjenaKuca.PosedujeKuhinju;
+                        kuca.Vlasnik = vlasnik;
+                        kuca.Spratnos = izmenjenaKuca.Spratnost;
+                        kuca.PosedujeDvoriste = izmenjenaKuca.PosedujeDvoriste;
+                    }
+
+                    session.Update(kuca);
+                    session.Flush();
+                    MessageBox.Show($"Podaci za kuću sa ID {izmenjenaKuca.IdNekretnine} su izmenjeni.");
+                }
+                else
+                {
+                    MessageBox.Show($"Kuća sa ID {izmenjenaKuca.IdNekretnine} nije pronađena.");
                 }
             }
         }

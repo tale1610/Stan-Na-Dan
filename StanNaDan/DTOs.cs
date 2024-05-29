@@ -388,6 +388,9 @@ public class PravnoLicePregled
 public class NekretninaBasic
 {
     public int IdNekretnine { get; set; }
+
+    public string Tip { get; set; }
+
     public string Ulica { get; set; }
     public string Broj { get; set; }
     public double Kvadratura { get; set; }
@@ -410,7 +413,7 @@ public class NekretninaBasic
 
     public NekretninaBasic() { }
 
-    public NekretninaBasic(int idNekretnine, string ulica, string broj, double kvadratura, int brojTerasa, int brojKupatila, int brojSpavacihSoba, bool posedujeTV, bool posedujeInternet, bool posedujeKuhinju, KvartBasic kvart, VlasnikBasic vlasnik)
+    public NekretninaBasic(int idNekretnine, string ulica, string broj, double kvadratura, int brojTerasa, int brojKupatila, int brojSpavacihSoba, bool posedujeTV, bool posedujeInternet, bool posedujeKuhinju, KvartBasic kvart, VlasnikBasic vlasnik, string tip)
     {
         IdNekretnine = idNekretnine;
         Ulica = ulica;
@@ -424,12 +427,17 @@ public class NekretninaBasic
         PosedujeKuhinju = posedujeKuhinju;
         Kvart = kvart;
         Vlasnik = vlasnik;
+
+        Tip = tip;
     }
 }
 
 public class NekretninaPregled
 {
     public int IdNekretnine { get; set; }
+
+    public string Tip { get; set; }
+
     public string Ulica { get; set; }
     public string Broj { get; set; }
     public double Kvadratura { get; set; }
@@ -445,7 +453,7 @@ public class NekretninaPregled
 
     public NekretninaPregled() { }
 
-    public NekretninaPregled(int idNekretnine, string ulica, string broj, double kvadratura, int brojTerasa, int brojKupatila, int brojSpavacihSoba, bool posedujeTV, bool posedujeInternet, bool posedujeKuhinju, string gradskaZona, int idVlasnika)
+    public NekretninaPregled(int idNekretnine, string ulica, string broj, double kvadratura, int brojTerasa, int brojKupatila, int brojSpavacihSoba, bool posedujeTV, bool posedujeInternet, bool posedujeKuhinju, string gradskaZona, int idVlasnika, string tip)
     {
         IdNekretnine = idNekretnine;
         Ulica = ulica;
@@ -459,6 +467,8 @@ public class NekretninaPregled
         PosedujeKuhinju = posedujeKuhinju;
         GradskaZona = gradskaZona;
         IdVlasnika = idVlasnika;
+
+        Tip = tip;
     }
 }
 
@@ -472,7 +482,7 @@ public class StanBasic : NekretninaBasic
     public StanBasic() { }
 
     public StanBasic(int idNekretnine, string ulica, string broj, double kvadratura, int brojTerasa, int brojKupatila, int brojSpavacihSoba, bool posedujeTV, bool posedujeInternet, bool posedujeKuhinju, KvartBasic kvart, VlasnikBasic vlasnik, int sprat, bool posedujeLift)
-        : base(idNekretnine, ulica, broj, kvadratura, brojTerasa, brojKupatila, brojSpavacihSoba, posedujeTV, posedujeInternet, posedujeKuhinju, kvart, vlasnik)
+        : base(idNekretnine, ulica, broj, kvadratura, brojTerasa, brojKupatila, brojSpavacihSoba, posedujeTV, posedujeInternet, posedujeKuhinju, kvart, vlasnik, "Stan")
     {
         Sprat = sprat;
         PosedujeLift = posedujeLift;
@@ -487,7 +497,7 @@ public class StanPregled : NekretninaPregled
     public StanPregled() { }
 
     public StanPregled(int idNekretnine, string ulica, string broj, double kvadratura, int brojTerasa, int brojKupatila, int brojSpavacihSoba, bool posedujeTV, bool posedujeInternet, bool posedujeKuhinju, string gradskaZona, int idVlasnika, int sprat, bool posedujeLift)
-        : base(idNekretnine, ulica, broj, kvadratura, brojTerasa, brojKupatila, brojSpavacihSoba, posedujeTV, posedujeInternet, posedujeKuhinju, gradskaZona, idVlasnika)
+        : base(idNekretnine, ulica, broj, kvadratura, brojTerasa, brojKupatila, brojSpavacihSoba, posedujeTV, posedujeInternet, posedujeKuhinju, gradskaZona, idVlasnika, "Stan")
     {
         Sprat = sprat;
         PosedujeLift = posedujeLift;
@@ -502,7 +512,7 @@ public class KucaBasic : NekretninaBasic
     public KucaBasic() { }
 
     public KucaBasic(int idNekretnine, string ulica, string broj, double kvadratura, int brojTerasa, int brojKupatila, int brojSpavacihSoba, bool posedujeTV, bool posedujeInternet, bool posedujeKuhinju, KvartBasic kvart, VlasnikBasic vlasnik, int spratnost, bool posedujeDvoriste)
-        : base(idNekretnine, ulica, broj, kvadratura, brojTerasa, brojKupatila, brojSpavacihSoba, posedujeTV, posedujeInternet, posedujeKuhinju, kvart, vlasnik)
+        : base(idNekretnine, ulica, broj, kvadratura, brojTerasa, brojKupatila, brojSpavacihSoba, posedujeTV, posedujeInternet, posedujeKuhinju, kvart, vlasnik, "Kuca")
     {
         Spratnost = spratnost;
         PosedujeDvoriste = posedujeDvoriste;
@@ -517,7 +527,7 @@ public class KucaPregled : NekretninaPregled
     public KucaPregled() { }
 
     public KucaPregled(int idNekretnine, string ulica, string broj, double kvadratura, int brojTerasa, int brojKupatila, int brojSpavacihSoba, bool posedujeTV, bool posedujeInternet, bool posedujeKuhinju, string gradskaZona, int idVlasnika, int spratnost, bool posedujeDvoriste)
-        : base(idNekretnine, ulica, broj, kvadratura, brojTerasa, brojKupatila, brojSpavacihSoba, posedujeTV, posedujeInternet, posedujeKuhinju, gradskaZona, idVlasnika)
+        : base(idNekretnine, ulica, broj, kvadratura, brojTerasa, brojKupatila, brojSpavacihSoba, posedujeTV, posedujeInternet, posedujeKuhinju, gradskaZona, idVlasnika, "Kuca")
     {
         Spratnost = spratnost;
         PosedujeDvoriste = posedujeDvoriste;

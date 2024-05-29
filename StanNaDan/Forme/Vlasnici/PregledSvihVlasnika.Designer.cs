@@ -43,12 +43,14 @@
             emailKontaktOsobe = new ColumnHeader();
             idVl = new ColumnHeader();
             groupBox1 = new GroupBox();
+            btnIzaberiFizickoLice = new Button();
             btnPrikaziBrojeveTelefona = new Button();
             btnPrikaziNekretnineFizickogLica = new Button();
             btnIzmeniFizickoLice = new Button();
             btnObrisiFizickoLice = new Button();
             btnDodajFizickoLice = new Button();
             groupBox2 = new GroupBox();
+            btnIzaberiPravnoLice = new Button();
             btnPrikaziTelefoneKontaktOsoba = new Button();
             btnPrikaziNekretninePravnogLica = new Button();
             btnIzmeniPravnoLice = new Button();
@@ -146,6 +148,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(btnIzaberiFizickoLice);
             groupBox1.Controls.Add(btnPrikaziBrojeveTelefona);
             groupBox1.Controls.Add(btnPrikaziNekretnineFizickogLica);
             groupBox1.Controls.Add(btnIzmeniFizickoLice);
@@ -162,9 +165,19 @@
             groupBox1.Text = "Fizicka lica";
             groupBox1.Enter += groupBox1_Enter;
             // 
+            // btnIzaberiFizickoLice
+            // 
+            btnIzaberiFizickoLice.Location = new Point(692, 204);
+            btnIzaberiFizickoLice.Name = "btnIzaberiFizickoLice";
+            btnIzaberiFizickoLice.Size = new Size(202, 23);
+            btnIzaberiFizickoLice.TabIndex = 11;
+            btnIzaberiFizickoLice.Text = "Izaberi novog vlasnika nekretnine";
+            btnIzaberiFizickoLice.UseVisualStyleBackColor = true;
+            btnIzaberiFizickoLice.Click += btnIzaberiFizickoLice_Click;
+            // 
             // btnPrikaziBrojeveTelefona
             // 
-            btnPrikaziBrojeveTelefona.Location = new Point(692, 176);
+            btnPrikaziBrojeveTelefona.Location = new Point(692, 159);
             btnPrikaziBrojeveTelefona.Margin = new Padding(3, 2, 3, 2);
             btnPrikaziBrojeveTelefona.Name = "btnPrikaziBrojeveTelefona";
             btnPrikaziBrojeveTelefona.Size = new Size(202, 40);
@@ -175,7 +188,7 @@
             // 
             // btnPrikaziNekretnineFizickogLica
             // 
-            btnPrikaziNekretnineFizickogLica.Location = new Point(692, 140);
+            btnPrikaziNekretnineFizickogLica.Location = new Point(692, 123);
             btnPrikaziNekretnineFizickogLica.Margin = new Padding(3, 2, 3, 2);
             btnPrikaziNekretnineFizickogLica.Name = "btnPrikaziNekretnineFizickogLica";
             btnPrikaziNekretnineFizickogLica.Size = new Size(202, 22);
@@ -186,17 +199,18 @@
             // 
             // btnIzmeniFizickoLice
             // 
-            btnIzmeniFizickoLice.Location = new Point(692, 87);
+            btnIzmeniFizickoLice.Location = new Point(692, 55);
             btnIzmeniFizickoLice.Margin = new Padding(3, 2, 3, 2);
             btnIzmeniFizickoLice.Name = "btnIzmeniFizickoLice";
             btnIzmeniFizickoLice.Size = new Size(202, 22);
             btnIzmeniFizickoLice.TabIndex = 8;
             btnIzmeniFizickoLice.Text = "Izmeni Fizicko Lice";
             btnIzmeniFizickoLice.UseVisualStyleBackColor = true;
+            btnIzmeniFizickoLice.Click += btnIzmeniFizickoLice_Click;
             // 
             // btnObrisiFizickoLice
             // 
-            btnObrisiFizickoLice.Location = new Point(692, 53);
+            btnObrisiFizickoLice.Location = new Point(692, 89);
             btnObrisiFizickoLice.Margin = new Padding(3, 2, 3, 2);
             btnObrisiFizickoLice.Name = "btnObrisiFizickoLice";
             btnObrisiFizickoLice.Size = new Size(202, 22);
@@ -218,6 +232,7 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(btnIzaberiPravnoLice);
             groupBox2.Controls.Add(btnPrikaziTelefoneKontaktOsoba);
             groupBox2.Controls.Add(btnPrikaziNekretninePravnogLica);
             groupBox2.Controls.Add(btnIzmeniPravnoLice);
@@ -233,9 +248,19 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Pravna lica";
             // 
+            // btnIzaberiPravnoLice
+            // 
+            btnIzaberiPravnoLice.Location = new Point(686, 204);
+            btnIzaberiPravnoLice.Name = "btnIzaberiPravnoLice";
+            btnIzaberiPravnoLice.Size = new Size(202, 23);
+            btnIzaberiPravnoLice.TabIndex = 15;
+            btnIzaberiPravnoLice.Text = "Izaberi novog vlasnika nekretnine";
+            btnIzaberiPravnoLice.UseVisualStyleBackColor = true;
+            btnIzaberiPravnoLice.Click += btnIzaberiPravnoLice_Click;
+            // 
             // btnPrikaziTelefoneKontaktOsoba
             // 
-            btnPrikaziTelefoneKontaktOsoba.Location = new Point(687, 177);
+            btnPrikaziTelefoneKontaktOsoba.Location = new Point(687, 160);
             btnPrikaziTelefoneKontaktOsoba.Margin = new Padding(3, 2, 3, 2);
             btnPrikaziTelefoneKontaktOsoba.Name = "btnPrikaziTelefoneKontaktOsoba";
             btnPrikaziTelefoneKontaktOsoba.Size = new Size(202, 39);
@@ -246,7 +271,7 @@
             // 
             // btnPrikaziNekretninePravnogLica
             // 
-            btnPrikaziNekretninePravnogLica.Location = new Point(687, 140);
+            btnPrikaziNekretninePravnogLica.Location = new Point(687, 123);
             btnPrikaziNekretninePravnogLica.Margin = new Padding(3, 2, 3, 2);
             btnPrikaziNekretninePravnogLica.Name = "btnPrikaziNekretninePravnogLica";
             btnPrikaziNekretninePravnogLica.Size = new Size(202, 22);
@@ -264,6 +289,7 @@
             btnIzmeniPravnoLice.TabIndex = 12;
             btnIzmeniPravnoLice.Text = "Izmeni Pravno Lice";
             btnIzmeniPravnoLice.UseVisualStyleBackColor = true;
+            btnIzmeniPravnoLice.Click += btnIzmeniPravnoLice_Click;
             // 
             // btnObrisiPravnoLice
             // 
@@ -331,5 +357,7 @@
         private ColumnHeader idVl;
         private Button btnPrikaziBrojeveTelefona;
         private Button btnPrikaziTelefoneKontaktOsoba;
+        private Button btnIzaberiFizickoLice;
+        private Button btnIzaberiPravnoLice;
     }
 }

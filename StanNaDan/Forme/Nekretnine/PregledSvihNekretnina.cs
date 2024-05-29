@@ -3,6 +3,7 @@ using StanNaDan.Forme.Nekretnine.DodatnaOprema;
 using StanNaDan.Forme.Nekretnine.Kreveti;
 using StanNaDan.Forme.Nekretnine.Sajtovi;
 using StanNaDan.Forme.Parking;
+using StanNaDan.Forme.Vlasnici.FizickaLica;
 using StanNaDan.Forme.Zaposleni;
 using System;
 using System.Collections.Generic;
@@ -27,15 +28,15 @@ namespace StanNaDan.Forme.Nekretnine
         public PregledSvihNekretnina(string biranje)
         {
             InitializeComponent();
-            this.btnDodajNekretninu.Visible = false;
-            this.btnObrisiNekretninu.Visible = false;
-            this.btnIzmeniNekretninu.Visible = false;
-            this.btnPrikaziDodatnuOpremu.Visible = false;
-            this.btnPrikaziKrevete.Visible = false;
-            this.btnPrikaziSajtove.Visible = false;
-            this.btnPrikaziSveNajmove.Visible = false;
-            this.btnPrikaziSveSobe.Visible = false;
-            this.btnPrikaziParkinge.Visible = false;
+            //this.btnDodajNekretninu.Visible = false;
+            //this.btnObrisiNekretninu.Visible = false;
+            //this.btnIzmeniNekretninu.Visible = false;
+            //this.btnPrikaziDodatnuOpremu.Visible = false;
+            //this.btnPrikaziKrevete.Visible = false;
+            //this.btnPrikaziSajtove.Visible = false;
+            //this.btnPrikaziSveNajmove.Visible = false;
+            //this.btnPrikaziSveSobe.Visible = false;
+            //this.btnPrikaziParkinge.Visible = false;
             this.btnIzaberiNekretninu.Visible = true;
         }
 
@@ -47,7 +48,7 @@ namespace StanNaDan.Forme.Nekretnine
             foreach (NekretninaPregled n in podaci)
             {
                 ListViewItem item;
-                item = new ListViewItem(new string[] { n.IdNekretnine.ToString(), "nemoguce", n.Ulica + " " + n.Broj, n.Kvadratura.ToString(), n.BrojSpavacihSoba.ToString(), n.BrojKupatila.ToString(), n.BrojTerasa.ToString() });
+                item = new ListViewItem(new string[] { n.IdNekretnine.ToString(), n.Tip, n.Ulica + " " + n.Broj, n.Kvadratura.ToString(), n.BrojSpavacihSoba.ToString(), n.BrojKupatila.ToString(), n.BrojTerasa.ToString() });
                 listaNekretnina.Items.Add(item);
             }
             listaNekretnina.Refresh();
@@ -191,6 +192,28 @@ namespace StanNaDan.Forme.Nekretnine
             this.izabaranaNekretninaID = idNekretnine;
             this.DialogResult = DialogResult.OK;
             this.Close();
+        }
+
+        private void btnIzmeniNekretninu_Click(object sender, EventArgs e)
+        {
+            if (listaNekretnina.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Izaberite nekretninu koju zelite!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else if (listaNekretnina.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("Mozete izabrati samo jednu nekretninu jednovremeno!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            int idNekretnine = Int32.Parse(listaNekretnina.SelectedItems[0].SubItems[0].Text);
+            NekretninaBasic nekretninaBasic = DTOManager.VratiNekretninu(idNekretnine);
+
+            IzmeniNekretninu formaIzmeni = new IzmeniNekretninu(nekretninaBasic);
+            formaIzmeni.ShowDialog();
+
+            this.popuniPodacima();
         }
     }
 }

@@ -17,9 +17,19 @@ namespace StanNaDan.Forme.Vlasnici
 {
     public partial class PregledSvihVlasnika : Form
     {
+        public int izabraniIdVlasnika;
         public PregledSvihVlasnika()
         {
             InitializeComponent();
+            btnIzaberiFizickoLice.Visible = false;
+            btnIzaberiPravnoLice.Visible = false;
+        }
+
+        public PregledSvihVlasnika(string biranje)
+        {
+            InitializeComponent();
+            btnIzaberiFizickoLice.Visible = true;
+            btnIzaberiPravnoLice.Visible = true;
         }
 
         public void popuniPodacima()
@@ -179,6 +189,88 @@ namespace StanNaDan.Forme.Vlasnici
             PregledSvihTelefonaKontaktOsoba formaPregledSvihTelefonaKontaktOsoba = new PregledSvihTelefonaKontaktOsoba(pib);
             formaPregledSvihTelefonaKontaktOsoba.ShowDialog();
             this.popuniPodacima();
+        }
+
+        private void btnIzmeniFizickoLice_Click(object sender, EventArgs e)
+        {
+            if (listaFizickihLica.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Morate da izaberete fizicko lice cije podatke zelite da izmenite!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (listaFizickihLica.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("Mozete izmeniti podatke samo o jednom fizickom licu jednovremeno!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            string jmbg = listaFizickihLica.SelectedItems[0].SubItems[0].Text;
+            FizickoLiceBasic fizickoLiceBasic = DTOManager.VratiFizickoLice(jmbg);
+
+            IzmeniFizickoLice formaIzmeni = new IzmeniFizickoLice(fizickoLiceBasic);
+            formaIzmeni.ShowDialog();
+
+            this.popuniPodacima();
+        }
+
+        private void btnIzmeniPravnoLice_Click(object sender, EventArgs e)
+        {
+            if (listaPravnihLica.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Morate da izaberete pravno lice cije podatke zelite da izmenite!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (listaPravnihLica.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("Mozete izmeniti podatke samo o jednom pravnom licu jednovremeno!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            string pib = listaPravnihLica.SelectedItems[0].SubItems[0].Text;
+            PravnoLiceBasic pravnoLiceBasic = DTOManager.vratiPravnoLice(pib);
+
+            IzmeniPravnoLice formaIzmeni = new IzmeniPravnoLice(pravnoLiceBasic);
+            formaIzmeni.ShowDialog();
+
+            this.popuniPodacima();
+        }
+
+        private void btnIzaberiFizickoLice_Click(object sender, EventArgs e)
+        {
+            if (listaFizickihLica.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Izaberite vlasnika koga zelite!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else if (listaFizickihLica.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("Mozete izabrati samo jednog vlasnika jednovremeno!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            int idVlasnika = Int32.Parse(listaFizickihLica.SelectedItems[0].SubItems[5].Text);
+            this.izabraniIdVlasnika = idVlasnika;
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
+
+        private void btnIzaberiPravnoLice_Click(object sender, EventArgs e)
+        {
+            if (listaPravnihLica.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Izaberite vlasnika koga zelite!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else if (listaPravnihLica.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("Mozete izabrati samo jednog vlasnika jednovremeno!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            int idVlasnika = Int32.Parse(listaPravnihLica.SelectedItems[0].SubItems[5].Text);
+            this.izabraniIdVlasnika = idVlasnika;
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
     }
 }
