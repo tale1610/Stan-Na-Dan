@@ -1,19 +1,11 @@
 ﻿using StanNaDan.Forme;
+using StanNaDan.Forme.IznajmljivanjaSoba;
 using StanNaDan.Forme.Kvartovi;
 using StanNaDan.Forme.Najam;
 using StanNaDan.Forme.Nekretnine;
 using StanNaDan.Forme.Soba;
 using StanNaDan.Forme.Vlasnici;
 using StanNaDan.Forme.Zaposleni;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace StanNaDan
 {
@@ -64,6 +56,12 @@ namespace StanNaDan
         {
             PregledSvihSoba formaPregledSvihSoba = new PregledSvihSoba();
             formaPregledSvihSoba.ShowDialog();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            PregledIznajmljivanjaSoba formaPregledIznajmljivanjaSoba = new PregledIznajmljivanjaSoba();
+            formaPregledIznajmljivanjaSoba.ShowDialog();
         }
     }
 }

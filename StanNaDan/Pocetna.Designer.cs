@@ -37,6 +37,7 @@
             btnNekretnine = new Button();
             btnNajmovi = new Button();
             btnSobe = new Button();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -61,7 +62,7 @@
             // 
             // btnZaposleni
             // 
-            btnZaposleni.Location = new Point(12, 367);
+            btnZaposleni.Location = new Point(371, 261);
             btnZaposleni.Name = "btnZaposleni";
             btnZaposleni.Size = new Size(261, 79);
             btnZaposleni.TabIndex = 2;
@@ -71,7 +72,7 @@
             // 
             // btnTestForma
             // 
-            btnTestForma.Location = new Point(204, 584);
+            btnTestForma.Location = new Point(204, 745);
             btnTestForma.Name = "btnTestForma";
             btnTestForma.Size = new Size(261, 82);
             btnTestForma.TabIndex = 3;
@@ -81,9 +82,9 @@
             // 
             // btnVlasnici
             // 
-            btnVlasnici.Location = new Point(371, 367);
+            btnVlasnici.Location = new Point(204, 382);
             btnVlasnici.Name = "btnVlasnici";
-            btnVlasnici.Size = new Size(274, 79);
+            btnVlasnici.Size = new Size(261, 79);
             btnVlasnici.TabIndex = 4;
             btnVlasnici.Text = "Vlasnici Nekretnina";
             btnVlasnici.UseVisualStyleBackColor = true;
@@ -91,7 +92,7 @@
             // 
             // btnNekretnine
             // 
-            btnNekretnine.Location = new Point(371, 261);
+            btnNekretnine.Location = new Point(12, 499);
             btnNekretnine.Name = "btnNekretnine";
             btnNekretnine.Size = new Size(274, 79);
             btnNekretnine.TabIndex = 5;
@@ -101,9 +102,9 @@
             // 
             // btnNajmovi
             // 
-            btnNajmovi.Location = new Point(12, 476);
+            btnNajmovi.Location = new Point(12, 619);
             btnNajmovi.Name = "btnNajmovi";
-            btnNajmovi.Size = new Size(261, 92);
+            btnNajmovi.Size = new Size(274, 81);
             btnNajmovi.TabIndex = 6;
             btnNajmovi.Text = "Najmovi";
             btnNajmovi.UseVisualStyleBackColor = true;
@@ -111,19 +112,30 @@
             // 
             // btnSobe
             // 
-            btnSobe.Location = new Point(371, 476);
+            btnSobe.Location = new Point(371, 499);
             btnSobe.Name = "btnSobe";
-            btnSobe.Size = new Size(274, 92);
+            btnSobe.Size = new Size(274, 79);
             btnSobe.TabIndex = 7;
             btnSobe.Text = "Sobe";
             btnSobe.UseVisualStyleBackColor = true;
             btnSobe.Click += btnSobe_Click;
             // 
+            // button1
+            // 
+            button1.Location = new Point(371, 619);
+            button1.Name = "button1";
+            button1.Size = new Size(274, 81);
+            button1.TabIndex = 8;
+            button1.Text = "Iznajmljivanja Soba";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click_1;
+            // 
             // Pocetna
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(657, 678);
+            ClientSize = new Size(657, 826);
+            Controls.Add(button1);
             Controls.Add(btnSobe);
             Controls.Add(btnNajmovi);
             Controls.Add(btnNekretnine);
@@ -148,5 +160,6 @@
         private Button btnNekretnine;
         private Button btnNajmovi;
         private Button btnSobe;
+        private Button button1;
     }
 }
