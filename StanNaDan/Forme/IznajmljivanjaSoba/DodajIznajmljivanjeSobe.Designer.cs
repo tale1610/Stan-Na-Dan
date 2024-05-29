@@ -1,6 +1,6 @@
-﻿namespace StanNaDan.Forme.Najam
+﻿namespace StanNaDan.Forme.IznajmljivanjaSoba
 {
-    partial class DodajNajam
+    partial class DodajIznajmljivanjeSobe
     {
         /// <summary>
         /// Required designer variable.
@@ -28,6 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            groupBox2 = new GroupBox();
+            lblIzabraniSpoljniID = new Label();
+            lblIzabraniAgentMBR = new Label();
+            btnIzaberiSpoljnog = new Button();
+            btnIzaberiAgenta = new Button();
+            lblIzabranaSoba = new Label();
+            btnIzaberiNekretninu = new Button();
+            btnDodajNajam = new Button();
             groupBox1 = new GroupBox();
             tbProvizijaAgencije = new TextBox();
             tbPopust = new TextBox();
@@ -39,17 +47,86 @@
             label4 = new Label();
             label2 = new Label();
             label1 = new Label();
-            btnDodajNajam = new Button();
-            groupBox2 = new GroupBox();
-            lblIzabraniSpoljniID = new Label();
-            lblIzabraniAgentMBR = new Label();
-            btnIzaberiSpoljnog = new Button();
-            btnIzaberiAgenta = new Button();
-            lblIzabranaNekretninaID = new Label();
-            btnIzaberiNekretninu = new Button();
-            groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
+            groupBox1.SuspendLayout();
             SuspendLayout();
+            // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(lblIzabraniSpoljniID);
+            groupBox2.Controls.Add(lblIzabraniAgentMBR);
+            groupBox2.Controls.Add(btnIzaberiSpoljnog);
+            groupBox2.Controls.Add(btnIzaberiAgenta);
+            groupBox2.Controls.Add(lblIzabranaSoba);
+            groupBox2.Controls.Add(btnIzaberiNekretninu);
+            groupBox2.Location = new Point(480, 12);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(308, 297);
+            groupBox2.TabIndex = 5;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Podaci o vezama";
+            // 
+            // lblIzabraniSpoljniID
+            // 
+            lblIzabraniSpoljniID.AutoSize = true;
+            lblIzabraniSpoljniID.Location = new Point(17, 257);
+            lblIzabraniSpoljniID.Name = "lblIzabraniSpoljniID";
+            lblIzabraniSpoljniID.Size = new Size(0, 20);
+            lblIzabraniSpoljniID.TabIndex = 5;
+            // 
+            // lblIzabraniAgentMBR
+            // 
+            lblIzabraniAgentMBR.AutoSize = true;
+            lblIzabraniAgentMBR.Location = new Point(17, 178);
+            lblIzabraniAgentMBR.Name = "lblIzabraniAgentMBR";
+            lblIzabraniAgentMBR.Size = new Size(0, 20);
+            lblIzabraniAgentMBR.TabIndex = 4;
+            // 
+            // btnIzaberiSpoljnog
+            // 
+            btnIzaberiSpoljnog.Location = new Point(46, 211);
+            btnIzaberiSpoljnog.Name = "btnIzaberiSpoljnog";
+            btnIzaberiSpoljnog.Size = new Size(210, 29);
+            btnIzaberiSpoljnog.TabIndex = 3;
+            btnIzaberiSpoljnog.Text = "Izaberi Spoljnog Saradnika";
+            btnIzaberiSpoljnog.UseVisualStyleBackColor = true;
+            btnIzaberiSpoljnog.Click += btnIzaberiSpoljnog_Click;
+            // 
+            // btnIzaberiAgenta
+            // 
+            btnIzaberiAgenta.Location = new Point(46, 129);
+            btnIzaberiAgenta.Name = "btnIzaberiAgenta";
+            btnIzaberiAgenta.Size = new Size(210, 29);
+            btnIzaberiAgenta.TabIndex = 2;
+            btnIzaberiAgenta.Text = "Izaberi Agenta";
+            btnIzaberiAgenta.UseVisualStyleBackColor = true;
+            btnIzaberiAgenta.Click += btnIzaberiAgenta_Click;
+            // 
+            // lblIzabranaSoba
+            // 
+            lblIzabranaSoba.AutoSize = true;
+            lblIzabranaSoba.Location = new Point(17, 83);
+            lblIzabranaSoba.Name = "lblIzabranaSoba";
+            lblIzabranaSoba.Size = new Size(0, 20);
+            lblIzabranaSoba.TabIndex = 1;
+            // 
+            // btnIzaberiNekretninu
+            // 
+            btnIzaberiNekretninu.Location = new Point(46, 47);
+            btnIzaberiNekretninu.Name = "btnIzaberiNekretninu";
+            btnIzaberiNekretninu.Size = new Size(210, 29);
+            btnIzaberiNekretninu.TabIndex = 0;
+            btnIzaberiNekretninu.Text = "Izaberi Sobu";
+            btnIzaberiNekretninu.UseVisualStyleBackColor = true;
+            // 
+            // btnDodajNajam
+            // 
+            btnDodajNajam.Location = new Point(304, 340);
+            btnDodajNajam.Name = "btnDodajNajam";
+            btnDodajNajam.Size = new Size(172, 29);
+            btnDodajNajam.TabIndex = 4;
+            btnDodajNajam.Text = "Dodaj Iznajmljivanje sobe";
+            btnDodajNajam.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
@@ -66,7 +143,7 @@
             groupBox1.Location = new Point(12, 12);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(451, 297);
-            groupBox1.TabIndex = 0;
+            groupBox1.TabIndex = 3;
             groupBox1.TabStop = false;
             groupBox1.Text = "Podaci o najmu";
             // 
@@ -150,123 +227,43 @@
             label1.TabIndex = 0;
             label1.Text = "Datum Pocetka:";
             // 
-            // btnDodajNajam
-            // 
-            btnDodajNajam.Location = new Point(304, 340);
-            btnDodajNajam.Name = "btnDodajNajam";
-            btnDodajNajam.Size = new Size(172, 29);
-            btnDodajNajam.TabIndex = 1;
-            btnDodajNajam.Text = "Dodaj Najam";
-            btnDodajNajam.UseVisualStyleBackColor = true;
-            btnDodajNajam.Click += btnDodajNajam_Click;
-            // 
-            // groupBox2
-            // 
-            groupBox2.Controls.Add(lblIzabraniSpoljniID);
-            groupBox2.Controls.Add(lblIzabraniAgentMBR);
-            groupBox2.Controls.Add(btnIzaberiSpoljnog);
-            groupBox2.Controls.Add(btnIzaberiAgenta);
-            groupBox2.Controls.Add(lblIzabranaNekretninaID);
-            groupBox2.Controls.Add(btnIzaberiNekretninu);
-            groupBox2.Location = new Point(480, 12);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(308, 297);
-            groupBox2.TabIndex = 2;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "Podaci o vezama";
-            // 
-            // lblIzabraniSpoljniID
-            // 
-            lblIzabraniSpoljniID.AutoSize = true;
-            lblIzabraniSpoljniID.Location = new Point(17, 257);
-            lblIzabraniSpoljniID.Name = "lblIzabraniSpoljniID";
-            lblIzabraniSpoljniID.Size = new Size(0, 20);
-            lblIzabraniSpoljniID.TabIndex = 5;
-            // 
-            // lblIzabraniAgentMBR
-            // 
-            lblIzabraniAgentMBR.AutoSize = true;
-            lblIzabraniAgentMBR.Location = new Point(17, 178);
-            lblIzabraniAgentMBR.Name = "lblIzabraniAgentMBR";
-            lblIzabraniAgentMBR.Size = new Size(0, 20);
-            lblIzabraniAgentMBR.TabIndex = 4;
-            // 
-            // btnIzaberiSpoljnog
-            // 
-            btnIzaberiSpoljnog.Location = new Point(46, 211);
-            btnIzaberiSpoljnog.Name = "btnIzaberiSpoljnog";
-            btnIzaberiSpoljnog.Size = new Size(210, 29);
-            btnIzaberiSpoljnog.TabIndex = 3;
-            btnIzaberiSpoljnog.Text = "Izaberi Spoljnog Saradnika";
-            btnIzaberiSpoljnog.UseVisualStyleBackColor = true;
-            btnIzaberiSpoljnog.Click += btnIzaberiSpoljnog_Click;
-            // 
-            // btnIzaberiAgenta
-            // 
-            btnIzaberiAgenta.Location = new Point(46, 129);
-            btnIzaberiAgenta.Name = "btnIzaberiAgenta";
-            btnIzaberiAgenta.Size = new Size(210, 29);
-            btnIzaberiAgenta.TabIndex = 2;
-            btnIzaberiAgenta.Text = "Izaberi Agenta";
-            btnIzaberiAgenta.UseVisualStyleBackColor = true;
-            btnIzaberiAgenta.Click += btnIzaberiAgenta_Click;
-            // 
-            // lblIzabranaNekretninaID
-            // 
-            lblIzabranaNekretninaID.AutoSize = true;
-            lblIzabranaNekretninaID.Location = new Point(17, 83);
-            lblIzabranaNekretninaID.Name = "lblIzabranaNekretninaID";
-            lblIzabranaNekretninaID.Size = new Size(0, 20);
-            lblIzabranaNekretninaID.TabIndex = 1;
-            // 
-            // btnIzaberiNekretninu
-            // 
-            btnIzaberiNekretninu.Location = new Point(46, 47);
-            btnIzaberiNekretninu.Name = "btnIzaberiNekretninu";
-            btnIzaberiNekretninu.Size = new Size(210, 29);
-            btnIzaberiNekretninu.TabIndex = 0;
-            btnIzaberiNekretninu.Text = "Izaberi Nekretninu";
-            btnIzaberiNekretninu.UseVisualStyleBackColor = true;
-            btnIzaberiNekretninu.Click += btnIzaberiNekretninu_Click;
-            // 
-            // DodajNajam
+            // DodajIznajmljivanjeSobe
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 401);
+            ClientSize = new Size(802, 405);
             Controls.Add(groupBox2);
             Controls.Add(btnDodajNajam);
             Controls.Add(groupBox1);
-            Name = "DodajNajam";
-            Text = "DodajNajam";
-            Load += DodajNajam_Load;
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
+            Name = "DodajIznajmljivanjeSobe";
+            Text = "DodajIznajmljivanjeSobe";
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private GroupBox groupBox1;
-        private Label label4;
-        private Label label2;
-        private Label label1;
-        private DateTimePicker dtpPocetak;
-        private Label label5;
-        private Label label3;
-        private DateTimePicker dtpZavrsetak;
-        private TextBox tbProvizijaAgencije;
-        private TextBox tbPopust;
-        private TextBox tbCenaPoDanu;
-        private Button btnDodajNajam;
         private GroupBox groupBox2;
-        private Button btnIzaberiNekretninu;
-        private Label lblIzabranaNekretninaID;
-        private Button btnIzaberiAgenta;
         private Label lblIzabraniSpoljniID;
         private Label lblIzabraniAgentMBR;
         private Button btnIzaberiSpoljnog;
+        private Button btnIzaberiAgenta;
+        private Label lblIzabranaSoba;
+        private Button btnIzaberiNekretninu;
+        private Button btnDodajNajam;
+        private GroupBox groupBox1;
+        private TextBox tbProvizijaAgencije;
+        private TextBox tbPopust;
+        private TextBox tbCenaPoDanu;
+        private DateTimePicker dtpZavrsetak;
+        private DateTimePicker dtpPocetak;
+        private Label label5;
+        private Label label3;
+        private Label label4;
+        private Label label2;
+        private Label label1;
     }
 }

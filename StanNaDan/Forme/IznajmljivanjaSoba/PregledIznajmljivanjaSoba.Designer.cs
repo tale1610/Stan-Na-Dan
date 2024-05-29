@@ -30,18 +30,21 @@
         {
             listaNajmova = new ListView();
             ID = new ColumnHeader();
+            NekretninaID = new ColumnHeader();
+            SobaID = new ColumnHeader();
             DatumPocetka = new ColumnHeader();
             DatumZavrsetka = new ColumnHeader();
             BrojDana = new ColumnHeader();
             CenaPoDanu = new ColumnHeader();
             CenaSaPopustom = new ColumnHeader();
+            zarada = new ColumnHeader();
             UkupnaCena = new ColumnHeader();
             ProvizijaAgencije = new ColumnHeader();
             Agent = new ColumnHeader();
             Spoljni = new ColumnHeader();
-            NekretninaID = new ColumnHeader();
-            SobaID = new ColumnHeader();
-            zarada = new ColumnHeader();
+            btnDodajNajamSobe = new Button();
+            btnIzmeniNajamSobe = new Button();
+            btnObrisiNajamSobe = new Button();
             SuspendLayout();
             // 
             // listaNajmova
@@ -60,6 +63,16 @@
             // 
             ID.Text = "Id Najma";
             ID.Width = 80;
+            // 
+            // NekretninaID
+            // 
+            NekretninaID.Text = "Id Nekretnine";
+            NekretninaID.Width = 110;
+            // 
+            // SobaID
+            // 
+            SobaID.Text = "Id Sobe";
+            SobaID.Width = 80;
             // 
             // DatumPocetka
             // 
@@ -86,6 +99,11 @@
             CenaSaPopustom.Text = "Cena Sa Popustom";
             CenaSaPopustom.Width = 135;
             // 
+            // zarada
+            // 
+            zarada.Text = "Zarada od dodatnih usluga";
+            zarada.Width = 150;
+            // 
             // UkupnaCena
             // 
             UkupnaCena.Text = "Ukupna Cena";
@@ -106,26 +124,42 @@
             Spoljni.Text = "Spoljni Saradnik";
             Spoljni.Width = 120;
             // 
-            // NekretninaID
+            // btnDodajNajamSobe
             // 
-            NekretninaID.Text = "Id Nekretnine";
-            NekretninaID.Width = 110;
+            btnDodajNajamSobe.Location = new Point(1379, 12);
+            btnDodajNajamSobe.Name = "btnDodajNajamSobe";
+            btnDodajNajamSobe.Size = new Size(165, 54);
+            btnDodajNajamSobe.TabIndex = 8;
+            btnDodajNajamSobe.Text = "Dodaj Novi Najam Sobe";
+            btnDodajNajamSobe.UseVisualStyleBackColor = true;
+            btnDodajNajamSobe.Click += btnDodajNajamSobe_Click;
             // 
-            // SobaID
+            // btnIzmeniNajamSobe
             // 
-            SobaID.Text = "Id Sobe";
-            SobaID.Width = 80;
+            btnIzmeniNajamSobe.Location = new Point(1379, 72);
+            btnIzmeniNajamSobe.Name = "btnIzmeniNajamSobe";
+            btnIzmeniNajamSobe.Size = new Size(165, 29);
+            btnIzmeniNajamSobe.TabIndex = 9;
+            btnIzmeniNajamSobe.Text = "Izmeni Najam Sobe";
+            btnIzmeniNajamSobe.UseVisualStyleBackColor = true;
             // 
-            // zarada
+            // btnObrisiNajamSobe
             // 
-            zarada.Text = "Zarada od dodatnih usluga";
-            zarada.Width = 150;
+            btnObrisiNajamSobe.Location = new Point(1379, 107);
+            btnObrisiNajamSobe.Name = "btnObrisiNajamSobe";
+            btnObrisiNajamSobe.Size = new Size(165, 29);
+            btnObrisiNajamSobe.TabIndex = 10;
+            btnObrisiNajamSobe.Text = "Obrisi Najam Sobe";
+            btnObrisiNajamSobe.UseVisualStyleBackColor = true;
             // 
             // PregledIznajmljivanjaSoba
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1377, 450);
+            ClientSize = new Size(1556, 450);
+            Controls.Add(btnObrisiNajamSobe);
+            Controls.Add(btnIzmeniNajamSobe);
+            Controls.Add(btnDodajNajamSobe);
             Controls.Add(listaNajmova);
             Name = "PregledIznajmljivanjaSoba";
             Text = "PregledIznajmljivanjaSoba";
@@ -149,5 +183,8 @@
         private ColumnHeader NekretninaID;
         private ColumnHeader SobaID;
         private ColumnHeader zarada;
+        private Button btnDodajNajamSobe;
+        private Button btnIzmeniNajamSobe;
+        private Button btnObrisiNajamSobe;
     }
 }
