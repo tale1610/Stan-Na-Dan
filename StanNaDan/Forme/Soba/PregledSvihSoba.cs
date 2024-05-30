@@ -1,4 +1,5 @@
-﻿using StanNaDan.Forme.Nekretnine.DodatnaOprema;
+﻿using StanNaDan.Forme.Nekretnine;
+using StanNaDan.Forme.Nekretnine.DodatnaOprema;
 using StanNaDan.Forme.Soba.ZajednickeProstorije;
 using System;
 using System.Collections.Generic;
@@ -51,11 +52,18 @@ namespace StanNaDan.Forme.Soba
 
             int idNekretnine = Int32.Parse(listaSoba.SelectedItems[0].SubItems[0].Text);
             int idSobe = Int32.Parse(listaSoba.SelectedItems[0].SubItems[1].Text);
-            
+
             PregledZajednickihProstorijaSobe formaPregledZajednickihProstorijaSobe = new PregledZajednickihProstorijaSobe(idSobe, idNekretnine);
             formaPregledZajednickihProstorijaSobe.ShowDialog();
             this.popuniPodacima();
 
+        }
+
+        private void btnUpravljanje_Click(object sender, EventArgs e)
+        {
+            PregledSvihNekretnina formaPregledSvihNekretnina = new PregledSvihNekretnina();
+            formaPregledSvihNekretnina.ShowDialog();
+            this.popuniPodacima();
         }
     }
 }

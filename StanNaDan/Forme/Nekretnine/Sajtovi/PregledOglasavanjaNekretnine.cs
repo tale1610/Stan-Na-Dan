@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StanNaDan.Forme.Nekretnine.Parking;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -57,6 +58,36 @@ namespace StanNaDan.Forme.Nekretnine.Sajtovi
 
             string sajt = listaSajtova.SelectedItems[0].SubItems[2].Text;
             DTOManager.ObrisiSajtNekretnine(sajt, this.IdNekretnine);
+            this.popuniPodacima();
+        }
+
+        private void btnDodajSajt_Click(object sender, EventArgs e)
+        {
+            DodajSajtOglasavanja formaDodaj = new DodajSajtOglasavanja(IdNekretnine);
+            formaDodaj.ShowDialog();
+            this.popuniPodacima();
+        }
+
+        private void btnIzmeniSajt_Click(object sender, EventArgs e)
+        {
+            if (listaSajtova.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Izaberite sajt koji zelite da izmenite!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else if (listaSajtova.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("Mozete izmeniti samo jedan sajt jednovremeno!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            int idNekretnine = Int32.Parse(listaSajtova.SelectedItems[0].SubItems[0].Text);
+            string sajt = listaSajtova.SelectedItems[0].SubItems[2].Text;
+            SajtoviNekretnineBasic sajtBasic = DTOManager.VratiSajtNekretnine(sajt, this.IdNekretnine);
+
+            IzmeniSajtOglasavanja formaIzmeni = new IzmeniSajtOglasavanja(sajtBasic);
+            formaIzmeni.ShowDialog();
+
             this.popuniPodacima();
         }
     }

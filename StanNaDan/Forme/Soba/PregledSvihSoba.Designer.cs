@@ -31,9 +31,7 @@
             listaSoba = new ListView();
             IdNekretnine = new ColumnHeader();
             IdSobe = new ColumnHeader();
-            tbDodajSobu = new Button();
-            btnIzmeniSobu = new Button();
-            btnObrisiSobu = new Button();
+            btnUpravljanje = new Button();
             btnZajednickeProstorije = new Button();
             SuspendLayout();
             // 
@@ -42,9 +40,10 @@
             listaSoba.Columns.AddRange(new ColumnHeader[] { IdNekretnine, IdSobe });
             listaSoba.FullRowSelect = true;
             listaSoba.GridLines = true;
-            listaSoba.Location = new Point(12, 12);
+            listaSoba.Location = new Point(10, 9);
+            listaSoba.Margin = new Padding(3, 2, 3, 2);
             listaSoba.Name = "listaSoba";
-            listaSoba.Size = new Size(264, 411);
+            listaSoba.Size = new Size(214, 309);
             listaSoba.TabIndex = 1;
             listaSoba.UseCompatibleStateImageBehavior = false;
             listaSoba.View = View.Details;
@@ -59,38 +58,23 @@
             IdSobe.Text = "Id Sobe";
             IdSobe.Width = 100;
             // 
-            // tbDodajSobu
+            // btnUpravljanje
             // 
-            tbDodajSobu.Location = new Point(282, 12);
-            tbDodajSobu.Name = "tbDodajSobu";
-            tbDodajSobu.Size = new Size(188, 29);
-            tbDodajSobu.TabIndex = 2;
-            tbDodajSobu.Text = "Dodaj Sobu";
-            tbDodajSobu.UseVisualStyleBackColor = true;
-            // 
-            // btnIzmeniSobu
-            // 
-            btnIzmeniSobu.Location = new Point(282, 100);
-            btnIzmeniSobu.Name = "btnIzmeniSobu";
-            btnIzmeniSobu.Size = new Size(188, 29);
-            btnIzmeniSobu.TabIndex = 3;
-            btnIzmeniSobu.Text = "Izmeni Sobu";
-            btnIzmeniSobu.UseVisualStyleBackColor = true;
-            // 
-            // btnObrisiSobu
-            // 
-            btnObrisiSobu.Location = new Point(282, 56);
-            btnObrisiSobu.Name = "btnObrisiSobu";
-            btnObrisiSobu.Size = new Size(188, 29);
-            btnObrisiSobu.TabIndex = 4;
-            btnObrisiSobu.Text = "Obrisi Sobu";
-            btnObrisiSobu.UseVisualStyleBackColor = true;
+            btnUpravljanje.Location = new Point(245, 11);
+            btnUpravljanje.Margin = new Padding(3, 2, 3, 2);
+            btnUpravljanje.Name = "btnUpravljanje";
+            btnUpravljanje.Size = new Size(164, 41);
+            btnUpravljanje.TabIndex = 2;
+            btnUpravljanje.Text = "Upravljanje nekretninama i sobama";
+            btnUpravljanje.UseVisualStyleBackColor = true;
+            btnUpravljanje.Click += btnUpravljanje_Click;
             // 
             // btnZajednickeProstorije
             // 
-            btnZajednickeProstorije.Location = new Point(282, 151);
+            btnZajednickeProstorije.Location = new Point(245, 76);
+            btnZajednickeProstorije.Margin = new Padding(3, 2, 3, 2);
             btnZajednickeProstorije.Name = "btnZajednickeProstorije";
-            btnZajednickeProstorije.Size = new Size(188, 54);
+            btnZajednickeProstorije.Size = new Size(164, 41);
             btnZajednickeProstorije.TabIndex = 5;
             btnZajednickeProstorije.Text = "Prikazi zajednicke prostorije";
             btnZajednickeProstorije.UseVisualStyleBackColor = true;
@@ -98,14 +82,13 @@
             // 
             // PregledSvihSoba
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(481, 450);
+            ClientSize = new Size(421, 327);
             Controls.Add(btnZajednickeProstorije);
-            Controls.Add(btnObrisiSobu);
-            Controls.Add(btnIzmeniSobu);
-            Controls.Add(tbDodajSobu);
+            Controls.Add(btnUpravljanje);
             Controls.Add(listaSoba);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "PregledSvihSoba";
             Text = "PregledSvihSoba";
             Load += PregledSvihSoba_Load;
@@ -117,9 +100,7 @@
         private ListView listaSoba;
         private ColumnHeader IdNekretnine;
         private ColumnHeader IdSobe;
-        private Button tbDodajSobu;
-        private Button btnIzmeniSobu;
-        private Button btnObrisiSobu;
+        private Button btnUpravljanje;
         private Button btnZajednickeProstorije;
     }
 }
