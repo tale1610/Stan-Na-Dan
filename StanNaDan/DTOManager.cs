@@ -5,6 +5,7 @@ using StanNaDan.Entiteti;
 using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.Intrinsics.X86;
+using System.Security.Cryptography;
 
 namespace StanNaDan;
 
@@ -2229,7 +2230,7 @@ public class DTOManager
         return kreveti;
     }
 
-    public static KrevetPregled VratiKrevet(int idKreveta, int idNekretnine)
+    public static KrevetBasic VratiKrevet(int idKreveta, int idNekretnine)
     {
         ISession? session = null;
         try
@@ -2246,9 +2247,21 @@ public class DTOManager
                 Krevet krevet = session.Get<Krevet>(kID);
                 if (krevet != null)
                 {
-                    return new KrevetPregled(
+                    return new KrevetBasic(
                         krevet.ID.IdKreveta,
-                        krevet.ID.Nekretnina.IdNekretnine,
+                        new NekretninaBasic
+                        {
+                            IdNekretnine = nekretnina.IdNekretnine,
+                            Ulica = nekretnina.Ulica,
+                            Broj = nekretnina.Broj,
+                            Kvadratura = nekretnina.Kvadratura,
+                            BrojTerasa = nekretnina.BrojTerasa,
+                            BrojKupatila = nekretnina.BrojKupatila,
+                            BrojSpavacihSoba = nekretnina.BrojSpavacihSoba,
+                            PosedujeTV = nekretnina.PosedujeTV,
+                            PosedujeInternet = nekretnina.PosedujeInternet,
+                            PosedujeKuhinju = nekretnina.PosedujeKuhinju
+                        },
                         krevet.Tip,
                         krevet.Dimenzije
                     );
@@ -2434,7 +2447,7 @@ public class DTOManager
         return parkinzi;
     }
 
-    public static ParkingPregled VratiParking(int idParkinga, int idNekretnine)
+    public static ParkingBasic VratiParking(int idParkinga, int idNekretnine)
     {
         ISession? session = null;
         try
@@ -2451,9 +2464,21 @@ public class DTOManager
                 Parking parking = session.Get<Parking>(pID);
                 if (parking != null)
                 {
-                    return new ParkingPregled(
+                    return new ParkingBasic(
                         parking.ID.IdParkinga,
-                        parking.ID.Nekretnina.IdNekretnine,
+                        new NekretninaBasic
+                        {
+                            IdNekretnine = nekretnina.IdNekretnine,
+                            Ulica = nekretnina.Ulica,
+                            Broj = nekretnina.Broj,
+                            Kvadratura = nekretnina.Kvadratura,
+                            BrojTerasa = nekretnina.BrojTerasa,
+                            BrojKupatila = nekretnina.BrojKupatila,
+                            BrojSpavacihSoba = nekretnina.BrojSpavacihSoba,
+                            PosedujeTV = nekretnina.PosedujeTV,
+                            PosedujeInternet = nekretnina.PosedujeInternet,
+                            PosedujeKuhinju = nekretnina.PosedujeKuhinju
+                        },
                         parking.Besplatan,
                         parking.Cena,
                         parking.USastavuNekretnine,
@@ -2636,7 +2661,7 @@ public class DTOManager
         return sajtovi;
     }
 
-    public static SajtoviNekretninePregled VratiSajtNekretnine(string sajt, int idNekretnine)
+    public static SajtoviNekretnineBasic VratiSajtNekretnine(string sajt, int idNekretnine)
     {
         ISession? session = null;
         try
@@ -2653,10 +2678,21 @@ public class DTOManager
                 SajtoviNekretnine sajtNekretnine = session.Get<SajtoviNekretnine>(sID);
                 if (sajtNekretnine != null)
                 {
-                    return new SajtoviNekretninePregled(
+                    return new SajtoviNekretnineBasic(
                         sajtNekretnine.ID.Sajt,
-                        sajtNekretnine.ID.Nekretnina.IdNekretnine,
-                        sajtNekretnine.ID.Nekretnina.Ulica + " " + sajtNekretnine.ID.Nekretnina.Broj
+                        new NekretninaBasic
+                        {
+                            IdNekretnine = nekretnina.IdNekretnine,
+                            Ulica = nekretnina.Ulica,
+                            Broj = nekretnina.Broj,
+                            Kvadratura = nekretnina.Kvadratura,
+                            BrojTerasa = nekretnina.BrojTerasa,
+                            BrojKupatila = nekretnina.BrojKupatila,
+                            BrojSpavacihSoba = nekretnina.BrojSpavacihSoba,
+                            PosedujeTV = nekretnina.PosedujeTV,
+                            PosedujeInternet = nekretnina.PosedujeInternet,
+                            PosedujeKuhinju = nekretnina.PosedujeKuhinju
+                        }
                     );
                 }
                 else
@@ -2681,7 +2717,7 @@ public class DTOManager
         }
     }
 
-    public static void IzmeniSajtNekretnine(SajtoviNekretnineBasic izmenjeniSajt, int idNekretnine)
+    public static void IzmeniSajtNekretnine(SajtoviNekretnineBasic izmenjeniSajt, string stariSajt, int idNekretnine)
     {
         ISession? session = null;
         try
@@ -2692,23 +2728,34 @@ public class DTOManager
                 Nekretnina nekretnina = session.Load<Nekretnina>(idNekretnine);
                 SajtoviNekretnineId sID = new()
                 {
-                    Sajt = izmenjeniSajt.Sajt,
+                    Sajt = stariSajt,
                     Nekretnina = nekretnina
                 };
                 SajtoviNekretnine sajtNekretnine = session.Get<SajtoviNekretnine>(sID);
+                SajtoviNekretnineId noviID = new()
+                {
+                    Sajt = izmenjeniSajt.Sajt,
+                    Nekretnina = nekretnina
+                };
                 if (sajtNekretnine != null)
                 {
-                    sajtNekretnine.ID = sID;
-                    //sajtNekretnine.Sajt = izmenjeniSajt.Sajt;
-                    //sajtNekretnine.Nekretnina = nekretnina;
-
-                    session.Update(sajtNekretnine);
+                    session.Delete(sajtNekretnine);
                     session.Flush();
-                    MessageBox.Show($"Podaci za sajt nekretnine sa sajtom {izmenjeniSajt.Sajt} su izmenjeni.");
+
+                    sajtNekretnine = new SajtoviNekretnine { ID = noviID };
+
+                    nekretnina.SajtoviNekretnine.Add(sajtNekretnine);
+
+                    session.Save(sajtNekretnine);
+                    session.Flush();
+
+                    //session.Update(sajtNekretnine);
+                    //session.Flush();
+                    MessageBox.Show($"Izmenjen je sajt za nekretninu: {nekretnina.IdNekretnine}.");
                 }
                 else
                 {
-                    MessageBox.Show($"Sajt nekretnine sa sajtom {izmenjeniSajt.Sajt} i ID-om nekretnine {idNekretnine} nije pronađen.");
+                    MessageBox.Show($"Sajt nekretnine sa sajtom {stariSajt} i ID-om nekretnine {idNekretnine} nije pronađen.");
                 }
             }
         }
@@ -3225,7 +3272,7 @@ public class DTOManager
         return sobe;
     }
 
-    public static SobaPregled VratiSobu(int idSobe, int idNekretnine)
+    public static SobaBasic VratiSobu(int idSobe, int idNekretnine)
     {
         ISession? session = null;
         try
@@ -3233,23 +3280,44 @@ public class DTOManager
             session = DataLayer.GetSession();
             if (session != null && session.IsOpen)
             {
-                Nekretnina nekretnina = session.Load<Nekretnina>(idNekretnine);
-                SobaId sID = new()
+                Nekretnina nekretnina = session.Get<Nekretnina>(idNekretnine);
+                if (nekretnina != null)
                 {
-                    IdSobe = idSobe,
-                    Nekretnina = nekretnina
-                };
-                Soba soba = session.Get<Soba>(sID);
-                if (soba != null)
-                {
-                    return new SobaPregled(
-                        soba.ID.IdSobe,
-                        soba.ID.Nekretnina.IdNekretnine
-                    );
+                    SobaId sID = new()
+                    {
+                        IdSobe = idSobe,
+                        Nekretnina = nekretnina
+                    };
+                    Soba soba = session.Get<Soba>(sID);
+                    if (soba != null)
+                    {
+                        NekretninaBasic nekretninaBasic = new()
+                        {
+                            IdNekretnine = nekretnina.IdNekretnine,
+                            Ulica = nekretnina.Ulica,
+                            Broj = nekretnina.Broj,
+                            Kvadratura = nekretnina.Kvadratura,
+                            BrojTerasa = nekretnina.BrojTerasa,
+                            BrojKupatila = nekretnina.BrojKupatila,
+                            BrojSpavacihSoba = nekretnina.BrojSpavacihSoba,
+                            PosedujeTV = nekretnina.PosedujeTV,
+                            PosedujeInternet = nekretnina.PosedujeInternet,
+                            PosedujeKuhinju = nekretnina.PosedujeKuhinju
+                        };
+                        return new SobaBasic(
+                            soba.ID.IdSobe,
+                            nekretninaBasic
+                        );
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Soba sa ID {sID} nije pronađena.");
+                        return null;
+                    }
                 }
                 else
                 {
-                    MessageBox.Show($"Soba sa ID {sID} nije pronađena.");
+                    MessageBox.Show($"Nekretnina sa ID {idNekretnine} nije pronađena.");
                     return null;
                 }
             }
@@ -3262,45 +3330,6 @@ public class DTOManager
         {
             MessageBox.Show(ex.FormatExceptionMessage());
             return null;
-        }
-        finally
-        {
-            session?.Close();
-        }
-    }
-
-    public static void IzmeniSobu(SobaBasic izmenjenaSoba, int idNekretnine)
-    {
-        ISession? session = null;
-        try
-        {
-            session = DataLayer.GetSession();
-            if (session != null && session.IsOpen)
-            {
-                Nekretnina nekretnina = session.Load<Nekretnina>(idNekretnine);
-                SobaId sID = new()
-                {
-                    IdSobe = izmenjenaSoba.IdSobe,
-                    Nekretnina = nekretnina
-                };
-                Soba soba = session.Get<Soba>(sID);
-                if (soba != null)
-                {
-                    soba.ID = sID;
-
-                    session.Update(soba);
-                    session.Flush();
-                    MessageBox.Show($"Podaci za sobu sa ID {sID} su izmenjeni.");
-                }
-                else
-                {
-                    MessageBox.Show($"Soba sa ID {sID} nije pronađena.");
-                }
-            }
-        }
-        catch (Exception ex)
-        {
-            MessageBox.Show(ex.FormatExceptionMessage());
         }
         finally
         {

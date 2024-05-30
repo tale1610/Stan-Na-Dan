@@ -1,4 +1,5 @@
-﻿using StanNaDan.Forme.Nekretnine.DodatnaOprema;
+﻿using StanNaDan.Forme.Nekretnine;
+using StanNaDan.Forme.Nekretnine.DodatnaOprema;
 using StanNaDan.Forme.Soba.ZajednickeProstorije;
 using System;
 using System.Collections.Generic;
@@ -64,6 +65,13 @@ namespace StanNaDan.Forme.Soba
             formaPregledZajednickihProstorijaSobe.ShowDialog();
             this.popuniPodacima();
 
+        }
+
+        private void btnUpravljanje_Click(object sender, EventArgs e)
+        {
+            PregledSvihNekretnina formaPregledSvihNekretnina = new PregledSvihNekretnina();
+            formaPregledSvihNekretnina.ShowDialog();
+            this.popuniPodacima();
         }
 
         private void btnIzaberiSobu_Click(object sender, EventArgs e)

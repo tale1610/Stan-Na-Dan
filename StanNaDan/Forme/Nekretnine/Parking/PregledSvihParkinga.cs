@@ -1,4 +1,6 @@
-﻿using StanNaDan.Forme.Nekretnine.DodatnaOprema;
+﻿using StanNaDan.Forme.Nekretnine;
+using StanNaDan.Forme.Nekretnine.DodatnaOprema;
+using StanNaDan.Forme.Nekretnine.Parking;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -63,6 +65,28 @@ namespace StanNaDan.Forme.Parking
 
             int idParkinga = Int32.Parse(listaParkinga.SelectedItems[0].SubItems[0].Text);
             DTOManager.ObrisiParking(idParkinga, this.IdNekretnine);
+            this.popuniPodacima();
+        }
+
+        private void btnIzmeniParking_Click(object sender, EventArgs e)
+        {
+            if (listaParkinga.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Izaberite parking koji zelite da izmenite!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else if (listaParkinga.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("Mozete izmeniti samo jedan parking jednovremeno!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            int idParkinga = Int32.Parse(listaParkinga.SelectedItems[0].SubItems[0].Text);
+            ParkingBasic parkingBasic = DTOManager.VratiParking(idParkinga, this.IdNekretnine);
+
+            IzmeniParking formaIzmeni = new IzmeniParking(parkingBasic);
+            formaIzmeni.ShowDialog();
+
             this.popuniPodacima();
         }
     }

@@ -58,5 +58,26 @@ namespace StanNaDan.Forme.Nekretnine.Kreveti
             formaDodajKrevet.ShowDialog();
             this.popuniPodacima();
         }
+
+        private void btnIzmeniKrevet_Click(object sender, EventArgs e)
+        {
+            if (listaKreveta.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Izaberite krevet koji zelite da izmenite!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else if (listaKreveta.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("Mozete izmeniti samo jedan krevet jednovremeno!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            int idKreveta = Int32.Parse(listaKreveta.SelectedItems[0].SubItems[0].Text);
+            KrevetBasic krevetBasic = DTOManager.VratiKrevet(idKreveta, this.idNekretnine);
+
+            IzmeniKrevet formaIzmeni = new IzmeniKrevet(krevetBasic);
+            formaIzmeni.ShowDialog();
+
+            this.popuniPodacima();
+        }
     }
 }

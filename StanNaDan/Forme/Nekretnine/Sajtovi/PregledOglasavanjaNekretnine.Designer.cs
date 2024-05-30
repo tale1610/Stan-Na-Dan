@@ -42,9 +42,10 @@
             listaSajtova.Columns.AddRange(new ColumnHeader[] { idNekretnin, Adresa, sajtOglasavanja });
             listaSajtova.FullRowSelect = true;
             listaSajtova.GridLines = true;
-            listaSajtova.Location = new Point(12, 12);
+            listaSajtova.Location = new Point(10, 9);
+            listaSajtova.Margin = new Padding(3, 2, 3, 2);
             listaSajtova.Name = "listaSajtova";
-            listaSajtova.Size = new Size(564, 411);
+            listaSajtova.Size = new Size(494, 309);
             listaSajtova.TabIndex = 1;
             listaSajtova.UseCompatibleStateImageBehavior = false;
             listaSajtova.View = View.Details;
@@ -66,27 +67,32 @@
             // 
             // btnDodajSajt
             // 
-            btnDodajSajt.Location = new Point(582, 12);
+            btnDodajSajt.Location = new Point(509, 9);
+            btnDodajSajt.Margin = new Padding(3, 2, 3, 2);
             btnDodajSajt.Name = "btnDodajSajt";
-            btnDodajSajt.Size = new Size(206, 29);
+            btnDodajSajt.Size = new Size(180, 22);
             btnDodajSajt.TabIndex = 2;
             btnDodajSajt.Text = "Dodaj Sajt Oglasavanja";
             btnDodajSajt.UseVisualStyleBackColor = true;
+            btnDodajSajt.Click += btnDodajSajt_Click;
             // 
             // btnIzmeniSajt
             // 
-            btnIzmeniSajt.Location = new Point(582, 56);
+            btnIzmeniSajt.Location = new Point(509, 42);
+            btnIzmeniSajt.Margin = new Padding(3, 2, 3, 2);
             btnIzmeniSajt.Name = "btnIzmeniSajt";
-            btnIzmeniSajt.Size = new Size(206, 29);
+            btnIzmeniSajt.Size = new Size(180, 22);
             btnIzmeniSajt.TabIndex = 3;
             btnIzmeniSajt.Text = "Izmeni Sajt";
             btnIzmeniSajt.UseVisualStyleBackColor = true;
+            btnIzmeniSajt.Click += btnIzmeniSajt_Click;
             // 
             // btnObrisiSajt
             // 
-            btnObrisiSajt.Location = new Point(582, 105);
+            btnObrisiSajt.Location = new Point(509, 79);
+            btnObrisiSajt.Margin = new Padding(3, 2, 3, 2);
             btnObrisiSajt.Name = "btnObrisiSajt";
-            btnObrisiSajt.Size = new Size(206, 29);
+            btnObrisiSajt.Size = new Size(180, 22);
             btnObrisiSajt.TabIndex = 4;
             btnObrisiSajt.Text = "Obrisi Sajt";
             btnObrisiSajt.UseVisualStyleBackColor = true;
@@ -94,13 +100,14 @@
             // 
             // PregledOglasavanjaNekretnine
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(700, 338);
             Controls.Add(btnObrisiSajt);
             Controls.Add(btnIzmeniSajt);
             Controls.Add(btnDodajSajt);
             Controls.Add(listaSajtova);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "PregledOglasavanjaNekretnine";
             Text = "PregledOglasavanjaNekretnine";
             Load += PregledOglasavanjaNekretnine_Load;

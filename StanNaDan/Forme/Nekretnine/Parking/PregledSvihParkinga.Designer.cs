@@ -108,6 +108,7 @@
             btnIzmeniParking.TabIndex = 10;
             btnIzmeniParking.Text = "Izmeni Parking";
             btnIzmeniParking.UseVisualStyleBackColor = true;
+            btnIzmeniParking.Click += btnIzmeniParking_Click;
             // 
             // PregledSvihParkinga
             // 

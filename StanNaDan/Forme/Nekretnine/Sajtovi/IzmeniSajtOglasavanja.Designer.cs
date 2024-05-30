@@ -1,6 +1,6 @@
 ﻿namespace StanNaDan.Forme.Nekretnine.Sajtovi
 {
-    partial class tbIzmeniSajtOglasavanja
+    partial class IzmeniSajtOglasavanja
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnDodajSajtOglasavanja = new Button();
+            btnIzmeniSajtOglasavanja = new Button();
             groupBox1 = new GroupBox();
             tbSajtOglasavanja = new TextBox();
             tbIdNekretnine = new TextBox();
@@ -37,14 +37,16 @@
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
-            // btnDodajSajtOglasavanja
+            // btnIzmeniSajtOglasavanja
             // 
-            btnDodajSajtOglasavanja.Location = new Point(67, 169);
-            btnDodajSajtOglasavanja.Name = "btnDodajSajtOglasavanja";
-            btnDodajSajtOglasavanja.Size = new Size(203, 29);
-            btnDodajSajtOglasavanja.TabIndex = 3;
-            btnDodajSajtOglasavanja.Text = "Izmeni Sajt Oglasavanja";
-            btnDodajSajtOglasavanja.UseVisualStyleBackColor = true;
+            btnIzmeniSajtOglasavanja.Location = new Point(59, 127);
+            btnIzmeniSajtOglasavanja.Margin = new Padding(3, 2, 3, 2);
+            btnIzmeniSajtOglasavanja.Name = "btnIzmeniSajtOglasavanja";
+            btnIzmeniSajtOglasavanja.Size = new Size(178, 22);
+            btnIzmeniSajtOglasavanja.TabIndex = 3;
+            btnIzmeniSajtOglasavanja.Text = "Izmeni Sajt Oglasavanja";
+            btnIzmeniSajtOglasavanja.UseVisualStyleBackColor = true;
+            btnIzmeniSajtOglasavanja.Click += btnIzmeniSajtOglasavanja_Click;
             // 
             // groupBox1
             // 
@@ -52,54 +54,61 @@
             groupBox1.Controls.Add(tbIdNekretnine);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(label1);
-            groupBox1.Location = new Point(12, 12);
+            groupBox1.Location = new Point(10, 9);
+            groupBox1.Margin = new Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(328, 151);
+            groupBox1.Padding = new Padding(3, 2, 3, 2);
+            groupBox1.Size = new Size(287, 113);
             groupBox1.TabIndex = 2;
             groupBox1.TabStop = false;
             groupBox1.Text = "Podaci O Sajtu";
             // 
             // tbSajtOglasavanja
             // 
-            tbSajtOglasavanja.Location = new Point(172, 92);
+            tbSajtOglasavanja.Location = new Point(150, 69);
+            tbSajtOglasavanja.Margin = new Padding(3, 2, 3, 2);
             tbSajtOglasavanja.Name = "tbSajtOglasavanja";
-            tbSajtOglasavanja.Size = new Size(125, 27);
+            tbSajtOglasavanja.Size = new Size(110, 23);
             tbSajtOglasavanja.TabIndex = 3;
             // 
             // tbIdNekretnine
             // 
-            tbIdNekretnine.Location = new Point(172, 44);
+            tbIdNekretnine.Enabled = false;
+            tbIdNekretnine.Location = new Point(150, 33);
+            tbIdNekretnine.Margin = new Padding(3, 2, 3, 2);
             tbIdNekretnine.Name = "tbIdNekretnine";
-            tbIdNekretnine.Size = new Size(125, 27);
+            tbIdNekretnine.Size = new Size(110, 23);
             tbIdNekretnine.TabIndex = 2;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(22, 95);
+            label2.Location = new Point(19, 71);
             label2.Name = "label2";
-            label2.Size = new Size(122, 20);
+            label2.Size = new Size(96, 15);
             label2.TabIndex = 1;
             label2.Text = "Sajt Oglasavanja:";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(19, 47);
+            label1.Location = new Point(17, 35);
             label1.Name = "label1";
-            label1.Size = new Size(101, 20);
+            label1.Size = new Size(81, 15);
             label1.TabIndex = 0;
             label1.Text = "Id Nekretnine:";
             // 
-            // tbIzmeniSajtOglasavanja
+            // IzmeniSajtOglasavanja
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(349, 215);
-            Controls.Add(btnDodajSajtOglasavanja);
+            ClientSize = new Size(305, 161);
+            Controls.Add(btnIzmeniSajtOglasavanja);
             Controls.Add(groupBox1);
-            Name = "tbIzmeniSajtOglasavanja";
+            Margin = new Padding(3, 2, 3, 2);
+            Name = "IzmeniSajtOglasavanja";
             Text = "IzmeniSajtOglasavanja";
+            Load += IzmeniSajtOglasavanja_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);
@@ -107,7 +116,7 @@
 
         #endregion
 
-        private Button btnDodajSajtOglasavanja;
+        private Button btnIzmeniSajtOglasavanja;
         private GroupBox groupBox1;
         private TextBox tbSajtOglasavanja;
         private TextBox tbIdNekretnine;

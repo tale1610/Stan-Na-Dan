@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             btnObrisiSobu = new Button();
-            btnIzmeniSobu = new Button();
             tbDodajSobu = new Button();
             listaSoba = new ListView();
             IdNekretnine = new ColumnHeader();
@@ -38,28 +37,21 @@
             // 
             // btnObrisiSobu
             // 
-            btnObrisiSobu.Location = new Point(349, 56);
+            btnObrisiSobu.Location = new Point(305, 42);
+            btnObrisiSobu.Margin = new Padding(3, 2, 3, 2);
             btnObrisiSobu.Name = "btnObrisiSobu";
-            btnObrisiSobu.Size = new Size(121, 29);
+            btnObrisiSobu.Size = new Size(106, 22);
             btnObrisiSobu.TabIndex = 8;
             btnObrisiSobu.Text = "Obrisi Sobu";
             btnObrisiSobu.UseVisualStyleBackColor = true;
             btnObrisiSobu.Click += btnObrisiSobu_Click;
             // 
-            // btnIzmeniSobu
-            // 
-            btnIzmeniSobu.Location = new Point(347, 100);
-            btnIzmeniSobu.Name = "btnIzmeniSobu";
-            btnIzmeniSobu.Size = new Size(123, 29);
-            btnIzmeniSobu.TabIndex = 7;
-            btnIzmeniSobu.Text = "Izmeni Sobu";
-            btnIzmeniSobu.UseVisualStyleBackColor = true;
-            // 
             // tbDodajSobu
             // 
-            tbDodajSobu.Location = new Point(347, 12);
+            tbDodajSobu.Location = new Point(304, 9);
+            tbDodajSobu.Margin = new Padding(3, 2, 3, 2);
             tbDodajSobu.Name = "tbDodajSobu";
-            tbDodajSobu.Size = new Size(123, 29);
+            tbDodajSobu.Size = new Size(108, 22);
             tbDodajSobu.TabIndex = 6;
             tbDodajSobu.Text = "Dodaj Sobu";
             tbDodajSobu.UseVisualStyleBackColor = true;
@@ -70,9 +62,10 @@
             listaSoba.Columns.AddRange(new ColumnHeader[] { IdNekretnine, IdSobe });
             listaSoba.FullRowSelect = true;
             listaSoba.GridLines = true;
-            listaSoba.Location = new Point(12, 12);
+            listaSoba.Location = new Point(10, 9);
+            listaSoba.Margin = new Padding(3, 2, 3, 2);
             listaSoba.Name = "listaSoba";
-            listaSoba.Size = new Size(264, 411);
+            listaSoba.Size = new Size(232, 309);
             listaSoba.TabIndex = 5;
             listaSoba.UseCompatibleStateImageBehavior = false;
             listaSoba.View = View.Details;
@@ -89,13 +82,13 @@
             // 
             // PregledSobaNekretnine
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(498, 450);
+            ClientSize = new Size(436, 338);
             Controls.Add(btnObrisiSobu);
-            Controls.Add(btnIzmeniSobu);
             Controls.Add(tbDodajSobu);
             Controls.Add(listaSoba);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "PregledSobaNekretnine";
             Text = "PregledSobaNekretnine";
             Load += PregledSobaNekretnine_Load;
@@ -105,7 +98,6 @@
         #endregion
 
         private Button btnObrisiSobu;
-        private Button btnIzmeniSobu;
         private Button tbDodajSobu;
         private ListView listaSoba;
         private ColumnHeader IdNekretnine;
