@@ -19,7 +19,7 @@ namespace StanNaDan.Forme.IznajmljivanjaSoba
         string mbrAgenta;
         int IdSpoljnog;
         int IdNekretnine;
-        int IdSobe;
+        List<int> IdSoba;
         NajamBasic najamBasic;
         IznajmljenaSobaBasic izsBasic;
         public DodajIznajmljivanjeSobe()
@@ -29,7 +29,7 @@ namespace StanNaDan.Forme.IznajmljivanjaSoba
             this.izsBasic = new IznajmljenaSobaBasic();
             this.btnIzaberiSpoljnog.Enabled = false;
             this.IdSpoljnog = 0;
-            this.IdSobe = 0;
+            this.IdSoba = [];
             this.IdNekretnine = 0;
         }
 
@@ -68,8 +68,8 @@ namespace StanNaDan.Forme.IznajmljivanjaSoba
                 if (result == DialogResult.OK)
                 {
                     this.IdNekretnine = formIzaberiSobu.izabranaNekretninaID;
-                    this.IdSobe = formIzaberiSobu.izabranaSobaID;
-                    this.lblIzabranaSoba.Text = "Izabrali ste sobu iz nekretnine: " + this.IdNekretnine.ToString() + " sa ID: " + this.IdSobe.ToString();
+                    this.IdSoba = formIzaberiSobu.izabraneSobeID;
+                    this.lblIzabranaSoba.Text = "Izabrali ste sobe iz nekretnine: " + this.IdNekretnine.ToString() + " sa ID: " + string.Join(", ", this.IdSoba);
                 }
             }
         }
@@ -92,7 +92,7 @@ namespace StanNaDan.Forme.IznajmljivanjaSoba
 
                 this.izsBasic.Najam = this.najamBasic;
 
-                DTOManager.DodajIznajmljenuSobu(this.izsBasic, this.IdNekretnine, this.IdSobe, this.mbrAgenta, this.IdSpoljnog);
+                DTOManager.DodajIznajmljenuSobu(this.izsBasic, this.IdNekretnine, this.IdSoba, this.mbrAgenta, this.IdSpoljnog);
                 MessageBox.Show($"Uspesno ste dodali novo iznajmljivanje sobe!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }

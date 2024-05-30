@@ -15,7 +15,7 @@ namespace StanNaDan.Forme.Soba
 {
     public partial class PregledSvihSoba : Form
     {
-        public int izabranaSobaID;
+        public List<int> izabraneSobeID = [];
         public int izabranaNekretninaID;
         public PregledSvihSoba()
         {
@@ -78,19 +78,22 @@ namespace StanNaDan.Forme.Soba
         {
             if (listaSoba.SelectedItems.Count == 0)
             {
-                MessageBox.Show("Izaberite sobu koju zelite!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Izaberite sobu cije zajednicke prostorije zelite da vidite!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            else if (listaSoba.SelectedItems.Count > 1)
+            int idNekretnine = Int32.Parse(listaSoba.SelectedItems[0].SubItems[0].Text);
+            foreach (ListViewItem item in listaSoba.SelectedItems)
             {
-                MessageBox.Show("Mozete izabrati samo jednu sobu jednovremeno!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
+                if (Int32.Parse(item.SubItems[0].Text) != idNekretnine)
+                {
+                    MessageBox.Show("Mozete izabrati samo sobe iz iste nekretnine za ovu funkcionalnost, birajte ispocetka!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    izabraneSobeID.Clear();
+                    return;
+                }
+                izabraneSobeID.Add(Int32.Parse(item.SubItems[1].Text));
             }
 
-            int idNekretnine = Int32.Parse(listaSoba.SelectedItems[0].SubItems[0].Text);
-            int idSobe = Int32.Parse(listaSoba.SelectedItems[0].SubItems[1].Text);
             this.izabranaNekretninaID = idNekretnine;
-            this.izabranaSobaID = idSobe;
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

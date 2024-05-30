@@ -85,7 +85,7 @@
             btnIzaberiSobu.Name = "btnIzaberiSobu";
             btnIzaberiSobu.Size = new Size(187, 56);
             btnIzaberiSobu.TabIndex = 6;
-            btnIzaberiSobu.Text = "Izaberi Sobu";
+            btnIzaberiSobu.Text = "Izaberi Sobe";
             btnIzaberiSobu.UseVisualStyleBackColor = true;
             btnIzaberiSobu.Click += btnIzaberiSobu_Click;
             // 

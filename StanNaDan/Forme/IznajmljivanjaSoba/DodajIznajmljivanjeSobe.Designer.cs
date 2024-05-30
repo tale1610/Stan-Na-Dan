@@ -116,7 +116,7 @@
             btnIzaberiNekretninu.Name = "btnIzaberiNekretninu";
             btnIzaberiNekretninu.Size = new Size(210, 29);
             btnIzaberiNekretninu.TabIndex = 0;
-            btnIzaberiNekretninu.Text = "Izaberi Sobu";
+            btnIzaberiNekretninu.Text = "Izaberi Sobe";
             btnIzaberiNekretninu.UseVisualStyleBackColor = true;
             btnIzaberiNekretninu.Click += btnIzaberiNekretninu_Click;
             // 

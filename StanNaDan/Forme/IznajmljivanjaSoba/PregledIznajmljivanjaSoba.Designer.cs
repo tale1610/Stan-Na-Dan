@@ -45,6 +45,7 @@
             btnDodajNajamSobe = new Button();
             btnIzmeniNajamSobe = new Button();
             btnObrisiNajamSobe = new Button();
+            btnPrikaziZajednickeProstorije = new Button();
             SuspendLayout();
             // 
             // listaNajmova
@@ -130,7 +131,7 @@
             btnDodajNajamSobe.Name = "btnDodajNajamSobe";
             btnDodajNajamSobe.Size = new Size(165, 54);
             btnDodajNajamSobe.TabIndex = 8;
-            btnDodajNajamSobe.Text = "Dodaj Novi Najam Sobe";
+            btnDodajNajamSobe.Text = "Dodaj Novo Iznajmljivanje Soba";
             btnDodajNajamSobe.UseVisualStyleBackColor = true;
             btnDodajNajamSobe.Click += btnDodajNajamSobe_Click;
             // 
@@ -140,7 +141,7 @@
             btnIzmeniNajamSobe.Name = "btnIzmeniNajamSobe";
             btnIzmeniNajamSobe.Size = new Size(165, 29);
             btnIzmeniNajamSobe.TabIndex = 9;
-            btnIzmeniNajamSobe.Text = "Izmeni Najam Sobe";
+            btnIzmeniNajamSobe.Text = "Izmeni Najam Soba";
             btnIzmeniNajamSobe.UseVisualStyleBackColor = true;
             // 
             // btnObrisiNajamSobe
@@ -149,14 +150,26 @@
             btnObrisiNajamSobe.Name = "btnObrisiNajamSobe";
             btnObrisiNajamSobe.Size = new Size(165, 29);
             btnObrisiNajamSobe.TabIndex = 10;
-            btnObrisiNajamSobe.Text = "Obrisi Najam Sobe";
+            btnObrisiNajamSobe.Text = "Obrisi Najam Soba";
             btnObrisiNajamSobe.UseVisualStyleBackColor = true;
+            btnObrisiNajamSobe.Click += btnObrisiNajamSobe_Click;
+            // 
+            // btnPrikaziZajednickeProstorije
+            // 
+            btnPrikaziZajednickeProstorije.Location = new Point(1379, 167);
+            btnPrikaziZajednickeProstorije.Name = "btnPrikaziZajednickeProstorije";
+            btnPrikaziZajednickeProstorije.Size = new Size(165, 58);
+            btnPrikaziZajednickeProstorije.TabIndex = 11;
+            btnPrikaziZajednickeProstorije.Text = "Prikazi Zajednicke Prostorije";
+            btnPrikaziZajednickeProstorije.UseVisualStyleBackColor = true;
+            btnPrikaziZajednickeProstorije.Click += btnPrikaziZajednickeProstorije_Click;
             // 
             // PregledIznajmljivanjaSoba
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1556, 450);
+            Controls.Add(btnPrikaziZajednickeProstorije);
             Controls.Add(btnObrisiNajamSobe);
             Controls.Add(btnIzmeniNajamSobe);
             Controls.Add(btnDodajNajamSobe);
@@ -186,5 +199,6 @@
         private Button btnDodajNajamSobe;
         private Button btnIzmeniNajamSobe;
         private Button btnObrisiNajamSobe;
+        private Button btnPrikaziZajednickeProstorije;
     }
 }

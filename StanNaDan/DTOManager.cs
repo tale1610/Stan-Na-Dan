@@ -3448,6 +3448,51 @@ public class DTOManager
         return prostorije;
     }
 
+    public static List<ZajednickeProstorijePregled> VratiSveZajednickeProstorijeNajma(int idNajma)
+    {
+        List<ZajednickeProstorijePregled> prostorije = new List<ZajednickeProstorijePregled>();
+        ISession? session = null;
+        try
+        {
+            session = DataLayer.GetSession();
+            if (session != null && session.IsOpen)
+            {
+                var sveProstorije = session.Query<ZajednickeProstorije>()
+                                    .Where(zp => session.Query<IznajmljenaSoba>()
+                                         .Any(iznajmljena => iznajmljena.ID.Najam.IdNajma == idNajma &&
+                                           iznajmljena.ID.Soba.ID.Nekretnina.IdNekretnine == zp.ID.Soba.ID.Nekretnina.IdNekretnine &&
+                                           iznajmljena.ID.Soba.ID.IdSobe == zp.ID.Soba.ID.IdSobe))
+                                     .Select(zp => new ZajednickeProstorijePregled(
+                                              zp.ID.Soba.ID.Nekretnina.IdNekretnine,
+                                              zp.ID.Soba.ID.IdSobe,
+                                              zp.ID.ZajednickaProstorija))
+                                     .Distinct().ToList();
+
+                //var sveProstorije = session.Query<ZajednickeProstorije>()
+                //                    .Where(zp => session.Query<IznajmljenaSoba>()
+                //                        .Any(iznajmljena => iznajmljena.ID.Najam.IdNajma == idNajma &&
+                //                            iznajmljena.ID.Soba.ID.Nekretnina.IdNekretnine == zp.ID.Soba.ID.Nekretnina.IdNekretnine &&
+                //                            iznajmljena.ID.Soba.ID.IdSobe == zp.ID.Soba.ID.IdSobe))
+                //                    .Select(zp => zp.ID.ZajednickaProstorija)
+                //                    .Distinct()
+                //                    .ToList();
+                //ovo drugo ce da vrati string listu samo to nam ne odgovara
+
+                prostorije.AddRange(sveProstorije);
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.FormatExceptionMessage());
+        }
+        finally
+        {
+            session?.Close();
+        }
+
+        return prostorije;
+    }
+
     public static ZajednickeProstorijePregled VratiZajednickuProstoriju(int idSobe, int idNekretnine, string zajednickaProstorija)
     {
         ISession? session = null;
@@ -3871,7 +3916,7 @@ public class DTOManager
     #endregion
 
     #region IznajmljenaSoba
-    public static void DodajIznajmljenuSobu(IznajmljenaSobaBasic novaSoba, int idNekretnine, int idSobe, string mbrAgenta, int? idSpoljnog)
+    public static void DodajIznajmljenuSobu(IznajmljenaSobaBasic novaSoba, int idNekretnine, List<int> idSoba, string mbrAgenta, int? idSpoljnog)
     {
         ISession? session = null;
         try
@@ -3880,26 +3925,26 @@ public class DTOManager
             if (session != null && session.IsOpen)
             {
                 Najam najam = KreirajNajam(novaSoba.Najam, idNekretnine, mbrAgenta, idSpoljnog);
-                Soba soba = session.Load<Soba>(new SobaId { IdSobe = idSobe, Nekretnina = session.Load<Nekretnina>(idNekretnine) });
-                
-                IznajmljenaSobaId iznID = new()
-                { 
-                    Soba = soba,
-                    Najam = najam
-                };
-
-                IznajmljenaSoba iznajmljenaSoba = new()
+                List<Soba> sobe = [];
+                List<IznajmljenaSoba> iznajmljeneSobe = [];
+                foreach(int idS in idSoba)
                 {
-                    ID = iznID
-                };
-
-                //najam.Sobe.Add(soba);//pa ja mislim da bi trebalo aj ce probam bez nju
-                najam.IznajmljivanjaSoba.Add(iznajmljenaSoba);//ovo mora da bi upisao i iznajmljivanjeto u njegovu tabelu
-                if (!soba.Najmovi.Contains(najam) && !soba.IznajmljivanjaSobe.Contains(iznajmljenaSoba))
-                {
-                    //soba.Najmovi.Add(najam);ali onda ako se obrise soba nema da se brisu valjda svi ovi iznajmljivanja    
-                    //soba.IznajmljivanjaSobe.Add(iznajmljenaSoba);
+                    Soba soba = session.Load<Soba>(new SobaId { IdSobe = idS, Nekretnina = session.Load<Nekretnina>(idNekretnine) });
+                    sobe.Add(soba);
+                    IznajmljenaSobaId iznID = new()
+                    {
+                        Soba = soba,
+                        Najam = najam
+                    };
+                    iznajmljeneSobe.Add(new() { ID = iznID });
+                    //if (!soba.Najmovi.Contains(najam) && !soba.IznajmljivanjaSobe.Contains(iznajmljenaSoba))
+                    //{
+                    //    //soba.Najmovi.Add(najam);//nije mi vise jasno sto zeza ali ne radi sa njim  
+                    //    //soba.IznajmljivanjaSobe.Add(iznajmljenaSoba);
+                    //}
                 }
+                //najam.Sobe = sobe;
+                najam.IznajmljivanjaSoba = iznajmljeneSobe;
 
                 session.SaveOrUpdate(najam);
                 session.Flush();
@@ -4020,6 +4065,50 @@ public class DTOManager
         }
     }
 
+
+    public static void ObrisiIznajmljenuSobu(int idSobe, int idNekretnine, int idNajma)
+    {
+        ISession? session = null;
+        try
+        {
+            session = DataLayer.GetSession();
+            if (session != null && session.IsOpen)
+            {
+                IznajmljenaSobaId id = new()
+                {
+                    Soba = new Soba { ID = new() {IdSobe = idSobe, Nekretnina = session.Load<Nekretnina>(idNekretnine) }},
+                    Najam = session.Load<Najam>(idNajma)
+                };
+
+                IznajmljenaSoba iznajmljenaSoba = session.Get<IznajmljenaSoba>(id);
+                if (iznajmljenaSoba != null)
+                {
+                    Najam najam = iznajmljenaSoba.ID.Najam;
+                    session.Delete(iznajmljenaSoba);
+                    session.Flush();
+                    if (najam.IznajmljivanjaSoba.Count == 0)
+                    {
+                        session.Delete(najam);
+                        session.Flush();
+                    }
+                    MessageBox.Show($"Iznajmljena soba je obrisana.");
+                }
+                else
+                {
+                    MessageBox.Show($"Iznajmljena soba nije pronađena.");
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.FormatExceptionMessage());
+        }
+        finally
+        {
+            session?.Close();
+        }
+    }
+
     //public static void IzmeniIznajmljenuSobu(IznajmljenaSobaBasic izmenjenaSoba, int idNekretnine, int idSobe, int idNajma)
     //{
     //    ISession? session = null;
@@ -4047,43 +4136,6 @@ public class DTOManager
     //                session.Update(iznajmljenaSoba);
     //                session.Flush();
     //                MessageBox.Show($"Podaci za iznajmljenu sobu su izmenjeni.");
-    //            }
-    //            else
-    //            {
-    //                MessageBox.Show($"Iznajmljena soba nije pronađena.");
-    //            }
-    //        }
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        MessageBox.Show(ex.FormatExceptionMessage());
-    //    }
-    //    finally
-    //    {
-    //        session?.Close();
-    //    }
-    //}
-
-    //public static void ObrisiIznajmljenuSobu(int idSobe, int idNekretnine, int idNajma)
-    //{
-    //    ISession? session = null;
-    //    try
-    //    {
-    //        session = DataLayer.GetSession();
-    //        if (session != null && session.IsOpen)
-    //        {
-    //            IznajmljenaSobaId id = new()
-    //            {
-    //                Soba = new SobaId { IdSobe = idSobe, Nekretnina = session.Load<Nekretnina>(idNekretnine) },
-    //                Najam = session.Load<Najam>(idNajma)
-    //            };
-
-    //            IznajmljenaSoba iznajmljenaSoba = session.Get<IznajmljenaSoba>(id);
-    //            if (iznajmljenaSoba != null)
-    //            {
-    //                session.Delete(iznajmljenaSoba);
-    //                session.Flush();
-    //                MessageBox.Show($"Iznajmljena soba je obrisana.");
     //            }
     //            else
     //            {
