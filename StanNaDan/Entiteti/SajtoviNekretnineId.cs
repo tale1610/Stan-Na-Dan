@@ -26,4 +26,8 @@ public class SajtoviNekretnineId
     {
         return HashCode.Combine(Sajt, Nekretnina?.IdNekretnine);
     }
+    public override string ToString()
+    {
+        return "Sajt " + this.Sajt + " za nekretninu " + this.Nekretnina.IdNekretnine;
+    }
 }

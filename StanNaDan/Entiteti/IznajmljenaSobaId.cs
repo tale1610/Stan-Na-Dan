@@ -26,5 +26,9 @@
         {
             return HashCode.Combine(Soba.ID.IdSobe, Soba.ID.Nekretnina.IdNekretnine, Najam?.IdNajma);
         }
+        public override string ToString()
+        {
+            return "Iznajmljivanje sobe " + this.Soba.ID.IdSobe.ToString() + " iz nekretnine " + this.Soba.ID.Nekretnina.IdNekretnine + " je iznajmljena u najmu " + this.Najam.IdNajma.ToString();
+        }
     }
 }

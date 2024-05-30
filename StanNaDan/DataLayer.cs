@@ -3,7 +3,6 @@ using FluentNHibernate.Cfg;
 using NHibernate;
 
 namespace StanNaDan;
-
 static class DataLayer
 {
     private static ISessionFactory? factory;
@@ -17,9 +16,9 @@ static class DataLayer
 
     public static ISession? GetSession()
     {
-        if (factory == null)//ovde samo brzo proveravamo da l je vec kreiran factory i ako jeste da ga odmah vrati da ne trosi vreme u grananju
+        if (factory == null)
         {
-            lock (lockObj)//obezbedjujemo da samo jedna nit moze da upadne u kriticnu sekciju, klasican singleton
+            lock (lockObj)
             {
                 if (factory == null)
                 {
@@ -38,11 +37,10 @@ static class DataLayer
             //ovo smo mogli da uradimo i u JSON file kao na web sto je mozda i bolje i mozda da zamenimo kasnije
 
             return Fluently.Configure().Database(cfg).Mappings(m => m.FluentMappings.AddFromAssemblyOf<Poslovnica>()).BuildSessionFactory();
-            //ovde je dovoljno da navedemo samo jednu klasu i on ce na osnovu njenog assemblyja da zna gde su sva ostala
         }
         catch (Exception e)
         {
-            MessageBox.Show(e.FormatExceptionMessage());//koristimo ovu metodu da bismo bolje imali uvid u errore
+            MessageBox.Show(e.FormatExceptionMessage());
             return null;
         }
     }

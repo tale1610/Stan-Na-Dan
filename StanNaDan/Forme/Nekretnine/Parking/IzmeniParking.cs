@@ -47,7 +47,7 @@ namespace StanNaDan.Forme.Nekretnine.Parking
             if (result == DialogResult.OK)
             {
                 parkingBasic.Besplatan = chBBesplatan.Checked;
-                parkingBasic.Cena = double.Parse(textBox1.Text);
+                parkingBasic.Cena = textBox1.Text == "" ? null : Double.Parse(textBox1.Text);
                 parkingBasic.USastavuNekretnine = chBUSastavuNekrenine.Checked;
                 parkingBasic.USastavuJavnogParkinga = chBUSastavuJavnogParkinga.Checked;
 
@@ -59,6 +59,18 @@ namespace StanNaDan.Forme.Nekretnine.Parking
             {
                 MessageBox.Show("Odustali ste od azuriranja parkinga!");
                 this.Close();
+            }
+        }
+
+        private void chBBesplatan_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chBBesplatan.Checked == true)
+            {
+                textBox1.Enabled = false;
+            }
+            else
+            {
+                textBox1.Enabled = true;
             }
         }
     }

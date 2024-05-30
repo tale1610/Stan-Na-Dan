@@ -26,4 +26,8 @@ public class DodatnaOpremaId
     {
         return HashCode.Combine(IdOpreme, Nekretnina?.IdNekretnine);
     }
+    public override string ToString()
+    {
+        return "Oprema " + this.IdOpreme.ToString() + " iz nekretnine " + this.Nekretnina.IdNekretnine;
+    }
 }

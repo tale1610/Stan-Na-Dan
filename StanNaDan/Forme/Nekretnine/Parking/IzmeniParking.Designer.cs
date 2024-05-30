@@ -43,10 +43,9 @@
             // 
             // btnIzmeniParking
             // 
-            btnIzmeniParking.Location = new Point(93, 200);
-            btnIzmeniParking.Margin = new Padding(3, 2, 3, 2);
+            btnIzmeniParking.Location = new Point(106, 267);
             btnIzmeniParking.Name = "btnIzmeniParking";
-            btnIzmeniParking.Size = new Size(160, 30);
+            btnIzmeniParking.Size = new Size(183, 40);
             btnIzmeniParking.TabIndex = 3;
             btnIzmeniParking.Text = "Izmeni Parking";
             btnIzmeniParking.UseVisualStyleBackColor = true;
@@ -62,97 +61,91 @@
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(label1);
-            groupBox1.Location = new Point(10, 13);
-            groupBox1.Margin = new Padding(3, 2, 3, 2);
+            groupBox1.Location = new Point(11, 17);
             groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(3, 2, 3, 2);
-            groupBox1.Size = new Size(345, 175);
+            groupBox1.Size = new Size(394, 233);
             groupBox1.TabIndex = 2;
             groupBox1.TabStop = false;
             groupBox1.Text = "Podaci O Parkingu";
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(210, 68);
-            textBox1.Margin = new Padding(3, 2, 3, 2);
+            textBox1.Location = new Point(240, 91);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(101, 23);
+            textBox1.Size = new Size(115, 27);
             textBox1.TabIndex = 7;
             // 
             // chBUSastavuJavnogParkinga
             // 
             chBUSastavuJavnogParkinga.AutoSize = true;
-            chBUSastavuJavnogParkinga.Location = new Point(295, 134);
-            chBUSastavuJavnogParkinga.Margin = new Padding(3, 2, 3, 2);
+            chBUSastavuJavnogParkinga.Location = new Point(337, 179);
             chBUSastavuJavnogParkinga.Name = "chBUSastavuJavnogParkinga";
-            chBUSastavuJavnogParkinga.Size = new Size(15, 14);
+            chBUSastavuJavnogParkinga.Size = new Size(18, 17);
             chBUSastavuJavnogParkinga.TabIndex = 6;
             chBUSastavuJavnogParkinga.UseVisualStyleBackColor = true;
             // 
             // chBUSastavuNekrenine
             // 
             chBUSastavuNekrenine.AutoSize = true;
-            chBUSastavuNekrenine.Location = new Point(295, 106);
-            chBUSastavuNekrenine.Margin = new Padding(3, 2, 3, 2);
+            chBUSastavuNekrenine.Location = new Point(337, 141);
             chBUSastavuNekrenine.Name = "chBUSastavuNekrenine";
-            chBUSastavuNekrenine.Size = new Size(15, 14);
+            chBUSastavuNekrenine.Size = new Size(18, 17);
             chBUSastavuNekrenine.TabIndex = 5;
             chBUSastavuNekrenine.UseVisualStyleBackColor = true;
             // 
             // chBBesplatan
             // 
             chBBesplatan.AutoSize = true;
-            chBBesplatan.Location = new Point(295, 40);
-            chBBesplatan.Margin = new Padding(3, 2, 3, 2);
+            chBBesplatan.Location = new Point(337, 53);
             chBBesplatan.Name = "chBBesplatan";
-            chBBesplatan.Size = new Size(15, 14);
+            chBBesplatan.Size = new Size(18, 17);
             chBBesplatan.TabIndex = 4;
             chBBesplatan.UseVisualStyleBackColor = true;
+            chBBesplatan.CheckedChanged += chBBesplatan_CheckedChanged;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(29, 132);
+            label4.Location = new Point(33, 176);
             label4.Name = "label4";
-            label4.Size = new Size(150, 15);
+            label4.Size = new Size(186, 20);
             label4.TabIndex = 3;
             label4.Text = "U Sastavu Javnog Parkinga:";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(29, 104);
+            label3.Location = new Point(33, 139);
             label3.Name = "label3";
-            label3.Size = new Size(122, 15);
+            label3.Size = new Size(152, 20);
             label3.TabIndex = 2;
             label3.Text = "U Sastavu Nekretnine:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(29, 70);
+            label2.Location = new Point(33, 93);
             label2.Name = "label2";
-            label2.Size = new Size(37, 15);
+            label2.Size = new Size(45, 20);
             label2.TabIndex = 1;
             label2.Text = "Cena:";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(29, 38);
+            label1.Location = new Point(33, 51);
             label1.Name = "label1";
-            label1.Size = new Size(61, 15);
+            label1.Size = new Size(77, 20);
             label1.TabIndex = 0;
             label1.Text = "Besplatan:";
             // 
             // IzmeniParking
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(368, 240);
+            ClientSize = new Size(421, 320);
             Controls.Add(btnIzmeniParking);
             Controls.Add(groupBox1);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "IzmeniParking";
             Text = "IzmeniParking";
             Load += IzmeniParking_Load;

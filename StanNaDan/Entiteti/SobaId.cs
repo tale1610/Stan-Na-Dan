@@ -27,4 +27,8 @@ public class SobaId
     {
         return HashCode.Combine(IdSobe, Nekretnina?.IdNekretnine);
     }
+    public override string ToString()
+    {
+        return "Soba " + this.IdSobe.ToString() + " iz nekretnine " + this.Nekretnina.IdNekretnine;
+    }
 }

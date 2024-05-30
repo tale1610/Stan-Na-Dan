@@ -111,6 +111,7 @@
             chBBesplatan.Size = new Size(18, 17);
             chBBesplatan.TabIndex = 4;
             chBBesplatan.UseVisualStyleBackColor = true;
+            chBBesplatan.CheckedChanged += chBBesplatan_CheckedChanged;
             // 
             // label4
             // 

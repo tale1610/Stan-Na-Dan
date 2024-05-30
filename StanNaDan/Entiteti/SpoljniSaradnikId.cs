@@ -27,4 +27,8 @@ public class SpoljniSaradnikId
     {
         return base.GetHashCode();
     }
+    public override string ToString()
+    {
+        return "Spoljni Saradnik " + this.IdSaradnika.ToString() + " agenta " + this.AgentAngazovanja.MBR;
+    }
 }

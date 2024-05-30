@@ -163,11 +163,9 @@ public class SpoljniSaradnikBasic
     public DateTime DatumAngazovanja { get; set; }
     public string Telefon { get; set; }
     public double ProcenatOdNajma { get; set; }
-    //public IList<NajamBasic> RealizovaniNajmovi { get; set; } = []; //OBAVEZNO UKLJUCUJ POSLE KAD URADIS NAJAM
 
     public SpoljniSaradnikBasic()
     {
-        //RealizovaniNajmovi = new List<NajamBasic>();
     }
 
     public SpoljniSaradnikBasic(AgentBasic agentAngazovanja, int idSaradnika, string ime, string prezime, DateTime datumAngazovanja, string telefon, double procenatOdNajma)
@@ -179,7 +177,6 @@ public class SpoljniSaradnikBasic
         DatumAngazovanja = datumAngazovanja;
         Telefon = telefon;
         ProcenatOdNajma = procenatOdNajma;
-        //RealizovaniNajmovi = new List<NajamBasic>();
     }
 }
 
@@ -397,7 +394,6 @@ public class NekretninaBasic
     public bool PosedujeTV { get; set; }
     public bool PosedujeInternet { get; set; }
     public bool PosedujeKuhinju { get; set; }
-    //public PoslovnicaBasic Poslovnica { get; set; } // Ovo dodaj ako je neophodno, ako ne, možeš izostaviti
     //veze
     virtual public KvartBasic Kvart { get; set; }
     virtual public VlasnikBasic Vlasnik { get; set; }
@@ -703,7 +699,6 @@ public class NajamBasic
     public NekretninaBasic Nekretnina { get; set; }
     public AgentBasic Agent { get; set; }
     public SpoljniSaradnikBasic? SpoljniSaradnik { get; set; }
-    //public IList<IznajmljenaSobaBasic>? Sobe { get; set; }
 
     public NajamBasic() { }
 
@@ -722,7 +717,6 @@ public class NajamBasic
         Nekretnina = nekretnina;
         Agent = agent;
         SpoljniSaradnik = spoljniSaradnik;
-        //Sobe = sobe;
     }
 }
 
@@ -743,7 +737,6 @@ public class NajamPregled
     public string AdresaNekretnine { get; set; }
     public string ImeAgenta { get; set; }
     public string ImeSpoljnogSaradnika { get; set; }
-    //public IList<int>? IdSoba { get; set; }
 
     public NajamPregled() { }
 
@@ -762,7 +755,6 @@ public class NajamPregled
         AdresaNekretnine = adresaNekretnine;
         ImeAgenta = imeAgenta;
         ImeSpoljnogSaradnika = imeSpoljnogSaradnika;
-        //IdSoba = idSoba;
     }
 }
 
@@ -856,8 +848,6 @@ public class SobaBasic
 {
     public int IdSobe { get; set; }
     public NekretninaBasic Nekretnina { get; set; }
-    //public IList<IznajmljenaSoba> Najmovi { get; set; } = new List<IznajmljenaSoba>();
-    //public IList<ZajednickeProstorije> ZajednickeProstorije { get; set; } = new List<ZajednickeProstorije>();
 
     public SobaBasic() { }
 
@@ -906,7 +896,6 @@ public class TelefoniKontaktOsobePregled
     public string PIB { get; set; }
     public string Naziv { get; set; }
     public string ImeKontaktOsobe { get; set; }
-    // Dodaj ovde ostale atribute koje želiš koristiti iz klase PravnoLice
 
     public TelefoniKontaktOsobePregled() { }
 

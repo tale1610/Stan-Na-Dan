@@ -2,7 +2,7 @@
 {
     public class BrojeviTelefona
     {
-        virtual public required string BrojTelefona { get; set; }//ovo je PK nema potrebe za surogatom jer je broj jedinstven
+        virtual public required string BrojTelefona { get; set; }
         //veza
         virtual public required FizickoLice FizickoLice { get; set; }
     }

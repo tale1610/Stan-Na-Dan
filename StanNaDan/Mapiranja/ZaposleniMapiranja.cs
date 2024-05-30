@@ -19,7 +19,6 @@ namespace StanNaDan.Mapiranja
             Map(p => p.Prezime, "PREZIME");
             Map(p => p.DatumZaposlenja, "DATUM_ZAPOSLENJA");
 
-            //1:N veza ka prodanici, ako je sef to mu je prodavnica sefovanja ako je agent ili ostalo tu radi
             References(p => p.Poslovnica).Column("ID_POSLOVNICE").LazyLoad();
         }
     }

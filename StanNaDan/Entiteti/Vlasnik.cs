@@ -10,6 +10,5 @@
         public virtual PravnoLice? PravnoLice { get; set; }
 
 
-        //ODRADI POSLE FIZICKO I PRAVNO LICE NEKAKO
     }
 }

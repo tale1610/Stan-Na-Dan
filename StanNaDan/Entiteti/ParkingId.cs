@@ -26,4 +26,9 @@ public class ParkingId
     {
         return HashCode.Combine(IdParkinga, Nekretnina?.IdNekretnine);
     }
+
+    public override string ToString()
+    {
+        return "Parking " + this.IdParkinga.ToString() + " iz nekretnine " + this.Nekretnina.IdNekretnine;
+    }
 }

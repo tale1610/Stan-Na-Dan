@@ -53,5 +53,17 @@ namespace StanNaDan.Forme.Parking
                 this.Close();
             }
         }
+
+        private void chBBesplatan_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chBBesplatan.Checked == true)
+            {
+                tbCena.Enabled = false;
+            }
+            else
+            {
+                tbCena.Enabled = true;
+            }
+        }
     }
 }

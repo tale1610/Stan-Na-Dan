@@ -26,4 +26,9 @@ public class ZajednickeProstorijeId
     {
         return HashCode.Combine(ZajednickaProstorija, Soba?.ID);
     }
+
+    public override string ToString()
+    {
+        return "Zajednicka prostorija " + this.ZajednickaProstorija + " za sobu " + this.Soba.ID.IdSobe.ToString();
+    }
 }

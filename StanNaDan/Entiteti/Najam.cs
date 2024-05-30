@@ -14,8 +14,7 @@ public class Najam
     virtual public double ProvizijaAgencije { get; set; }
 
     //veze:
-    virtual public required Nekretnina Nekretnina { get; set; }//trenutno smo odradili da i kad se iznajmi samo soba pamti se u najmu nekretnina iz koje je soba izdata,
-                                                                //a upisuju se podaci i u tabelu izdata soba
+    virtual public required Nekretnina Nekretnina { get; set; }
     virtual public required Agent Agent { get; set; }
     virtual public SpoljniSaradnik? SpoljniSaradnik { get; set; }
     virtual public IList<IznajmljenaSoba>? IznajmljivanjaSoba { get; set; } = [];

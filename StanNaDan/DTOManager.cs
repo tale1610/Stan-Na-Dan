@@ -1,11 +1,4 @@
-﻿using FluentNHibernate.Utils;
-using NHibernate;
-using NHibernate.Criterion;
-using StanNaDan.Entiteti;
-using System;
-using System.Runtime.CompilerServices;
-using System.Runtime.Intrinsics.X86;
-using System.Security.Cryptography;
+﻿using NHibernate;
 
 namespace StanNaDan;
 

@@ -26,4 +26,9 @@ public class KrevetId
     {
         return HashCode.Combine(IdKreveta, Nekretnina?.IdNekretnine);
     }
+
+    public override string ToString()
+    {
+        return "Krevet " + this.IdKreveta.ToString() + " iz nekretnine " + this.Nekretnina.IdNekretnine;
+    }
 }
