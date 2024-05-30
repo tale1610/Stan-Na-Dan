@@ -14,9 +14,17 @@ namespace StanNaDan.Forme.Soba
 {
     public partial class PregledSvihSoba : Form
     {
+        public int izabranaSobaID;
+        public int izabranaNekretninaID;
         public PregledSvihSoba()
         {
             InitializeComponent();
+            this.btnIzaberiSobu.Visible = false;
+        }
+        public PregledSvihSoba(string biranje)
+        {
+            InitializeComponent();
+            this.btnIzaberiSobu.Visible = true;
         }
         public void popuniPodacima()
         {
@@ -51,11 +59,32 @@ namespace StanNaDan.Forme.Soba
 
             int idNekretnine = Int32.Parse(listaSoba.SelectedItems[0].SubItems[0].Text);
             int idSobe = Int32.Parse(listaSoba.SelectedItems[0].SubItems[1].Text);
-            
+
             PregledZajednickihProstorijaSobe formaPregledZajednickihProstorijaSobe = new PregledZajednickihProstorijaSobe(idSobe, idNekretnine);
             formaPregledZajednickihProstorijaSobe.ShowDialog();
             this.popuniPodacima();
 
+        }
+
+        private void btnIzaberiSobu_Click(object sender, EventArgs e)
+        {
+            if (listaSoba.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Izaberite sobu koju zelite!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else if (listaSoba.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("Mozete izabrati samo jednu sobu jednovremeno!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            int idNekretnine = Int32.Parse(listaSoba.SelectedItems[0].SubItems[0].Text);
+            int idSobe = Int32.Parse(listaSoba.SelectedItems[0].SubItems[1].Text);
+            this.izabranaNekretninaID = idNekretnine;
+            this.izabranaSobaID = idSobe;
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
     }
 }

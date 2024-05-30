@@ -1,4 +1,6 @@
-﻿using StanNaDan.Forme.SpoljniSaradnici;
+﻿using StanNaDan.Forme.Nekretnine;
+using StanNaDan.Forme.Soba;
+using StanNaDan.Forme.SpoljniSaradnici;
 using StanNaDan.Forme.Zaposleni;
 using System;
 using System.Collections.Generic;
@@ -16,9 +18,19 @@ namespace StanNaDan.Forme.IznajmljivanjaSoba
     {
         string mbrAgenta;
         int IdSpoljnog;
+        int IdNekretnine;
+        int IdSobe;
+        NajamBasic najamBasic;
+        IznajmljenaSobaBasic izsBasic;
         public DodajIznajmljivanjeSobe()
         {
             InitializeComponent();
+            this.najamBasic = new NajamBasic();
+            this.izsBasic = new IznajmljenaSobaBasic();
+            this.btnIzaberiSpoljnog.Enabled = false;
+            this.IdSpoljnog = 0;
+            this.IdSobe = 0;
+            this.IdNekretnine = 0;
         }
 
         private void btnIzaberiAgenta_Click(object sender, EventArgs e)
@@ -45,6 +57,49 @@ namespace StanNaDan.Forme.IznajmljivanjaSoba
                     this.IdSpoljnog = formIzaberiSpoljnog.izabraniSpoljniID;
                     this.lblIzabraniSpoljniID.Text = "Izabrali ste agentovog spoljnog saradnika sa ID: " + this.IdSpoljnog;
                 }
+            }
+        }
+
+        private void btnIzaberiNekretninu_Click(object sender, EventArgs e)
+        {
+            using (var formIzaberiSobu = new PregledSvihSoba("biranje"))
+            {
+                var result = formIzaberiSobu.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    this.IdNekretnine = formIzaberiSobu.izabranaNekretninaID;
+                    this.IdSobe = formIzaberiSobu.izabranaSobaID;
+                    this.lblIzabranaSoba.Text = "Izabrali ste sobu iz nekretnine: " + this.IdNekretnine.ToString() + " sa ID: " + this.IdSobe.ToString();
+                }
+            }
+        }
+
+        private void btnDodajNajam_Click(object sender, EventArgs e)
+        {
+            string poruka = "Da li zelite da dodate novo iznajmljivanje sobe?";
+            string title = "Pitanje";
+            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+            DialogResult result = MessageBox.Show(poruka, title, buttons);
+
+            if (result == DialogResult.OK)
+            {
+                this.najamBasic.DatumPocetka = dtpPocetak.Value;
+                this.najamBasic.DatumZavrsetka = dtpZavrsetak.Value;
+                this.najamBasic.CenaPoDanu = Double.Parse(tbCenaPoDanu.Text);
+                this.najamBasic.Popust = Int32.Parse(tbPopust.Text);
+                this.najamBasic.ProvizijaAgencije = Int32.Parse(tbProvizijaAgencije.Text);
+                this.najamBasic.BrojDana = (this.najamBasic.DatumPocetka - this.najamBasic.DatumZavrsetka).Days;
+
+                this.izsBasic.Najam = this.najamBasic;
+
+                DTOManager.DodajIznajmljenuSobu(this.izsBasic, this.IdNekretnine, this.IdSobe, this.mbrAgenta, this.IdSpoljnog);
+                MessageBox.Show($"Uspesno ste dodali novo iznajmljivanje sobe!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Odustali ste od dodavanja novog iznajmljivanja sobe!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
             }
         }
     }

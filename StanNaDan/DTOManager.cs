@@ -1,7 +1,9 @@
 ﻿using FluentNHibernate.Utils;
 using NHibernate;
+using NHibernate.Criterion;
 using StanNaDan.Entiteti;
 using System;
+using System.Runtime.CompilerServices;
 using System.Runtime.Intrinsics.X86;
 
 namespace StanNaDan;
@@ -3541,8 +3543,7 @@ public class DTOManager
     #endregion
 
     #region Najam
-
-    public static void DodajNajam(NajamBasic noviNajam, int idNekretnine, string mbrAgenta, int? idSpoljnogSaradnika = null)
+    public static Najam KreirajNajam(NajamBasic noviNajam, int idNekretnine, string mbrAgenta, int? idSpoljnogSaradnika = null)
     {
         ISession? session = null;
         try
@@ -3553,7 +3554,7 @@ public class DTOManager
                 Nekretnina nekretnina = session.Load<Nekretnina>(idNekretnine);
                 Agent agent = session.Load<Agent>(mbrAgenta);
                 SpoljniSaradnik spoljni;
-                if (idSpoljnogSaradnika.HasValue)
+                if (idSpoljnogSaradnika > 0)
                 {
                     SpoljniSaradnikId ssID = new()
                     {
@@ -3582,7 +3583,7 @@ public class DTOManager
                     BrojDana = (noviNajam.DatumZavrsetka - noviNajam.DatumPocetka).Days,
                     CenaPoDanu = noviNajam.CenaPoDanu,
                     Popust = noviNajam.Popust > 0 ? noviNajam.Popust : null,
-                    CenaSaPopustom = noviNajam.Popust > 0 ? noviNajam.CenaPoDanu - (noviNajam.CenaPoDanu / (100/noviNajam.Popust)) : null,
+                    CenaSaPopustom = noviNajam.Popust > 0 ? noviNajam.CenaPoDanu - (noviNajam.CenaPoDanu / (100 / noviNajam.Popust)) : null,
                     ZaradaOdDodatnihUsluga = zaradaOdDodatnihUsluga,
                     UkupnaCena = noviNajam.Popust > 0 ? noviNajam.CenaSaPopustom * noviNajam.BrojDana + zaradaOdDodatnihUsluga : noviNajam.CenaPoDanu * noviNajam.BrojDana + zaradaOdDodatnihUsluga,
                     ProvizijaAgencije = noviNajam.ProvizijaAgencije,
@@ -3596,8 +3597,32 @@ public class DTOManager
                 {
                     spoljni.RealizovaniNajmovi.Add(najam);
                 }
+                
+                return najam;
+            }
+            else return null;
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.FormatExceptionMessage());
+            return null;
+        }
+        finally
+        {
+            session?.Close();
+        }
+    }
 
-
+    public static void DodajNajam(NajamBasic noviNajam, int idNekretnine, string mbrAgenta, int? idSpoljnogSaradnika = null)
+    {
+        ISession? session = null;
+        try
+        {
+            session = DataLayer.GetSession();
+            if (session != null && session.IsOpen)
+            {
+                Najam najam = KreirajNajam(noviNajam, idNekretnine, mbrAgenta, idSpoljnogSaradnika);
+                
                 session.Save(najam);
                 session.Flush();
                 MessageBox.Show("Novi najam je uspešno dodat.");
@@ -3817,7 +3842,7 @@ public class DTOManager
     #endregion
 
     #region IznajmljenaSoba
-    public static void DodajIznajmljenuSobu(IznajmljenaSobaBasic novaSoba, int idNekretnine, int idSobe, int idNajma)
+    public static void DodajIznajmljenuSobu(IznajmljenaSobaBasic novaSoba, int idNekretnine, int idSobe, string mbrAgenta, int? idSpoljnog)
     {
         ISession? session = null;
         try
@@ -3825,9 +3850,9 @@ public class DTOManager
             session = DataLayer.GetSession();
             if (session != null && session.IsOpen)
             {
+                Najam najam = KreirajNajam(novaSoba.Najam, idNekretnine, mbrAgenta, idSpoljnog);
                 Soba soba = session.Load<Soba>(new SobaId { IdSobe = idSobe, Nekretnina = session.Load<Nekretnina>(idNekretnine) });
-                Najam najam = session.Load<Najam>(idNajma);
-
+                
                 IznajmljenaSobaId iznID = new()
                 { 
                     Soba = soba,
@@ -3839,9 +3864,17 @@ public class DTOManager
                     ID = iznID
                 };
 
-                session.Save(iznajmljenaSoba);
+                //najam.Sobe.Add(soba);//pa ja mislim da bi trebalo aj ce probam bez nju
+                najam.IznajmljivanjaSoba.Add(iznajmljenaSoba);//ovo mora da bi upisao i iznajmljivanjeto u njegovu tabelu
+                if (!soba.Najmovi.Contains(najam) && !soba.IznajmljivanjaSobe.Contains(iznajmljenaSoba))
+                {
+                    //soba.Najmovi.Add(najam);ali onda ako se obrise soba nema da se brisu valjda svi ovi iznajmljivanja    
+                    //soba.IznajmljivanjaSobe.Add(iznajmljenaSoba);
+                }
+
+                session.SaveOrUpdate(najam);
                 session.Flush();
-                MessageBox.Show("Iznajmljena soba je uspešno dodata.");
+                MessageBox.Show("Iznajmljivanje sobe je uspešno dodato.");
             }
         }
         catch (Exception ex)

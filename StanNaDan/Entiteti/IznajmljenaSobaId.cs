@@ -19,12 +19,12 @@
 
             IznajmljenaSobaId compare = (IznajmljenaSobaId)obj;
 
-            return Soba.Equals(compare.Soba) && Najam?.IdNajma == compare.Najam?.IdNajma;
+            return Soba.ID.IdSobe.Equals(compare.Soba.ID.IdSobe) && Soba.ID.Nekretnina.IdNekretnine.Equals(compare.Soba.ID.Nekretnina.IdNekretnine) && Najam?.IdNajma == compare.Najam?.IdNajma;
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(Soba, Najam?.IdNajma);
+            return HashCode.Combine(Soba.ID.IdSobe, Soba.ID.Nekretnina.IdNekretnine, Najam?.IdNajma);
         }
     }
 }

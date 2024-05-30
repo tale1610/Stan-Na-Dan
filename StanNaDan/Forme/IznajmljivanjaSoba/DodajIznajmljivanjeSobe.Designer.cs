@@ -118,6 +118,7 @@
             btnIzaberiNekretninu.TabIndex = 0;
             btnIzaberiNekretninu.Text = "Izaberi Sobu";
             btnIzaberiNekretninu.UseVisualStyleBackColor = true;
+            btnIzaberiNekretninu.Click += btnIzaberiNekretninu_Click;
             // 
             // btnDodajNajam
             // 
@@ -127,6 +128,7 @@
             btnDodajNajam.TabIndex = 4;
             btnDodajNajam.Text = "Dodaj Iznajmljivanje sobe";
             btnDodajNajam.UseVisualStyleBackColor = true;
+            btnDodajNajam.Click += btnDodajNajam_Click;
             // 
             // groupBox1
             // 

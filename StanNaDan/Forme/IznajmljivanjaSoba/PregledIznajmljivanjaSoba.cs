@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StanNaDan.Forme.Najam;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -36,7 +37,9 @@ namespace StanNaDan.Forme.IznajmljivanjaSoba
 
         private void btnDodajNajamSobe_Click(object sender, EventArgs e)
         {
-
+            DodajIznajmljivanjeSobe formaDodajNajamSobe = new DodajIznajmljivanjeSobe();
+            formaDodajNajamSobe.ShowDialog();
+            this.popuniPodacima();
         }
     }
 }

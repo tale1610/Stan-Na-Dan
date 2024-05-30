@@ -37,8 +37,8 @@ namespace StanNaDan.Mapiranja
             HasManyToMany(p => p.Sobe)
                 .Table("IZNAJMLJENA_SOBA")
                 .ParentKeyColumn("ID_NAJMA")
-                .ChildKeyColumns.Add("ID_NEKRETNINE", "ID_SOBE")
-                .Cascade.All();
+                .ChildKeyColumns.Add("ID_NEKRETNINE", "ID_SOBE");
+                //.Cascade.All();
 
             HasMany(p => p.IznajmljivanjaSoba).KeyColumn("ID_NAJMA").LazyLoad().Cascade.All().Inverse();
         }
