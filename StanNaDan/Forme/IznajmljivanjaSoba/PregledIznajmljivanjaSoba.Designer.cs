@@ -43,7 +43,6 @@
             Agent = new ColumnHeader();
             Spoljni = new ColumnHeader();
             btnDodajNajamSobe = new Button();
-            btnIzmeniNajamSobe = new Button();
             btnObrisiNajamSobe = new Button();
             btnPrikaziZajednickeProstorije = new Button();
             SuspendLayout();
@@ -53,9 +52,10 @@
             listaNajmova.Columns.AddRange(new ColumnHeader[] { ID, NekretninaID, SobaID, DatumPocetka, DatumZavrsetka, BrojDana, CenaPoDanu, CenaSaPopustom, zarada, UkupnaCena, ProvizijaAgencije, Agent, Spoljni });
             listaNajmova.FullRowSelect = true;
             listaNajmova.GridLines = true;
-            listaNajmova.Location = new Point(12, 12);
+            listaNajmova.Location = new Point(10, 9);
+            listaNajmova.Margin = new Padding(3, 2, 3, 2);
             listaNajmova.Name = "listaNajmova";
-            listaNajmova.Size = new Size(1361, 408);
+            listaNajmova.Size = new Size(1191, 307);
             listaNajmova.TabIndex = 7;
             listaNajmova.UseCompatibleStateImageBehavior = false;
             listaNajmova.View = View.Details;
@@ -127,28 +127,21 @@
             // 
             // btnDodajNajamSobe
             // 
-            btnDodajNajamSobe.Location = new Point(1379, 12);
+            btnDodajNajamSobe.Location = new Point(1207, 9);
+            btnDodajNajamSobe.Margin = new Padding(3, 2, 3, 2);
             btnDodajNajamSobe.Name = "btnDodajNajamSobe";
-            btnDodajNajamSobe.Size = new Size(165, 54);
+            btnDodajNajamSobe.Size = new Size(144, 40);
             btnDodajNajamSobe.TabIndex = 8;
             btnDodajNajamSobe.Text = "Dodaj Novo Iznajmljivanje Soba";
             btnDodajNajamSobe.UseVisualStyleBackColor = true;
             btnDodajNajamSobe.Click += btnDodajNajamSobe_Click;
             // 
-            // btnIzmeniNajamSobe
-            // 
-            btnIzmeniNajamSobe.Location = new Point(1379, 72);
-            btnIzmeniNajamSobe.Name = "btnIzmeniNajamSobe";
-            btnIzmeniNajamSobe.Size = new Size(165, 29);
-            btnIzmeniNajamSobe.TabIndex = 9;
-            btnIzmeniNajamSobe.Text = "Izmeni Najam Soba";
-            btnIzmeniNajamSobe.UseVisualStyleBackColor = true;
-            // 
             // btnObrisiNajamSobe
             // 
-            btnObrisiNajamSobe.Location = new Point(1379, 107);
+            btnObrisiNajamSobe.Location = new Point(1207, 67);
+            btnObrisiNajamSobe.Margin = new Padding(3, 2, 3, 2);
             btnObrisiNajamSobe.Name = "btnObrisiNajamSobe";
-            btnObrisiNajamSobe.Size = new Size(165, 29);
+            btnObrisiNajamSobe.Size = new Size(144, 38);
             btnObrisiNajamSobe.TabIndex = 10;
             btnObrisiNajamSobe.Text = "Obrisi Najam Soba";
             btnObrisiNajamSobe.UseVisualStyleBackColor = true;
@@ -156,9 +149,10 @@
             // 
             // btnPrikaziZajednickeProstorije
             // 
-            btnPrikaziZajednickeProstorije.Location = new Point(1379, 167);
+            btnPrikaziZajednickeProstorije.Location = new Point(1207, 125);
+            btnPrikaziZajednickeProstorije.Margin = new Padding(3, 2, 3, 2);
             btnPrikaziZajednickeProstorije.Name = "btnPrikaziZajednickeProstorije";
-            btnPrikaziZajednickeProstorije.Size = new Size(165, 58);
+            btnPrikaziZajednickeProstorije.Size = new Size(144, 44);
             btnPrikaziZajednickeProstorije.TabIndex = 11;
             btnPrikaziZajednickeProstorije.Text = "Prikazi Zajednicke Prostorije";
             btnPrikaziZajednickeProstorije.UseVisualStyleBackColor = true;
@@ -166,14 +160,14 @@
             // 
             // PregledIznajmljivanjaSoba
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1556, 450);
+            ClientSize = new Size(1362, 338);
             Controls.Add(btnPrikaziZajednickeProstorije);
             Controls.Add(btnObrisiNajamSobe);
-            Controls.Add(btnIzmeniNajamSobe);
             Controls.Add(btnDodajNajamSobe);
             Controls.Add(listaNajmova);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "PregledIznajmljivanjaSoba";
             Text = "PregledIznajmljivanjaSoba";
             Load += PregledIznajmljivanjaSoba_Load;
@@ -197,7 +191,6 @@
         private ColumnHeader SobaID;
         private ColumnHeader zarada;
         private Button btnDodajNajamSobe;
-        private Button btnIzmeniNajamSobe;
         private Button btnObrisiNajamSobe;
         private Button btnPrikaziZajednickeProstorije;
     }

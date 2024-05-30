@@ -77,5 +77,23 @@ namespace StanNaDan.Forme.Soba.ZajednickeProstorije
             formaDodajZajednickuProstorijuSobi.ShowDialog();
             this.popuniPodacima();
         }
+
+        private void btnObrisiZajednickuProstoriju_Click(object sender, EventArgs e)
+        {
+            if (listaProstorija.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Izaberite prostoriju koji zelite da obrisete!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else if (listaProstorija.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("Mozete obrisati samo jednu prostoriju jednovremeno!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            string prostorija = listaProstorija.SelectedItems[0].SubItems[0].Text;
+            DTOManager.ObrisiZajednickuProstoriju(this.idSobe, this.idNekretnine, prostorija);
+            this.popuniPodacima();
+        }
     }
 }

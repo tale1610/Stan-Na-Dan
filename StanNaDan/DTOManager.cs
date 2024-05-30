@@ -114,7 +114,7 @@ public class DTOManager
 
             if (session != null && session.IsOpen)
             {
-                Poslovnica poslovnica = session.Load<Poslovnica>(poslovnicaBasic.ID);//kreiramo novu koju cemo da prosledimo u saveOrUpdate, na osnovu ove koju smo prosledili i ucitali sad koju zelimo da izmenimo
+                Poslovnica poslovnica = session.Load<Poslovnica>(poslovnicaBasic.ID);
                 poslovnica.Adresa = poslovnicaBasic.Adresa;
                 poslovnica.RadnoVreme = poslovnicaBasic.RadnoVreme;
                 poslovnica.Sef = poslovnicaBasic.Sef;
@@ -142,7 +142,7 @@ public class DTOManager
 
             if (session != null && session.IsOpen)
             {
-                Poslovnica poslovnica = session.Load<Poslovnica>(id);//ucitamo je za brisanje
+                Poslovnica poslovnica = session.Load<Poslovnica>(id);
                 string adresa = poslovnica.Adresa;
                 session.Delete(poslovnica);
                 session.Flush();
@@ -257,7 +257,7 @@ public class DTOManager
 
             if (session != null && session.IsOpen)
             {
-                Zaposleni zaposleni = session.Load<Zaposleni>(mbr);//ucitamo ga za brisanje
+                Zaposleni zaposleni = session.Load<Zaposleni>(mbr);
                 string _mbr = zaposleni.MBR;
                 session.Delete(zaposleni);
                 session.Flush();
@@ -356,7 +356,6 @@ public class DTOManager
                     DatumZaposlenja = agentBasic.DatumZaposlenja,
                     StrucnaSprema = agentBasic.StrucnaSprema,
                     Poslovnica = poslovnica
-                    //TODO: DODAJ ANGAZOVANE SARADNIKE I REALIZOVANE NAJMOVE
                 };
                 poslovnica.Zaposleni.Add(agent);
 
@@ -567,7 +566,6 @@ public class DTOManager
         }
     }
 
-
     #endregion
 
     #region SpoljniSaradnik
@@ -697,7 +695,7 @@ public class DTOManager
                     AgentAngazovanja = session.Load<Agent>(mbrAgentaAngazovanja),
                     IdSaradnika = idSpoljnog
                 };
-                SpoljniSaradnik spoljniSaradnik = session.Load<SpoljniSaradnik>(ssID);//ucitamo ga za brisanje
+                SpoljniSaradnik spoljniSaradnik = session.Load<SpoljniSaradnik>(ssID);
                 string ime = spoljniSaradnik.Ime;
                 session.Delete(spoljniSaradnik);
                 session.Flush();
@@ -737,7 +735,6 @@ public class DTOManager
                     ProcenatOdNajma = ssBasic.ProcenatOdNajma,
                     Telefon = ssBasic.Telefon,
                     ID = ssID
-                    //TODO: DODAJ I REALIZOVANE NAJMOVE
                 };
                 agent.AngazovaniSaradnici.Add(spoljniSaradnik);
 
@@ -755,8 +752,6 @@ public class DTOManager
             session?.Close();
         }
     }
-
-
 
     #endregion
 
@@ -865,7 +860,6 @@ public class DTOManager
                 {
                     GradskaZona = kvartBasic.GradskaZona,
                     PoslovnicaZaduzenaZaNjega = poslovnica
-                    //TODO: DODAJ NEKRETNINE KOJE SE NALAZE NA NJEMU
                 };
                 poslovnica.Kvartovi.Add(kvart);
 
@@ -1021,7 +1015,6 @@ public class DTOManager
                     Drzava = fizickoLiceBasic.Drzava,
                     Email = fizickoLiceBasic.Email,
                     Vlasnik = vlasnik
-                    //TODO: DODAJ NJEGOVE NEKRETNINE I NJEGOVE BROJEVE TELEFONA
                 };
 
                 session.SaveOrUpdate(fizickoLice);
@@ -1170,7 +1163,6 @@ public class DTOManager
                     ImeKontaktOsobe = pravnoLiceBasic.ImeKontaktOsobe,
                     EmailKontaktOsobe = pravnoLiceBasic.EmailKontaktOsobe,
                     Vlasnik = vlasnik
-                    //TODO: DODAJ NJEGOVE NEKRETNINE I NJEGOVE BROJEVE TELEFONA
                 };
 
                 session.SaveOrUpdate(pravnoLice);
@@ -1369,49 +1361,6 @@ public class DTOManager
         }
     }
 
-    //public static List<NekretninaPregled> VratiSveNekretnine()// dodaj prikaz da li je stan ili kuca
-    //{
-    //    List<NekretninaPregled> nekretnine = new List<NekretninaPregled>();
-    //    ISession? session = null;
-    //    try
-    //    {
-    //        session = DataLayer.GetSession();
-    //        if (session != null && session.IsOpen)
-    //        {
-    //            IEnumerable<StanNaDan.Entiteti.Nekretnina> sveNekretnine = from nekretnina
-    //                                                                       in session.Query<StanNaDan.Entiteti.Nekretnina>()
-    //                                                                       select nekretnina;
-
-    //            foreach (StanNaDan.Entiteti.Nekretnina p in sveNekretnine)
-    //            {
-    //                nekretnine.Add(new NekretninaPregled(
-    //                    p.IdNekretnine,
-    //                    p.Ulica,
-    //                    p.Broj,
-    //                    p.Kvadratura,
-    //                    p.BrojTerasa,
-    //                    p.BrojKupatila,
-    //                    p.BrojSpavacihSoba,
-    //                    p.PosedujeTV,
-    //                    p.PosedujeInternet,
-    //                    p.PosedujeKuhinju,
-    //                    p.Kvart.GradskaZona,
-    //                    p.Vlasnik.IdVlasnika));
-    //            }
-    //        }
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        MessageBox.Show(ex.FormatExceptionMessage());
-    //    }
-    //    finally
-    //    {
-    //        session?.Close();
-    //    }
-
-    //    return nekretnine;
-    //}
-
     public static List<NekretninaPregled> VratiSveNekretnine()
     {
         List<NekretninaPregled> nekretnine = new List<NekretninaPregled>();
@@ -1490,31 +1439,6 @@ public class DTOManager
             session = DataLayer.GetSession();
             if (session != null && session.IsOpen)
             {
-                //IEnumerable<StanNaDan.Entiteti.Nekretnina> sveNekretnine = from nekretnina
-                //                                                           in session.Query<StanNaDan.Entiteti.Nekretnina>()
-                //                                                           where nekretnina.Kvart.ID == idKvarta
-                //                                                           select nekretnina;
-
-                //foreach (StanNaDan.Entiteti.Nekretnina p in sveNekretnine)
-                //{
-                //    if (p.Kvart.ID == idKvarta)
-                //    {
-                //        nekretnine.Add(new NekretninaPregled(
-                //            p.IdNekretnine,
-                //            p.Ulica,
-                //            p.Broj,
-                //            p.Kvadratura,
-                //            p.BrojTerasa,
-                //            p.BrojKupatila,
-                //            p.BrojSpavacihSoba,
-                //            p.PosedujeTV,
-                //            p.PosedujeInternet,
-                //            p.PosedujeKuhinju,
-                //            p.Kvart.GradskaZona,
-                //            p.Vlasnik.IdVlasnika));
-                //    }
-                //}
-
                 IEnumerable<StanNaDan.Entiteti.Stan> sviStanovi = from stan
                                                                   in session.Query<StanNaDan.Entiteti.Stan>()
                                                                   where stan.Kvart.ID == idKvarta
@@ -1585,29 +1509,6 @@ public class DTOManager
             session = DataLayer.GetSession();
             if (session != null && session.IsOpen)
             {
-                //IEnumerable<StanNaDan.Entiteti.Nekretnina> sveNekretnine = from nekretnina
-                //                                                           in session.Query<StanNaDan.Entiteti.Nekretnina>()
-                //                                                           where nekretnina.Vlasnik.IdVlasnika == idVlasnika
-                //                                                           select nekretnina;
-
-                //foreach (StanNaDan.Entiteti.Nekretnina p in sveNekretnine)
-                //{
-                //        nekretnine.Add(new NekretninaPregled(
-                //        p.IdNekretnine,
-                //        p.Ulica,
-                //        p.Broj,
-                //        p.Kvadratura,
-                //        p.BrojTerasa,
-                //        p.BrojKupatila,
-                //        p.BrojSpavacihSoba,
-                //        p.PosedujeTV,
-                //        p.PosedujeInternet,
-                //        p.PosedujeKuhinju,
-                //        p.Kvart.GradskaZona,
-                //        p.Vlasnik.IdVlasnika));
-                    
-                //}
-
                 IEnumerable<StanNaDan.Entiteti.Stan> sviStanovi = from stan
                                                                   in session.Query<StanNaDan.Entiteti.Stan>()
                                                                   where stan.Vlasnik.IdVlasnika == idVlasnika
@@ -1804,12 +1705,10 @@ public class DTOManager
 
                     session.Update(nekretnina);
                     session.Flush();
-                    // Prikaz poruke o uspešnoj izmeni može se prilagoditi tvojoj aplikaciji
                     MessageBox.Show($"Podaci za nekretninu sa ID {izmenjenaNekretnina.IdNekretnine} su izmenjeni.");
                 }
                 else
                 {
-                    // Prikaz poruke kada nekretnina nije pronađena može se prilagoditi tvojoj aplikaciji
                     MessageBox.Show($"Nekretnina sa ID {izmenjenaNekretnina.IdNekretnine} nije pronađena.");
                 }
             }
@@ -3467,16 +3366,6 @@ public class DTOManager
                                               zp.ID.Soba.ID.IdSobe,
                                               zp.ID.ZajednickaProstorija))
                                      .Distinct().ToList();
-
-                //var sveProstorije = session.Query<ZajednickeProstorije>()
-                //                    .Where(zp => session.Query<IznajmljenaSoba>()
-                //                        .Any(iznajmljena => iznajmljena.ID.Najam.IdNajma == idNajma &&
-                //                            iznajmljena.ID.Soba.ID.Nekretnina.IdNekretnine == zp.ID.Soba.ID.Nekretnina.IdNekretnine &&
-                //                            iznajmljena.ID.Soba.ID.IdSobe == zp.ID.Soba.ID.IdSobe))
-                //                    .Select(zp => zp.ID.ZajednickaProstorija)
-                //                    .Distinct()
-                //                    .ToList();
-                //ovo drugo ce da vrati string listu samo to nam ne odgovara
 
                 prostorije.AddRange(sveProstorije);
             }

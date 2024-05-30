@@ -55,7 +55,6 @@ public class ZaposleniBasic
     public DateTime DatumZaposlenja { get; set; }
     public PoslovnicaBasic Poslovnica { get; set; }
 
-    //dodaj za spoljnog radnika kad stignes dotle valjda samo to
 
     public ZaposleniBasic()
     {
@@ -71,7 +70,6 @@ public class ZaposleniBasic
     }
 }
 
-//sad to i za agenta sefa i ostalog
 public class SefBasic : ZaposleniBasic
 {
     public DateTime? DatumPostavljanja { get; set; }
@@ -128,7 +126,6 @@ public class ZaposleniPregled
         this.Pozicija = pozicija;
     }
 }
-//opet isto to i za sefa i agenta i ostalo, ali sad razmisli da l da izbacis svuda iz pregled poslovnicu mada msm da ne treba
 public class SefPregled : ZaposleniPregled
 {
     public DateTime? DatumPostavljanja { get; set; }
