@@ -18,8 +18,8 @@ class SobaMapiranja : ClassMap<Soba>
         HasManyToMany(p => p.Najmovi)
                 .Table("IZNAJMLJENA_SOBA")
                 .ParentKeyColumns.Add("ID_NEKRETNINE", "ID_SOBE")
-                .ChildKeyColumn("ID_NAJMA")
-                .Cascade.All().Inverse();
+                .ChildKeyColumn("ID_NAJMA").Inverse();
+                //.Cascade.All();
 
         HasMany(p => p.IznajmljivanjaSobe).KeyColumns.Add("ID_NEKRETNINE", "ID_SOBE").LazyLoad().Cascade.All().Inverse();
     }

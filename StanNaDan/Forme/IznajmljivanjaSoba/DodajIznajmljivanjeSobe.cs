@@ -44,6 +44,11 @@ namespace StanNaDan.Forme.IznajmljivanjaSoba
                     this.lblIzabraniAgentMBR.Text = "Izabrali ste agenta sa MBR: " + this.mbrAgenta;
                 }
             }
+            this.IdSpoljnog = 0;
+            if (lblIzabraniSpoljniID.Text != "")
+            {
+                lblIzabraniSpoljniID.Text = "Resetovano";
+            }
             btnIzaberiSpoljnog.Enabled = true;
         }
 

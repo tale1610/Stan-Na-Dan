@@ -3665,6 +3665,10 @@ public class DTOManager
                     Agent = agent,
                     SpoljniSaradnik = spoljni
                 };
+                if (najam.Popust >= 99 || najam.Popust <= 1)
+                {
+                    throw new Exception("Los popust, mora izmedju 1 i 99");
+                }
                 agent.RealizovaniNajmovi.Add(najam);
                 nekretnina.Najmovi.Add(najam);
                 if (spoljni != null)
